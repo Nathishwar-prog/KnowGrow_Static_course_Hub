@@ -10,7 +10,6 @@ const HtmlDragAndDrop: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Making an Element Draggable</h2>
     <p className="text-lg leading-relaxed">To make an element draggable, you need to set the <code>draggable</code> attribute to <code>true</code>.</p>
-    {/* FIX: Added missing 'language' prop. */}
     <CodeBlock language="html">{`<img src="logo.png" draggable="true" id="drag1" width="88" height="31">`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">The Drag and Drop Process</h2>
@@ -23,7 +22,6 @@ const HtmlDragAndDrop: React.FC = () => (
     
     <h2 className="text-3xl font-bold mt-10 mb-4">Complete Example</h2>
     <p className="text-lg leading-relaxed">Here is a full example that allows you to drag an image from one box and drop it into another.</p>
-    {/* FIX: Added missing 'language' prop. */}
     <CodeBlock language="html">{`<!DOCTYPE HTML>
 <html>
 <head>

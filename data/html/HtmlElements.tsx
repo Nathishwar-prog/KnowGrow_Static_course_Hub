@@ -4,12 +4,11 @@ import { SimpleTable, InfoBox, CodeBlock } from '../components';
 const HtmlElements: React.FC = () => (
   <>
     <p className="text-lg leading-relaxed">An HTML element is defined by a start tag, some content, and an end tag.</p>
-    <p className="text-lg leading-relaxed mt-4">The HTML <strong>element</strong> is everything from the start tag to the end tag:</p>
-    <p className="text-lg bg-gray-100 dark:bg-gray-700/50 p-4 rounded-md my-4"><code>&lt;tagname&gt;</code> Content goes here... <code>&lt;/tagname&gt;</code></p>
-    <p className="text-lg leading-relaxed">Examples of some HTML elements:</p>
-    <p className="text-lg bg-gray-100 dark:bg-gray-700/50 p-4 rounded-md my-4"><code>&lt;h1&gt;</code>My First Heading<code>&lt;/h1&gt;</code></p>
-    <p className="text-lg bg-gray-100 dark:bg-gray-700/50 p-4 rounded-md my-4"><code>&lt;p&gt;</code>My first paragraph.<code>&lt;/p&gt;</code></p>
+    <p className="text-lg leading-relaxed mt-4">The HTML <strong>element</strong> is everything from the start tag to the end tag. The following example shows a basic paragraph element.</p>
+    
+    <CodeBlock language="html" animationId="html-element-structure">{`<p>My first paragraph.</p>`}</CodeBlock>
 
+    <p className="text-lg leading-relaxed mt-4">Examples of some other HTML elements:</p>
     <SimpleTable
       headers={['Start tag', 'Element content', 'End tag']}
       rows={[

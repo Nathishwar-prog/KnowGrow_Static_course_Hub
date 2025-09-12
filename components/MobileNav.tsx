@@ -77,11 +77,9 @@ const MobileNav: React.FC<MobileNavProps> = ({ sections, activeTopicId, onTopicS
                  <div className="flex flex-wrap gap-2 px-4">
                       <TechLink active>HTML</TechLink>
                       <TechLink>CSS</TechLink>
-                      <TechLink>JAVASCRIPT</TechLink>
+                      <TechLink>JS</TechLink>
                       <TechLink>SQL</TechLink>
                       <TechLink>PYTHON</TechLink>
-                      <TechLink>JAVA</TechLink>
-                      <TechLink>PHP</TechLink>
                  </div>
             </div>
 

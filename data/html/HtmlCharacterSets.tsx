@@ -12,7 +12,6 @@ const HtmlCharacterSets: React.FC = () => (
     <p className="text-lg leading-relaxed">The HTML5 specification encourages all web developers to use the UTF-8 character set. It is the most widely used character encoding on the Web.</p>
     <p className="text-lg leading-relaxed mt-4">UTF-8 supports all characters in the Unicode standard, which includes virtually all characters and symbols from all languages in the world, including emojis.</p>
     <p className="text-lg leading-relaxed mt-4">You should declare the character set using the <code>&lt;meta&gt;</code> tag inside the <code>&lt;head&gt;</code> element:</p>
-    {/* FIX: Added missing 'language' prop. */}
     <CodeBlock language="html">{`<meta charset="UTF-8">`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Common Character Sets</h2>

@@ -9,7 +9,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelect }) => {
   return (
-    <aside className="bg-white dark:bg-gray-800 w-64 h-screen-minus-nav sticky top-[104px] overflow-y-auto hidden md:block border-r border-gray-200 dark:border-gray-700">
+    <aside className="bg-white dark:bg-gray-800 w-64 h-screen-minus-nav sticky top-[112px] overflow-y-auto hidden md:block border-r border-gray-200 dark:border-gray-700">
       <nav className="p-4">
         {sections.map((section, index) => (
           <div key={section.title} className={index > 0 ? 'mt-6' : ''}>

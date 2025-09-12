@@ -55,7 +55,6 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
             <a href="#" className="bg-gray-700 text-white rounded-full py-2 px-4 text-sm font-bold hover:bg-gray-600">Spaces</a>
             <a href="#" className="bg-indigo-500 text-white rounded-full py-2 px-4 text-sm font-bold hover:bg-indigo-600">Get Certified</a>
         </div>
-        <a href="#" className="bg-indigo-600 text-white rounded-full py-2 px-5 text-sm font-bold hover:bg-indigo-700 hidden md:block">Sign Up</a>
         
         {/* Hamburger Menu Button */}
         <button

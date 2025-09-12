@@ -1,5 +1,4 @@
 import React from 'react';
-// FIX: Added SimpleTable to imports to render the position object properties.
 import { CodeBlock, InfoBox, SimpleTable } from '../components';
 
 const HtmlGeolocation: React.FC = () => (
@@ -74,7 +73,6 @@ navigator.geolocation.getCurrentPosition(showPosition, showError);`}</CodeBlock>
     <hr className="my-8 border-gray-200 dark:border-gray-600" />
     
     <h2 className="text-3xl font-bold mt-10 mb-4">The Position Object</h2>
-    {/* FIX: Completed the explanation of the Position object and removed extraneous text. */}
     <p className="text-lg leading-relaxed">If successful, the Geolocation API returns a <code>Position</code> object. This object contains a <code>coords</code> object with the location data, and a <code>timestamp</code> when the location was retrieved.</p>
     <SimpleTable
       headers={['Property', 'Description']}

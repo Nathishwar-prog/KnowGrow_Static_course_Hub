@@ -11,7 +11,6 @@ const HtmlSse: React.FC = () => (
     <h2 className="text-3xl font-bold mt-10 mb-4">Receiving Server-Sent Events</h2>
     <p className="text-lg leading-relaxed">The <code>EventSource</code> object is used to receive server-sent event notifications.</p>
     <p className="text-lg leading-relaxed mt-4">To get started, you create a new `EventSource` object, passing it the URL of a server-side script that will generate the events.</p>
-    {/* FIX: Added missing 'language' prop. */}
     <CodeBlock language="javascript">{`// Check for browser support
 if(typeof(EventSource) !== "undefined") {
   // Create an EventSource object that opens a connection to a server-side script
@@ -45,7 +44,6 @@ if(typeof(EventSource) !== "undefined") {
     </ul>
     
     <h3 className="text-2xl font-bold mt-8 mb-3">PHP Example (demo_sse.php)</h3>
-    {/* FIX: Added missing 'language' prop. */}
     <CodeBlock language="php">{`<?php
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');

@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useAnimation } from '../context/AnimationContext';
+import { ANIMATION_MAP } from './html/animations';
 
 // Make Prism object available globally for TypeScript
 declare global {
@@ -15,9 +17,15 @@ export const InfoBox: React.FC<{ children: React.ReactNode, className?: string }
   </div>
 );
 
-export const CodeBlock: React.FC<{ children: React.ReactNode; language: string; }> = ({ children, language }) => {
+export const CodeBlock: React.FC<{ children: React.ReactNode; language: string; animationId?: string; }> = ({ children, language, animationId }) => {
   const [isCopied, setIsCopied] = useState(false);
   const codeRef = useRef<HTMLElement | null>(null);
+  const { openAnimationPage } = useAnimation();
+  const codeString = React.Children.toArray(children).join('');
+  
+  // Trim trailing newline to prevent extra line number
+  const lines = codeString.trimEnd().split('\n');
+  const lineCount = lines.length;
 
   useEffect(() => {
     if (codeRef.current && window.Prism) {
@@ -27,45 +35,70 @@ export const CodeBlock: React.FC<{ children: React.ReactNode; language: string; 
 
 
   const handleCopy = () => {
-    const codeString = React.Children.toArray(children).join('');
     navigator.clipboard.writeText(codeString).then(() => {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
     });
   };
 
+  const handleAnimationClick = () => {
+    if (animationId) {
+      openAnimationPage({ animationId, props: {} });
+    } else {
+      const title = `Live Example: ${language.toUpperCase()}`;
+      openAnimationPage({ 
+        animationId: 'generic-code-animation', 
+        title: title,
+        props: { code: codeString, language: language }
+      });
+    }
+  };
+
   return (
-    <div className="rounded-lg my-6 overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg">
-      <div className="p-3 bg-gray-100 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-        <h3 className="font-bold text-gray-700 dark:text-gray-200">Example</h3>
+    <div className="rounded-xl my-6 overflow-hidden shadow-lg bg-white dark:bg-gray-800/50 ring-1 ring-black/5 dark:ring-white/10">
+      <div className="p-3 bg-gray-50 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+        <h3 className="font-mono text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Example</h3>
         <button
           onClick={handleCopy}
-          className="bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-200 text-xs font-bold py-1 px-3 rounded-md transition-colors duration-200 flex items-center"
+          className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 text-xs font-bold py-1 px-3 rounded-md transition-colors duration-200 flex items-center"
           aria-label="Copy code to clipboard"
         >
           {isCopied ? (
             <>
-              <i className="fa-solid fa-check mr-2"></i> Copied!
+              <i className="fa-solid fa-check mr-2 text-green-500"></i> Copied!
             </>
           ) : (
             <>
-              <i className="fa-regular fa-copy mr-2"></i> Copy Code
+              <i className="fa-regular fa-copy mr-2"></i> Copy
             </>
           )}
         </button>
       </div>
       
-      {/* The <pre> tag will be styled by the Prism theme */}
-      <pre className={`language-${language} !m-0 !rounded-none !border-0 text-[14px]`}>
-          <code ref={codeRef} className={`language-${language}`}>
-            {children}
-          </code>
-      </pre>
+      <div className="overflow-auto">
+        <pre className={`language-${language} !m-0 !rounded-none !border-0 text-[14px] flex !p-0`}>
+            <div 
+                className="line-numbers-gutter sticky left-0 bg-gray-50 dark:bg-gray-900/50 p-4 font-mono text-right text-gray-500 dark:text-gray-400 select-none border-r border-gray-200 dark:border-gray-700"
+                aria-hidden="true"
+            >
+                {Array.from({ length: lineCount }).map((_, i) => (
+                    <div key={i}>{i + 1}</div>
+                ))}
+            </div>
+            <code ref={codeRef} className={`language-${language} block !p-4 flex-1`}>
+                {children}
+            </code>
+        </pre>
+      </div>
 
-      <div className="p-4 bg-gray-100 dark:bg-gray-900/50 border-t border-gray-200 dark:border-gray-700">
-        <a href="#" className="bg-indigo-600 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors">
-          Try it Yourself &raquo;
-        </a>
+      <div className="p-4 bg-gray-50 dark:bg-gray-900/50 border-t border-gray-200 dark:border-gray-700">
+        <button
+          onClick={handleAnimationClick}
+          className="inline-flex items-center bg-green-600 text-white font-bold py-2 px-5 rounded-full hover:bg-green-700 transition-colors shadow-lg animate-pulse-green"
+        >
+          <i className="fa-solid fa-play-circle mr-2"></i>
+          Live Animation
+        </button>
       </div>
     </div>
   );

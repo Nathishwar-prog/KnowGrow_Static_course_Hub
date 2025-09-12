@@ -10,11 +10,9 @@ const HtmlLangCodes: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Declaring Language</h2>
     <p className="text-lg leading-relaxed">The language should be declared on the root <code>&lt;html&gt;</code> element.</p>
-    {/* FIX: Added missing 'language' prop. */}
     <CodeBlock language="html">{`<html lang="en">`}</CodeBlock>
 
     <p className="text-lg leading-relaxed mt-4">The language codes are defined by the ISO 639-1 standard. You can also add a country code to specify a dialect.</p>
-    {/* FIX: Added missing 'language' prop. */}
     <CodeBlock language="html">{`<!-- English (US) -->
 <html lang="en-US">
 

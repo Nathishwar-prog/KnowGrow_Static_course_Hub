@@ -10,7 +10,6 @@ const HtmlDoctypes: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">HTML5 Doctype</h2>
     <p className="text-lg leading-relaxed">The Doctype declaration for HTML5 is very simple and is the only one you need for modern web development.</p>
-    {/* FIX: Added missing 'language' prop. */}
     <CodeBlock language="html">{`<!DOCTYPE html>`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Older HTML and XHTML Doctypes</h2>

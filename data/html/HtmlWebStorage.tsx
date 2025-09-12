@@ -23,18 +23,15 @@ const HtmlWebStorage: React.FC = () => (
     <p className="text-lg leading-relaxed">The `localStorage` object provides methods to set, get, and remove data items, which are stored as key/value pairs.</p>
     
     <h3 className="text-2xl font-bold mt-8 mb-3">Storing Data</h3>
-    {/* FIX: Added missing 'language' prop. */}
     <CodeBlock language="javascript">{`// Store an item named "lastname" with the value "Smith"
 localStorage.setItem("lastname", "Smith");`}</CodeBlock>
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Retrieving Data</h3>
-    {/* FIX: Added missing 'language' prop. */}
     <CodeBlock language="javascript">{`// Retrieve the value of the "lastname" item
 let lastName = localStorage.getItem("lastname");
 // The value of lastName is now "Smith"`}</CodeBlock>
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Removing Data</h3>
-    {/* FIX: Added missing 'language' prop. */}
     <CodeBlock language="javascript">{`// Remove the "lastname" item from storage
 localStorage.removeItem("lastname");`}</CodeBlock>
 
@@ -44,7 +41,6 @@ localStorage.removeItem("lastname");`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Example: Click Counter</h2>
     <p className="text-lg leading-relaxed">Here's a simple example that uses `localStorage` to count the number of times a user has clicked a button. The count will persist even if the user closes the browser and reopens the page.</p>
-    {/* FIX: Added missing 'language' prop. */}
     <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <body>

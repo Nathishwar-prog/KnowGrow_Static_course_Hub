@@ -21,7 +21,6 @@ const HtmlWebWorkers: React.FC = () => (
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Main Page (index.html)</h3>
     <p className="text-lg leading-relaxed">The main page creates the worker and listens for messages from it.</p>
-    {/* FIX: Added missing 'language' prop. */}
     <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <body>
@@ -57,7 +56,6 @@ function stopWorker() {
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Worker Script (demo_workers.js)</h3>
     <p className="text-lg leading-relaxed">This code is saved in a separate file called "demo_workers.js". The worker script listens for messages and sends messages back to the main page using `postMessage()`.</p>
-    {/* FIX: Added missing 'language' prop. */}
     <CodeBlock language="javascript">{`let i = 0;
 
 function timedCount() {
