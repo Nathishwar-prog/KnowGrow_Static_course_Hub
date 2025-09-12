@@ -1,0 +1,5 @@
+{
+  "name": "KnowGrow",
+  "description": "An intuitive and modern learning platform for web development tutorials, starting with HTML. Built with React, TypeScript, and Tailwind CSS.",
+  "requestFramePermissions": []
+}
