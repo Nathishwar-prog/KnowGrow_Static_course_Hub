@@ -12,7 +12,7 @@ const HtmlClasses: React.FC = () => (
     <p className="text-lg leading-relaxed">In CSS, to select elements with a specific class, write a period (.) character, followed by the name of the class.</p>
     <p className="text-lg leading-relaxed mt-4">In the example below, we have three <code>&lt;div&gt;</code> elements with <code>class="city"</code>. All of them will be styled equally according to the <code>.city</code> style definition in the head section:</p>
     
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -48,7 +48,7 @@ const HtmlClasses: React.FC = () => (
     <h2 className="text-3xl font-bold mt-10 mb-4">Using Multiple Classes</h2>
     <p className="text-lg leading-relaxed">HTML elements can belong to more than one class. To specify multiple classes, separate the class names with a space, e.g. <code>&lt;div class="city main"&gt;</code>.</p>
     <p className="text-lg leading-relaxed mt-4">The element will get the styles from all the specified classes.</p>
-    <CodeBlock>{`<style>
+    <CodeBlock language="html">{`<style>
 .main {
   text-align: center;
 }
@@ -62,7 +62,7 @@ const HtmlClasses: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Different Elements Can Share Same Class</h2>
     <p className="text-lg leading-relaxed">Different HTML elements can point to the same class name. This allows you to define a style that can be reused across your site on various elements.</p>
-    <CodeBlock>{`<h2 class="city">London</h2>
+    <CodeBlock language="html">{`<h2 class="city">London</h2>
 <p class="city">London is the capital of England.</p>`}</CodeBlock>
 
     <InfoBox className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 text-blue-800 dark:text-blue-300">

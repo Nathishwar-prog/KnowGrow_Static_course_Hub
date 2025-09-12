@@ -13,7 +13,7 @@ const HtmlStyles: React.FC = () => (
     <h2 className="text-3xl font-bold mt-10 mb-4">Background Color</h2>
     <p className="text-lg leading-relaxed">The CSS <code>background-color</code> property defines the background color for an HTML element.</p>
     <p className="text-lg leading-relaxed mt-4">This example sets the background color for the page to powderblue:</p>
-    <CodeBlock>{`<body style="background-color:powderblue;">
+    <CodeBlock language="html">{`<body style="background-color:powderblue;">
 
 <h1>This is a heading</h1>
 <p>This is a paragraph.</p>
@@ -22,22 +22,22 @@ const HtmlStyles: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Text Color</h2>
     <p className="text-lg leading-relaxed">The CSS <code>color</code> property defines the text color for an HTML element:</p>
-    <CodeBlock>{`<h1 style="color:blue;">This is a heading</h1>
+    <CodeBlock language="html">{`<h1 style="color:blue;">This is a heading</h1>
 <p style="color:red;">This is a paragraph.</p>`}</CodeBlock>
     
     <h2 className="text-3xl font-bold mt-10 mb-4">Fonts</h2>
     <p className="text-lg leading-relaxed">The CSS <code>font-family</code> property defines the font to be used for an HTML element:</p>
-    <CodeBlock>{`<h1 style="font-family:verdana;">This is a heading</h1>
+    <CodeBlock language="html">{`<h1 style="font-family:verdana;">This is a heading</h1>
 <p style="font-family:courier;">This is a paragraph.</p>`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Text Size</h2>
     <p className="text-lg leading-relaxed">The CSS <code>font-size</code> property defines the text size for an HTML element:</p>
-    <CodeBlock>{`<h1 style="font-size:300%;">This is a heading</h1>
+    <CodeBlock language="html">{`<h1 style="font-size:300%;">This is a heading</h1>
 <p style="font-size:160%;">This is a paragraph.</p>`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Text Alignment</h2>
     <p className="text-lg leading-relaxed">The CSS <code>text-align</code> property defines the horizontal text alignment for an HTML element:</p>
-    <CodeBlock>{`<h1 style="text-align:center;">Centered Heading</h1>
+    <CodeBlock language="html">{`<h1 style="text-align:center;">Centered Heading</h1>
 <p style="text-align:center;">Centered paragraph.</p>`}</CodeBlock>
 
     <hr className="my-8 border-gray-200 dark:border-gray-600" />

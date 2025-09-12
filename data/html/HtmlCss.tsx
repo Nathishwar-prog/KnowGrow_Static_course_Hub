@@ -22,7 +22,7 @@ const HtmlCss: React.FC = () => (
 
     <h3 className="text-2xl font-bold mt-8 mb-3">1. Inline CSS</h3>
     <p className="text-lg leading-relaxed">An inline style may be used to apply a unique style for a single element. To use inline styles, add the <code>style</code> attribute to the relevant element. The style attribute can contain any CSS property.</p>
-    <CodeBlock>{`<h1 style="color:blue; text-align:center;">This is a Blue Heading</h1>
+    <CodeBlock language="html">{`<h1 style="color:blue; text-align:center;">This is a Blue Heading</h1>
 <p style="color:red;">This is a red paragraph.</p>`}</CodeBlock>
     <InfoBox className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 text-yellow-800 dark:text-yellow-300">
         <p>An inline style loses many of the advantages of a style sheet (by mixing content with presentation). Use this method sparingly.</p>
@@ -30,7 +30,7 @@ const HtmlCss: React.FC = () => (
 
     <h3 className="text-2xl font-bold mt-8 mb-3">2. Internal CSS</h3>
     <p className="text-lg leading-relaxed">An internal style sheet may be used if one single HTML page has a unique style. The internal style is defined inside the <code>&lt;style&gt;</code> element, inside the head section.</p>
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -55,7 +55,7 @@ h1 {
     <h3 className="text-2xl font-bold mt-8 mb-3">3. External CSS</h3>
     <p className="text-lg leading-relaxed">An external style sheet is used to define the style for many HTML pages. With an external style sheet, you can change the look of an entire web site by changing one file!</p>
     <p className="text-lg leading-relaxed mt-2">To use an external style sheet, add a link to it in the <code>&lt;head&gt;</code> section of each HTML page:</p>
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" href="mystyle.css">
@@ -68,23 +68,14 @@ h1 {
 </body>
 </html>`}</CodeBlock>
     <p className="text-lg leading-relaxed mt-4">Here is what the "mystyle.css" file looks like:</p>
-    <div className="bg-gray-100 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-lg my-6 overflow-hidden">
-        <div className="p-3 border-b border-gray-200 dark:border-gray-700 bg-gray-200 dark:bg-gray-700/50">
-            <h3 className="font-bold text-gray-700 dark:text-gray-200">mystyle.css</h3>
-        </div>
-        <div className="p-4 bg-white dark:bg-black/30">
-        <pre className="whitespace-pre-wrap text-sm">
-          <code className="text-black dark:text-gray-200">{`body {
+    <CodeBlock language="css">{`body {
   background-color: lightblue;
 }
 
 h1 {
   color: navy;
   margin-left: 20px;
-}`}</code>
-        </pre>
-      </div>
-    </div>
+}`}</CodeBlock>
     <InfoBox className="bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-500 text-emerald-800 dark:text-emerald-300">
         <h4 className="font-bold">Recommended Practice</h4>
         <p>External style sheets are the most flexible and maintainable way to style a website. They keep your HTML clean and separate content from presentation.</p>

@@ -10,11 +10,11 @@ const HtmlFormatting: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Bold and Strong Text</h2>
     <p className="text-lg leading-relaxed">The HTML <code>&lt;b&gt;</code> element specifies bold text, without any extra importance.</p>
-    <CodeBlock>{`<b>This text is bold</b>`}</CodeBlock>
+    <CodeBlock language="html">{`<b>This text is bold</b>`}</CodeBlock>
     <div className="text-lg p-4 my-4 bg-gray-100 dark:bg-gray-800/50 rounded-md"><b>This text is bold</b></div>
 
     <p className="text-lg leading-relaxed mt-6">The HTML <code>&lt;strong&gt;</code> element defines text with strong importance. The content inside is typically displayed in bold.</p>
-    <CodeBlock>{`<strong>This text is important!</strong>`}</CodeBlock>
+    <CodeBlock language="html">{`<strong>This text is important!</strong>`}</CodeBlock>
     <div className="text-lg p-4 my-4 bg-gray-100 dark:bg-gray-800/50 rounded-md"><strong>This text is important!</strong></div>
     
     <InfoBox className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 text-blue-800 dark:text-blue-300">
@@ -24,11 +24,11 @@ const HtmlFormatting: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Italic and Emphasized Text</h2>
     <p className="text-lg leading-relaxed">The HTML <code>&lt;i&gt;</code> element defines a part of text in an alternate voice or mood. The content inside is typically displayed in italic.</p>
-    <CodeBlock>{`<i>This text is italic</i>`}</CodeBlock>
+    <CodeBlock language="html">{`<i>This text is italic</i>`}</CodeBlock>
     <div className="text-lg p-4 my-4 bg-gray-100 dark:bg-gray-800/50 rounded-md"><i>This text is italic</i></div>
 
     <p className="text-lg leading-relaxed mt-6">The HTML <code>&lt;em&gt;</code> element defines emphasized text. The content inside is typically displayed in italic.</p>
-    <CodeBlock>{`<em>This text is emphasized</em>`}</CodeBlock>
+    <CodeBlock language="html">{`<em>This text is emphasized</em>`}</CodeBlock>
     <div className="text-lg p-4 my-4 bg-gray-100 dark:bg-gray-800/50 rounded-md"><em>This text is emphasized</em></div>
 
     <InfoBox className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 text-blue-800 dark:text-blue-300">
@@ -40,34 +40,34 @@ const HtmlFormatting: React.FC = () => (
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Marked Text</h3>
     <p className="text-lg leading-relaxed">The HTML <code>&lt;mark&gt;</code> element defines text that should be marked or highlighted.</p>
-    <CodeBlock>{`<p>Do not forget to buy <mark>milk</mark> today.</p>`}</CodeBlock>
+    <CodeBlock language="html">{`<p>Do not forget to buy <mark>milk</mark> today.</p>`}</CodeBlock>
     <div className="p-4 my-4 bg-gray-100 dark:bg-gray-800/50 rounded-md"><p className="text-lg">Do not forget to buy <mark>milk</mark> today.</p></div>
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Small Text</h3>
     <p className="text-lg leading-relaxed">The HTML <code>&lt;small&gt;</code> element defines smaller text.</p>
-    <CodeBlock>{`<p>This is some normal text.</p>
+    <CodeBlock language="html">{`<p>This is some normal text.</p>
 <p><small>This is some smaller text.</small></p>`}</CodeBlock>
     <div className="p-4 my-4 bg-gray-100 dark:bg-gray-800/50 rounded-md"><p className="text-lg">This is some normal text.</p><p className="text-lg"><small>This is some smaller text.</small></p></div>
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Deleted Text</h3>
     <p className="text-lg leading-relaxed">The HTML <code>&lt;del&gt;</code> element defines text that has been deleted from a document. Browsers will usually strike a line through deleted text.</p>
-    <CodeBlock>{`<p>My favorite color is <del>blue</del> red.</p>`}</CodeBlock>
+    <CodeBlock language="html">{`<p>My favorite color is <del>blue</del> red.</p>`}</CodeBlock>
     <div className="p-4 my-4 bg-gray-100 dark:bg-gray-800/50 rounded-md"><p className="text-lg">My favorite color is <del>blue</del> red.</p></div>
     
     <h3 className="text-2xl font-bold mt-8 mb-3">Inserted Text</h3>
     <p className="text-lg leading-relaxed">The HTML <code>&lt;ins&gt;</code> element defines a text that has been inserted into a document. Browsers will usually underline inserted text.</p>
-    <CodeBlock>{`<p>My favorite color is <del>blue</del> <ins>red</ins>.</p>`}</CodeBlock>
+    <CodeBlock language="html">{`<p>My favorite color is <del>blue</del> <ins>red</ins>.</p>`}</CodeBlock>
     <div className="p-4 my-4 bg-gray-100 dark:bg-gray-800/50 rounded-md"><p className="text-lg">My favorite color is <del>blue</del> <ins>red</ins>.</p></div>
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Subscript Text</h3>
     <p className="text-lg leading-relaxed">The HTML <code>&lt;sub&gt;</code> element defines subscript text. Subscript text appears half a character below the normal line, and is sometimes rendered in a smaller font.</p>
-    <CodeBlock>{`<p>This is <sub>subscripted</sub> text.</p>
+    <CodeBlock language="html">{`<p>This is <sub>subscripted</sub> text.</p>
 <p>The chemical formula for water is H<sub>2</sub>O.</p>`}</CodeBlock>
     <div className="p-4 my-4 bg-gray-100 dark:bg-gray-800/50 rounded-md"><p className="text-lg">This is <sub>subscripted</sub> text.</p><p className="text-lg">The chemical formula for water is H<sub>2</sub>O.</p></div>
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Superscript Text</h3>
     <p className="text-lg leading-relaxed">The HTML <code>&lt;sup&gt;</code> element defines superscript text. Superscript text appears half a character above the normal line, and is sometimes rendered in a smaller font.</p>
-    <CodeBlock>{`<p>This is <sup>superscripted</sup> text.</p>
+    <CodeBlock language="html">{`<p>This is <sup>superscripted</sup> text.</p>
 <p>The famous equation is E = mc<sup>2</sup>.</p>`}</CodeBlock>
     <div className="p-4 my-4 bg-gray-100 dark:bg-gray-800/50 rounded-md"><p className="text-lg">This is <sup>superscripted</sup> text.</p><p className="text-lg">The famous equation is E = mc<sup>2</sup>.</p></div>
 

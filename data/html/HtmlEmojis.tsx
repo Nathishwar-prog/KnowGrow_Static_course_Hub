@@ -19,13 +19,13 @@ const HtmlEmojis: React.FC = () => (
     <h2 className="text-3xl font-bold mt-10 mb-4">The charset Attribute</h2>
     <p className="text-lg leading-relaxed">To display an HTML page correctly, a web browser must know the character set used in the page. This is specified in the <code>&lt;meta&gt;</code> tag inside the <code>&lt;head&gt;</code> section.</p>
     <p className="text-lg leading-relaxed mt-4">For emojis to work correctly, your page's character encoding must be set to UTF-8, which is the standard for HTML5.</p>
-    <CodeBlock>{`<meta charset="UTF-8">`}</CodeBlock>
+    <CodeBlock language="html">{`<meta charset="UTF-8">`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Using Emojis in HTML</h2>
     <p className="text-lg leading-relaxed">Since emojis are characters, they can be used almost anywhere you can use text in HTML: inside paragraph tags, headings, buttons, etc.</p>
     <p className="text-lg leading-relaxed mt-4">You can either copy and paste the emoji directly into your HTML code, or you can use its decimal or hexadecimal entity number.</p>
     
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">

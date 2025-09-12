@@ -19,7 +19,7 @@ const HtmlPageTitle: React.FC = () => (
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Example</h3>
     <p className="text-lg leading-relaxed">Here is a simple example of how to add a title to your page:</p>
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <head>
   <title>A Meaningful Page Title</title>

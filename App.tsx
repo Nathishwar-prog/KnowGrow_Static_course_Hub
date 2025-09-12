@@ -4,11 +4,13 @@ import SecondaryNav from './components/SecondaryNav';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
+import MobileNav from './components/MobileNav';
 import { TUTORIAL_DATA } from './data/tutorialData';
 import type { TutorialTopic } from './types';
 
 const App: React.FC = () => {
   const [activeTopicId, setActiveTopicId] = useState<string>('html_home');
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   const allTopics: TutorialTopic[] = useMemo(() => TUTORIAL_DATA.flatMap(section => section.topics), []);
 
@@ -16,6 +18,7 @@ const App: React.FC = () => {
 
   const handleTopicSelect = (id: string) => {
     setActiveTopicId(id);
+    setIsMobileNavOpen(false); // Close mobile nav on selection
   };
 
   const getTopicIndex = (id: string): number => allTopics.findIndex(topic => topic.id === id);
@@ -26,8 +29,16 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-gray-50 dark:bg-gray-900">
-      <Header />
+      <Header onMenuClick={() => setIsMobileNavOpen(true)} />
       <SecondaryNav />
+      {isMobileNavOpen && (
+        <MobileNav
+          sections={TUTORIAL_DATA}
+          activeTopicId={activeTopicId}
+          onTopicSelect={handleTopicSelect}
+          onClose={() => setIsMobileNavOpen(false)}
+        />
+      )}
       <div className="flex flex-1">
         <Sidebar 
           sections={TUTORIAL_DATA} 

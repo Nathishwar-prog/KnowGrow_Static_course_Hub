@@ -17,7 +17,7 @@ const HtmlUrlEncode: React.FC = () => (
         <li>A question mark ("?") is encoded as <code>%3F</code>.</li>
     </ul>
 
-    <CodeBlock>{`<!-- A URL with a space and a special character -->
+    <CodeBlock language="html">{`<!-- A URL with a space and a special character -->
 <a href="my page.php?name=Ståle">Link</a>
 
 <!-- The encoded version -->
@@ -33,7 +33,6 @@ const HtmlUrlEncode: React.FC = () => (
     <SimpleTable
         headers={['Character', 'Encoded Value']}
         rows={[
-            // FIX: Corrected an invalid JavaScript expression. The original `' ' (space)` was a syntax error.
             [' ', <code>%20</code>],
             ['!', <code>%21</code>],
             ['#', <code>%23</code>],

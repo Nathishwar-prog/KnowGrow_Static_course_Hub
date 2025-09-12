@@ -9,14 +9,14 @@ const HtmlComments: React.FC = () => (
     
     <h2 className="text-3xl font-bold mt-10 mb-4">HTML Comment Tag</h2>
     <p className="text-lg leading-relaxed">You can add comments to your HTML source by using the following syntax:</p>
-    <CodeBlock>{`<!-- Write your comments here -->`}</CodeBlock>
+    <CodeBlock language="html">{`<!-- Write your comments here -->`}</CodeBlock>
     
     <InfoBox className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 text-blue-800 dark:text-blue-300">
         <p>Notice that there is an exclamation point (!) in the start tag, but not in the end tag.</p>
     </InfoBox>
 
     <p className="text-lg leading-relaxed mt-4">With comments you can place notifications and reminders in your HTML code:</p>
-    <CodeBlock>{`<!-- This is a comment -->
+    <CodeBlock language="html">{`<!-- This is a comment -->
 
 <p>This is a paragraph.</p>
 
@@ -26,12 +26,12 @@ const HtmlComments: React.FC = () => (
     
     <h2 className="text-3xl font-bold mt-10 mb-4">Hide Content</h2>
     <p className="text-lg leading-relaxed">Comments can be used to hide content. This can be helpful if you hide content temporarily for debugging:</p>
-    <CodeBlock>{`<p>This is a paragraph.</p>
+    <CodeBlock language="html">{`<p>This is a paragraph.</p>
 <!-- <p>This is another paragraph </p> -->
 <p>This is a paragraph too.</p>`}</CodeBlock>
     
     <p className="text-lg leading-relaxed mt-4">You can also hide more than one line. Everything between the <code>&lt;!--</code> and <code>--&gt;</code> will be hidden from the display.</p>
-    <CodeBlock>{`<!--
+    <CodeBlock language="html">{`<!--
   <p>Look at this cool image:</p>
   <img border="0" src="pic_trulli.jpg" alt="Trulli">
 -->`}</CodeBlock>
@@ -42,7 +42,7 @@ const HtmlComments: React.FC = () => (
     
     <h2 className="text-3xl font-bold mt-10 mb-4">Hide Inline Content</h2>
     <p className="text-lg leading-relaxed">Comments can be used to hide parts of the code in the middle of a line.</p>
-    <CodeBlock>{`<p>This <!-- great text --> is a paragraph.</p>`}</CodeBlock>
+    <CodeBlock language="html">{`<p>This <!-- great text --> is a paragraph.</p>`}</CodeBlock>
 
     <InfoBox className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 text-red-800 dark:text-red-300">
         <h4 className="font-bold">Important Security Note</h4>

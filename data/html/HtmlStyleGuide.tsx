@@ -16,11 +16,11 @@ const HtmlStyleGuide: React.FC = () => (
     <h3 className="text-2xl font-bold mt-8 mb-3">2. Use Lowercase Element Names</h3>
     <p className="text-lg leading-relaxed">Use lowercase for all HTML element and attribute names. While HTML is case-insensitive, it's a common convention and required for stricter document types like XHTML.</p>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div><CodeBlock>{`<!-- Good -->
+        <div><CodeBlock language="html">{`<!-- Good -->
 <section>
   <p>This is a paragraph.</p>
 </section>`}</CodeBlock></div>
-        <div><CodeBlock>{`<!-- Bad -->
+        <div><CodeBlock language="html">{`<!-- Bad -->
 <SECTION>
   <P>This is a paragraph.</P>
 </SECTION>`}</CodeBlock></div>
@@ -32,15 +32,15 @@ const HtmlStyleGuide: React.FC = () => (
     <h3 className="text-2xl font-bold mt-8 mb-3">4. Use Quotes for Attribute Values</h3>
     <p className="text-lg leading-relaxed">Always use quotation marks for attribute values. Double quotes are the most common convention.</p>
      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div><CodeBlock>{`<!-- Good -->
+        <div><CodeBlock language="html">{`<!-- Good -->
 <a href="/about">About Us</a>`}</CodeBlock></div>
-        <div><CodeBlock>{`<!-- Bad -->
+        <div><CodeBlock language="html">{`<!-- Bad -->
 <a href=/about>About Us</a>`}</CodeBlock></div>
     </div>
 
     <h3 className="text-2xl font-bold mt-8 mb-3">5. Specify alt, width, and height for Images</h3>
     <p className="text-lg leading-relaxed">Always specify the <code>alt</code>, <code>width</code>, and <code>height</code> attributes for images. This improves accessibility and prevents layout shifts as the image loads.</p>
-    <CodeBlock>{`<img src="logo.png" alt="KnowGrow Logo" width="200" height="50">`}</CodeBlock>
+    <CodeBlock language="html">{`<img src="logo.png" alt="KnowGrow Logo" width="200" height="50">`}</CodeBlock>
 
     <h3 className="text-2xl font-bold mt-8 mb-3">6. Indent Your Code</h3>
     <p className="text-lg leading-relaxed">Always use indentation to show the nesting of elements. This greatly improves readability. A common choice is two spaces per level of indentation.</p>
@@ -52,7 +52,7 @@ const HtmlStyleGuide: React.FC = () => (
     
     <h2 className="text-3xl font-bold mt-10 mb-4">A Good Example</h2>
     <p className="text-lg leading-relaxed">This code block demonstrates many of the best practices mentioned above.</p>
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">

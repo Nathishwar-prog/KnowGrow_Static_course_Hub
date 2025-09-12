@@ -28,7 +28,7 @@ const HtmlElements: React.FC = () => (
     <p className="text-lg leading-relaxed">HTML elements can be nested (this means that elements can contain other elements).</p>
     <p className="text-lg leading-relaxed mt-4">All HTML documents consist of nested HTML elements.</p>
     <p className="text-lg leading-relaxed mt-4">The following example contains four HTML elements (<code>&lt;html&gt;</code>, <code>&lt;body&gt;</code>, <code>&lt;h1&gt;</code> and <code>&lt;p&gt;</code>):</p>
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <body>
 
@@ -42,7 +42,7 @@ const HtmlElements: React.FC = () => (
     <p className="text-lg leading-relaxed">The <code>&lt;html&gt;</code> element is the root element and it defines the whole HTML document.</p>
     <p className="text-lg leading-relaxed mt-4">It has a start tag <code>&lt;html&gt;</code> and an end tag <code>&lt;/html&gt;</code>.</p>
     <p className="text-lg leading-relaxed mt-4">Then, inside the <code>&lt;html&gt;</code> element there is a <code>&lt;body&gt;</code> element:</p>
-    <CodeBlock>{`<body>
+    <CodeBlock language="html">{`<body>
 
 <h1>My First Heading</h1>
 <p>My first paragraph.</p>
@@ -51,7 +51,7 @@ const HtmlElements: React.FC = () => (
     <p className="text-lg leading-relaxed mt-4">The <code>&lt;body&gt;</code> element defines the document's body.</p>
     <p className="text-lg leading-relaxed mt-4">It has a start tag <code>&lt;body&gt;</code> and an end tag <code>&lt;/body&gt;</code>.</p>
     <p className="text-lg leading-relaxed mt-4">Then, inside the <code>&lt;body&gt;</code> element there are two other elements: <code>&lt;h1&gt;</code> and <code>&lt;p&gt;</code>:</p>
-    <CodeBlock>{`<h1>My First Heading</h1>
+    <CodeBlock language="html">{`<h1>My First Heading</h1>
 <p>My first paragraph.</p>`}</CodeBlock>
     <p className="text-lg leading-relaxed mt-4">The <code>&lt;h1&gt;</code> element defines a heading. It has a start tag <code>&lt;h1&gt;</code> and an end tag <code>&lt;/h1&gt;</code>.</p>
     <p className="text-lg leading-relaxed mt-4">The <code>&lt;p&gt;</code> element defines a paragraph. It has a start tag <code>&lt;p&gt;</code> and an end tag <code>&lt;/p&gt;</code>.</p>
@@ -60,7 +60,7 @@ const HtmlElements: React.FC = () => (
     
     <h2 className="text-3xl font-bold mt-10 mb-4">Never Skip the End Tag</h2>
     <p className="text-lg leading-relaxed">Some HTML elements will display correctly, even if you forget the end tag.</p>
-    <CodeBlock>{`<html>
+    <CodeBlock language="html">{`<html>
 <body>
 
 <p>This is a paragraph
@@ -77,7 +77,7 @@ const HtmlElements: React.FC = () => (
     <h2 className="text-3xl font-bold mt-10 mb-4">Empty HTML Elements</h2>
     <p className="text-lg leading-relaxed">HTML elements with no content are called empty elements.</p>
     <p className="text-lg leading-relaxed mt-4">The <code>&lt;br&gt;</code> tag defines a line break, and is an empty element without a closing tag:</p>
-    <CodeBlock>{`<p>This is a <br> paragraph with a line break.</p>`}</CodeBlock>
+    <CodeBlock language="html">{`<p>This is a <br> paragraph with a line break.</p>`}</CodeBlock>
 
     <hr className="my-8 border-gray-200 dark:border-gray-600" />
 

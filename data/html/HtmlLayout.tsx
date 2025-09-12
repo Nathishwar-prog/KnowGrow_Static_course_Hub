@@ -52,7 +52,7 @@ const HtmlLayout: React.FC = () => (
         </footer>
     </div>
     
-    <CodeBlock>{`<header>
+    <CodeBlock language="html">{`<header>
   <h1>My Website</h1>
 </header>
 

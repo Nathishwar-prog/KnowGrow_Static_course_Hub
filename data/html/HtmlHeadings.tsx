@@ -7,7 +7,7 @@ const HtmlHeadings: React.FC = () => (
     <p className="text-lg leading-relaxed mt-4">HTML headings are defined with the <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> tags.</p>
     <p className="text-lg leading-relaxed mt-4"><code>&lt;h1&gt;</code> defines the most important heading. <code>&lt;h6&gt;</code> defines the least important heading.</p>
 
-    <CodeBlock>{`<h1>Heading 1</h1>
+    <CodeBlock language="html">{`<h1>Heading 1</h1>
 <h2>Heading 2</h2>
 <h3>Heading 3</h3>
 <h4>Heading 4</h4>
@@ -31,7 +31,7 @@ const HtmlHeadings: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Bigger Headings</h2>
     <p className="text-lg leading-relaxed">Each HTML heading has a default size. However, you can specify the size for any heading with the <code>style</code> attribute, using the CSS <code>font-size</code> property:</p>
-    <CodeBlock>{`<h1 style="font-size:60px;">Heading 1</h1>`}</CodeBlock>
+    <CodeBlock language="html">{`<h1 style="font-size:60px;">Heading 1</h1>`}</CodeBlock>
   </>
 );
 

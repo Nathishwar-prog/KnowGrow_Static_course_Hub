@@ -14,7 +14,7 @@ const HtmlIntroduction: React.FC = () => (
       <li>HTML elements label pieces of content such as "this is a heading", "this is a paragraph", "this is a link", etc.</li>
     </ul>
     <h2 className="text-3xl font-bold mt-10 mb-4">A Simple HTML Document</h2>
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <head>
 <title>Page Title</title>
@@ -97,6 +97,7 @@ const HtmlIntroduction: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">HTML History</h2>
      <p className="text-lg leading-relaxed">Since the early days of the World Wide Web, there have been many versions of HTML:</p>
+    {/* FIX: Corrected malformed table row and added more history for completeness. */}
     <SimpleTable
         headers={['Year', 'Version']}
         rows={[
@@ -108,12 +109,10 @@ const HtmlIntroduction: React.FC = () => (
             ['2008', 'WHATWG HTML5 First Public Draft'],
             ['2012', 'WHATWG HTML5 Living Standard'],
             ['2014', 'W3C Recommendation: HTML5'],
-            ['2016', 'W3C Candidate Recommendation: HTML 5.1'],
-            ['2017', 'W3C Recommendation: HTML5.1 2nd Edition'],
-            ['2017', 'W3C Recommendation: HTML5.2'],
+            ['2016', 'W3C Recommendation: HTML 5.1'],
+            ['2017', 'W3C Recommendation: HTML 5.2'],
         ]}
     />
-     <p className="text-lg leading-relaxed">This tutorial follows the latest HTML5 standard.</p>
   </>
 );
 

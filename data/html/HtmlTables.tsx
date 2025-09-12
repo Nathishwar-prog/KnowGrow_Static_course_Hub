@@ -45,7 +45,7 @@ const HtmlTables: React.FC = () => (
         <li><code>&lt;th&gt;</code> - Defines a table header cell. By default, text in <code>&lt;th&gt;</code> elements are bold and centered.</li>
     </ul>
 
-    <CodeBlock>{`<table>
+    <CodeBlock language="html">{`<table>
   <tr>
     <th>Company</th>
     <th>Contact</th>
@@ -65,14 +65,14 @@ const HtmlTables: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">HTML Table Borders</h2>
     <p className="text-lg leading-relaxed">By default, HTML tables have no borders. To add borders, you need to use CSS.</p>
-    <CodeBlock>{`<style>
+    <CodeBlock language="html">{`<style>
 table, th, td {
   border: 1px solid black;
 }
 </style>`}</CodeBlock>
 
     <p className="text-lg leading-relaxed mt-4">To collapse the borders into a single border, use the CSS <code>border-collapse</code> property.</p>
-    <CodeBlock>{`<style>
+    <CodeBlock language="html">{`<style>
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -81,7 +81,7 @@ table, th, td {
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Cell Padding</h2>
     <p className="text-lg leading-relaxed">To add space between the content and the border in a table cell, use the CSS <code>padding</code> property.</p>
-    <CodeBlock>{`<style>
+    <CodeBlock language="html">{`<style>
 th, td {
   padding: 15px;
 }
@@ -93,7 +93,7 @@ th, td {
         <li><code>colspan</code> - Makes a cell span multiple columns.</li>
         <li><code>rowspan</code> - Makes a cell span multiple rows.</li>
     </ul>
-    <CodeBlock>{`<table>
+    <CodeBlock language="html">{`<table>
   <tr>
     <th>Name</th>
     <th colspan="2">Telephone</th>
@@ -107,7 +107,7 @@ th, td {
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Table Structure: thead, tbody, tfoot</h2>
     <p className="text-lg leading-relaxed">For more complex tables, you can use <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, and <code>&lt;tfoot&gt;</code> to group the header, body, and footer content of a table. This helps with semantics and can be useful for styling or for scrolling table bodies independently of the header/footer.</p>
-    <CodeBlock>{`<table>
+    <CodeBlock language="html">{`<table>
   <thead>
     <tr>
       <th>Month</th>

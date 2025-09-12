@@ -14,7 +14,7 @@ const HtmlDiv: React.FC = () => (
     <h3 className="text-2xl font-bold mt-8 mb-3">Example: Styling a Section</h3>
     <p className="text-lg leading-relaxed">In this example, we use a <code>&lt;div&gt;</code> element to group together a heading and two paragraphs. We then apply a background color and some padding to the entire group using CSS.</p>
 
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <head>
 <style>

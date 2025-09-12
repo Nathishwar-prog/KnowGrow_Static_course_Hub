@@ -26,10 +26,10 @@ const HtmlCharsets: React.FC = () => (
     <h2 className="text-3xl font-bold mt-10 mb-4">How to Specify the Character Set</h2>
     <p className="text-lg leading-relaxed">To ensure your page is displayed correctly, you should always include a <code>&lt;meta&gt;</code> tag specifying the character encoding inside the <code>&lt;head&gt;</code> element.</p>
     <p className="text-lg leading-relaxed mt-4">For HTML5, this is very simple:</p>
-    <CodeBlock>{`<meta charset="UTF-8">`}</CodeBlock>
+    <CodeBlock language="html">{`<meta charset="UTF-8">`}</CodeBlock>
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Example Document</h3>
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">

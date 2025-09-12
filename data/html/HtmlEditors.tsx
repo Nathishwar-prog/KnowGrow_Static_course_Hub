@@ -25,7 +25,7 @@ const HtmlEditors: React.FC = () => (
     <hr className="my-8 border-gray-200 dark:border-gray-600" />
     <h2 className="text-3xl font-bold mt-10 mb-4">Step 2: Write Some HTML</h2>
     <p className="text-lg leading-relaxed">Write or copy the following HTML code into your editor:</p>
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <body>
 
@@ -56,7 +56,7 @@ const HtmlEditors: React.FC = () => (
     <h2 className="text-3xl font-bold mt-10 mb-4">KnowGrow Online Editor - "Try it Yourself"</h2>
     <p className="text-lg leading-relaxed">With our free online editor, you can edit the HTML code and view the result in your browser.</p>
     <p className="text-lg leading-relaxed mt-4">It is the perfect tool when you want to test code fast. It also has color coding and the ability to save and share code with others:</p>
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <head>
 <title>Page Title</title>

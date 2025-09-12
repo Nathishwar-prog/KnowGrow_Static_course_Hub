@@ -17,7 +17,7 @@ const HtmlFavicon: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">How To Add a Favicon in HTML</h2>
     <p className="text-lg leading-relaxed">To add a favicon to your website, add a <code>&lt;link&gt;</code> tag in the <code>&lt;head&gt;</code> section of your HTML file:</p>
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <head>
   <title>My Page Title</title>
@@ -72,7 +72,7 @@ const HtmlFavicon: React.FC = () => (
     </table>
 
     <p className="text-lg leading-relaxed">Here is an example of how to use a PNG file as a favicon:</p>
-    <CodeBlock>{`<link rel="icon" type="image/png" href="/images/favicon.png">`}</CodeBlock>
+    <CodeBlock language="html">{`<link rel="icon" type="image/png" href="/images/favicon.png">`}</CodeBlock>
 
      <InfoBox className="bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-500 text-emerald-800 dark:text-emerald-300">
         <h4 className="font-bold">Tip: Favicon Best Practices</h4>

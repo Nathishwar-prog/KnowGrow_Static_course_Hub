@@ -10,7 +10,7 @@ const HtmlIframes: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Iframe Syntax</h2>
     <p className="text-lg leading-relaxed">An HTML iframe embeds another document within the current HTML document.</p>
-    <CodeBlock>{`<iframe src="url" title="description"></iframe>`}</CodeBlock>
+    <CodeBlock language="html">{`<iframe src="url" title="description"></iframe>`}</CodeBlock>
     
     <InfoBox className="bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-500 text-emerald-800 dark:text-emerald-300">
         <h4 className="font-bold">Accessibility Tip</h4>
@@ -19,17 +19,17 @@ const HtmlIframes: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Iframe Height and Width</h2>
     <p className="text-lg leading-relaxed">Use the <code>height</code> and <code>width</code> attributes to specify the size of the iframe.</p>
-    <CodeBlock>{`<iframe src="/html/default.asp" height="200" width="300" title="KnowGrow HTML Example"></iframe>`}</CodeBlock>
+    <CodeBlock language="html">{`<iframe src="/html/default.asp" height="200" width="300" title="KnowGrow HTML Example"></iframe>`}</CodeBlock>
     <p className="text-lg leading-relaxed mt-4">Alternatively, you can use the CSS <code>height</code> and <code>width</code> properties:</p>
-    <CodeBlock>{`<iframe src="/html/default.asp" style="height:200px;width:300px;" title="KnowGrow HTML Example"></iframe>`}</CodeBlock>
+    <CodeBlock language="html">{`<iframe src="/html/default.asp" style="height:200px;width:300px;" title="KnowGrow HTML Example"></iframe>`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Remove the Iframe Border</h2>
     <p className="text-lg leading-relaxed">By default, an iframe has a border around it. To remove the border, add the CSS <code>border</code> property and set its value to <code>none</code>.</p>
-    <CodeBlock>{`<iframe src="/html/default.asp" style="border:none;" title="Iframe Example"></iframe>`}</CodeBlock>
+    <CodeBlock language="html">{`<iframe src="/html/default.asp" style="border:none;" title="Iframe Example"></iframe>`}</CodeBlock>
     
     <h2 className="text-3xl font-bold mt-10 mb-4">Iframe as a Link Target</h2>
     <p className="text-lg leading-relaxed">An iframe can be used as the target frame for a link. The <code>target</code> attribute of a link must refer to the <code>name</code> attribute of the iframe.</p>
-    <CodeBlock>{`<!-- The iframe is given a name -->
+    <CodeBlock language="html">{`<!-- The iframe is given a name -->
 <iframe src="demo_iframe.htm" name="iframe_a" title="Iframe Example"></iframe>
 
 <!-- The link's target attribute refers to the iframe's name -->

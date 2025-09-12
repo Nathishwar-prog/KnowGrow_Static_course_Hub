@@ -1,4 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
+// Make Prism object available globally for TypeScript
+declare global {
+  interface Window {
+    Prism: {
+      highlightElement: (element: Element) => void;
+    };
+  }
+}
 
 export const InfoBox: React.FC<{ children: React.ReactNode, className?: string }> = ({ children, className }) => (
   <div className={`p-5 my-6 rounded-lg ${className}`}>
@@ -6,8 +15,16 @@ export const InfoBox: React.FC<{ children: React.ReactNode, className?: string }
   </div>
 );
 
-export const CodeBlock: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const CodeBlock: React.FC<{ children: React.ReactNode; language: string; }> = ({ children, language }) => {
   const [isCopied, setIsCopied] = useState(false);
+  const codeRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (codeRef.current && window.Prism) {
+      window.Prism.highlightElement(codeRef.current);
+    }
+  }, [children, language]);
+
 
   const handleCopy = () => {
     const codeString = React.Children.toArray(children).join('');
@@ -18,8 +35,8 @@ export const CodeBlock: React.FC<{ children: React.ReactNode }> = ({ children })
   };
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-lg my-6 overflow-hidden">
-      <div className="p-3 border-b border-gray-200 dark:border-gray-700 bg-gray-200 dark:bg-gray-700/50 flex justify-between items-center">
+    <div className="rounded-lg my-6 overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg">
+      <div className="p-3 bg-gray-100 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
         <h3 className="font-bold text-gray-700 dark:text-gray-200">Example</h3>
         <button
           onClick={handleCopy}
@@ -37,11 +54,14 @@ export const CodeBlock: React.FC<{ children: React.ReactNode }> = ({ children })
           )}
         </button>
       </div>
-      <div className="p-4 bg-white dark:bg-black/30">
-        <pre className="whitespace-pre-wrap text-sm">
-          <code className="text-black dark:text-gray-200">{children}</code>
-        </pre>
-      </div>
+      
+      {/* The <pre> tag will be styled by the Prism theme */}
+      <pre className={`language-${language} !m-0 !rounded-none !border-0 text-[14px]`}>
+          <code ref={codeRef} className={`language-${language}`}>
+            {children}
+          </code>
+      </pre>
+
       <div className="p-4 bg-gray-100 dark:bg-gray-900/50 border-t border-gray-200 dark:border-gray-700">
         <a href="#" className="bg-indigo-600 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors">
           Try it Yourself &raquo;

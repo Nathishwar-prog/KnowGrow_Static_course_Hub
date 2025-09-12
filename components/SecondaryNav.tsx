@@ -8,7 +8,7 @@ const TechLink: React.FC<{ children: React.ReactNode; active?: boolean }> = ({ c
 
 const SecondaryNav: React.FC = () => {
   return (
-    <nav className="bg-gray-800 dark:bg-gray-900 text-white flex items-center overflow-x-auto whitespace-nowrap p-2 space-x-2 shadow-md">
+    <nav className="bg-gray-800 dark:bg-gray-900 text-white hidden md:flex items-center overflow-x-auto whitespace-nowrap p-2 space-x-2 shadow-md">
       <TechLink active>HTML</TechLink>
       <TechLink>CSS</TechLink>
       <TechLink>JAVASCRIPT</TechLink>

@@ -13,7 +13,7 @@ const HtmlJavascript: React.FC = () => (
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Change HTML Content</h3>
     <p className="text-lg leading-relaxed">One of many JavaScript HTML methods is <code>getElementById()</code>. The example below "finds" an HTML element (with id="demo"), and changes the element content (<code>innerHTML</code>) to "Hello JavaScript!":</p>
-    <CodeBlock>{`<p id="demo">This is a demonstration.</p>
+    <CodeBlock language="html">{`<p id="demo">This is a demonstration.</p>
 
 <script>
 document.getElementById("demo").innerHTML = "Hello JavaScript!";
@@ -21,7 +21,7 @@ document.getElementById("demo").innerHTML = "Hello JavaScript!";
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Change Attribute Values</h3>
     <p className="text-lg leading-relaxed">In this example, JavaScript changes the value of the <code>src</code> (source) attribute of an <code>&lt;img&gt;</code> tag:</p>
-    <CodeBlock>{`<!-- An image that will be changed by the script -->
+    <CodeBlock language="html">{`<!-- An image that will be changed by the script -->
 <img id="myImage" src="pic_bulboff.gif" style="width:100px">
 
 <script>
@@ -34,7 +34,7 @@ function turnOn() {
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Change HTML Styles (CSS)</h3>
     <p className="text-lg leading-relaxed">Changing the style of an HTML element, is a variant of changing an HTML attribute:</p>
-    <CodeBlock>{`<p id="p2">Hello World!</p>
+    <CodeBlock language="html">{`<p id="p2">Hello World!</p>
 
 <script>
 document.getElementById("p2").style.color = "blue";
@@ -52,7 +52,7 @@ document.getElementById("p2").style.fontSize = "larger";
     
     <h3 className="text-2xl font-bold mt-6 mb-3">External JavaScript</h3>
     <p className="text-lg leading-relaxed">External scripts are practical when the same code is used in many different web pages. To use an external script, put the name of the script file in the <code>src</code> (source) attribute of a <code>&lt;script&gt;</code> tag:</p>
-    <CodeBlock>{`<!-- The myScript.js file contains the JavaScript code -->
+    <CodeBlock language="html">{`<!-- The myScript.js file contains the JavaScript code -->
 <script src="myScript.js"></script>`}</CodeBlock>
     <InfoBox className="bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-500 text-emerald-800 dark:text-emerald-300">
         <h4 className="font-bold">Best Practice</h4>
@@ -67,7 +67,7 @@ document.getElementById("p2").style.fontSize = "larger";
 
     <h2 className="text-3xl font-bold mt-10 mb-4">The &lt;noscript&gt; Tag</h2>
     <p className="text-lg leading-relaxed">The <code>&lt;noscript&gt;</code> tag provides an alternate content for users that have disabled scripts in their browser, or have a browser that doesn't support client-side scripts.</p>
-    <CodeBlock>{`<script>
+    <CodeBlock language="html">{`<script>
 document.getElementById("demo").innerHTML = "Hello JavaScript!";
 </script>
 <noscript>Sorry, your browser does not support JavaScript!</noscript>`}</CodeBlock>

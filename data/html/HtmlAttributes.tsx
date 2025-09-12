@@ -15,27 +15,27 @@ const HtmlAttributes: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">The href Attribute</h2>
     <p className="text-lg leading-relaxed">The <code>&lt;a&gt;</code> tag defines a hyperlink. The <code>href</code> attribute specifies the URL of the page the link goes to:</p>
-    <CodeBlock>{`<a href="https://www.knowgrow.dev">Visit KnowGrow</a>`}</CodeBlock>
+    <CodeBlock language="html">{`<a href="https://www.knowgrow.dev">Visit KnowGrow</a>`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">The src Attribute</h2>
     <p className="text-lg leading-relaxed">The <code>&lt;img&gt;</code> tag is used to embed an image in an HTML page. The <code>src</code> attribute specifies the path to the image to be displayed:</p>
-    <CodeBlock>{`<img src="img_knowgrow.jpg">`}</CodeBlock>
+    <CodeBlock language="html">{`<img src="img_knowgrow.jpg">`}</CodeBlock>
     
     <h2 className="text-3xl font-bold mt-10 mb-4">The width and height Attributes</h2>
     <p className="text-lg leading-relaxed">The <code>&lt;img&gt;</code> tag should also contain the <code>width</code> and <code>height</code> attributes, which specify the width and height of the image (in pixels):</p>
-    <CodeBlock>{`<img src="img_knowgrow.jpg" width="500" height="600">`}</CodeBlock>
+    <CodeBlock language="html">{`<img src="img_knowgrow.jpg" width="500" height="600">`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">The alt Attribute</h2>
     <p className="text-lg leading-relaxed">The required <code>alt</code> attribute for the <code>&lt;img&gt;</code> tag specifies an alternate text for an image, if the image for some reason cannot be displayed. This can be due to a slow connection, or an error in the <code>src</code> attribute, or if the user uses a screen reader.</p>
-    <CodeBlock>{`<img src="img_knowgrow.jpg" alt="KnowGrow Logo" width="500" height="600">`}</CodeBlock>
+    <CodeBlock language="html">{`<img src="img_knowgrow.jpg" alt="KnowGrow Logo" width="500" height="600">`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">The style Attribute</h2>
     <p className="text-lg leading-relaxed">The <code>style</code> attribute is used to add styles to an element, such as color, font, size, and more.</p>
-    <CodeBlock>{`<p style="color:red;">This is a red paragraph.</p>`}</CodeBlock>
+    <CodeBlock language="html">{`<p style="color:red;">This is a red paragraph.</p>`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">The lang Attribute</h2>
     <p className="text-lg leading-relaxed">You should always include the <code>lang</code> attribute inside the <code>&lt;html&gt;</code> tag, to declare the language of the Web page. This is meant to assist search engines and browsers.</p>
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html lang="en">
 <body>
 ...
@@ -45,7 +45,7 @@ const HtmlAttributes: React.FC = () => (
     
     <h2 className="text-3xl font-bold mt-10 mb-4">The title Attribute</h2>
     <p className="text-lg leading-relaxed">The <code>title</code> attribute defines some extra information about an element. The value of the title attribute will be displayed as a tooltip when you mouse over the element:</p>
-    <CodeBlock>{`<p title="I'm a tooltip">This is a paragraph.</p>`}</CodeBlock>
+    <CodeBlock language="html">{`<p title="I'm a tooltip">This is a paragraph.</p>`}</CodeBlock>
 
     <hr className="my-8 border-gray-200 dark:border-gray-600" />
     

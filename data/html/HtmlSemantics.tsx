@@ -27,7 +27,7 @@ const HtmlSemantics: React.FC = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
         <div>
             <h3 className="text-2xl font-bold mb-3">Non-Semantic (using &lt;div&gt;)</h3>
-            <CodeBlock>{`<div id="header">
+            <CodeBlock language="html">{`<div id="header">
     <h1>My Blog</h1>
 </div>
 
@@ -42,7 +42,7 @@ const HtmlSemantics: React.FC = () => (
         </div>
         <div>
             <h3 className="text-2xl font-bold mb-3">Semantic HTML</h3>
-            <CodeBlock>{`<header>
+            <CodeBlock language="html">{`<header>
     <h1>My Blog</h1>
 </header>
 

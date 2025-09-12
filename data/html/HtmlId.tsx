@@ -14,7 +14,7 @@ const HtmlId: React.FC = () => (
 
     <h3 className="text-2xl font-bold mt-8 mb-3">Styling with CSS</h3>
     <p className="text-lg leading-relaxed">To select an element with a specific id in CSS, write a hash (#) character, followed by the id of the element.</p>
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -36,7 +36,7 @@ const HtmlId: React.FC = () => (
     <h2 className="text-3xl font-bold mt-10 mb-4">Using id for Bookmark Links</h2>
     <p className="text-lg leading-relaxed">HTML bookmarks are used to allow readers to jump to specific parts of a webpage. You can create a bookmark by giving an element an <code>id</code>, and then linking to that <code>id</code> from another part of the page.</p>
 
-    <CodeBlock>{`<!-- Link to the bookmark -->
+    <CodeBlock language="html">{`<!-- Link to the bookmark -->
 <a href="#C4">Jump to Chapter 4</a>
 
 ... some content ...
@@ -48,7 +48,7 @@ const HtmlId: React.FC = () => (
     <h2 className="text-3xl font-bold mt-10 mb-4">Using id in JavaScript</h2>
     <p className="text-lg leading-relaxed">The <code>id</code> attribute can also be used by JavaScript to perform tasks on a specific element.</p>
     <p className="text-lg leading-relaxed mt-4">JavaScript can access an element with a specific id with the <code>getElementById()</code> method:</p>
-    <CodeBlock>{`<script>
+    <CodeBlock language="javascript">{`<script>
 function displayResult() {
   document.getElementById("myHeader").innerHTML = "Have a nice day!";
 }

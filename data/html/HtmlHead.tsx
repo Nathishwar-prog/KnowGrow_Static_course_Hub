@@ -33,7 +33,7 @@ const HtmlHead: React.FC = () => (
     />
     
     <h3 className="text-2xl font-bold mt-8 mb-3">Example</h3>
-    <CodeBlock>{`<!DOCTYPE html>
+    <CodeBlock language="html">{`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -59,7 +59,7 @@ const HtmlHead: React.FC = () => (
     <h2 className="text-3xl font-bold mt-10 mb-4">The Viewport &lt;meta&gt; Tag</h2>
     <p className="text-lg leading-relaxed">The viewport is the user's visible area of a web page. It varies with the device - it will be smaller on a mobile phone than on a computer screen.</p>
     <p className="text-lg leading-relaxed mt-4">You should include the following <code>&lt;meta&gt;</code> element in all your web pages:</p>
-    <CodeBlock>{`<meta name="viewport" content="width=device-width, initial-scale=1.0">`}</CodeBlock>
+    <CodeBlock language="html">{`<meta name="viewport" content="width=device-width, initial-scale=1.0">`}</CodeBlock>
     <p className="text-lg leading-relaxed mt-4">This gives the browser instructions on how to control the page's dimensions and scaling.</p>
     <ul className="list-disc list-inside space-y-2 pl-4 mt-2">
       <li><code>width=device-width</code> sets the width of the page to follow the screen-width of the device.</li>

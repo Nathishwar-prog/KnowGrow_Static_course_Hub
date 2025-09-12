@@ -10,11 +10,6 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelect }) => {
   return (
     <aside className="bg-white dark:bg-gray-800 w-64 h-screen-minus-nav sticky top-[104px] overflow-y-auto hidden md:block border-r border-gray-200 dark:border-gray-700">
-        <style>{`
-            .h-screen-minus-nav {
-                height: calc(100vh - 104px);
-            }
-        `}</style>
       <nav className="p-4">
         {sections.map((section, index) => (
           <div key={section.title} className={index > 0 ? 'mt-6' : ''}>

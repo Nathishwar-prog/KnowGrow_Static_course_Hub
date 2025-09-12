@@ -12,7 +12,7 @@ const HtmlEntities: React.FC = () => (
     <p className="text-lg leading-relaxed">Some characters are reserved in HTML. For example, you cannot use the less than (<code>&lt;</code>) or greater than (<code>&gt;</code>) signs within your text, because the browser could mistake them for tags.</p>
     <p className="text-lg leading-relaxed mt-4">To display a reserved character in HTML, you must use a character entity.</p>
     <p className="text-lg leading-relaxed mt-4">An entity has two parts: an ampersand (<code>&</code>) and an entity name or number, followed by a semicolon (<code>;</code>).</p>
-    <CodeBlock>{`<!-- To display a less than sign (<), we must write: &lt; -->
+    <CodeBlock language="html">{`<!-- To display a less than sign (<), we must write: &lt; -->
 <p>This is a &lt;p&gt; tag.</p>`}</CodeBlock>
 
     <InfoBox className="bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-500 text-emerald-800 dark:text-emerald-300">

@@ -10,7 +10,7 @@ const HtmlLists: React.FC = () => (
     <h2 className="text-3xl font-bold mt-10 mb-4">Unordered HTML List</h2>
     <p className="text-lg leading-relaxed">An unordered list starts with the <code>&lt;ul&gt;</code> tag. Each list item starts with the <code>&lt;li&gt;</code> tag.</p>
     <p className="text-lg leading-relaxed mt-2">The list items will be marked with bullets (small black circles) by default.</p>
-    <CodeBlock>{`<ul>
+    <CodeBlock language="html">{`<ul>
   <li>Coffee</li>
   <li>Tea</li>
   <li>Milk</li>
@@ -23,7 +23,7 @@ const HtmlLists: React.FC = () => (
         </ul>
     </div>
     <p className="text-lg leading-relaxed mt-4">You can change the list item marker with the CSS <code>list-style-type</code> property:</p>
-    <CodeBlock>{`<ul style="list-style-type:square;">
+    <CodeBlock language="html">{`<ul style="list-style-type:square;">
   ...
 </ul>`}</CodeBlock>
 
@@ -32,7 +32,7 @@ const HtmlLists: React.FC = () => (
     <h2 className="text-3xl font-bold mt-10 mb-4">Ordered HTML List</h2>
     <p className="text-lg leading-relaxed">An ordered list starts with the <code>&lt;ol&gt;</code> tag. Each list item starts with the <code>&lt;li&gt;</code> tag.</p>
     <p className="text-lg leading-relaxed mt-2">The list items will be marked with numbers by default.</p>
-    <CodeBlock>{`<ol>
+    <CodeBlock language="html">{`<ol>
   <li>Coffee</li>
   <li>Tea</li>
   <li>Milk</li>
@@ -62,7 +62,7 @@ const HtmlLists: React.FC = () => (
         <li>The <code>&lt;dt&gt;</code> tag defines the term (name).</li>
         <li>The <code>&lt;dd&gt;</code> tag describes each term.</li>
     </ul>
-    <CodeBlock>{`<dl>
+    <CodeBlock language="html">{`<dl>
   <dt>Coffee</dt>
   <dd>- black hot drink</dd>
   <dt>Milk</dt>
@@ -79,7 +79,7 @@ const HtmlLists: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Nested HTML Lists</h2>
     <p className="text-lg leading-relaxed">Lists can be nested (list inside a list):</p>
-    <CodeBlock>{`<ul>
+    <CodeBlock language="html">{`<ul>
   <li>Coffee</li>
   <li>Tea
     <ul>

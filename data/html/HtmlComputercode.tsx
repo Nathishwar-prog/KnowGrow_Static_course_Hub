@@ -21,27 +21,27 @@ const HtmlComputercode: React.FC = () => (
     
     <h2 className="text-3xl font-bold mt-10 mb-4">The &lt;code&gt; Element</h2>
     <p className="text-lg leading-relaxed">The <code>&lt;code&gt;</code> element is used to define a piece of computer code. The content inside is displayed in the browser's default monospace font.</p>
-    <CodeBlock>{`<p>The HTML <code>&lt;p&gt;</code> element defines a paragraph.</p>`}</CodeBlock>
+    <CodeBlock language="html">{`<p>The HTML <code>&lt;p&gt;</code> element defines a paragraph.</p>`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">The &lt;kbd&gt; Element</h2>
     <p className="text-lg leading-relaxed">The <code>&lt;kbd&gt;</code> element is used to define keyboard input. The content inside is displayed in the browser's default monospace font.</p>
-    <CodeBlock>{`<p>Save the document by pressing <kbd>Ctrl + S</kbd></p>`}</CodeBlock>
+    <CodeBlock language="html">{`<p>Save the document by pressing <kbd>Ctrl + S</kbd></p>`}</CodeBlock>
     <div className="p-4 my-4 bg-gray-100 dark:bg-gray-800/50 rounded-md text-lg">
         <p>Save the document by pressing <kbd className="bg-gray-300 dark:bg-gray-600 p-1 rounded-md border-b-2 border-gray-400 dark:border-gray-500">Ctrl</kbd> + <kbd className="bg-gray-300 dark:bg-gray-600 p-1 rounded-md border-b-2 border-gray-400 dark:border-gray-500">S</kbd></p>
     </div>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">The &lt;samp&gt; Element</h2>
     <p className="text-lg leading-relaxed">The <code>&lt;samp&gt;</code> element is used to define sample output from a computer program. The content inside is displayed in the browser's default monospace font.</p>
-    <CodeBlock>{`<p>If you input an incorrect value, the program will output:</p>
+    <CodeBlock language="html">{`<p>If you input an incorrect value, the program will output:</p>
 <p><samp>Error: Invalid input.</samp></p>`}</CodeBlock>
     
     <h2 className="text-3xl font-bold mt-10 mb-4">The &lt;var&gt; Element</h2>
     <p className="text-lg leading-relaxed">The <code>&lt;var&gt;</code> element is used to define a variable. The content inside is typically displayed in italics.</p>
-    <CodeBlock>{`<p>The area of a triangle is: 1/2 x <var>b</var> x <var>h</var>, where <var>b</var> is the base, and <var>h</var> is the vertical height.</p>`}</CodeBlock>
+    <CodeBlock language="html">{`<p>The area of a triangle is: 1/2 x <var>b</var> x <var>h</var>, where <var>b</var> is the base, and <var>h</var> is the vertical height.</p>`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">The &lt;pre&gt; Element</h2>
     <p className="text-lg leading-relaxed">The <code>&lt;pre&gt;</code> element defines preformatted text. The text inside a <code>&lt;pre&gt;</code> element is displayed in a fixed-width font, and it preserves both spaces and line breaks. It's commonly used to display blocks of code.</p>
-    <CodeBlock>{`<pre>
+    <CodeBlock language="html">{`<pre>
   <code>
     let x = 5;
     let y = 10;

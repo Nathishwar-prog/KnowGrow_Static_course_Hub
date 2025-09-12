@@ -14,7 +14,7 @@ const HtmlHome: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-12 mb-4">HTML Example</h2>
     <p>In this HTML tutorial, you will find hundreds of HTML examples. With our online "Try it Yourself" editor, you can edit and test each example yourself!</p>
-     <CodeBlock>{`<!DOCTYPE html>
+     <CodeBlock language="html">{`<!DOCTYPE html>
 <html>
 <head>
 <title>Page Title</title>
