@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import SecondaryNav from './components/SecondaryNav';
 import Sidebar from './components/Sidebar';
@@ -11,15 +11,19 @@ import { ANIMATION_MAP } from './data/html/animations';
 import type { TutorialTopic } from './types';
 import { AnimationProvider } from './context/AnimationContext';
 import type { AnimationOptions } from './context/AnimationContext';
+import { ANIMATION_STYLES } from './data/html/animations/animationStyles';
 
 const App: React.FC = () => {
   const [activeTopicId, setActiveTopicId] = useState<string>('html_home');
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [modalConfig, setModalConfig] = useState<{
     isOpen: boolean;
     content: React.ReactNode | null;
     title: string;
   }>({ isOpen: false, content: null, title: '' });
+
+  const loadingTimeoutRef = useRef<number | null>(null);
 
   const allTopics: TutorialTopic[] = useMemo(() => TUTORIAL_DATA.flatMap(section => section.topics), []);
 
@@ -39,9 +43,47 @@ const App: React.FC = () => {
     };
   }, [isMobileNavOpen, modalConfig.isOpen]);
 
+  useEffect(() => {
+    const styleElement = document.createElement('style');
+    styleElement.id = 'knowgrow-animation-styles';
+    styleElement.innerHTML = ANIMATION_STYLES;
+    document.head.appendChild(styleElement);
+
+    return () => {
+      const existingStyleElement = document.getElementById('knowgrow-animation-styles');
+      if (existingStyleElement) {
+        document.head.removeChild(existingStyleElement);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    // Cleanup timeout on unmount
+    return () => {
+      if (loadingTimeoutRef.current) {
+        clearTimeout(loadingTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const handleTopicSelect = (id: string) => {
-    setActiveTopicId(id);
+    if (id === activeTopicId) {
+      setIsMobileNavOpen(false);
+      return;
+    }
+
+    // Clear any existing loading timeout to handle rapid clicks
+    if (loadingTimeoutRef.current) {
+      clearTimeout(loadingTimeoutRef.current);
+    }
+
+    setIsLoading(true);
     setIsMobileNavOpen(false); // Close mobile nav on selection
+
+    loadingTimeoutRef.current = window.setTimeout(() => {
+      setActiveTopicId(id);
+      setIsLoading(false);
+    }, 2000); // 2-second loading time as requested
   };
 
   const getTopicIndex = (id: string): number => allTopics.findIndex(topic => topic.id === id);
@@ -94,6 +136,7 @@ const App: React.FC = () => {
           />
           <MainContent 
             topic={activeTopic}
+            isLoading={isLoading}
             onNavigate={(id) => handleTopicSelect(id)}
             prevTopic={prevTopic}
             nextTopic={nextTopic}

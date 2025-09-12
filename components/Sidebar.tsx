@@ -9,8 +9,8 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelect }) => {
   return (
-    <aside className="bg-white dark:bg-gray-800 w-64 h-screen-minus-nav sticky top-[112px] overflow-y-auto hidden md:block border-r border-gray-200 dark:border-gray-700">
-      <nav className="p-4">
+    <aside role="navigation" aria-label="Tutorial topics" className="bg-white dark:bg-gray-800 w-64 h-screen-minus-nav sticky top-[112px] overflow-y-auto hidden md:block border-r border-gray-200 dark:border-gray-700">
+      <div className="p-4">
         {sections.map((section, index) => (
           <div key={section.title} className={index > 0 ? 'mt-6' : ''}>
             <h3 className="font-bold text-xl mb-3 text-gray-800 dark:text-gray-100">{section.title}</h3>
@@ -28,6 +28,7 @@ const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelec
                         ? 'bg-indigo-600 text-white font-bold'
                         : 'text-gray-600 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-700 dark:hover:text-white'
                     }`}
+                    aria-current={activeTopicId === topic.id ? 'page' : undefined}
                   >
                     {topic.title}
                   </a>
@@ -36,7 +37,7 @@ const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelec
             </ul>
           </div>
         ))}
-      </nav>
+      </div>
     </aside>
   );
 };

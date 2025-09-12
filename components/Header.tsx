@@ -32,16 +32,16 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <header className="bg-gray-800 dark:bg-gray-900/70 dark:backdrop-blur-sm text-white flex items-center justify-between sticky top-0 z-40 px-4 h-[60px] border-b border-transparent dark:border-gray-800">
+    <header role="banner" className="bg-gray-800 dark:bg-gray-900/70 dark:backdrop-blur-sm text-white flex items-center justify-between sticky top-0 z-40 px-4 h-[60px] border-b border-transparent dark:border-gray-800">
       <div className="flex items-center space-x-4">
         <a href="#" className="text-2xl font-bold text-white py-3">
           Know<span className="text-indigo-400">Grow</span>
         </a>
-        <div className="hidden md:flex items-center space-x-1">
+        <nav role="navigation" aria-label="Primary navigation" className="hidden md:flex items-center space-x-1">
             <NavLink hasDropdown>Tutorials</NavLink>
             <NavLink hasDropdown>References</NavLink>
             <NavLink hasDropdown>Exercises</NavLink>
-        </div>
+        </nav>
       </div>
       <div className="flex items-center space-x-2">
         <div className="hidden lg:flex items-center space-x-2">

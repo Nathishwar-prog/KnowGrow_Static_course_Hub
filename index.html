@@ -29,13 +29,19 @@
       .animate-pulse-green {
         animation: pulse-green 2s infinite;
       }
-      /* Animation specific styles */
-      @keyframes slide-in {
-          from { transform: translateX(-20px); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
+      
+      @keyframes blink-caret {
+        from, to { opacity: 1; }
+        50% { opacity: 0; }
       }
-      .anim-slide-in {
-          animation: slide-in 0.5s ease-out forwards;
+      .typing-cursor {
+        display: inline-block;
+        width: 1px;
+        height: 1.2em; /* match line height */
+        background-color: #fb923c; /* orange-400 */
+        animation: blink-caret 0.75s step-end infinite;
+        vertical-align: bottom;
+        margin-left: 1px;
       }
       
       /* Modal styles */
@@ -60,7 +66,7 @@
         border-radius: 0.75rem; /* rounded-xl */
         box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
         width: 90%;
-        max-width: 56rem; /* max-w-5xl */
+        max-width: 64rem; /* max-w-6xl for side-by-side view */
         max-height: 90vh;
         display: flex;
         flex-direction: column;
@@ -74,6 +80,37 @@
       .modal-content-open {
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
+      }
+      
+      /* New Loading Animation Styles */
+      @keyframes fade-in-up-letter {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade-in-up-letter {
+        animation: fade-in-up-letter 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        opacity: 0; /* Start hidden */
+      }
+      
+      .loading-dots span {
+        animation: pulse-dots 1.4s infinite ease-in-out both;
+        display: inline-block;
+      }
+
+      @keyframes pulse-dots {
+        0%, 80%, 100% {
+          opacity: 0;
+        }
+        40% {
+          opacity: 1;
+        }
       }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />

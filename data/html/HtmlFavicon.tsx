@@ -8,7 +8,7 @@ const HtmlFavicon: React.FC = () => (
     
     <BrowserMockup title="My Page Title">
       <div className="flex items-center">
-          <img src="https://www.w3schools.com/favicon.ico" alt="Favicon" className="w-4 h-4 mr-2" />
+          <img src="https://via.placeholder.com/32x32/764ABC/FFFFFF?text=K" alt="Favicon" className="w-4 h-4 mr-2" />
           <span>My Page Title</span>
       </div>
     </BrowserMockup>

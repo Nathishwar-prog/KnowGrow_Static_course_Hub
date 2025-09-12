@@ -9,12 +9,12 @@ const HtmlVideo: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">The &lt;video&gt; Element</h2>
     <p className="text-lg leading-relaxed">To show a video in HTML, use the <code>&lt;video&gt;</code> element. You need to specify the video source and it's recommended to set the width and height.</p>
-    <CodeBlock language="html">{`<video width="320" height="240" src="movie.mp4"></video>`}</CodeBlock>
+    <CodeBlock language="html">{`<video width="320" height="240" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>`}</CodeBlock>
     
     <h3 className="text-2xl font-bold mt-8 mb-3">The `controls` Attribute</h3>
     <p className="text-lg leading-relaxed">The <code>controls</code> attribute adds video controls, like play, pause, and volume. It is a boolean attribute; its presence means it is active.</p>
     <CodeBlock language="html">{`<video width="400" height="300" controls>
-  <source src="movie.mp4" type="video/mp4">
+  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>`}</CodeBlock>
 
@@ -29,16 +29,16 @@ const HtmlVideo: React.FC = () => (
     <p className="text-lg leading-relaxed">The <code>&lt;source&gt;</code> element allows you to specify alternative video files which the browser may choose from, based on its media type or codec support.</p>
     <p className="text-lg leading-relaxed mt-4">The browser will use the first recognized format. This is the best way to ensure your video works on all modern browsers.</p>
     <CodeBlock language="html">{`<video width="400" controls>
-  <source src="movie.mp4" type="video/mp4">
-  <source src="movie.ogg" type="video/ogg">
-  <source src="movie.webm" type="video/webm">
+  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+  <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+  <source src="https://www.w3schools.com/html/mov_bbb.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Autoplay Videos</h2>
     <p className="text-lg leading-relaxed">To start a video automatically, use the <code>autoplay</code> attribute. However, most modern browsers do not allow autoplay with sound. To make autoplay work, you must also add the <code>muted</code> attribute.</p>
     <CodeBlock language="html">{`<video width="400" controls autoplay muted>
-  <source src="movie.mp4" type="video/mp4">
+  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
 </video>`}</CodeBlock>
     
     <InfoBox className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 text-blue-800 dark:text-blue-300">

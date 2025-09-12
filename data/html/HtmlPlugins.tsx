@@ -16,7 +16,7 @@ const HtmlPlugins: React.FC = () => (
     <h2 className="text-3xl font-bold mt-10 mb-4">The &lt;object&gt; Element</h2>
     <p className="text-lg leading-relaxed">The <code>&lt;object&gt;</code> element was originally designed to embed plug-ins into a web page. However, it can also be used to embed another web page, a PDF, or an SVG file.</p>
     <CodeBlock language="html">{`<!-- Embedding a PDF file -->
-<object data="myfile.pdf" type="application/pdf" width="600" height="400">
+<object data="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" type="application/pdf" width="600" height="400">
   <p>Your browser does not support PDFs. <a href="myfile.pdf">Download the PDF</a>.</p>
 </object>
 
@@ -27,10 +27,10 @@ const HtmlPlugins: React.FC = () => (
     <p className="text-lg leading-relaxed">The <code>&lt;embed&gt;</code> element also defines a container for an external resource, such as a web page, a picture, a media player, or a plug-in application.</p>
     <p className="text-lg leading-relaxed mt-4">It is a void element, meaning it has no closing tag. It was not part of the HTML 4 specification but was added in HTML5.</p>
     <CodeBlock language="html">{`<!-- Embedding an SVG image -->
-<embed src="logo.svg" type="image/svg+xml" width="100" height="100">
+<embed src="https://www.w3.org/Icons/SVG/svg-logo-v.svg" type="image/svg+xml" width="100" height="100">
 
 <!-- Embedding a video -->
-<embed src="movie.mp4" type="video/mp4" width="400" height="300">`}</CodeBlock>
+<embed src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" width="400" height="300">`}</CodeBlock>
 
     <InfoBox className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 text-blue-800 dark:text-blue-300">
         <h4 className="font-bold"><code>&lt;object&gt;</code> vs. <code>&lt;embed&gt;</code></h4>

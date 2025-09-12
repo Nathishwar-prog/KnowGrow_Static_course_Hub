@@ -33,7 +33,7 @@ const HtmlComments: React.FC = () => (
     <p className="text-lg leading-relaxed mt-4">You can also hide more than one line. Everything between the <code>&lt;!--</code> and <code>--&gt;</code> will be hidden from the display.</p>
     <CodeBlock language="html">{`<!--
   <p>Look at this cool image:</p>
-  <img border="0" src="pic_trulli.jpg" alt="Trulli">
+  <img border="0" src="https://picsum.photos/seed/trulli/300/200" alt="Italian trulli">
 -->`}</CodeBlock>
 
     <p className="text-lg leading-relaxed mt-4">Comments are also great for debugging HTML, because you can comment out HTML lines of code, one at a time, to search for errors.</p>

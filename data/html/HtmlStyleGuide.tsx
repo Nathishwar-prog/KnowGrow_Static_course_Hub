@@ -40,7 +40,7 @@ const HtmlStyleGuide: React.FC = () => (
 
     <h3 className="text-2xl font-bold mt-8 mb-3">5. Specify alt, width, and height for Images</h3>
     <p className="text-lg leading-relaxed">Always specify the <code>alt</code>, <code>width</code>, and <code>height</code> attributes for images. This improves accessibility and prevents layout shifts as the image loads.</p>
-    <CodeBlock language="html">{`<img src="logo.png" alt="KnowGrow Logo" width="200" height="50">`}</CodeBlock>
+    <CodeBlock language="html">{`<img src="https://via.placeholder.com/200x50/10B981/FFFFFF?text=KnowGrow" alt="KnowGrow Logo" width="200" height="50">`}</CodeBlock>
 
     <h3 className="text-2xl font-bold mt-8 mb-3">6. Indent Your Code</h3>
     <p className="text-lg leading-relaxed">Always use indentation to show the nesting of elements. This greatly improves readability. A common choice is two spaces per level of indentation.</p>

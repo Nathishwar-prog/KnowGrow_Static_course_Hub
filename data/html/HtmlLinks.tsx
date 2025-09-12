@@ -56,7 +56,7 @@ const HtmlLinks: React.FC = () => (
     <h2 className="text-3xl font-bold mt-10 mb-4">HTML Links - Image as a Link</h2>
     <p className="text-lg leading-relaxed">To use an image as a link, just put the <code>&lt;img&gt;</code> tag inside the <code>&lt;a&gt;</code> tag:</p>
     <CodeBlock language="html">{`<a href="default.asp">
-  <img src="smiley.gif" alt="HTML tutorial" style="width:42px;height:42px;">
+  <img src="https://picsum.photos/seed/smiley/42/42" alt="HTML tutorial" style="width:42px;height:42px;">
 </a>`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Link to an Email Address</h2>

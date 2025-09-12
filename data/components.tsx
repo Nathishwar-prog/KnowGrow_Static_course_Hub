@@ -42,17 +42,15 @@ export const CodeBlock: React.FC<{ children: React.ReactNode; language: string; 
   };
 
   const handleAnimationClick = () => {
-    if (animationId) {
-      openAnimationPage({ animationId, props: {} });
-    } else {
-      const title = `Live Example: ${language.toUpperCase()}`;
-      openAnimationPage({ 
-        animationId: 'generic-code-animation', 
-        title: title,
-        props: { code: codeString, language: language }
-      });
-    }
+    const defaultAnimationId = language === 'html' ? 'html-live-preview' : 'live-typing-animation';
+    const finalAnimationId = animationId || defaultAnimationId;
+
+    openAnimationPage({
+      animationId: finalAnimationId,
+      props: { code: codeString, language }
+    });
   };
+
 
   return (
     <div className="rounded-xl my-6 overflow-hidden shadow-lg bg-white dark:bg-gray-800/50 ring-1 ring-black/5 dark:ring-white/10">
@@ -97,7 +95,7 @@ export const CodeBlock: React.FC<{ children: React.ReactNode; language: string; 
           className="inline-flex items-center bg-green-600 text-white font-bold py-2 px-5 rounded-full hover:bg-green-700 transition-colors shadow-lg animate-pulse-green"
         >
           <i className="fa-solid fa-play-circle mr-2"></i>
-          Live Animation
+          Try it Live
         </button>
       </div>
     </div>
@@ -122,12 +120,12 @@ export const BrowserMockup: React.FC<{ title: string, children: React.ReactNode 
                 <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
                 <span className="w-3 h-3 bg-green-500 rounded-full"></span>
             </div>
-            <div className="flex-1 bg-white dark:bg-gray-800 rounded-md px-3 py-1 text-sm text-gray-600 dark:text-gray-400">
+            <div className="flex-1 bg-white dark:bg-gray-800 rounded-md px-3 py-1 text-sm text-gray-600 dark:text-gray-400 truncate">
                 <i className="fa-solid fa-lock text-gray-500 mr-2"></i>
-                file:///C:/Users/myuser/Desktop/{title}
+                {title}
             </div>
         </div>
-        <div className="p-6 bg-white dark:bg-gray-800/50 rounded-b-lg">
+        <div className="bg-white dark:bg-gray-800/50 rounded-b-lg">
             {children}
         </div>
     </div>

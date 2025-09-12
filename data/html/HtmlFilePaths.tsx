@@ -17,7 +17,7 @@ const HtmlFilePaths: React.FC = () => (
     
     <h2 className="text-3xl font-bold mt-10 mb-4">Absolute File Paths</h2>
     <p className="text-lg leading-relaxed">An absolute file path is the full URL to a file on the internet.</p>
-    <CodeBlock language="html">{`<img src="https://www.knowgrow.dev/images/picture.jpg" alt="A picture">`}</CodeBlock>
+    <CodeBlock language="html">{`<img src="https://picsum.photos/seed/website/300/200" alt="A picture from an external website">`}</CodeBlock>
     
     <h2 className="text-3xl font-bold mt-10 mb-4">Relative File Paths</h2>
     <p className="text-lg leading-relaxed">A relative file path points to a file relative to the current page. This is the most common way to link to files on your own website.</p>

@@ -39,7 +39,7 @@ const HtmlVsXhtml: React.FC = () => (
   <body>
     <p>This is a paragraph.</p>
     <br />
-    <img src="image.png" alt="an image" />
+    <img src="https://via.placeholder.com/150/764ABC/FFFFFF?text=Image" alt="an image" />
   </body>
 </html>`}</CodeBlock>
 

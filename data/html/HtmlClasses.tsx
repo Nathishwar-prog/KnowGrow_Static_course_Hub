@@ -12,7 +12,7 @@ const HtmlClasses: React.FC = () => (
     <p className="text-lg leading-relaxed">In CSS, to select elements with a specific class, write a period (.) character, followed by the name of the class.</p>
     <p className="text-lg leading-relaxed mt-4">In the example below, we have three <code>&lt;div&gt;</code> elements with <code>class="city"</code>. All of them will be styled equally according to the <code>.city</code> style definition in the head section:</p>
     
-    <CodeBlock language="html">{`<!DOCTYPE html>
+    <CodeBlock language="html" animationId="css-class-selector-animation">{`<!DOCTYPE html>
 <html>
 <head>
 <style>

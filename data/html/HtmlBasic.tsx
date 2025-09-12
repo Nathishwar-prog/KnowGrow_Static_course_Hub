@@ -51,7 +51,7 @@ const HtmlBasic: React.FC = () => (
     <h2 className="text-3xl font-bold mt-12 mb-4">HTML Images</h2>
     <p>HTML images are defined with the <code>&lt;img&gt;</code> tag.</p>
     <p className="mt-2">The source file (<code>src</code>), alternative text (<code>alt</code>), <code>width</code>, and <code>height</code> are provided as attributes:</p>
-    <CodeBlock language="html">{`<img src="w3schools.jpg" alt="W3Schools.com" width="104" height="142">`}</CodeBlock>
+    <CodeBlock language="html">{`<img src="https://via.placeholder.com/104x142/764ABC/FFFFFF?text=KnowGrow" alt="KnowGrow.dev" width="104" height="142">`}</CodeBlock>
     
     <hr className="my-8 border-gray-200 dark:border-gray-600" />
 

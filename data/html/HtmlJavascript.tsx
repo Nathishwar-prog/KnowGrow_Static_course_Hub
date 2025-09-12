@@ -22,11 +22,11 @@ document.getElementById("demo").innerHTML = "Hello JavaScript!";
     <h3 className="text-2xl font-bold mt-8 mb-3">Change Attribute Values</h3>
     <p className="text-lg leading-relaxed">In this example, JavaScript changes the value of the <code>src</code> (source) attribute of an <code>&lt;img&gt;</code> tag:</p>
     <CodeBlock language="html">{`<!-- An image that will be changed by the script -->
-<img id="myImage" src="pic_bulboff.gif" style="width:100px">
+<img id="myImage" src="https://i.postimg.cc/KzMLb25Y/bulboff.gif" style="width:100px" alt="Light bulb off">
 
 <script>
 function turnOn() {
-    document.getElementById('myImage').src = 'pic_bulbon.gif';
+    document.getElementById('myImage').src = 'https://i.postimg.cc/65Y7hS2w/bulbon.gif';
 }
 </script>
 

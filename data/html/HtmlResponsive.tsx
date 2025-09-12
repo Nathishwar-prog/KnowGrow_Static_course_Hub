@@ -19,12 +19,12 @@ const HtmlResponsive: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Responsive Images</h2>
     <p className="text-lg leading-relaxed">Responsive images are images that scale nicely to fit any browser size. A simple way to achieve this is by using the CSS <code>width</code> property set to <code>100%</code>.</p>
-    <CodeBlock language="html">{`<img src="img_girl.jpg" style="width:100%;" alt="Girl in a jacket">`}</CodeBlock>
+    <CodeBlock language="html">{`<img src="https://picsum.photos/seed/girl/1000/800" style="width:100%;" alt="Girl in a jacket">`}</CodeBlock>
     <p className="text-lg leading-relaxed mt-4">For more advanced responsive image handling, you can use the <code>&lt;picture&gt;</code> element, which allows you to serve different images for different screen sizes.</p>
     <CodeBlock language="html">{`<picture>
-  <source media="(min-width: 650px)" srcset="img_food.jpg">
-  <source media="(min-width: 465px)" srcset="img_car.jpg">
-  <img src="img_girl.jpg" alt="Girl">
+  <source media="(min-width: 650px)" srcset="https://picsum.photos/seed/food/800/600">
+  <source media="(min-width: 465px)" srcset="https://picsum.photos/seed/car/600/400">
+  <img src="https://picsum.photos/seed/girl/600/800" alt="Responsive Images">
 </picture>`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Responsive Text Size</h2>

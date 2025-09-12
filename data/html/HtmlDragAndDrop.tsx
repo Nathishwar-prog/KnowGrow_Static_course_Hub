@@ -10,7 +10,7 @@ const HtmlDragAndDrop: React.FC = () => (
 
     <h2 className="text-3xl font-bold mt-10 mb-4">Making an Element Draggable</h2>
     <p className="text-lg leading-relaxed">To make an element draggable, you need to set the <code>draggable</code> attribute to <code>true</code>.</p>
-    <CodeBlock language="html">{`<img src="logo.png" draggable="true" id="drag1" width="88" height="31">`}</CodeBlock>
+    <CodeBlock language="html">{`<img src="https://via.placeholder.com/88x31/764ABC/FFFFFF?text=Drag+Me" draggable="true" id="drag1" width="88" height="31">`}</CodeBlock>
 
     <h2 className="text-3xl font-bold mt-10 mb-4">The Drag and Drop Process</h2>
     <p className="text-lg leading-relaxed">The drag and drop process involves a sequence of events:</p>
@@ -62,7 +62,7 @@ function drop(ev) {
 <body>
 
 <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-  <img src="img_w3slogo.gif" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+  <img src="https://via.placeholder.com/88x31/764ABC/FFFFFF?text=Drag+Me" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
 </div>
 
 <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
