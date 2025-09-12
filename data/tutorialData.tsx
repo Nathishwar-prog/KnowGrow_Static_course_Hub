@@ -70,18 +70,10 @@ import HtmlWebWorkers from './html/HtmlWebWorkers';
 import HtmlSse from './html/HtmlSse';
 
 // HTML Examples Topics
-import HtmlExamples from './html/HtmlExamples';
-import HtmlEditor from './html/HtmlEditor';
 import HtmlQuiz from './html/HtmlQuiz';
 import HtmlExercises from './html/HtmlExercises';
-import HtmlWebsite from './html/HtmlWebsite';
-import HtmlSyllabus from './html/HtmlSyllabus';
-import HtmlStudyPlan from './html/HtmlStudyPlan';
 import HtmlInterviewPrep from './html/HtmlInterviewPrep';
-import HtmlBootcamp from './html/HtmlBootcamp';
 import HtmlCertificate from './html/HtmlCertificate';
-import HtmlSummary from './html/HtmlSummary';
-import HtmlAccessibility from './html/HtmlAccessibility';
 
 // HTML References Topics
 import HtmlTagList from './html/HtmlTagList';
@@ -188,18 +180,10 @@ export const TUTORIAL_DATA: SidebarSection[] = [
   {
     title: 'HTML Examples',
     topics: [
-      { id: 'html_examples', title: 'HTML Examples', content: <HtmlExamples /> },
-      { id: 'html_editor', title: 'HTML Editor', content: <HtmlEditor /> },
       { id: 'html_quiz', title: 'HTML Quiz', content: <HtmlQuiz /> },
       { id: 'html_exercises', title: 'HTML Exercises', content: <HtmlExercises /> },
-      { id: 'html_website', title: 'HTML Website', content: <HtmlWebsite /> },
-      { id: 'html_syllabus', title: 'HTML Syllabus', content: <HtmlSyllabus /> },
-      { id: 'html_study_plan', title: 'HTML Study Plan', content: <HtmlStudyPlan /> },
       { id: 'html_interview_prep', title: 'HTML Interview Prep', content: <HtmlInterviewPrep /> },
-      { id: 'html_bootcamp', title: 'HTML Bootcamp', content: <HtmlBootcamp /> },
       { id: 'html_certificate', title: 'HTML Certificate', content: <HtmlCertificate /> },
-      { id: 'html_summary', title: 'HTML Summary', content: <HtmlSummary /> },
-      { id: 'html_accessibility', title: 'HTML Accessibility', content: <HtmlAccessibility /> },
     ],
   },
   {
