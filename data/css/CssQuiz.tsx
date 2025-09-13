@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { HTML_QUIZ_DATA } from './quizData';
+import { CSS_QUIZ_DATA } from './quizData';
 
-const HtmlQuiz: React.FC = () => {
+const CssQuiz: React.FC = () => {
     const [quizState, setQuizState] = useState({
         started: false,
         currentQuestionIndex: 0,
@@ -11,7 +11,7 @@ const HtmlQuiz: React.FC = () => {
         answerSubmitted: false,
     });
 
-    const currentQuestion = HTML_QUIZ_DATA[quizState.currentQuestionIndex];
+    const currentQuestion = CSS_QUIZ_DATA[quizState.currentQuestionIndex];
 
     const handleStartQuiz = () => {
         setQuizState({ ...quizState, started: true });
@@ -35,7 +35,7 @@ const HtmlQuiz: React.FC = () => {
     };
 
     const handleNextQuestion = () => {
-        if (quizState.currentQuestionIndex < HTML_QUIZ_DATA.length - 1) {
+        if (quizState.currentQuestionIndex < CSS_QUIZ_DATA.length - 1) {
             setQuizState({
                 ...quizState,
                 currentQuestionIndex: quizState.currentQuestionIndex + 1,
@@ -59,9 +59,9 @@ const HtmlQuiz: React.FC = () => {
     };
 
     const getScoreMessage = (score: number) => {
-        const percentage = (score / HTML_QUIZ_DATA.length) * 100;
-        if (percentage === 100) return "Perfect Score! You're an HTML master!";
-        if (percentage >= 80) return "Excellent work! You really know your HTML.";
+        const percentage = (score / CSS_QUIZ_DATA.length) * 100;
+        if (percentage === 100) return "Perfect Score! You're a CSS master!";
+        if (percentage >= 80) return "Excellent work! You really know your CSS.";
         if (percentage >= 50) return "Good effort! A little more practice and you'll be an expert.";
         return "Keep practicing! Every expert was once a beginner.";
     };
@@ -88,7 +88,7 @@ const HtmlQuiz: React.FC = () => {
             <div className="text-center p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
                 <h2 className="text-3xl font-bold mb-4">Quiz Completed!</h2>
                 <p className="text-5xl font-bold text-indigo-500 my-4">
-                    {quizState.score} / {HTML_QUIZ_DATA.length}
+                    {quizState.score} / {CSS_QUIZ_DATA.length}
                 </p>
                 <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">{getScoreMessage(quizState.score)}</p>
                 <button
@@ -104,8 +104,8 @@ const HtmlQuiz: React.FC = () => {
     if (!quizState.started) {
         return (
             <div className="text-center p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
-                <h2 className="text-4xl font-bold mb-4">HTML Quiz</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">Test your knowledge of HTML with these {HTML_QUIZ_DATA.length} questions.</p>
+                <h2 className="text-4xl font-bold mb-4">CSS Quiz</h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">Test your knowledge of CSS with these {CSS_QUIZ_DATA.length} questions.</p>
                 <button
                     onClick={handleStartQuiz}
                     className="bg-green-600 text-white font-bold py-3 px-8 rounded-full hover:bg-green-700 transition-colors text-lg shadow-lg animate-pulse-green"
@@ -119,9 +119,9 @@ const HtmlQuiz: React.FC = () => {
     return (
         <div className="p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
             <div className="mb-4">
-                <p className="text-sm text-gray-500 dark:text-gray-400">Question {quizState.currentQuestionIndex + 1} of {HTML_QUIZ_DATA.length}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Question {quizState.currentQuestionIndex + 1} of {CSS_QUIZ_DATA.length}</p>
                 <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mt-2">
-                    <div className="bg-indigo-600 h-2.5 rounded-full" style={{ width: `${((quizState.currentQuestionIndex + 1) / HTML_QUIZ_DATA.length) * 100}%` }}></div>
+                    <div className="bg-indigo-600 h-2.5 rounded-full" style={{ width: `${((quizState.currentQuestionIndex + 1) / CSS_QUIZ_DATA.length) * 100}%` }}></div>
                 </div>
             </div>
 
@@ -159,7 +159,7 @@ const HtmlQuiz: React.FC = () => {
                         onClick={handleNextQuestion}
                         className="bg-indigo-600 text-white font-bold py-2 px-6 rounded-md hover:bg-indigo-700 transition-colors"
                     >
-                       {quizState.currentQuestionIndex < HTML_QUIZ_DATA.length - 1 ? 'Next Question' : 'Show Results'} <i className="fa-solid fa-arrow-right ml-2"></i>
+                       {quizState.currentQuestionIndex < CSS_QUIZ_DATA.length - 1 ? 'Next Question' : 'Show Results'} <i className="fa-solid fa-arrow-right ml-2"></i>
                     </button>
                 ) : (
                     <button
@@ -175,4 +175,4 @@ const HtmlQuiz: React.FC = () => {
     );
 };
 
-export default HtmlQuiz;
+export default CssQuiz;

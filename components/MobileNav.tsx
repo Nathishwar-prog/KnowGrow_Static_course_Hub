@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import type { SidebarSection } from '../types';
+import type { Course } from '../App';
 
 const MainNavLink: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <a href="#" className="block py-3 px-4 text-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">{children}</a>
 );
 
-const TechLink: React.FC<{ children: React.ReactNode; active?: boolean }> = ({ children, active = false }) => (
-  <a href="#" className={`inline-block py-2 px-3 text-sm font-medium rounded-full ${active ? 'bg-indigo-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600'}`}>
+const TechLink: React.FC<{ children: React.ReactNode; active?: boolean; onClick?: () => void; }> = ({ children, active = false, onClick }) => (
+  <a href="#" onClick={(e) => { e.preventDefault(); onClick?.(); }} className={`inline-block py-2 px-3 text-sm font-medium rounded-full ${active ? 'bg-indigo-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600'}`}>
     {children}
   </a>
 );
@@ -17,9 +18,11 @@ interface MobileNavProps {
   activeTopicId: string;
   onTopicSelect: (id: string) => void;
   onClose: () => void;
+  activeCourse: Course;
+  onCourseSelect: (course: Course) => void;
 }
 
-const MobileNav: React.FC<MobileNavProps> = ({ sections, activeTopicId, onTopicSelect, onClose }) => {
+const MobileNav: React.FC<MobileNavProps> = ({ sections, activeTopicId, onTopicSelect, onClose, activeCourse, onCourseSelect }) => {
   const [isPanelOpen, setPanelOpen] = useState(false);
 
   useEffect(() => {
@@ -38,6 +41,13 @@ const MobileNav: React.FC<MobileNavProps> = ({ sections, activeTopicId, onTopicS
       setTimeout(() => {
         onTopicSelect(id);
       }, 300);
+  };
+  
+  const handleCourseSelection = (course: Course) => {
+    // Only switch if it's a different course
+    if (course !== activeCourse) {
+        onCourseSelect(course);
+    }
   };
 
   return (
@@ -75,8 +85,8 @@ const MobileNav: React.FC<MobileNavProps> = ({ sections, activeTopicId, onTopicS
             <div className="mb-6">
                 <h3 className="font-bold text-lg mb-3 text-gray-500 dark:text-gray-400 px-4">Technologies</h3>
                  <div className="flex flex-wrap gap-2 px-4">
-                      <TechLink active>HTML</TechLink>
-                      <TechLink>CSS</TechLink>
+                      <TechLink active={activeCourse === 'html'} onClick={() => handleCourseSelection('html')}>HTML</TechLink>
+                      <TechLink active={activeCourse === 'css'} onClick={() => handleCourseSelection('css')}>CSS</TechLink>
                       <TechLink>JS</TechLink>
                       <TechLink>SQL</TechLink>
                       <TechLink>PYTHON</TechLink>

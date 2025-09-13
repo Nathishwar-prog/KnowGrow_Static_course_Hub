@@ -6,15 +6,18 @@ import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import MobileNav from './components/MobileNav';
 import AnimationModal from './components/AnimationModal';
-import { TUTORIAL_DATA } from './data/tutorialData';
+import { ALL_COURSES } from './data/tutorialData';
 import { ANIMATION_MAP } from './data/html/animations';
 import type { TutorialTopic } from './types';
 import { AnimationProvider } from './context/AnimationContext';
 import type { AnimationOptions } from './context/AnimationContext';
 import { ANIMATION_STYLES } from './data/html/animations/animationStyles';
 
+export type Course = keyof typeof ALL_COURSES;
+
 const App: React.FC = () => {
-  const [activeTopicId, setActiveTopicId] = useState<string>('html_home');
+  const [activeCourse, setActiveCourse] = useState<Course>('html');
+  const [activeTopicId, setActiveTopicId] = useState<string>(ALL_COURSES[activeCourse].homeTopicId);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [modalConfig, setModalConfig] = useState<{
@@ -25,8 +28,8 @@ const App: React.FC = () => {
 
   const loadingTimeoutRef = useRef<number | null>(null);
 
-  const allTopics: TutorialTopic[] = useMemo(() => TUTORIAL_DATA.flatMap(section => section.topics), []);
-
+  const TUTORIAL_DATA = useMemo(() => ALL_COURSES[activeCourse].data, [activeCourse]);
+  const allTopics: TutorialTopic[] = useMemo(() => TUTORIAL_DATA.flatMap(section => section.topics), [TUTORIAL_DATA]);
   const activeTopic = allTopics.find(topic => topic.id === activeTopicId) || allTopics[0];
 
   useEffect(() => {
@@ -37,7 +40,6 @@ const App: React.FC = () => {
       document.body.style.overflow = 'auto';
     }
 
-    // Cleanup when App component unmounts
     return () => {
       document.body.style.overflow = 'auto';
     };
@@ -58,13 +60,27 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Cleanup timeout on unmount
     return () => {
       if (loadingTimeoutRef.current) {
         clearTimeout(loadingTimeoutRef.current);
       }
     };
   }, []);
+  
+  const handleCourseSelect = (course: Course) => {
+    if (course !== activeCourse) {
+      setIsLoading(true);
+      setActiveCourse(course);
+      
+      // Delay setting topic ID to allow loading state to show
+      loadingTimeoutRef.current = window.setTimeout(() => {
+        setActiveTopicId(ALL_COURSES[course].homeTopicId);
+        setIsLoading(false);
+      }, 500);
+      
+      // No need to close mobile nav, content will just update
+    }
+  };
 
   const handleTopicSelect = (id: string) => {
     if (id === activeTopicId) {
@@ -72,18 +88,17 @@ const App: React.FC = () => {
       return;
     }
 
-    // Clear any existing loading timeout to handle rapid clicks
     if (loadingTimeoutRef.current) {
       clearTimeout(loadingTimeoutRef.current);
     }
 
     setIsLoading(true);
-    setIsMobileNavOpen(false); // Close mobile nav on selection
+    setIsMobileNavOpen(false);
 
     loadingTimeoutRef.current = window.setTimeout(() => {
       setActiveTopicId(id);
       setIsLoading(false);
-    }, 2000); // 2-second loading time as requested
+    }, 2000);
   };
 
   const getTopicIndex = (id: string): number => allTopics.findIndex(topic => topic.id === id);
@@ -119,13 +134,18 @@ const App: React.FC = () => {
     <AnimationProvider value={{ openAnimationPage }}>
       <div className="min-h-screen flex flex-col font-sans bg-gray-50 dark:bg-gray-900">
         <Header onMenuClick={() => setIsMobileNavOpen(true)} />
-        <SecondaryNav />
+        <SecondaryNav 
+          activeCourse={activeCourse}
+          onCourseSelect={handleCourseSelect}
+        />
         {isMobileNavOpen && (
           <MobileNav
             sections={TUTORIAL_DATA}
             activeTopicId={activeTopicId}
             onTopicSelect={handleTopicSelect}
             onClose={() => setIsMobileNavOpen(false)}
+            activeCourse={activeCourse}
+            onCourseSelect={handleCourseSelect}
           />
         )}
         <div className="flex flex-1">
