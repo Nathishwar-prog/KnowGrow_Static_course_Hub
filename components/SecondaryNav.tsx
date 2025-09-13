@@ -21,7 +21,7 @@ const SecondaryNav: React.FC<SecondaryNavProps> = ({ activeCourse, onCourseSelec
     <nav aria-label="Secondary navigation" className="bg-gray-800 dark:bg-gray-900 text-white hidden md:flex items-center overflow-x-auto whitespace-nowrap p-2 space-x-2 shadow-md sticky top-[60px] z-30">
       <TechLink active={activeCourse === 'html'} onClick={() => onCourseSelect('html')}>HTML</TechLink>
       <TechLink active={activeCourse === 'css'} onClick={() => onCourseSelect('css')}>CSS</TechLink>
-      <TechLink>JS</TechLink>
+      <TechLink active={activeCourse === 'js'} onClick={() => onCourseSelect('js')}>JS</TechLink>
       <TechLink>SQL</TechLink>
       <TechLink>PYTHON</TechLink>
     </nav>

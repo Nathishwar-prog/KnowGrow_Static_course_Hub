@@ -87,7 +87,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ sections, activeTopicId, onTopicS
                  <div className="flex flex-wrap gap-2 px-4">
                       <TechLink active={activeCourse === 'html'} onClick={() => handleCourseSelection('html')}>HTML</TechLink>
                       <TechLink active={activeCourse === 'css'} onClick={() => handleCourseSelection('css')}>CSS</TechLink>
-                      <TechLink>JS</TechLink>
+                      <TechLink active={activeCourse === 'js'} onClick={() => handleCourseSelection('js')}>JS</TechLink>
                       <TechLink>SQL</TechLink>
                       <TechLink>PYTHON</TechLink>
                  </div>

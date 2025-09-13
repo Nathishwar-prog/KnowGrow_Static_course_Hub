@@ -129,8 +129,6 @@ import CssMathFunctions from './css/CssMathFunctions';
 import CssOptimization from './css/CssOptimization';
 import CssAccessibility from './css/CssAccessibility';
 import CssWebsiteLayout from './css/CssWebsiteLayout';
-
-// CSS Advanced Topics
 import CssRoundedCorners from './css/CssRoundedCorners';
 import CssBorderImages from './css/CssBorderImages';
 import CssAdvancedBackgrounds from './css/CssAdvancedBackgrounds';
@@ -161,22 +159,16 @@ import CssProperty from './css/CssProperty';
 import CssBoxSizing from './css/CssBoxSizing';
 import CssMediaQueries from './css/CssMediaQueries';
 import CssMqExamples from './css/CssMqExamples';
-
-// CSS Flexbox Topics
 import CssFlexboxIntro from './css/CssFlexboxIntro';
 import CssFlexContainer from './css/CssFlexContainer';
 import CssFlexItems from './css/CssFlexItems';
 import CssFlexResponsive from './css/CssFlexResponsive';
-
-// CSS Grid Topics
 import CssGridIntro from './css/CssGridIntro';
 import CssGridColumnsRows from './css/CssGridColumnsRows';
 import CssGridLines from './css/CssGridLines';
 import CssGridContainer from './css/CssGridContainer';
 import CssGridItem from './css/CssGridItem';
 import CssSupports from './css/CssSupports';
-
-// CSS Responsive Topics
 import CssRwdIntro from './css/CssRwdIntro';
 import CssRwdViewport from './css/CssRwdViewport';
 import CssRwdGridView from './css/CssRwdGridView';
@@ -185,13 +177,206 @@ import CssRwdImages from './css/CssRwdImages';
 import CssRwdVideos from './css/CssRwdVideos';
 import CssRwdFrameworks from './css/CssRwdFrameworks';
 import CssRwdTemplates from './css/CssRwdTemplates';
-
-// CSS SASS Topics
 import CssSassTutorial from './css/CssSassTutorial';
-
-// CSS Quiz
 import CssQuiz from './css/CssQuiz';
 
+// JS Tutorial Topics
+import JsHome from './js/JsHome';
+import JsIntroduction from './js/JsIntroduction';
+import JsWhereTo from './js/JsWhereTo';
+import JsOutput from './js/JsOutput';
+import JsSyntax from './js/JsSyntax';
+import JsStatements from './js/JsStatements';
+import JsComments from './js/JsComments';
+import JsVariables from './js/JsVariables';
+import JsDataTypes from './js/JsDataTypes';
+import JsLet from './js/JsLet';
+import JsConst from './js/JsConst';
+import JsOperators from './js/JsOperators';
+import JsArithmetic from './js/JsArithmetic';
+import JsAssignment from './js/JsAssignment';
+import JsFunctions from './js/JsFunctions';
+import JsObjects from './js/JsObjects';
+import JsEvents from './js/JsEvents';
+import JsStrings from './js/JsStrings';
+import JsStringTemplates from './js/JsStringTemplates';
+import JsNumbers from './js/JsNumbers';
+import JsArrays from './js/JsArrays';
+import JsDates from './js/JsDates';
+import JsMath from './js/JsMath';
+import JsBooleans from './js/JsBooleans';
+import JsComparisons from './js/JsComparisons';
+import JsLogical from './js/JsLogical';
+import JsIfElse from './js/JsIfElse';
+import JsSwitch from './js/JsSwitch';
+import JsLoops from './js/JsLoops';
+import JsBreak from './js/JsBreak';
+import JsContinue from './js/JsContinue';
+import JsErrors from './js/JsErrors';
+import JsScope from './js/JsScope';
+import JsCodeBlocks from './js/JsCodeBlocks';
+import JsUtf8Characters from './js/JsUtf8Characters';
+import JsNews from './js/JsNews';
+import JsKeywordsRef from './js/JsKeywordsRef';
+import JsKeywordsReserved from './js/JsKeywordsReserved';
+import JsComparisonOperators from './js/JsComparisonOperators';
+import JsLogicalOperators from './js/JsLogicalOperators';
+import JsBitwiseOperators from './js/JsBitwiseOperators';
+import JsOperatorRef from './js/JsOperatorRef';
+import JsOperatorPrecedence from './js/JsOperatorPrecedence';
+import JsTypeof from './js/JsTypeof';
+import JsToString from './js/JsToString';
+import JsTypeConversion from './js/JsTypeConversion';
+import JsStringMethods from './js/JsStringMethods';
+import JsStringSearch from './js/JsStringSearch';
+import JsStringRef from './js/JsStringRef';
+import JsNumberMethods from './js/JsNumberMethods';
+import JsNumberProperties from './js/JsNumberProperties';
+import JsNumberRef from './js/JsNumberRef';
+import JsMathRef from './js/JsMathRef';
+import JsRandom from './js/JsRandom';
+import JsBigInt from './js/JsBigInt';
+import JsBitwise from './js/JsBitwise';
+import JsDateFormats from './js/JsDateFormats';
+import JsDateGet from './js/JsDateGet';
+import JsDateSet from './js/JsDateSet';
+import JsDateRef from './js/JsDateRef';
+import JsArrayMethods from './js/JsArrayMethods';
+import JsArraySearch from './js/JsArraySearch';
+import JsArraySort from './js/JsArraySort';
+import JsArrayIterations from './js/JsArrayIterations';
+import JsArrayRef from './js/JsArrayRef';
+import JsArrayConst from './js/JsArrayConst';
+import JsFunctionDefinitions from './js/JsFunctionDefinitions';
+import JsFunctionArrows from './js/JsFunctionArrows';
+import JsFunctionParameters from './js/JsFunctionParameters';
+import JsFunctionInvocation from './js/JsFunctionInvocation';
+import JsFunctionThis from './js/JsFunctionThis';
+import JsFunctionCall from './js/JsFunctionCall';
+import JsFunctionApply from './js/JsFunctionApply';
+import JsFunctionBind from './js/JsFunctionBind';
+import JsFunctionClosures from './js/JsFunctionClosures';
+import JsObjectDefinitions from './js/JsObjectDefinitions';
+import JsObjectProperties from './js/JsObjectProperties';
+import JsObjectMethods from './js/JsObjectMethods';
+import JsObjectDisplay from './js/JsObjectDisplay';
+import JsObjectConstructors from './js/JsObjectConstructors';
+import JsObjectThis from './js/JsObjectThis';
+import JsObjectDestructuring from './js/JsObjectDestructuring';
+import JsObjectPrototypes from './js/JsObjectPrototypes';
+import JsObjectIterations from './js/JsObjectIterations';
+import JsObjectManagement from './js/JsObjectManagement';
+import JsObjectGetSet from './js/JsObjectGetSet';
+import JsObjectProtection from './js/JsObjectProtection';
+import JsObjectRef from './js/JsObjectRef';
+import JsClasses from './js/JsClasses';
+import JsClassInheritance from './js/JsClassInheritance';
+import JsClassStatic from './js/JsClassStatic';
+import JsSets from './js/JsSets';
+import JsSetMethods from './js/JsSetMethods';
+import JsSetLogic from './js/JsSetLogic';
+import JsSetWeakSet from './js/JsSetWeakSet';
+import JsSetRef from './js/JsSetRef';
+import JsMaps from './js/JsMaps';
+import JsMapMethods from './js/JsMapMethods';
+import JsMapWeakMap from './js/JsMapWeakMap';
+import JsMapRef from './js/JsMapRef';
+import JsLoopFor from './js/JsLoopFor';
+import JsLoopWhile from './js/JsLoopWhile';
+import JsLoopForIn from './js/JsLoopForIn';
+import JsLoopForOf from './js/JsLoopForOf';
+import JsIterables from './js/JsIterables';
+import JsIterators from './js/JsIterators';
+import JsGenerators from './js/JsGenerators';
+import JsRegExp from './js/JsRegExp';
+import JsRegExpFlags from './js/JsRegExpFlags';
+import JsRegExpClasses from './js/JsRegExpClasses';
+import JsRegExpMetachars from './js/JsRegExpMetachars';
+import JsRegExpAssertions from './js/JsRegExpAssertions';
+import JsRegExpQuantifiers from './js/JsRegExpQuantifiers';
+import JsRegExpPatterns from './js/JsRegExpPatterns';
+import JsRegExpObjects from './js/JsRegExpObjects';
+import JsRegExpMethods from './js/JsRegExpMethods';
+import JsTypedArrays from './js/JsTypedArrays';
+import JsTypedMethods from './js/JsTypedMethods';
+import JsTypedRef from './js/JsTypedRef';
+import JsCallbacks from './js/JsCallbacks';
+import JsAsynchronous from './js/JsAsynchronous';
+import JsPromises from './js/JsPromises';
+import JsAsyncAwait from './js/JsAsyncAwait';
+import JsStrictMode from './js/JsStrictMode';
+import JsScopes from './js/JsScopes';
+import JsHoisting from './js/JsHoisting';
+import JsDebugging from './js/JsDebugging';
+import JsModules from './js/JsModules';
+import JsStyleGuide from './js/JsStyleGuide';
+import JsBestPractices from './js/JsBestPractices';
+import JsMistakes from './js/JsMistakes';
+import JsPerformance from './js/JsPerformance';
+import DomIntro from './js/DomIntro';
+import DomMethods from './js/DomMethods';
+import DomDocument from './js/DomDocument';
+import DomElements from './js/DomElements';
+import DomHtml from './js/DomHtml';
+import DomForms from './js/DomForms';
+import DomCss from './js/DomCss';
+import DomAnimations from './js/DomAnimations';
+import DomEventListener from './js/DomEventListener';
+import DomNavigation from './js/DomNavigation';
+import DomNodes from './js/DomNodes';
+import DomCollections from './js/DomCollections';
+import DomNodeLists from './js/DomNodeLists';
+import JsWindow from './js/JsWindow';
+import JsScreen from './js/JsScreen';
+import JsLocation from './js/JsLocation';
+import JsHistory from './js/JsHistory';
+import JsNavigator from './js/JsNavigator';
+import JsPopupAlert from './js/JsPopupAlert';
+import JsTiming from './js/JsTiming';
+import JsCookies from './js/JsCookies';
+import WebApiIntro from './js/WebApiIntro';
+import WebValidationApi from './js/WebValidationApi';
+import WebHistoryApi from './js/WebHistoryApi';
+import WebStorageApi from './js/WebStorageApi';
+import WebWorkerApi from './js/WebWorkerApi';
+import WebFetchApi from './js/WebFetchApi';
+import WebGeolocationApi from './js/WebGeolocationApi';
+import AjaxIntro from './js/AjaxIntro';
+import AjaxXmlHttp from './js/AjaxXmlHttp';
+import AjaxRequest from './js/AjaxRequest';
+import AjaxResponse from './js/AjaxResponse';
+import AjaxXmlFile from './js/AjaxXmlFile';
+import AjaxPhp from './js/AjaxPhp';
+import AjaxAsp from './js/AjaxAsp';
+import AjaxDatabase from './js/AjaxDatabase';
+import AjaxApplications from './js/AjaxApplications';
+import AjaxExamples from './js/AjaxExamples';
+import JsonIntro from './js/JsonIntro';
+import JsonSyntax from './js/JsonSyntax';
+import JsonVsXml from './js/JsonVsXml';
+import JsonDataTypes from './js/JsonDataTypes';
+import JsonParse from './js/JsonParse';
+import JsonStringify from './js/JsonStringify';
+import JsonObjects from './js/JsonObjects';
+import JsonArrays from './js/JsonArrays';
+import JsonServer from './js/JsonServer';
+import JsonPhp from './js/JsonPhp';
+import JsonHtml from './js/JsonHtml';
+import JsonJsonp from './js/JsonJsonp';
+import JquerySelectors from './js/JquerySelectors';
+import JqueryHtml from './js/JqueryHtml';
+import JqueryCss from './js/JqueryCss';
+import JqueryDom from './js/JqueryDom';
+import JsGraphics from './js/JsGraphics';
+import JsCanvas from './js/JsCanvas';
+import JsPlotly from './js/JsPlotly';
+import JsChartJs from './js/JsChartJs';
+import JsGoogleChart from './js/JsGoogleChart';
+import JsD3Js from './js/JsD3Js';
+import JsHtmlInput from './js/JsHtmlInput';
+import JsHtmlObjects from './js/JsHtmlObjects';
+import JsHtmlEventsRef from './js/JsHtmlEventsRef';
+import DomObjectsRef from './js/DomObjectsRef';
 
 export const HTML_TUTORIAL_DATA: SidebarSection[] = [
   {
@@ -444,6 +629,343 @@ export const CSS_TUTORIAL_DATA: SidebarSection[] = [
   }
 ];
 
+export const JS_TUTORIAL_DATA: SidebarSection[] = [
+  {
+    title: 'JS Tutorial',
+    topics: [
+      { id: 'js_home', title: 'JS HOME', content: <JsHome /> },
+      { id: 'js_introduction', title: 'JS Introduction', content: <JsIntroduction /> },
+      { id: 'js_where_to', title: 'JS Where To', content: <JsWhereTo /> },
+      { id: 'js_output', title: 'JS Output', content: <JsOutput /> },
+      { id: 'js_syntax', title: 'JS Syntax', content: <JsSyntax /> },
+      { id: 'js_statements', title: 'JS Statements', content: <JsStatements /> },
+      { id: 'js_comments', title: 'JS Comments', content: <JsComments /> },
+      { id: 'js_variables', title: 'JS Variables', content: <JsVariables /> },
+      { id: 'js_data_types', title: 'JS Data Types', content: <JsDataTypes /> },
+      { id: 'js_let', title: 'JS Let', content: <JsLet /> },
+      { id: 'js_const', title: 'JS Const', content: <JsConst /> },
+      { id: 'js_operators', title: 'JS Operators', content: <JsOperators /> },
+      { id: 'js_arithmetic', title: 'JS Arithmetic', content: <JsArithmetic /> },
+      { id: 'js_assignment', title: 'JS Assignment', content: <JsAssignment /> },
+      { id: 'js_functions', title: 'JS Functions', content: <JsFunctions /> },
+      { id: 'js_objects', title: 'JS Objects', content: <JsObjects /> },
+      { id: 'js_events', title: 'JS Events', content: <JsEvents /> },
+      { id: 'js_strings', title: 'JS Strings', content: <JsStrings /> },
+      { id: 'js_string_templates', title: 'JS String Templates', content: <JsStringTemplates /> },
+      { id: 'js_numbers', title: 'JS Numbers', content: <JsNumbers /> },
+      { id: 'js_arrays', title: 'JS Arrays', content: <JsArrays /> },
+      { id: 'js_dates', title: 'JS Dates', content: <JsDates /> },
+      { id: 'js_math', title: 'JS Math', content: <JsMath /> },
+      { id: 'js_booleans', title: 'JS Booleans', content: <JsBooleans /> },
+      { id: 'js_comparisons', title: 'JS Comparisons', content: <JsComparisons /> },
+      { id: 'js_logical', title: 'JS Logical', content: <JsLogical /> },
+      { id: 'js_if_else', title: 'JS If Else', content: <JsIfElse /> },
+      { id: 'js_switch', title: 'JS Switch', content: <JsSwitch /> },
+      { id: 'js_loops', title: 'JS Loops', content: <JsLoops /> },
+      { id: 'js_break', title: 'JS Break', content: <JsBreak /> },
+      { id: 'js_continue', title: 'JS Continue', content: <JsContinue /> },
+      { id: 'js_errors', title: 'JS Errors', content: <JsErrors /> },
+      { id: 'js_scope', title: 'JS Scope', content: <JsScope /> },
+      { id: 'js_code_blocks', title: 'JS Code Blocks', content: <JsCodeBlocks /> },
+      { id: 'js_utf8', title: 'JS UTF-8 Characters', content: <JsUtf8Characters /> },
+      { id: 'js_news', title: 'JS News 2025-2015', content: <JsNews /> },
+    ],
+  },
+  {
+    title: 'JS Statements',
+    topics: [
+      { id: 'js_statements_ref', title: 'JS Statements', content: <JsStatements /> },
+      { id: 'js_keywords_ref', title: 'JS Keywords Reference', content: <JsKeywordsRef /> },
+      { id: 'js_keywords_reserved', title: 'JS Keywords Reserved', content: <JsKeywordsReserved /> },
+    ],
+  },
+  {
+    title: 'JS Operators',
+    topics: [
+      { id: 'js_assignment_ops', title: 'JS Assignment', content: <JsAssignment /> },
+      { id: 'js_arithmetic_ops', title: 'JS Arithmetic', content: <JsArithmetic /> },
+      { id: 'js_comparison_ops', title: 'JS Comparison', content: <JsComparisonOperators /> },
+      { id: 'js_logical_ops', title: 'JS Logical Operators', content: <JsLogicalOperators /> },
+      { id: 'js_bitwise_ops', title: 'JS Bitwise Operators', content: <JsBitwiseOperators /> },
+      { id: 'js_operator_ref', title: 'JS Operator Reference', content: <JsOperatorRef /> },
+      { id: 'js_operator_precedence', title: 'JS Operator Precedence', content: <JsOperatorPrecedence /> },
+    ],
+  },
+  {
+    title: 'JS Data Types',
+    topics: [
+      { id: 'js_data_types_ref', title: 'JS Data Types', content: <JsDataTypes /> },
+      { id: 'js_typeof', title: 'JS typeof', content: <JsTypeof /> },
+      { id: 'js_tostring', title: 'JS toString()', content: <JsToString /> },
+      { id: 'js_type_conversion', title: 'JS Type Conversion', content: <JsTypeConversion /> },
+    ],
+  },
+  {
+    title: 'JS Strings',
+    topics: [
+      { id: 'js_string_methods', title: 'JS String Methods', content: <JsStringMethods /> },
+      { id: 'js_string_search', title: 'JS String Search', content: <JsStringSearch /> },
+      { id: 'js_string_ref', title: 'JS String Reference', content: <JsStringRef /> },
+    ],
+  },
+  {
+    title: 'JS Numbers',
+    topics: [
+      { id: 'js_number_methods', title: 'JS Number Methods', content: <JsNumberMethods /> },
+      { id: 'js_number_properties', title: 'JS Number Properties', content: <JsNumberProperties /> },
+      { id: 'js_number_ref', title: 'JS Number Reference', content: <JsNumberRef /> },
+      { id: 'js_math_ref', title: 'JS Math Reference', content: <JsMathRef /> },
+      { id: 'js_random', title: 'JS Random', content: <JsRandom /> },
+      { id: 'js_bigint', title: 'JS BigInt', content: <JsBigInt /> },
+      { id: 'js_bitwise', title: 'JS Bitwise', content: <JsBitwise /> },
+    ],
+  },
+  {
+    title: 'JS Dates',
+    topics: [
+      { id: 'js_date_formats', title: 'JS Date Formats', content: <JsDateFormats /> },
+      { id: 'js_date_get', title: 'JS Date Get', content: <JsDateGet /> },
+      { id: 'js_date_set', title: 'JS Date Set', content: <JsDateSet /> },
+      { id: 'js_date_ref', title: 'JS Date Reference', content: <JsDateRef /> },
+    ],
+  },
+  {
+    title: 'JS Arrays',
+    topics: [
+      { id: 'js_array_methods', title: 'JS Array Methods', content: <JsArrayMethods /> },
+      { id: 'js_array_search', title: 'JS Array Search', content: <JsArraySearch /> },
+      { id: 'js_array_sort', title: 'JS Array Sort', content: <JsArraySort /> },
+      { id: 'js_array_iterations', title: 'JS Array Iterations', content: <JsArrayIterations /> },
+      { id: 'js_array_ref', title: 'JS Array Reference', content: <JsArrayRef /> },
+      { id: 'js_array_const', title: 'JS Array Const', content: <JsArrayConst /> },
+    ],
+  },
+  {
+    title: 'JS Functions',
+    topics: [
+      { id: 'js_func_definitions', title: 'Function Definitions', content: <JsFunctionDefinitions /> },
+      { id: 'js_func_arrows', title: 'Function Arrows', content: <JsFunctionArrows /> },
+      { id: 'js_func_parameters', title: 'Function Parameters', content: <JsFunctionParameters /> },
+      { id: 'js_func_invocation', title: 'Function Invocation', content: <JsFunctionInvocation /> },
+      { id: 'js_func_this', title: 'Function this', content: <JsFunctionThis /> },
+      { id: 'js_func_call', title: 'Function Call', content: <JsFunctionCall /> },
+      { id: 'js_func_apply', title: 'Function Apply', content: <JsFunctionApply /> },
+      { id: 'js_func_bind', title: 'Function Bind', content: <JsFunctionBind /> },
+      { id: 'js_func_closures', title: 'Function Closures', content: <JsFunctionClosures /> },
+    ],
+  },
+  {
+    title: 'JS Objects',
+    topics: [
+      { id: 'js_obj_definitions', title: 'Object Definitions', content: <JsObjectDefinitions /> },
+      { id: 'js_obj_properties', title: 'Object Properties', content: <JsObjectProperties /> },
+      { id: 'js_obj_methods', title: 'Object Methods', content: <JsObjectMethods /> },
+      { id: 'js_obj_display', title: 'Object Display', content: <JsObjectDisplay /> },
+      { id: 'js_obj_constructors', title: 'Object Constructors', content: <JsObjectConstructors /> },
+      { id: 'js_obj_this', title: 'Object this', content: <JsObjectThis /> },
+      { id: 'js_obj_destructuring', title: 'Object Destructuring', content: <JsObjectDestructuring /> },
+      { id: 'js_obj_prototypes', title: 'Object Prototypes', content: <JsObjectPrototypes /> },
+      { id: 'js_obj_iterations', title: 'Object Iterations', content: <JsObjectIterations /> },
+      { id: 'js_obj_management', title: 'Object Management', content: <JsObjectManagement /> },
+      { id: 'js_obj_getset', title: 'Object Get / Set', content: <JsObjectGetSet /> },
+      { id: 'js_obj_protection', title: 'Object Protection', content: <JsObjectProtection /> },
+      { id: 'js_obj_ref', title: 'Object Reference', content: <JsObjectRef /> },
+    ],
+  },
+  {
+    title: 'JS Classes',
+    topics: [
+      { id: 'js_classes', title: 'JS Classes', content: <JsClasses /> },
+      { id: 'js_class_inheritance', title: 'JS Class Inheritance', content: <JsClassInheritance /> },
+      { id: 'js_class_static', title: 'JS Class Static', content: <JsClassStatic /> },
+    ],
+  },
+  {
+    title: 'JS Sets & Maps',
+    topics: [
+      { id: 'js_sets', title: 'JS Sets', content: <JsSets /> },
+      { id: 'js_set_methods', title: 'JS Set Methods', content: <JsSetMethods /> },
+      { id: 'js_set_logic', title: 'JS Set Logic', content: <JsSetLogic /> },
+      { id: 'js_set_weakset', title: 'JS Set WeakSet', content: <JsSetWeakSet /> },
+      { id: 'js_set_ref', title: 'JS Set Reference', content: <JsSetRef /> },
+      { id: 'js_maps', title: 'JS Maps', content: <JsMaps /> },
+      { id: 'js_map_methods', title: 'JS Map Methods', content: <JsMapMethods /> },
+      { id: 'js_map_weakmap', title: 'JS Map WeakMap', content: <JsMapWeakMap /> },
+      { id: 'js_map_ref', title: 'JS Map Reference', content: <JsMapRef /> },
+    ],
+  },
+  {
+    title: 'JS Iterations',
+    topics: [
+      { id: 'js_loops_iter', title: 'JS Loops', content: <JsLoops /> },
+      { id: 'js_loop_for', title: 'JS Loop for', content: <JsLoopFor /> },
+      { id: 'js_loop_while', title: 'JS Loop while', content: <JsLoopWhile /> },
+      { id: 'js_loop_forin', title: 'JS Loop for...in', content: <JsLoopForIn /> },
+      { id: 'js_loop_forof', title: 'JS Loop for...of', content: <JsLoopForOf /> },
+      { id: 'js_iterables', title: 'JS Iterables', content: <JsIterables /> },
+      { id: 'js_iterators', title: 'JS Iterators', content: <JsIterators /> },
+      { id: 'js_generators', title: 'JS Generators', content: <JsGenerators /> },
+    ],
+  },
+  {
+    title: 'JS RegExp',
+    topics: [
+      { id: 'js_regexp', title: 'JS RegExp', content: <JsRegExp /> },
+      { id: 'js_regexp_flags', title: 'JS RegExp Flags', content: <JsRegExpFlags /> },
+      { id: 'js_regexp_classes', title: 'JS RegExp Classes', content: <JsRegExpClasses /> },
+      { id: 'js_regexp_metachars', title: 'JS RegExp Metachars', content: <JsRegExpMetachars /> },
+      { id: 'js_regexp_assertions', title: 'JS RegExp Assertions', content: <JsRegExpAssertions /> },
+      { id: 'js_regexp_quantifiers', title: 'JS RegExp Quantifiers', content: <JsRegExpQuantifiers /> },
+      { id: 'js_regexp_patterns', title: 'JS RegExp Patterns', content: <JsRegExpPatterns /> },
+      { id: 'js_regexp_objects', title: 'JS RegExp Objects', content: <JsRegExpObjects /> },
+      { id: 'js_regexp_methods', title: 'JS RegExp Methods', content: <JsRegExpMethods /> },
+    ],
+  },
+  {
+    title: 'JS Typed Arrays',
+    topics: [
+      { id: 'js_typed_arrays', title: 'JS Typed Arrays', content: <JsTypedArrays /> },
+      { id: 'js_typed_methods', title: 'JS Typed Methods', content: <JsTypedMethods /> },
+      { id: 'js_typed_ref', title: 'JS Typed Reference', content: <JsTypedRef /> },
+    ],
+  },
+  {
+    title: 'JS Async',
+    topics: [
+      { id: 'js_callbacks', title: 'JS Callbacks', content: <JsCallbacks /> },
+      { id: 'js_asynchronous', title: 'JS Asynchronous', content: <JsAsynchronous /> },
+      { id: 'js_promises', title: 'JS Promises', content: <JsPromises /> },
+      { id: 'js_async_await', title: 'JS Async/Await', content: <JsAsyncAwait /> },
+    ],
+  },
+  {
+    title: 'JS Programming',
+    topics: [
+      { id: 'js_strict_mode', title: 'JS Strict Mode', content: <JsStrictMode /> },
+      { id: 'js_scopes', title: 'JS Scopes', content: <JsScopes /> },
+      { id: 'js_hoisting', title: 'JS Hoisting', content: <JsHoisting /> },
+      { id: 'js_debugging', title: 'JS Debugging', content: <JsDebugging /> },
+      { id: 'js_modules', title: 'JS Modules', content: <JsModules /> },
+      { id: 'js_style_guide', title: 'JS Style Guide', content: <JsStyleGuide /> },
+      { id: 'js_best_practices', title: 'JS Best Practices', content: <JsBestPractices /> },
+      { id: 'js_mistakes', title: 'JS Mistakes', content: <JsMistakes /> },
+      { id: 'js_performance', title: 'JS Performance', content: <JsPerformance /> },
+    ],
+  },
+  {
+    title: 'JS HTML DOM',
+    topics: [
+      { id: 'js_dom_intro', title: 'DOM Intro', content: <DomIntro /> },
+      { id: 'js_dom_methods', title: 'DOM Methods', content: <DomMethods /> },
+      { id: 'js_dom_document', title: 'DOM Document', content: <DomDocument /> },
+      { id: 'js_dom_elements', title: 'DOM Elements', content: <DomElements /> },
+      { id: 'js_dom_html', title: 'DOM HTML', content: <DomHtml /> },
+      { id: 'js_dom_forms', title: 'DOM Forms', content: <DomForms /> },
+      { id: 'js_dom_css', title: 'DOM CSS', content: <DomCss /> },
+      { id: 'js_dom_animations', title: 'DOM Animations', content: <DomAnimations /> },
+      { id: 'js_dom_events', title: 'DOM Events', content: <JsEvents /> },
+      { id: 'js_dom_event_listener', title: 'DOM Event Listener', content: <DomEventListener /> },
+      { id: 'js_dom_navigation', title: 'DOM Navigation', content: <DomNavigation /> },
+      { id: 'js_dom_nodes', title: 'DOM Nodes', content: <DomNodes /> },
+      { id: 'js_dom_collections', title: 'DOM Collections', content: <DomCollections /> },
+      { id: 'js_dom_node_lists', title: 'DOM Node Lists', content: <DomNodeLists /> },
+    ],
+  },
+  {
+    title: 'JS Browser BOM',
+    topics: [
+      { id: 'js_window', title: 'JS Window', content: <JsWindow /> },
+      { id: 'js_screen', title: 'JS Screen', content: <JsScreen /> },
+      { id: 'js_location', title: 'JS Location', content: <JsLocation /> },
+      { id: 'js_history', title: 'JS History', content: <JsHistory /> },
+      { id: 'js_navigator', title: 'JS Navigator', content: <JsNavigator /> },
+      { id: 'js_popup_alert', title: 'JS Popup Alert', content: <JsPopupAlert /> },
+      { id: 'js_timing', title: 'JS Timing', content: <JsTiming /> },
+      { id: 'js_cookies', title: 'JS Cookies', content: <JsCookies /> },
+    ],
+  },
+  {
+    title: 'JS Web APIs',
+    topics: [
+      { id: 'js_web_api_intro', title: 'Web API Intro', content: <WebApiIntro /> },
+      { id: 'js_web_validation_api', title: 'Web Validation API', content: <WebValidationApi /> },
+      { id: 'js_web_history_api', title: 'Web History API', content: <WebHistoryApi /> },
+      { id: 'js_web_storage_api', title: 'Web Storage API', content: <WebStorageApi /> },
+      { id: 'js_web_worker_api', title: 'Web Worker API', content: <WebWorkerApi /> },
+      { id: 'js_web_fetch_api', title: 'Web Fetch API', content: <WebFetchApi /> },
+      { id: 'js_web_geolocation_api', title: 'Web Geolocation API', content: <WebGeolocationApi /> },
+    ],
+  },
+  {
+    title: 'JS AJAX',
+    topics: [
+      { id: 'js_ajax_intro', title: 'AJAX Intro', content: <AjaxIntro /> },
+      { id: 'js_ajax_xmlhttp', title: 'AJAX XMLHttp', content: <AjaxXmlHttp /> },
+      { id: 'js_ajax_request', title: 'AJAX Request', content: <AjaxRequest /> },
+      { id: 'js_ajax_response', title: 'AJAX Response', content: <AjaxResponse /> },
+      { id: 'js_ajax_xml_file', title: 'AJAX XML File', content: <AjaxXmlFile /> },
+      { id: 'js_ajax_php', title: 'AJAX PHP', content: <AjaxPhp /> },
+      { id: 'js_ajax_asp', title: 'AJAX ASP', content: <AjaxAsp /> },
+      { id: 'js_ajax_database', title: 'AJAX Database', content: <AjaxDatabase /> },
+      { id: 'js_ajax_applications', title: 'AJAX Applications', content: <AjaxApplications /> },
+      { id: 'js_ajax_examples', title: 'AJAX Examples', content: <AjaxExamples /> },
+    ],
+  },
+  {
+    title: 'JS JSON',
+    topics: [
+      { id: 'js_json_intro', title: 'JSON Intro', content: <JsonIntro /> },
+      { id: 'js_json_syntax', title: 'JSON Syntax', content: <JsonSyntax /> },
+      { id: 'js_json_vs_xml', title: 'JSON vs XML', content: <JsonVsXml /> },
+      { id: 'js_json_data_types', title: 'JSON Data Types', content: <JsonDataTypes /> },
+      { id: 'js_json_parse', title: 'JSON Parse', content: <JsonParse /> },
+      { id: 'js_json_stringify', title: 'JSON Stringify', content: <JsonStringify /> },
+      { id: 'js_json_objects', title: 'JSON Objects', content: <JsonObjects /> },
+      { id: 'js_json_arrays', title: 'JSON Arrays', content: <JsonArrays /> },
+      { id: 'js_json_server', title: 'JSON Server', content: <JsonServer /> },
+      { id: 'js_json_php', title: 'JSON PHP', content: <JsonPhp /> },
+      { id: 'js_json_html', title: 'JSON HTML', content: <JsonHtml /> },
+      { id: 'js_json_jsonp', title: 'JSON JSONP', content: <JsonJsonp /> },
+    ],
+  },
+  {
+    title: 'JS vs jQuery',
+    topics: [
+      { id: 'js_jquery_selectors', title: 'jQuery Selectors', content: <JquerySelectors /> },
+      { id: 'js_jquery_html', title: 'jQuery HTML', content: <JqueryHtml /> },
+      { id: 'js_jquery_css', title: 'jQuery CSS', content: <JqueryCss /> },
+      { id: 'js_jquery_dom', title: 'jQuery DOM', content: <JqueryDom /> },
+    ],
+  },
+  {
+    title: 'JS Graphics',
+    topics: [
+      { id: 'js_graphics', title: 'JS Graphics', content: <JsGraphics /> },
+      { id: 'js_canvas', title: 'JS Canvas', content: <JsCanvas /> },
+      { id: 'js_plotly', title: 'JS Plotly', content: <JsPlotly /> },
+      { id: 'js_chartjs', title: 'JS Chart.js', content: <JsChartJs /> },
+      { id: 'js_google_chart', title: 'JS Google Chart', content: <JsGoogleChart /> },
+      { id: 'js_d3js', title: 'JS D3.js', content: <JsD3Js /> },
+    ],
+  },
+  {
+    title: 'JS HTML DOM',
+    topics: [
+      { id: 'js_html_input', title: 'JS HTML Input', content: <JsHtmlInput /> },
+      { id: 'js_html_objects', title: 'JS HTML Objects', content: <JsHtmlObjects /> },
+      { id: 'js_html_events', title: 'JS HTML Events', content: <JsHtmlEventsRef /> },
+    ],
+  },
+  {
+    title: 'JS References',
+    topics: [
+      { id: 'js_ref_objects', title: 'JavaScript Objects', content: <JsObjectRef /> },
+      { id: 'js_ref_dom_objects', title: 'HTML DOM Objects', content: <DomObjectsRef /> },
+    ],
+  },
+];
+
+
 export const ALL_COURSES = {
     html: {
         data: HTML_TUTORIAL_DATA,
@@ -452,5 +974,9 @@ export const ALL_COURSES = {
     css: {
         data: CSS_TUTORIAL_DATA,
         homeTopicId: 'css_home',
+    },
+    js: {
+        data: JS_TUTORIAL_DATA,
+        homeTopicId: 'js_home',
     },
 };
