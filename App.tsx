@@ -13,13 +13,46 @@ import { AnimationProvider } from './context/AnimationContext';
 import type { AnimationOptions } from './context/AnimationContext';
 import { ANIMATION_STYLES } from './data/html/animations/animationStyles';
 
+// Make Fuse available globally for TypeScript
+declare var Fuse: any;
+
 export type Course = keyof typeof ALL_COURSES;
+
+export interface RankedSearchResult {
+  topic: TutorialTopic;
+  score: number;
+  snippet?: string;
+}
+
+const extractTextFromReactNode = (node: React.ReactNode): string => {
+    if (node === null || typeof node === 'boolean' || typeof node === 'undefined') {
+        return '';
+    }
+    if (typeof node === 'string' || typeof node === 'number') {
+        return String(node);
+    }
+    if (Array.isArray(node)) {
+        return node.map(extractTextFromReactNode).join(' ');
+    }
+    if (React.isValidElement(node)) {
+        if (typeof node.type === 'function' && ((node.type as any).name === 'CodeBlock' || (node.type as any).displayName === 'CodeBlock')) {
+            return '';
+        }
+        const props = node.props as { children?: React.ReactNode };
+        if (props.children) {
+            return extractTextFromReactNode(props.children);
+        }
+    }
+    return '';
+};
+
 
 const App: React.FC = () => {
   const [activeCourse, setActiveCourse] = useState<Course>('html');
   const [activeTopicId, setActiveTopicId] = useState<string>(ALL_COURSES[activeCourse].homeTopicId);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const [modalConfig, setModalConfig] = useState<{
     isOpen: boolean;
     content: React.ReactNode | null;
@@ -31,6 +64,71 @@ const App: React.FC = () => {
   const TUTORIAL_DATA = useMemo(() => ALL_COURSES[activeCourse].data, [activeCourse]);
   const allTopics: TutorialTopic[] = useMemo(() => TUTORIAL_DATA.flatMap(section => section.topics), [TUTORIAL_DATA]);
   const activeTopic = allTopics.find(topic => topic.id === activeTopicId) || allTopics[0];
+  
+  const filteredSections = useMemo(() => {
+    if (!searchQuery.trim()) {
+      return TUTORIAL_DATA;
+    }
+    const lowerCaseQuery = searchQuery.trim().toLowerCase();
+    return TUTORIAL_DATA
+      .map(section => ({
+        ...section,
+        topics: section.topics.filter(topic =>
+          topic.title.toLowerCase().includes(lowerCaseQuery)
+        ),
+      }))
+      .filter(section => section.topics.length > 0);
+  }, [searchQuery, TUTORIAL_DATA]);
+
+  const fuse = useMemo(() => {
+    // Pre-process topics to include searchable text content
+    const searchableTopics = allTopics.map(topic => ({
+        ...topic,
+        textContent: extractTextFromReactNode(topic.content)
+    }));
+    
+    const options = {
+        keys: [
+            { name: 'title', weight: 0.7 }, // Higher weight for title
+            { name: 'textContent', weight: 0.3 } // Lower weight for content
+        ],
+        includeMatches: true,
+        threshold: 0.4, // Adjust for fuzziness (0=perfect, 1=match all)
+        minMatchCharLength: 2,
+    };
+    return new Fuse(searchableTopics, options);
+  }, [allTopics]);
+
+  const rankedSearchResults = useMemo<RankedSearchResult[]>(() => {
+    if (!searchQuery.trim()) {
+        return [];
+    }
+    const results = fuse.search(searchQuery);
+
+    return results.slice(0, 7).map((result: any) => {
+        const { item: topic, score, matches } = result;
+        let snippet: string | undefined = undefined;
+
+        // Find the first content match to generate a snippet
+        const contentMatch = matches?.find((m: any) => m.key === 'textContent');
+        if (contentMatch && contentMatch.indices.length > 0) {
+            const [start, end] = contentMatch.indices[0];
+            const snippetStart = Math.max(0, start - 30);
+            const snippetEnd = Math.min(topic.textContent.length, end + 70);
+            const rawSnippet = topic.textContent.substring(snippetStart, snippetEnd);
+            snippet = `${snippetStart > 0 ? '...' : ''}${rawSnippet}${snippetEnd < topic.textContent.length ? '...' : ''}`;
+        }
+
+        return {
+            topic: { id: topic.id, title: topic.title, content: topic.content }, // Return original topic shape
+            score: 1 - score, // Invert score so higher is better
+            snippet: snippet,
+        };
+    });
+}, [searchQuery, fuse]);
+
+
+  const hasSearchResults = filteredSections.length > 0;
 
   useEffect(() => {
     const isOverlayOpen = isMobileNavOpen || modalConfig.isOpen;
@@ -71,6 +169,7 @@ const App: React.FC = () => {
     if (course !== activeCourse) {
       setIsLoading(true);
       setActiveCourse(course);
+      setSearchQuery(''); // Reset search on course change
       
       // Delay setting topic ID to allow loading state to show
       loadingTimeoutRef.current = window.setTimeout(() => {
@@ -83,22 +182,27 @@ const App: React.FC = () => {
   };
 
   const handleTopicSelect = (id: string) => {
-    if (id === activeTopicId) {
+    if (id === activeTopicId && !searchQuery) { // Only return if not coming from a search
       setIsMobileNavOpen(false);
       return;
     }
-
+    
     if (loadingTimeoutRef.current) {
-      clearTimeout(loadingTimeoutRef.current);
+        clearTimeout(loadingTimeoutRef.current);
     }
-
+    
     setIsLoading(true);
     setIsMobileNavOpen(false);
+    setSearchQuery(''); // Clear search on topic selection
 
     loadingTimeoutRef.current = window.setTimeout(() => {
       setActiveTopicId(id);
       setIsLoading(false);
     }, 2000);
+  };
+  
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
   };
 
   const getTopicIndex = (id: string): number => allTopics.findIndex(topic => topic.id === id);
@@ -133,26 +237,36 @@ const App: React.FC = () => {
   return (
     <AnimationProvider value={{ openAnimationPage }}>
       <div className="min-h-screen flex flex-col font-sans bg-gray-50 dark:bg-gray-900">
-        <Header onMenuClick={() => setIsMobileNavOpen(true)} />
+        <Header 
+          onMenuClick={() => setIsMobileNavOpen(true)} 
+          searchQuery={searchQuery}
+          onSearchChange={handleSearchChange}
+          rankedSearchResults={rankedSearchResults}
+          onTopicSelect={handleTopicSelect}
+        />
         <SecondaryNav 
           activeCourse={activeCourse}
           onCourseSelect={handleCourseSelect}
         />
         {isMobileNavOpen && (
           <MobileNav
-            sections={TUTORIAL_DATA}
+            sections={filteredSections}
             activeTopicId={activeTopicId}
             onTopicSelect={handleTopicSelect}
             onClose={() => setIsMobileNavOpen(false)}
             activeCourse={activeCourse}
             onCourseSelect={handleCourseSelect}
+            searchQuery={searchQuery}
+            onSearchChange={handleSearchChange}
+            rankedSearchResults={rankedSearchResults}
           />
         )}
         <div className="flex flex-1">
           <Sidebar 
-            sections={TUTORIAL_DATA} 
+            sections={filteredSections} 
             activeTopicId={activeTopicId} 
             onTopicSelect={handleTopicSelect} 
+            searchQuery={searchQuery}
           />
           <MainContent 
             topic={activeTopic}
@@ -160,6 +274,8 @@ const App: React.FC = () => {
             onNavigate={(id) => handleTopicSelect(id)}
             prevTopic={prevTopic}
             nextTopic={nextTopic}
+            searchQuery={searchQuery}
+            hasSearchResults={hasSearchResults}
           />
         </div>
         <Footer />

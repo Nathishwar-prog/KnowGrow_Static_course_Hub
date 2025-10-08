@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
+import SearchResultsDropdown from './SearchResultsDropdown';
+import type { RankedSearchResult } from '../App';
 
 const NavLink: React.FC<{ children: React.ReactNode; hasDropdown?: boolean }> = ({ children, hasDropdown = false }) => (
   <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-4 rounded-md text-sm font-medium flex items-center">
@@ -26,10 +28,30 @@ const IconLink: React.FC<{ iconClass: string; onClick?: () => void, href?: strin
 
 interface HeaderProps {
   onMenuClick: () => void;
+  searchQuery: string;
+  onSearchChange: (query: string) => void;
+  rankedSearchResults: RankedSearchResult[];
+  onTopicSelect: (id: string) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
+const Header: React.FC<HeaderProps> = ({ onMenuClick, searchQuery, onSearchChange, rankedSearchResults, onTopicSelect }) => {
   const { theme, toggleTheme } = useTheme();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const showDropdown = isDropdownOpen && searchQuery.length > 0;
 
   return (
     <header role="banner" className="bg-gray-800 dark:bg-gray-900/70 dark:backdrop-blur-sm text-white flex items-center justify-between sticky top-0 z-40 px-4 h-[60px] border-b border-transparent dark:border-gray-800">
@@ -51,7 +73,33 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
                 aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             />
             <IconLink iconClass="fa-solid fa-earth-americas" aria-label="Change language" />
-            <IconLink iconClass="fa-solid fa-magnifying-glass" aria-label="Search" />
+            <div className="relative" ref={searchContainerRef}>
+              <input
+                type="search"
+                placeholder="Search tutorials..."
+                value={searchQuery}
+                onChange={(e) => {
+                    onSearchChange(e.target.value)
+                    setIsDropdownOpen(true);
+                }}
+                onFocus={() => setIsDropdownOpen(true)}
+                className="bg-gray-700 text-white rounded-full py-2 pl-10 pr-4 w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-gray-600"
+                aria-label="Search tutorials"
+              />
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                <i className="fa-solid fa-magnifying-glass"></i>
+              </span>
+              {showDropdown && (
+                  <SearchResultsDropdown
+                    results={rankedSearchResults}
+                    onSelect={(id) => {
+                        onTopicSelect(id);
+                        setIsDropdownOpen(false);
+                    }}
+                    searchQuery={searchQuery}
+                  />
+              )}
+            </div>
             <a href="#" className="bg-gray-700 text-white rounded-full py-2 px-4 text-sm font-bold hover:bg-gray-600">Spaces</a>
             <a href="#" className="bg-indigo-500 text-white rounded-full py-2 px-4 text-sm font-bold hover:bg-indigo-600">Get Certified</a>
         </div>
