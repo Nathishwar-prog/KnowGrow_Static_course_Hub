@@ -69,13 +69,13 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onTutorialsClick, onRefere
     <header role="banner" className="bg-gray-800 dark:bg-gray-900/70 dark:backdrop-blur-sm text-white flex items-center justify-between sticky top-0 z-40 px-4 h-[60px] border-b border-transparent dark:border-gray-800">
       <div className="flex items-center space-x-4">
         <a href="#" className="text-2xl font-bold text-white py-3">
-          Know<span className="text-indigo-400">Grow</span>
+          Know<span className="text-green-400">Grow</span>
         </a>
         <nav role="navigation" aria-label="Primary navigation" className="hidden md:flex items-center space-x-1">
             <NavLink onClick={onTutorialsClick} hasDropdown>Tutorials</NavLink>
             <NavLink onClick={onReferencesClick} hasDropdown>References</NavLink>
             <NavLink onClick={onExercisesClick} hasDropdown>Exercises</NavLink>
-            <a href="#" className="relative text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-4 rounded-md text-sm font-medium">
+            <a href="https://aitutor.knowgrow.tech" target="_blank" rel="noopener noreferrer" className="relative text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-4 rounded-md text-sm font-medium">
               AI Tutor
               <span 
                 className="absolute top-3 right-0 -translate-y-1/2 translate-x-1/2 bg-yellow-400 text-gray-900 text-[9px] font-bold px-1.5 py-0.5 rounded-full ring-2 ring-gray-800 dark:ring-gray-900/70"
@@ -94,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onTutorialsClick, onRefere
                 aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             />
             <IconLink 
-                href="https://www.knowgrow.dev"
+                href="https://knowgrow.tech"
                 target="_blank"
                 rel="noopener noreferrer"
                 iconClass="fa-solid fa-earth-americas" 
