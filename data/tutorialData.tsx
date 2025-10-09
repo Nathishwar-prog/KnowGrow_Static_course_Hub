@@ -60,8 +60,6 @@ import HtmlDragAndDrop from './html/HtmlDragAndDrop';
 import HtmlWebStorage from './html/HtmlWebStorage';
 import HtmlWebWorkers from './html/HtmlWebWorkers';
 import HtmlSse from './html/HtmlSse';
-import HtmlQuiz from './html/HtmlQuiz';
-import HtmlExercises from './html/HtmlExercises';
 import HtmlInterviewPrep from './html/HtmlInterviewPrep';
 import HtmlCertificate from './html/HtmlCertificate';
 import HtmlTagList from './html/HtmlTagList';
@@ -178,7 +176,6 @@ import CssRwdVideos from './css/CssRwdVideos';
 import CssRwdFrameworks from './css/CssRwdFrameworks';
 import CssRwdTemplates from './css/CssRwdTemplates';
 import CssSassTutorial from './css/CssSassTutorial';
-import CssQuiz from './css/CssQuiz';
 
 // JS Tutorial Topics
 import JsHome from './js/JsHome';
@@ -450,7 +447,6 @@ import MsAccessFunctions from './sql/MsAccessFunctions';
 import SqlQuickRef from './sql/SqlQuickRef';
 import SqlExamples from './sql/SqlExamples';
 import SqlEditor from './sql/SqlEditor';
-import SqlQuiz from './sql/SqlQuiz';
 import SqlExercises from './sql/SqlExercises';
 import SqlServer from './sql/SqlServer';
 import SqlSyllabus from './sql/SqlSyllabus';
@@ -595,8 +591,6 @@ export const HTML_TUTORIAL_DATA: SidebarSection[] = [
   {
     title: 'HTML Examples',
     topics: [
-      { id: 'html_quiz', title: 'HTML Quiz', content: <HtmlQuiz /> },
-      { id: 'html_exercises', title: 'HTML Exercises', content: <HtmlExercises /> },
       { id: 'html_interview_prep', title: 'HTML Interview Prep', content: <HtmlInterviewPrep /> },
       { id: 'html_certificate', title: 'HTML Certificate', content: <HtmlCertificate /> },
     ],
@@ -751,12 +745,6 @@ export const CSS_TUTORIAL_DATA: SidebarSection[] = [
       { id: 'css_sass_tutorial', title: 'SASS Tutorial', content: <CssSassTutorial /> },
     ],
   },
-  {
-    title: 'CSS Quiz',
-    topics: [
-        { id: 'css_quiz', title: 'CSS Quiz', content: <CssQuiz /> },
-    ]
-  }
 ];
 
 export const JS_TUTORIAL_DATA: SidebarSection[] = [
@@ -1079,7 +1067,7 @@ export const JS_TUTORIAL_DATA: SidebarSection[] = [
     ],
   },
   {
-    title: 'JS HTML DOM',
+    title: 'JS and HTML Elements',
     topics: [
       { id: 'js_html_input', title: 'JS HTML Input', content: <JsHtmlInput /> },
       { id: 'js_html_objects', title: 'JS HTML Objects', content: <JsHtmlObjects /> },
@@ -1185,7 +1173,6 @@ export const SQL_TUTORIAL_DATA: SidebarSection[] = [
     topics: [
         { id: 'sql_examples', title: 'SQL Examples', content: <SqlExamples /> },
         { id: 'sql_editor', title: 'SQL Editor', content: <SqlEditor /> },
-        { id: 'sql_quiz', title: 'SQL Quiz', content: <SqlQuiz /> },
         { id: 'sql_exercises', title: 'SQL Exercises', content: <SqlExercises /> },
         { id: 'sql_server', title: 'SQL Server', content: <SqlServer /> },
         { id: 'sql_syllabus', title: 'SQL Syllabus', content: <SqlSyllabus /> },

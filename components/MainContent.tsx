@@ -4,7 +4,10 @@ import LoadingSpinner from './LoadingSpinner';
 import Highlighter from './Highlighter';
 
 interface MainContentProps {
-  topic: TutorialTopic;
+  activeView: 'tutorial' | 'reference' | 'exercise';
+  topic?: TutorialTopic;
+  referenceContent?: React.ReactNode;
+  exerciseContent?: React.ReactNode;
   isLoading: boolean;
   onNavigate: (id: string) => void;
   prevTopic: TutorialTopic | null;
@@ -28,25 +31,24 @@ const NavButton: React.FC<{
 )
 
 
-const MainContent: React.FC<MainContentProps> = ({ topic, isLoading, onNavigate, prevTopic, nextTopic, searchQuery, hasSearchResults }) => {
-  const mainContent = () => {
-    if (isLoading) {
-      return <LoadingSpinner />;
-    }
-    
-    if (searchQuery && !hasSearchResults) {
-      return (
-        <div className="text-center py-16">
-          <div className="text-6xl text-gray-300 dark:text-gray-600 mb-4">
-            <i className="fa-solid fa-magnifying-glass"></i>
-          </div>
-          <h1 className="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-100">No Results Found</h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400">
-              Your search for "<span className="font-semibold text-indigo-500">{searchQuery}</span>" did not match any topics.
-          </p>
-          <p className="mt-2 text-gray-500">Try searching for something else or clearing the search.</p>
-        </div>
-      );
+const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceContent, exerciseContent, isLoading, onNavigate, prevTopic, nextTopic, searchQuery, hasSearchResults }) => {
+  const renderTutorialContent = () => {
+    if (!topic) {
+        if (searchQuery && !hasSearchResults) {
+            return (
+                <div className="text-center py-16">
+                    <div className="text-6xl text-gray-300 dark:text-gray-600 mb-4">
+                        <i className="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <h1 className="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-100">No Results Found</h1>
+                    <p className="text-lg text-gray-600 dark:text-gray-400">
+                        Your search for "<span className="font-semibold text-indigo-500">{searchQuery}</span>" did not match any topics.
+                    </p>
+                    <p className="mt-2 text-gray-500">Try searching for something else or clearing the search.</p>
+                </div>
+            );
+        }
+        return <LoadingSpinner />;
     }
 
     return (
@@ -93,9 +95,27 @@ const MainContent: React.FC<MainContentProps> = ({ topic, isLoading, onNavigate,
     );
   };
 
+  const mainContent = () => {
+    if (isLoading) {
+      return <LoadingSpinner />;
+    }
+    
+    if (activeView === 'reference') {
+        return referenceContent;
+    }
+    
+    if (activeView === 'exercise') {
+        return exerciseContent;
+    }
+
+    return renderTutorialContent();
+  };
+  
+  const isCenteringNeeded = isLoading || (activeView === 'tutorial' && searchQuery && !hasSearchResults);
+
   return (
     <main className="flex-1 p-4 md:p-8 bg-gray-50 dark:bg-gray-900">
-      <div className={`max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto bg-white dark:bg-gray-800 p-6 md:p-10 rounded-xl shadow-sm transition-all duration-300 ${isLoading || (searchQuery && !hasSearchResults) ? 'flex items-center justify-center min-h-[60vh]' : ''}`}>
+      <div className={`max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto bg-white dark:bg-gray-800 p-6 md:p-10 rounded-xl shadow-sm transition-all duration-300 ${isCenteringNeeded ? 'flex items-center justify-center min-h-[60vh]' : ''}`}>
         {mainContent()}
       </div>
     </main>

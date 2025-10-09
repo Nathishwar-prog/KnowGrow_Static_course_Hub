@@ -3,24 +3,33 @@ import { useTheme } from '../context/ThemeContext';
 import SearchResultsDropdown from './SearchResultsDropdown';
 import type { RankedSearchResult } from '../App';
 
-const NavLink: React.FC<{ children: React.ReactNode; hasDropdown?: boolean }> = ({ children, hasDropdown = false }) => (
-  <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-4 rounded-md text-sm font-medium flex items-center">
-    {children}
-    {hasDropdown && <i className="fa-solid fa-caret-down ml-1"></i>}
-  </a>
-);
+const NavLink: React.FC<{ children: React.ReactNode; hasDropdown?: boolean, onClick?: () => void }> = ({ children, hasDropdown = false, onClick }) => {
+    const Element = onClick ? 'button' : 'a';
+    
+    return (
+        <Element
+            href={!onClick ? "#" : undefined}
+            onClick={onClick}
+            className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-4 rounded-md text-sm font-medium flex items-center"
+        >
+            {children}
+            {hasDropdown && <i className="fa-solid fa-caret-down ml-1"></i>}
+        </Element>
+    );
+};
 
-const IconLink: React.FC<{ iconClass: string; onClick?: () => void, href?: string, 'aria-label'?: string }> = ({ iconClass, onClick, href = "#", ...props }) => {
+
+const IconLink: React.FC<{ iconClass: string; onClick?: () => void, href?: string, [key: string]: any }> = ({ iconClass, onClick, href = "#", ...props }) => {
     const commonClasses = "text-gray-300 hover:bg-gray-700 hover:text-white p-3 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white";
     if (onClick) {
         return (
-            <button onClick={onClick} className={commonClasses} aria-label={props['aria-label']}>
+            <button onClick={onClick} className={commonClasses} {...props}>
                 <i className={iconClass}></i>
             </button>
         )
     }
     return (
-        <a href={href} className={commonClasses} aria-label={props['aria-label']}>
+        <a href={href} className={commonClasses} {...props}>
             <i className={iconClass}></i>
         </a>
     )
@@ -28,13 +37,16 @@ const IconLink: React.FC<{ iconClass: string; onClick?: () => void, href?: strin
 
 interface HeaderProps {
   onMenuClick: () => void;
+  onTutorialsClick: () => void;
+  onReferencesClick: () => void;
+  onExercisesClick: () => void;
   searchQuery: string;
   onSearchChange: (query: string) => void;
   rankedSearchResults: RankedSearchResult[];
   onTopicSelect: (id: string) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onMenuClick, searchQuery, onSearchChange, rankedSearchResults, onTopicSelect }) => {
+const Header: React.FC<HeaderProps> = ({ onMenuClick, onTutorialsClick, onReferencesClick, onExercisesClick, searchQuery, onSearchChange, rankedSearchResults, onTopicSelect }) => {
   const { theme, toggleTheme } = useTheme();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const searchContainerRef = useRef<HTMLDivElement>(null);
@@ -60,9 +72,18 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, searchQuery, onSearchChang
           Know<span className="text-indigo-400">Grow</span>
         </a>
         <nav role="navigation" aria-label="Primary navigation" className="hidden md:flex items-center space-x-1">
-            <NavLink hasDropdown>Tutorials</NavLink>
-            <NavLink hasDropdown>References</NavLink>
-            <NavLink hasDropdown>Exercises</NavLink>
+            <NavLink onClick={onTutorialsClick} hasDropdown>Tutorials</NavLink>
+            <NavLink onClick={onReferencesClick} hasDropdown>References</NavLink>
+            <NavLink onClick={onExercisesClick} hasDropdown>Exercises</NavLink>
+            <a href="#" className="relative text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-4 rounded-md text-sm font-medium">
+              AI Tutor
+              <span 
+                className="absolute top-3 right-0 -translate-y-1/2 translate-x-1/2 bg-yellow-400 text-gray-900 text-[9px] font-bold px-1.5 py-0.5 rounded-full ring-2 ring-gray-800 dark:ring-gray-900/70"
+                title="Coming Soon!"
+              >
+                SOON
+              </span>
+            </a>
         </nav>
       </div>
       <div className="flex items-center space-x-2">
@@ -72,7 +93,13 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, searchQuery, onSearchChang
                 iconClass={theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon'}
                 aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             />
-            <IconLink iconClass="fa-solid fa-earth-americas" aria-label="Change language" />
+            <IconLink 
+                href="https://www.knowgrow.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                iconClass="fa-solid fa-earth-americas" 
+                aria-label="Change language" 
+            />
             <div className="relative" ref={searchContainerRef}>
               <input
                 type="search"

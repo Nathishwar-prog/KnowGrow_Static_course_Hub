@@ -10,7 +10,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelect, searchQuery }) => {
   return (
-    <aside role="navigation" aria-label="Tutorial topics" className="bg-white dark:bg-gray-800 w-64 h-screen-minus-nav sticky top-[112px] overflow-y-auto hidden md:block border-r border-gray-200 dark:border-gray-700">
+    <aside role="navigation" aria-label="Tutorial topics" className="bg-white dark:bg-gray-800 w-64 h-screen-minus-nav sticky top-[112px] overflow-y-auto hidden md:block border-r border-gray-200 dark:border-gray-700 hide-scrollbar">
       <div className="p-4">
         {searchQuery && sections.length === 0 ? (
            <div className="text-center text-gray-500 dark:text-gray-400 p-4 mt-8">

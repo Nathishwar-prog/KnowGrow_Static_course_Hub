@@ -6,7 +6,13 @@ import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import MobileNav from './components/MobileNav';
 import AnimationModal from './components/AnimationModal';
+import TutorialsModal from './components/TutorialsModal';
+import ReferencesModal from './components/ReferencesModal';
+import ExercisesModal from './components/ExercisesModal';
+import IntroAnimation from './components/IntroAnimation';
 import { ALL_COURSES } from './data/tutorialData';
+import { ALL_REFERENCES } from './data/references/referenceData';
+import { ALL_EXERCISES } from './data/exercises/exerciseData';
 import { ANIMATION_MAP } from './data/html/animations';
 import type { TutorialTopic } from './types';
 import { AnimationProvider } from './context/AnimationContext';
@@ -48,22 +54,34 @@ const extractTextFromReactNode = (node: React.ReactNode): string => {
 
 
 const App: React.FC = () => {
+  const [isIntroAnimationComplete, setIsIntroAnimationComplete] = useState(false);
   const [activeCourse, setActiveCourse] = useState<Course>('html');
   const [activeTopicId, setActiveTopicId] = useState<string>(ALL_COURSES[activeCourse].homeTopicId);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [modalConfig, setModalConfig] = useState<{
+  const [animationModalConfig, setAnimationModalConfig] = useState<{
     isOpen: boolean;
     content: React.ReactNode | null;
     title: string;
   }>({ isOpen: false, content: null, title: '' });
+  const [isTutorialsModalOpen, setIsTutorialsModalOpen] = useState(false);
+  const [isReferencesModalOpen, setIsReferencesModalOpen] = useState(false);
+  const [isExercisesModalOpen, setIsExercisesModalOpen] = useState(false);
+  
+  const [activeView, setActiveView] = useState<'tutorial' | 'reference' | 'exercise'>('tutorial');
+  const [activeReferenceCourse, setActiveReferenceCourse] = useState<Course | null>(null);
+  const [activeExerciseCourse, setActiveExerciseCourse] = useState<Course | null>(null);
 
   const loadingTimeoutRef = useRef<number | null>(null);
 
   const TUTORIAL_DATA = useMemo(() => ALL_COURSES[activeCourse].data, [activeCourse]);
   const allTopics: TutorialTopic[] = useMemo(() => TUTORIAL_DATA.flatMap(section => section.topics), [TUTORIAL_DATA]);
-  const activeTopic = allTopics.find(topic => topic.id === activeTopicId) || allTopics[0];
+  
+  const activeTopic = useMemo(() => {
+    if (activeView !== 'tutorial') return undefined;
+    return allTopics.find(topic => topic.id === activeTopicId) || allTopics[0];
+  }, [activeTopicId, allTopics, activeView]);
   
   const filteredSections = useMemo(() => {
     if (!searchQuery.trim()) {
@@ -81,7 +99,6 @@ const App: React.FC = () => {
   }, [searchQuery, TUTORIAL_DATA]);
 
   const fuse = useMemo(() => {
-    // Pre-process topics to include searchable text content
     const searchableTopics = allTopics.map(topic => ({
         ...topic,
         textContent: extractTextFromReactNode(topic.content)
@@ -89,11 +106,11 @@ const App: React.FC = () => {
     
     const options = {
         keys: [
-            { name: 'title', weight: 0.7 }, // Higher weight for title
-            { name: 'textContent', weight: 0.3 } // Lower weight for content
+            { name: 'title', weight: 0.7 },
+            { name: 'textContent', weight: 0.3 }
         ],
         includeMatches: true,
-        threshold: 0.4, // Adjust for fuzziness (0=perfect, 1=match all)
+        threshold: 0.4,
         minMatchCharLength: 2,
     };
     return new Fuse(searchableTopics, options);
@@ -109,7 +126,6 @@ const App: React.FC = () => {
         const { item: topic, score, matches } = result;
         let snippet: string | undefined = undefined;
 
-        // Find the first content match to generate a snippet
         const contentMatch = matches?.find((m: any) => m.key === 'textContent');
         if (contentMatch && contentMatch.indices.length > 0) {
             const [start, end] = contentMatch.indices[0];
@@ -120,8 +136,8 @@ const App: React.FC = () => {
         }
 
         return {
-            topic: { id: topic.id, title: topic.title, content: topic.content }, // Return original topic shape
-            score: 1 - score, // Invert score so higher is better
+            topic: { id: topic.id, title: topic.title, content: topic.content },
+            score: 1 - score,
             snippet: snippet,
         };
     });
@@ -131,7 +147,7 @@ const App: React.FC = () => {
   const hasSearchResults = filteredSections.length > 0;
 
   useEffect(() => {
-    const isOverlayOpen = isMobileNavOpen || modalConfig.isOpen;
+    const isOverlayOpen = isMobileNavOpen || animationModalConfig.isOpen || isTutorialsModalOpen || isReferencesModalOpen || isExercisesModalOpen;
     if (isOverlayOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -141,7 +157,7 @@ const App: React.FC = () => {
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, [isMobileNavOpen, modalConfig.isOpen]);
+  }, [isMobileNavOpen, animationModalConfig.isOpen, isTutorialsModalOpen, isReferencesModalOpen, isExercisesModalOpen]);
 
   useEffect(() => {
     const styleElement = document.createElement('style');
@@ -166,23 +182,23 @@ const App: React.FC = () => {
   }, []);
   
   const handleCourseSelect = (course: Course) => {
-    if (course !== activeCourse) {
+    if (course !== activeCourse || activeView !== 'tutorial') {
       setIsLoading(true);
+      setActiveView('tutorial');
+      setActiveReferenceCourse(null);
+      setActiveExerciseCourse(null);
       setActiveCourse(course);
-      setSearchQuery(''); // Reset search on course change
+      setSearchQuery('');
       
-      // Delay setting topic ID to allow loading state to show
       loadingTimeoutRef.current = window.setTimeout(() => {
         setActiveTopicId(ALL_COURSES[course].homeTopicId);
         setIsLoading(false);
       }, 500);
-      
-      // No need to close mobile nav, content will just update
     }
   };
 
   const handleTopicSelect = (id: string) => {
-    if (id === activeTopicId && !searchQuery) { // Only return if not coming from a search
+    if (id === activeTopicId && !searchQuery && activeView === 'tutorial') {
       setIsMobileNavOpen(false);
       return;
     }
@@ -193,7 +209,10 @@ const App: React.FC = () => {
     
     setIsLoading(true);
     setIsMobileNavOpen(false);
-    setSearchQuery(''); // Clear search on topic selection
+    setSearchQuery('');
+    setActiveView('tutorial');
+    setActiveReferenceCourse(null);
+    setActiveExerciseCourse(null);
 
     loadingTimeoutRef.current = window.setTimeout(() => {
       setActiveTopicId(id);
@@ -223,7 +242,7 @@ const App: React.FC = () => {
     const AnimationComponent = animationInfo.component;
     const modalTitle = title || animationInfo.title || 'Live Animation';
 
-    setModalConfig({
+    setAnimationModalConfig({
       isOpen: true,
       title: modalTitle,
       content: <AnimationComponent {...props} />
@@ -231,14 +250,73 @@ const App: React.FC = () => {
   };
 
   const closeAnimationModal = () => {
-    setModalConfig({ isOpen: false, content: null, title: '' });
+    setAnimationModalConfig({ isOpen: false, content: null, title: '' });
   };
+  
+  const openTutorialsModal = () => setIsTutorialsModalOpen(true);
+  const closeTutorialsModal = () => setIsTutorialsModalOpen(false);
+
+  const openReferencesModal = () => setIsReferencesModalOpen(true);
+  const closeReferencesModal = () => setIsReferencesModalOpen(false);
+
+  const openExercisesModal = () => setIsExercisesModalOpen(true);
+  const closeExercisesModal = () => setIsExercisesModalOpen(false);
+
+  const handleModalCourseSelect = (course: Course) => {
+    handleCourseSelect(course);
+    closeTutorialsModal();
+  }
+  
+  const handleModalTopicSelect = (course: Course, topicId: string) => {
+    if (course !== activeCourse) {
+        handleCourseSelect(course);
+        setTimeout(() => handleTopicSelect(topicId), 550);
+    } else {
+        handleTopicSelect(topicId);
+    }
+    closeTutorialsModal();
+  }
+
+  const handleModalReferenceSelect = (course: Course) => {
+    setIsLoading(true);
+    setActiveView('reference');
+    setActiveReferenceCourse(course);
+    setActiveExerciseCourse(null);
+    setActiveTopicId(''); // Deselect any topic in sidebar
+    closeReferencesModal();
+    loadingTimeoutRef.current = window.setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+  }
+
+  const handleModalExerciseSelect = (course: Course) => {
+    setIsLoading(true);
+    setActiveView('exercise');
+    setActiveExerciseCourse(course);
+    setActiveReferenceCourse(null);
+    setActiveTopicId(''); // Deselect any topic in sidebar
+    closeExercisesModal();
+    loadingTimeoutRef.current = window.setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+  }
+
+
+  const ReferenceComponent = activeReferenceCourse ? ALL_REFERENCES[activeReferenceCourse].component : null;
+  const ExerciseComponent = activeExerciseCourse ? ALL_EXERCISES[activeExerciseCourse].component : null;
+
+  if (!isIntroAnimationComplete) {
+    return <IntroAnimation onAnimationComplete={() => setIsIntroAnimationComplete(true)} />;
+  }
 
   return (
     <AnimationProvider value={{ openAnimationPage }}>
       <div className="min-h-screen flex flex-col font-sans bg-gray-50 dark:bg-gray-900">
         <Header 
           onMenuClick={() => setIsMobileNavOpen(true)} 
+          onTutorialsClick={openTutorialsModal}
+          onReferencesClick={openReferencesModal}
+          onExercisesClick={openExercisesModal}
           searchQuery={searchQuery}
           onSearchChange={handleSearchChange}
           rankedSearchResults={rankedSearchResults}
@@ -269,7 +347,10 @@ const App: React.FC = () => {
             searchQuery={searchQuery}
           />
           <MainContent 
+            activeView={activeView}
             topic={activeTopic}
+            referenceContent={ReferenceComponent ? <ReferenceComponent onSwitchToTutorial={handleCourseSelect} /> : null}
+            exerciseContent={ExerciseComponent ? <ExerciseComponent /> : null}
             isLoading={isLoading}
             onNavigate={(id) => handleTopicSelect(id)}
             prevTopic={prevTopic}
@@ -280,12 +361,28 @@ const App: React.FC = () => {
         </div>
         <Footer />
         <AnimationModal
-          isOpen={modalConfig.isOpen}
+          isOpen={animationModalConfig.isOpen}
           onClose={closeAnimationModal}
-          title={modalConfig.title}
+          title={animationModalConfig.title}
         >
-          {modalConfig.content}
+          {animationModalConfig.content}
         </AnimationModal>
+        <TutorialsModal
+            isOpen={isTutorialsModalOpen}
+            onClose={closeTutorialsModal}
+            onCourseSelect={handleModalCourseSelect}
+            onTopicSelect={handleModalTopicSelect}
+        />
+        <ReferencesModal
+          isOpen={isReferencesModalOpen}
+          onClose={closeReferencesModal}
+          onReferenceSelect={handleModalReferenceSelect}
+        />
+        <ExercisesModal
+            isOpen={isExercisesModalOpen}
+            onClose={closeExercisesModal}
+            onExerciseSelect={handleModalExerciseSelect}
+        />
       </div>
     </AnimationProvider>
   );
