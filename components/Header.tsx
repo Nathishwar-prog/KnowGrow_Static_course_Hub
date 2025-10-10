@@ -3,7 +3,7 @@ import { useTheme } from '../context/ThemeContext';
 import SearchResultsDropdown from './SearchResultsDropdown';
 import type { RankedSearchResult } from '../App';
 
-const NavLink: React.FC<{ children: React.ReactNode; hasDropdown?: boolean, onClick?: () => void }> = ({ children, hasDropdown = false, onClick }) => {
+export const NavLink: React.FC<{ children: React.ReactNode; hasDropdown?: boolean, onClick?: () => void }> = ({ children, hasDropdown = false, onClick }) => {
     const Element = onClick ? 'button' : 'a';
     
     return (

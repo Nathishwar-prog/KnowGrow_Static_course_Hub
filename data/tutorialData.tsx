@@ -1,6 +1,6 @@
 import React from 'react';
 import type { SidebarSection } from '../types';
-
+import ComingSoon from './Comming';
 // HTML Tutorial Topics
 import HtmlHome from './html/HtmlHome';
 import HtmlIntroduction from './html/HtmlIntroduction';
@@ -504,6 +504,26 @@ import PythonWriteCreateFiles from './python/PythonWriteCreateFiles';
 import PythonDeleteFiles from './python/PythonDeleteFiles';
 
 
+// Numpy Tutorial Topics
+
+import NumpyHome from './numpy/NumpyHome';
+import NumpyIntro from './numpy/NumpyIntro';
+
+
+// Pandas Tutorial Topics
+
+import PandasHome from './pandas/PandasHome';
+import PandasIntro from './pandas/PandasIntro';
+
+
+// MatplotLib Tutorial Topics
+
+import MatplotlibHome from './matplotlib/MatplotlibHome';
+import MatplotlibIntro from './matplotlib/MatplotlibIntro';
+// Seaborn Tutorial Topics
+
+import SeabornHome from './seaborn/SeabornHome';
+import SeabornIntro from './seaborn/SeabornIntro';
 export const HTML_TUTORIAL_DATA: SidebarSection[] = [
   {
     title: 'HTML Tutorial',
@@ -1243,7 +1263,45 @@ export const PYTHON_TUTORIAL_DATA: SidebarSection[] = [
     }
 ];
 
+export const NUMPY_TUTORIAL_DATA: SidebarSection[] = [
+    {
+        title: 'Numpy Tutorial',
+        topics: [
+            { id: 'numpy_home', title: 'NumPy HOME', content: <ComingSoon/> },
+            { id: 'numpy_intro', title: 'NumPy Intro', content: <ComingSoon/> },
+        ]
+    },
+];
 
+export const PANDAS_TUTORIAL_DATA: SidebarSection[] = [
+    {
+        title: 'Pandas Tutorial',
+        topics: [
+            { id: 'pandas_home', title: 'Pandas HOME', content: <ComingSoon/> },
+            { id: 'pandas_intro', title: 'Pandas Intro', content: <ComingSoon/> },
+        ]
+    },
+];
+
+export const MATPLOTLIB_TUTORIAL_DATA: SidebarSection[] = [
+    {
+        title: 'MatplotLib Tutorial',
+        topics: [
+            { id: 'matplotlib_home', title: 'MatplotLib HOME', content: <ComingSoon/> },
+            { id: 'matplotlib_intro', title: 'MatplotLib Intro', content: <ComingSoon/> },
+        ]
+    },
+];
+
+export const SEABORN_TUTORIAL_DATA: SidebarSection[] = [
+    {
+        title: 'Seaborn Tutorial',
+        topics: [
+            { id: 'seaborn_home', title: 'Seaborn HOME', content: <ComingSoon/> },
+            { id: 'seaborn_intro', title: 'Seaborn Intro', content: <ComingSoon /> },
+        ]
+    },
+];
 export const ALL_COURSES = {
     html: {
         data: HTML_TUTORIAL_DATA,
@@ -1264,5 +1322,21 @@ export const ALL_COURSES = {
     python: {
         data: PYTHON_TUTORIAL_DATA,
         homeTopicId: 'python_home',
+    },
+    numpy: {
+        data: NUMPY_TUTORIAL_DATA,
+        homeTopicId: 'numpy_home',
+    },
+    pandas: {
+        data: PANDAS_TUTORIAL_DATA,
+        homeTopicId: 'pandas_home',
+    },
+    matplotlib: {
+        data: MATPLOTLIB_TUTORIAL_DATA,
+        homeTopicId: 'matplotlib_home',
+    },
+    seaborn: {
+        data: SEABORN_TUTORIAL_DATA,
+        homeTopicId: 'seaborn_home',
     },
 };
