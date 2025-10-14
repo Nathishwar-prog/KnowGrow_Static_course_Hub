@@ -524,6 +524,7 @@ import MatplotlibIntro from './matplotlib/MatplotlibIntro';
 
 import SeabornHome from './seaborn/SeabornHome';
 import SeabornIntro from './seaborn/SeabornIntro';
+import NumpyMathOperations from './numpy/MathematicalOperations';
 export const HTML_TUTORIAL_DATA: SidebarSection[] = [
   {
     title: 'HTML Tutorial',
@@ -1267,8 +1268,9 @@ export const NUMPY_TUTORIAL_DATA: SidebarSection[] = [
     {
         title: 'Numpy Tutorial',
         topics: [
-            { id: 'numpy_home', title: 'NumPy HOME', content: <ComingSoon/> },
-            { id: 'numpy_intro', title: 'NumPy Intro', content: <ComingSoon/> },
+            { id: 'numpy_home', title: 'NumPy HOME', content: <NumpyHome/> },
+            { id: 'numpy_intro', title: 'NumPy Intro', content: <NumpyIntro/> },
+            { id: 'numpy_math_operations', title: 'NumPy Intro', content: <NumpyMathOperations/> },
         ]
     },
 ];
