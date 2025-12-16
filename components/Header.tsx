@@ -4,35 +4,35 @@ import SearchResultsDropdown from './SearchResultsDropdown';
 import type { RankedSearchResult } from '../App';
 
 export const NavLink: React.FC<{ children: React.ReactNode; hasDropdown?: boolean, onClick?: () => void }> = ({ children, hasDropdown = false, onClick }) => {
-    const Element = onClick ? 'button' : 'a';
-    
-    return (
-        <Element
-            href={!onClick ? "#" : undefined}
-            onClick={onClick}
-            className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-4 rounded-md text-sm font-medium flex items-center"
-        >
-            {children}
-            {hasDropdown && <i className="fa-solid fa-caret-down ml-1"></i>}
-        </Element>
-    );
+  const Element = onClick ? 'button' : 'a';
+
+  return (
+    <Element
+      href={!onClick ? "#" : undefined}
+      onClick={onClick}
+      className="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-indigo-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium flex items-center transition-all duration-200"
+    >
+      {children}
+      {hasDropdown && <i className="fa-solid fa-caret-down ml-1"></i>}
+    </Element>
+  );
 };
 
 
 const IconLink: React.FC<{ iconClass: string; onClick?: () => void, href?: string, [key: string]: any }> = ({ iconClass, onClick, href = "#", ...props }) => {
-    const commonClasses = "text-gray-300 hover:bg-gray-700 hover:text-white p-3 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white";
-    if (onClick) {
-        return (
-            <button onClick={onClick} className={commonClasses} {...props}>
-                <i className={iconClass}></i>
-            </button>
-        )
-    }
+  const commonClasses = "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-indigo-600 dark:hover:text-white p-2 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200";
+  if (onClick) {
     return (
-        <a href={href} className={commonClasses} {...props}>
-            <i className={iconClass}></i>
-        </a>
+      <button onClick={onClick} className={commonClasses} {...props}>
+        <i className={iconClass}></i>
+      </button>
     )
+  }
+  return (
+    <a href={href} className={commonClasses} {...props}>
+      <i className={iconClass}></i>
+    </a>
+  )
 };
 
 interface HeaderProps {
@@ -50,6 +50,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onTutorialsClick, onRefere
   const { theme, toggleTheme } = useTheme();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const searchContainerRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -63,78 +64,95 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onTutorialsClick, onRefere
     };
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const showDropdown = isDropdownOpen && searchQuery.length > 0;
 
   return (
-    <header role="banner" className="bg-gray-800 dark:bg-gray-900/70 dark:backdrop-blur-sm text-white flex items-center justify-between sticky top-0 z-40 px-4 h-[60px] border-b border-transparent dark:border-gray-800">
+    <header role="banner" className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md text-gray-800 dark:text-white flex items-center justify-between sticky top-0 z-40 px-4 h-[60px] border-b border-gray-200 dark:border-gray-800 shadow-sm transition-colors duration-300">
       <div className="flex items-center space-x-4">
-        <a href="#" className="text-2xl font-bold text-white py-3">
-          Know<span className="text-green-400">Grow</span>
+        <a href="#" className="text-2xl font-bold text-gray-800 dark:text-white py-3 tracking-tight">
+          Know<span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Grow</span>
         </a>
         <nav role="navigation" aria-label="Primary navigation" className="hidden md:flex items-center space-x-1">
-            <NavLink onClick={onTutorialsClick} hasDropdown>Tutorials</NavLink>
-            <NavLink onClick={onReferencesClick} hasDropdown>References</NavLink>
-            <NavLink onClick={onExercisesClick} hasDropdown>Exercises</NavLink>
-            <a href="https://aitutor.knowgrow.tech" target="_blank" rel="noopener noreferrer" className="relative text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-4 rounded-md text-sm font-medium">
-              AI Tutor
-              <span 
-                className="absolute top-3 right-0 -translate-y-1/2 translate-x-1/2 bg-yellow-400 text-gray-900 text-[9px] font-bold px-1.5 py-0.5 rounded-full ring-2 ring-gray-800 dark:ring-gray-900/70"
-                title="Coming Soon!"
-              >
-                SOON
-              </span>
-            </a>
+          <NavLink onClick={onTutorialsClick} hasDropdown>Tutorials</NavLink>
+          <NavLink onClick={onReferencesClick} hasDropdown>References</NavLink>
+          <NavLink onClick={onExercisesClick} hasDropdown>Exercises</NavLink>
+          <a href="https://aitutor.knowgrow.tech" target="_blank" rel="noopener noreferrer" className="relative text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-indigo-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
+            AI Tutor
+            <span
+              className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 bg-yellow-400 text-gray-900 text-[9px] font-bold px-1.5 py-0.5 rounded-full ring-2 ring-white dark:ring-gray-900 shadow-sm"
+              title="Coming Soon!"
+            >
+              SOON
+            </span>
+          </a>
         </nav>
       </div>
       <div className="flex items-center space-x-2">
         <div className="hidden lg:flex items-center space-x-2">
-            <IconLink
-                onClick={toggleTheme}
-                iconClass={theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon'}
-                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-            />
-            <IconLink 
-                href="https://knowgrow.tech"
-                target="_blank"
-                rel="noopener noreferrer"
-                iconClass="fa-solid fa-earth-americas" 
-                aria-label="Change language" 
-            />
-            <div className="relative" ref={searchContainerRef}>
+          <IconLink
+            onClick={toggleTheme}
+            iconClass={theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon'}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          />
+          <IconLink
+            href="https://knowgrow.tech"
+            target="_blank"
+            rel="noopener noreferrer"
+            iconClass="fa-solid fa-earth-americas"
+            aria-label="Change language"
+          />
+          <div className="relative" ref={searchContainerRef}>
+            <div className="relative group">
               <input
+                ref={searchInputRef}
                 type="search"
-                placeholder="Search tutorials..."
+                placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => {
-                    onSearchChange(e.target.value)
-                    setIsDropdownOpen(true);
+                  onSearchChange(e.target.value)
+                  setIsDropdownOpen(true);
                 }}
                 onFocus={() => setIsDropdownOpen(true)}
-                className="bg-gray-700 text-white rounded-full py-2 pl-10 pr-4 w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-gray-600"
+                className="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white rounded-full py-2 pl-10 pr-12 w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 border border-transparent focus:border-indigo-500"
                 aria-label="Search tutorials"
               />
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-indigo-500 transition-colors">
                 <i className="fa-solid fa-magnifying-glass"></i>
               </span>
-              {showDropdown && (
-                  <SearchResultsDropdown
-                    results={rankedSearchResults}
-                    onSelect={(id) => {
-                        onTopicSelect(id);
-                        setIsDropdownOpen(false);
-                    }}
-                    searchQuery={searchQuery}
-                  />
-              )}
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5 hidden group-focus-within:hidden sm:block pointer-events-none">
+                ⌘K
+              </span>
             </div>
-            <a href="#" className="bg-gray-700 text-white rounded-full py-2 px-4 text-sm font-bold hover:bg-gray-600">Spaces</a>
-            <a href="#" className="bg-indigo-500 text-white rounded-full py-2 px-4 text-sm font-bold hover:bg-indigo-600">Get Certified</a>
+            {showDropdown && (
+              <SearchResultsDropdown
+                results={rankedSearchResults}
+                onSelect={(id) => {
+                  onTopicSelect(id);
+                  setIsDropdownOpen(false);
+                }}
+                searchQuery={searchQuery}
+              />
+            )}
+          </div>
+          <a href="#" className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-full py-2 px-4 text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Spaces</a>
+          <a href="#" className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full py-2 px-4 text-sm font-bold hover:shadow-lg hover:scale-105 transition-all duration-200">Get Certified</a>
         </div>
-        
+
         {/* Hamburger Menu Button */}
         <button
           onClick={onMenuClick}
-          className="md:hidden text-gray-300 hover:bg-gray-700 hover:text-white p-3 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+          className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           aria-label="Open navigation menu"
         >
           <i className="fa-solid fa-bars"></i>
