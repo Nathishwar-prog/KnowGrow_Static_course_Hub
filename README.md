@@ -1,5 +1,5 @@
 # KnowGrow Testing course Platform 
-## Curently handel by Nathishwar C 
+## Curently handel by Nathishwar C
 
 ## Its Open Source platform , any one can coloborate and work with our Industry 
 
