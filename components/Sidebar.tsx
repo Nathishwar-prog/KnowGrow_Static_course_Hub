@@ -1,5 +1,7 @@
 import React from 'react';
 import type { SidebarSection } from '../types';
+import { useParams } from 'react-router-dom';
+import { useProgress } from '../context/useProgress';
 
 interface SidebarProps {
   sections: SidebarSection[];
@@ -9,11 +11,14 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelect, searchQuery }) => {
+  const { courseId = 'html' } = useParams<{ courseId: string }>();
+  const { completedTopics } = useProgress(courseId);
+
   return (
     <aside role="navigation" aria-label="Tutorial topics" className="bg-white dark:bg-gray-800 w-64 h-screen-minus-nav sticky top-[112px] overflow-y-auto hidden md:block border-r border-gray-200 dark:border-gray-700 hide-scrollbar">
       <div className="p-4">
         {searchQuery && sections.length === 0 ? (
-           <div className="text-center text-gray-500 dark:text-gray-400 p-4 mt-8">
+          <div className="text-center text-gray-500 dark:text-gray-400 p-4 mt-8">
             <div className="text-4xl mb-4">
               <i className="fa-solid fa-magnifying-glass"></i>
             </div>
@@ -33,14 +38,16 @@ const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelec
                         e.preventDefault();
                         onTopicSelect(topic.id);
                       }}
-                      className={`block py-2 px-3 text-sm rounded-md transition-colors duration-150 ${
-                        activeTopicId === topic.id
+                      className={`block py-2 px-3 text-sm rounded-md transition-colors duration-150 flex items-center justify-between group ${activeTopicId === topic.id
                           ? 'bg-indigo-600 text-white font-bold'
                           : 'text-gray-600 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-700 dark:hover:text-white'
-                      }`}
+                        }`}
                       aria-current={activeTopicId === topic.id ? 'page' : undefined}
                     >
-                      {topic.title}
+                      <span className="truncate pr-2">{topic.title}</span>
+                      {completedTopics.has(topic.id) && (
+                        <i className={`fa-solid fa-check-circle text-xs shrink-0 ${activeTopicId === topic.id ? 'text-indigo-200' : 'text-green-500'}`} title="Completed"></i>
+                      )}
                     </a>
                   </li>
                 ))}

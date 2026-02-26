@@ -1,8 +1,10 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
+import { Routes, Route, Navigate, useParams, useNavigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import SecondaryNav from './components/SecondaryNav';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
+import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 import MobileNav from './components/MobileNav';
 import AnimationModal from './components/AnimationModal';
@@ -31,32 +33,43 @@ export interface RankedSearchResult {
 }
 
 const extractTextFromReactNode = (node: React.ReactNode): string => {
-    if (node === null || typeof node === 'boolean' || typeof node === 'undefined') {
-        return '';
-    }
-    if (typeof node === 'string' || typeof node === 'number') {
-        return String(node);
-    }
-    if (Array.isArray(node)) {
-        return node.map(extractTextFromReactNode).join(' ');
-    }
-    if (React.isValidElement(node)) {
-        if (typeof node.type === 'function' && ((node.type as any).name === 'CodeBlock' || (node.type as any).displayName === 'CodeBlock')) {
-            return '';
-        }
-        const props = node.props as { children?: React.ReactNode };
-        if (props.children) {
-            return extractTextFromReactNode(props.children);
-        }
-    }
+  if (node === null || typeof node === 'boolean' || typeof node === 'undefined') {
     return '';
+  }
+  if (typeof node === 'string' || typeof node === 'number') {
+    return String(node);
+  }
+  if (Array.isArray(node)) {
+    return node.map(extractTextFromReactNode).join(' ');
+  }
+  if (React.isValidElement(node)) {
+    if (typeof node.type === 'function' && ((node.type as any).name === 'CodeBlock' || (node.type as any).displayName === 'CodeBlock')) {
+      return '';
+    }
+    const props = node.props as { children?: React.ReactNode };
+    if (props.children) {
+      return extractTextFromReactNode(props.children);
+    }
+  }
+  return '';
 };
 
+const AppContent: React.FC = () => {
+  const { view, courseId, topicId } = useParams<{ view?: string, courseId?: string, topicId?: string }>();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-const App: React.FC = () => {
-  const [isIntroAnimationComplete, setIsIntroAnimationComplete] = useState(false);
-  const [activeCourse, setActiveCourse] = useState<Course>('html');
-  const [activeTopicId, setActiveTopicId] = useState<string>(ALL_COURSES[activeCourse].homeTopicId);
+  const isDashboard = location.pathname === '/dashboard';
+  const activeView = isDashboard ? 'dashboard' : (view as 'tutorial' | 'reference' | 'exercise' || 'tutorial');
+  const isValidCourse = courseId ? (ALL_COURSES[courseId as Course] !== undefined) : false;
+  const activeCourse = (isValidCourse ? courseId : 'html') as Course;
+
+  const defaultTopicId = ALL_COURSES[activeCourse].homeTopicId;
+  const activeTopicId = activeView === 'tutorial' ? (topicId || defaultTopicId) : '';
+
+  const activeReferenceCourse = activeView === 'reference' ? activeCourse : null;
+  const activeExerciseCourse = activeView === 'exercise' ? activeCourse : null;
+
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -68,21 +81,17 @@ const App: React.FC = () => {
   const [isTutorialsModalOpen, setIsTutorialsModalOpen] = useState(false);
   const [isReferencesModalOpen, setIsReferencesModalOpen] = useState(false);
   const [isExercisesModalOpen, setIsExercisesModalOpen] = useState(false);
-  
-  const [activeView, setActiveView] = useState<'tutorial' | 'reference' | 'exercise'>('tutorial');
-  const [activeReferenceCourse, setActiveReferenceCourse] = useState<Course | null>(null);
-  const [activeExerciseCourse, setActiveExerciseCourse] = useState<Course | null>(null);
 
   const loadingTimeoutRef = useRef<number | null>(null);
 
   const TUTORIAL_DATA = useMemo(() => ALL_COURSES[activeCourse].data, [activeCourse]);
   const allTopics: TutorialTopic[] = useMemo(() => TUTORIAL_DATA.flatMap(section => section.topics), [TUTORIAL_DATA]);
-  
+
   const activeTopic = useMemo(() => {
     if (activeView !== 'tutorial') return undefined;
     return allTopics.find(topic => topic.id === activeTopicId) || allTopics[0];
   }, [activeTopicId, allTopics, activeView]);
-  
+
   const filteredSections = useMemo(() => {
     if (!searchQuery.trim()) {
       return TUTORIAL_DATA;
@@ -100,48 +109,48 @@ const App: React.FC = () => {
 
   const fuse = useMemo(() => {
     const searchableTopics = allTopics.map(topic => ({
-        ...topic,
-        textContent: extractTextFromReactNode(topic.content)
+      ...topic,
+      textContent: extractTextFromReactNode(topic.content)
     }));
-    
+
     const options = {
-        keys: [
-            { name: 'title', weight: 0.7 },
-            { name: 'textContent', weight: 0.3 }
-        ],
-        includeMatches: true,
-        threshold: 0.4,
-        minMatchCharLength: 2,
+      keys: [
+        { name: 'title', weight: 0.7 },
+        { name: 'textContent', weight: 0.3 }
+      ],
+      includeMatches: true,
+      threshold: 0.4,
+      minMatchCharLength: 2,
     };
     return new Fuse(searchableTopics, options);
   }, [allTopics]);
 
   const rankedSearchResults = useMemo<RankedSearchResult[]>(() => {
     if (!searchQuery.trim()) {
-        return [];
+      return [];
     }
     const results = fuse.search(searchQuery);
 
     return results.slice(0, 7).map((result: any) => {
-        const { item: topic, score, matches } = result;
-        let snippet: string | undefined = undefined;
+      const { item: topic, score, matches } = result;
+      let snippet: string | undefined = undefined;
 
-        const contentMatch = matches?.find((m: any) => m.key === 'textContent');
-        if (contentMatch && contentMatch.indices.length > 0) {
-            const [start, end] = contentMatch.indices[0];
-            const snippetStart = Math.max(0, start - 30);
-            const snippetEnd = Math.min(topic.textContent.length, end + 70);
-            const rawSnippet = topic.textContent.substring(snippetStart, snippetEnd);
-            snippet = `${snippetStart > 0 ? '...' : ''}${rawSnippet}${snippetEnd < topic.textContent.length ? '...' : ''}`;
-        }
+      const contentMatch = matches?.find((m: any) => m.key === 'textContent');
+      if (contentMatch && contentMatch.indices.length > 0) {
+        const [start, end] = contentMatch.indices[0];
+        const snippetStart = Math.max(0, start - 30);
+        const snippetEnd = Math.min(topic.textContent.length, end + 70);
+        const rawSnippet = topic.textContent.substring(snippetStart, snippetEnd);
+        snippet = `${snippetStart > 0 ? '...' : ''}${rawSnippet}${snippetEnd < topic.textContent.length ? '...' : ''}`;
+      }
 
-        return {
-            topic: { id: topic.id, title: topic.title, content: topic.content },
-            score: 1 - score,
-            snippet: snippet,
-        };
+      return {
+        topic: { id: topic.id, title: topic.title, content: topic.content },
+        score: 1 - score,
+        snippet: snippet,
+      };
     });
-}, [searchQuery, fuse]);
+  }, [searchQuery, fuse]);
 
 
   const hasSearchResults = filteredSections.length > 0;
@@ -180,18 +189,14 @@ const App: React.FC = () => {
       }
     };
   }, []);
-  
+
   const handleCourseSelect = (course: Course) => {
     if (course !== activeCourse || activeView !== 'tutorial') {
       setIsLoading(true);
-      setActiveView('tutorial');
-      setActiveReferenceCourse(null);
-      setActiveExerciseCourse(null);
-      setActiveCourse(course);
       setSearchQuery('');
-      
+      navigate(`/tutorial/${course}/${ALL_COURSES[course].homeTopicId}`);
+
       loadingTimeoutRef.current = window.setTimeout(() => {
-        setActiveTopicId(ALL_COURSES[course].homeTopicId);
         setIsLoading(false);
       }, 500);
     }
@@ -202,24 +207,21 @@ const App: React.FC = () => {
       setIsMobileNavOpen(false);
       return;
     }
-    
+
     if (loadingTimeoutRef.current) {
-        clearTimeout(loadingTimeoutRef.current);
+      clearTimeout(loadingTimeoutRef.current);
     }
-    
+
     setIsLoading(true);
     setIsMobileNavOpen(false);
     setSearchQuery('');
-    setActiveView('tutorial');
-    setActiveReferenceCourse(null);
-    setActiveExerciseCourse(null);
+    navigate(`/tutorial/${activeCourse}/${id}`);
 
     loadingTimeoutRef.current = window.setTimeout(() => {
-      setActiveTopicId(id);
       setIsLoading(false);
-    }, 2000);
+    }, 500);
   };
-  
+
   const handleSearchChange = (query: string) => {
     setSearchQuery(query);
   };
@@ -252,7 +254,7 @@ const App: React.FC = () => {
   const closeAnimationModal = () => {
     setAnimationModalConfig({ isOpen: false, content: null, title: '' });
   };
-  
+
   const openTutorialsModal = () => setIsTutorialsModalOpen(true);
   const closeTutorialsModal = () => setIsTutorialsModalOpen(false);
 
@@ -266,24 +268,22 @@ const App: React.FC = () => {
     handleCourseSelect(course);
     closeTutorialsModal();
   }
-  
+
   const handleModalTopicSelect = (course: Course, topicId: string) => {
     if (course !== activeCourse) {
-        handleCourseSelect(course);
-        setTimeout(() => handleTopicSelect(topicId), 550);
+      setIsLoading(true);
+      navigate(`/tutorial/${course}/${topicId}`);
+      loadingTimeoutRef.current = window.setTimeout(() => setIsLoading(false), 500);
     } else {
-        handleTopicSelect(topicId);
+      handleTopicSelect(topicId);
     }
     closeTutorialsModal();
   }
 
   const handleModalReferenceSelect = (course: Course) => {
     setIsLoading(true);
-    setActiveView('reference');
-    setActiveReferenceCourse(course);
-    setActiveExerciseCourse(null);
-    setActiveTopicId(''); // Deselect any topic in sidebar
     closeReferencesModal();
+    navigate(`/reference/${course}`);
     loadingTimeoutRef.current = window.setTimeout(() => {
       setIsLoading(false);
     }, 500);
@@ -291,29 +291,21 @@ const App: React.FC = () => {
 
   const handleModalExerciseSelect = (course: Course) => {
     setIsLoading(true);
-    setActiveView('exercise');
-    setActiveExerciseCourse(course);
-    setActiveReferenceCourse(null);
-    setActiveTopicId(''); // Deselect any topic in sidebar
     closeExercisesModal();
+    navigate(`/exercise/${course}`);
     loadingTimeoutRef.current = window.setTimeout(() => {
       setIsLoading(false);
     }, 500);
   }
 
-
-  const ReferenceComponent = activeReferenceCourse ? ALL_REFERENCES[activeReferenceCourse].component : null;
-  const ExerciseComponent = activeExerciseCourse ? ALL_EXERCISES[activeExerciseCourse].component : null;
-
-  if (!isIntroAnimationComplete) {
-    return <IntroAnimation onAnimationComplete={() => setIsIntroAnimationComplete(true)} />;
-  }
+  const ReferenceComponent = activeReferenceCourse && ALL_REFERENCES[activeReferenceCourse] ? ALL_REFERENCES[activeReferenceCourse].component : null;
+  const ExerciseComponent = activeExerciseCourse && ALL_EXERCISES[activeExerciseCourse] ? ALL_EXERCISES[activeExerciseCourse].component : null;
 
   return (
     <AnimationProvider value={{ openAnimationPage }}>
       <div className="min-h-screen flex flex-col font-sans bg-gray-50 dark:bg-gray-900">
-        <Header 
-          onMenuClick={() => setIsMobileNavOpen(true)} 
+        <Header
+          onMenuClick={() => setIsMobileNavOpen(true)}
           onTutorialsClick={openTutorialsModal}
           onReferencesClick={openReferencesModal}
           onExercisesClick={openExercisesModal}
@@ -322,43 +314,49 @@ const App: React.FC = () => {
           rankedSearchResults={rankedSearchResults}
           onTopicSelect={handleTopicSelect}
         />
-        <SecondaryNav 
-          activeCourse={activeCourse}
-          onCourseSelect={handleCourseSelect}
-        />
-        {isMobileNavOpen && (
-          <MobileNav
-            sections={filteredSections}
-            activeTopicId={activeTopicId}
-            onTopicSelect={handleTopicSelect}
-            onClose={() => setIsMobileNavOpen(false)}
-            activeCourse={activeCourse}
-            onCourseSelect={handleCourseSelect}
-            searchQuery={searchQuery}
-            onSearchChange={handleSearchChange}
-            rankedSearchResults={rankedSearchResults}
-          />
+        {isDashboard ? (
+          <Dashboard />
+        ) : (
+          <>
+            <SecondaryNav
+              activeCourse={activeCourse}
+              onCourseSelect={handleCourseSelect}
+            />
+            {isMobileNavOpen && (
+              <MobileNav
+                sections={filteredSections}
+                activeTopicId={activeTopicId}
+                onTopicSelect={handleTopicSelect}
+                onClose={() => setIsMobileNavOpen(false)}
+                activeCourse={activeCourse}
+                onCourseSelect={handleCourseSelect}
+                searchQuery={searchQuery}
+                onSearchChange={handleSearchChange}
+                rankedSearchResults={rankedSearchResults}
+              />
+            )}
+            <div className="flex flex-1">
+              <Sidebar
+                sections={filteredSections}
+                activeTopicId={activeTopicId}
+                onTopicSelect={handleTopicSelect}
+                searchQuery={searchQuery}
+              />
+              <MainContent
+                activeView={activeView as any}
+                topic={activeTopic}
+                referenceContent={ReferenceComponent ? <ReferenceComponent onSwitchToTutorial={handleCourseSelect} /> : null}
+                exerciseContent={ExerciseComponent ? <ExerciseComponent /> : null}
+                isLoading={isLoading}
+                onNavigate={(id) => handleTopicSelect(id)}
+                prevTopic={prevTopic}
+                nextTopic={nextTopic}
+                searchQuery={searchQuery}
+                hasSearchResults={hasSearchResults}
+              />
+            </div>
+          </>
         )}
-        <div className="flex flex-1">
-          <Sidebar 
-            sections={filteredSections} 
-            activeTopicId={activeTopicId} 
-            onTopicSelect={handleTopicSelect} 
-            searchQuery={searchQuery}
-          />
-          <MainContent 
-            activeView={activeView}
-            topic={activeTopic}
-            referenceContent={ReferenceComponent ? <ReferenceComponent onSwitchToTutorial={handleCourseSelect} /> : null}
-            exerciseContent={ExerciseComponent ? <ExerciseComponent /> : null}
-            isLoading={isLoading}
-            onNavigate={(id) => handleTopicSelect(id)}
-            prevTopic={prevTopic}
-            nextTopic={nextTopic}
-            searchQuery={searchQuery}
-            hasSearchResults={hasSearchResults}
-          />
-        </div>
         <Footer />
         <AnimationModal
           isOpen={animationModalConfig.isOpen}
@@ -368,10 +366,10 @@ const App: React.FC = () => {
           {animationModalConfig.content}
         </AnimationModal>
         <TutorialsModal
-            isOpen={isTutorialsModalOpen}
-            onClose={closeTutorialsModal}
-            onCourseSelect={handleModalCourseSelect}
-            onTopicSelect={handleModalTopicSelect}
+          isOpen={isTutorialsModalOpen}
+          onClose={closeTutorialsModal}
+          onCourseSelect={handleModalCourseSelect}
+          onTopicSelect={handleModalTopicSelect}
         />
         <ReferencesModal
           isOpen={isReferencesModalOpen}
@@ -379,12 +377,29 @@ const App: React.FC = () => {
           onReferenceSelect={handleModalReferenceSelect}
         />
         <ExercisesModal
-            isOpen={isExercisesModalOpen}
-            onClose={closeExercisesModal}
-            onExerciseSelect={handleModalExerciseSelect}
+          isOpen={isExercisesModalOpen}
+          onClose={closeExercisesModal}
+          onExerciseSelect={handleModalExerciseSelect}
         />
       </div>
     </AnimationProvider>
+  );
+};
+
+const App: React.FC = () => {
+  const [isIntroAnimationComplete, setIsIntroAnimationComplete] = useState(false);
+
+  if (!isIntroAnimationComplete) {
+    return <IntroAnimation onAnimationComplete={() => setIsIntroAnimationComplete(true)} />;
+  }
+
+  return (
+    <Routes>
+      <Route path="/" element={<Navigate to={`/tutorial/html/${ALL_COURSES['html'].homeTopicId}`} replace />} />
+      <Route path="/dashboard" element={<AppContent />} />
+      <Route path="/:view/:courseId" element={<AppContent />} />
+      <Route path="/:view/:courseId/:topicId" element={<AppContent />} />
+    </Routes>
   );
 };
 
