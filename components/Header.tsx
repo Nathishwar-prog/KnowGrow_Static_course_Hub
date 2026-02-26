@@ -20,7 +20,6 @@ export const NavLink: React.FC<{ children: React.ReactNode; hasDropdown?: boolea
   );
 };
 
-
 const IconLink: React.FC<{ iconClass: string; onClick?: () => void, href?: string, [key: string]: any }> = ({ iconClass, onClick, href = "#", ...props }) => {
   const commonClasses = "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/50 hover:text-brand-600 dark:hover:text-white p-2.5 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 transition-all duration-200";
   if (onClick) {
@@ -51,10 +50,10 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onMenuClick, onTutorialsClick, onReferencesClick, onExercisesClick, searchQuery, onSearchChange, rankedSearchResults, onTopicSelect }) => {
   const { theme, toggleTheme } = useTheme();
   const { user, signOut } = useAuth();
-
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const searchContainerRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -63,9 +62,18 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onTutorialsClick, onRefere
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+      }
     };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   const showDropdown = isDropdownOpen && searchQuery.length > 0;
@@ -107,8 +115,9 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onTutorialsClick, onRefere
               iconClass="fa-solid fa-earth-americas"
               aria-label="Change language"
             />
-            <div className="relative" ref={searchContainerRef}>
+            <div className="relative group" ref={searchContainerRef}>
               <input
+                ref={searchInputRef}
                 type="search"
                 placeholder="Search tutorials..."
                 value={searchQuery}
@@ -117,11 +126,14 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onTutorialsClick, onRefere
                   setIsDropdownOpen(true);
                 }}
                 onFocus={() => setIsDropdownOpen(true)}
-                className="bg-gray-100 dark:bg-gray-800/80 text-gray-800 dark:text-white rounded-full py-2 pl-10 pr-4 w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white dark:focus:bg-gray-800 shadow-inner dark:shadow-none placeholder-gray-500 dark:placeholder-gray-400 text-sm"
+                className="bg-gray-100 dark:bg-gray-800/80 text-gray-800 dark:text-white rounded-full py-2 pl-10 pr-12 w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white dark:focus:bg-gray-800 shadow-inner dark:shadow-none placeholder-gray-500 dark:placeholder-gray-400 text-sm"
                 aria-label="Search tutorials"
               />
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-brand-500 transition-colors">
                 <i className="fa-solid fa-magnifying-glass"></i>
+              </span>
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5 hidden group-focus-within:hidden sm:block pointer-events-none">
+                ⌘K
               </span>
               {showDropdown && (
                 <SearchResultsDropdown
@@ -135,8 +147,11 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onTutorialsClick, onRefere
               )}
             </div>
 
+            <a href="#" className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-full py-2 px-4 text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Spaces</a>
+            <a href="#" className="bg-gradient-to-r from-indigo-600 to-brand-500 text-white rounded-full py-2 px-4 text-sm font-bold hover:shadow-lg hover:scale-105 transition-all duration-200">Get Certified</a>
+
             {user ? (
-              <div className="flex items-center space-x-4 ml-2 border-l border-gray-200 dark:border-gray-700 pl-4">
+              <div className="flex items-center space-x-4 ml-2 border-l border-gray-200/50 dark:border-gray-700/50 pl-4">
                 <a
                   href="/dashboard"
                   className="text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-white text-sm font-semibold transition-colors"
@@ -158,7 +173,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onTutorialsClick, onRefere
               <div className="flex items-center space-x-2 ml-4">
                 <button
                   onClick={() => setIsAuthModalOpen(true)}
-                  className="bg-gradient-to-r from-brand-600 to-brand-500 text-white rounded-full py-2 px-6 text-sm font-bold hover:from-brand-500 hover:to-indigo-400 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                  className="bg-brand-50 text-brand-700 dark:bg-brand-900/40 dark:text-brand-300 border border-brand-200 dark:border-brand-800 rounded-full py-1.5 px-5 text-sm font-bold hover:bg-brand-100 dark:hover:bg-brand-900/60 transition-colors shadow-sm"
                 >
                   Login
                 </button>
@@ -169,7 +184,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onTutorialsClick, onRefere
           {/* Hamburger Menu Button */}
           <button
             onClick={onMenuClick}
-            className="md:hidden text-gray-300 hover:bg-gray-700 hover:text-white p-3 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+            className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-brand-500"
             aria-label="Open navigation menu"
           >
             <i className="fa-solid fa-bars"></i>

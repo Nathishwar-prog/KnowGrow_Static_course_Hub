@@ -78,19 +78,32 @@ const AppContent: React.FC = () => {
     content: React.ReactNode | null;
     title: string;
   }>({ isOpen: false, content: null, title: '' });
+
   const [isTutorialsModalOpen, setIsTutorialsModalOpen] = useState(false);
   const [isReferencesModalOpen, setIsReferencesModalOpen] = useState(false);
   const [isExercisesModalOpen, setIsExercisesModalOpen] = useState(false);
 
   const loadingTimeoutRef = useRef<number | null>(null);
 
+
+  // Redirect if URL is incomplete or invalid
+  useEffect(() => {
+    if (!courseId || !ALL_COURSES[courseId as Course]) {
+      navigate('/html', { replace: true });
+    } else if (!topicId) {
+      navigate(`/${courseId}/${ALL_COURSES[courseId as Course].homeTopicId}`, { replace: true });
+    }
+  }, [courseId, topicId, navigate]);
+
   const TUTORIAL_DATA = useMemo(() => ALL_COURSES[activeCourse].data, [activeCourse]);
   const allTopics: TutorialTopic[] = useMemo(() => TUTORIAL_DATA.flatMap(section => section.topics), [TUTORIAL_DATA]);
+
 
   const activeTopic = useMemo(() => {
     if (activeView !== 'tutorial') return undefined;
     return allTopics.find(topic => topic.id === activeTopicId) || allTopics[0];
   }, [activeTopicId, allTopics, activeView]);
+
 
   const filteredSections = useMemo(() => {
     if (!searchQuery.trim()) {
@@ -112,6 +125,7 @@ const AppContent: React.FC = () => {
       ...topic,
       textContent: extractTextFromReactNode(topic.content)
     }));
+
 
     const options = {
       keys: [
@@ -190,6 +204,7 @@ const AppContent: React.FC = () => {
     };
   }, []);
 
+
   const handleCourseSelect = (course: Course) => {
     if (course !== activeCourse || activeView !== 'tutorial') {
       setIsLoading(true);
@@ -208,9 +223,11 @@ const AppContent: React.FC = () => {
       return;
     }
 
+
     if (loadingTimeoutRef.current) {
       clearTimeout(loadingTimeoutRef.current);
     }
+
 
     setIsLoading(true);
     setIsMobileNavOpen(false);
@@ -221,6 +238,7 @@ const AppContent: React.FC = () => {
       setIsLoading(false);
     }, 500);
   };
+
 
   const handleSearchChange = (query: string) => {
     setSearchQuery(query);
@@ -255,6 +273,7 @@ const AppContent: React.FC = () => {
     setAnimationModalConfig({ isOpen: false, content: null, title: '' });
   };
 
+
   const openTutorialsModal = () => setIsTutorialsModalOpen(true);
   const closeTutorialsModal = () => setIsTutorialsModalOpen(false);
 
@@ -268,6 +287,7 @@ const AppContent: React.FC = () => {
     handleCourseSelect(course);
     closeTutorialsModal();
   }
+
 
   const handleModalTopicSelect = (course: Course, topicId: string) => {
     if (course !== activeCourse) {

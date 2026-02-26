@@ -26,7 +26,7 @@ const NavButton: React.FC<{
   <button
     onClick={onClick}
     disabled={disabled}
-    className="bg-indigo-600 text-white font-bold py-2 px-6 rounded-md hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 flex items-center justify-center"
+    className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-2.5 px-6 rounded-lg hover:shadow-lg hover:from-indigo-700 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center transform hover:-translate-y-0.5 active:translate-y-0"
   >
     {children}
   </button>
@@ -52,7 +52,7 @@ const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceC
       if (searchQuery && !hasSearchResults) {
         return (
           <div className="text-center py-16">
-            <div className="text-6xl text-gray-300 dark:text-gray-600 mb-4">
+            <div className="text-6xl text-gray-300 dark:text-gray-600 mb-4 animate-pulse">
               <i className="fa-solid fa-magnifying-glass"></i>
             </div>
             <h1 className="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-100">No Results Found</h1>
@@ -68,10 +68,10 @@ const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceC
 
     return (
       <>
-        <h1 className="text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 tracking-tight">
           <Highlighter query={searchQuery}>{topic.title}</Highlighter>
         </h1>
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between items-center mb-10">
           <NavButton
             onClick={() => prevTopic && onNavigate(prevTopic.id)}
             disabled={!prevTopic}
@@ -85,8 +85,8 @@ const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceC
             Next <i className="fa-solid fa-chevron-right ml-2"></i>
           </NavButton>
         </div>
-        <hr className="my-8 border-gray-200 dark:border-gray-600" />
-        <article className="prose dark:prose-invert max-w-none prose-indigo">
+        <hr className="my-8 border-gray-200 dark:border-gray-700" />
+        <article className="prose prose-lg dark:prose-invert max-w-none prose-indigo prose-headings:font-bold prose-a:text-indigo-600 dark:prose-a:text-indigo-400 hover:prose-a:text-indigo-500 transition-colors">
           <React.Suspense fallback={<LoadingSpinner />}>
             <Highlighter query={searchQuery}>
               {topic.content}
@@ -100,8 +100,8 @@ const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceC
             onClick={handleToggleComplete}
             disabled={isProgressLoading}
             className={`flex items-center space-x-2 px-6 py-3 rounded-full font-bold transition-all duration-300 ${isCompleted
-                ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 hover:bg-green-200 dark:hover:bg-green-900/60 ring-2 ring-green-500/50'
-                : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+              ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 hover:bg-green-200 dark:hover:bg-green-900/60 ring-2 ring-green-500/50'
+              : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
               } ${isProgressLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             <div className={`w-6 h-6 rounded-full flex items-center justify-center ${isCompleted ? 'bg-green-500 text-white' : 'bg-gray-300 dark:bg-gray-600 text-transparent'}`}>
@@ -111,7 +111,7 @@ const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceC
           </button>
         </div>
 
-        <hr className="my-8 border-gray-200 dark:border-gray-600" />
+        <hr className="my-10 border-gray-200 dark:border-gray-700" />
         <div className="flex justify-between items-center mt-8 cursor-pointer">
           <NavButton
             onClick={() => prevTopic && onNavigate(prevTopic.id)}
@@ -150,8 +150,8 @@ const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceC
   const isCenteringNeeded = isLoading || (activeView === 'tutorial' && searchQuery && !hasSearchResults);
 
   return (
-    <main className="flex-1 p-4 md:p-8 bg-gray-50 dark:bg-gray-900">
-      <div className={`max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto bg-white dark:bg-gray-800 p-6 md:p-10 rounded-xl shadow-sm transition-all duration-300 ${isCenteringNeeded ? 'flex items-center justify-center min-h-[60vh]' : ''}`}>
+    <main className="flex-1 p-4 md:p-8 bg-gray-50 dark:bg-gray-900 overflow-y-auto h-screen-minus-nav scroll-smooth">
+      <div className={`max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 md:p-12 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 transition-all duration-300 ${isCenteringNeeded ? 'flex items-center justify-center min-h-[60vh]' : ''}`}>
         {mainContent()}
       </div>
     </main>

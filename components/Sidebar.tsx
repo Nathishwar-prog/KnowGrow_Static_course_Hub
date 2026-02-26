@@ -15,11 +15,11 @@ const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelec
   const { completedTopics } = useProgress(courseId);
 
   return (
-    <aside role="navigation" aria-label="Tutorial topics" className="bg-white dark:bg-gray-800 w-64 h-screen-minus-nav sticky top-[112px] overflow-y-auto hidden md:block border-r border-gray-200 dark:border-gray-700 hide-scrollbar">
-      <div className="p-4">
+    <aside role="navigation" aria-label="Tutorial topics" className="bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm w-64 h-screen-minus-nav sticky top-[60px] overflow-y-auto hidden md:block border-r border-gray-200 dark:border-gray-800 hide-scrollbar transition-colors duration-300">
+      <div className="p-4 pb-20">
         {searchQuery && sections.length === 0 ? (
           <div className="text-center text-gray-500 dark:text-gray-400 p-4 mt-8">
-            <div className="text-4xl mb-4">
+            <div className="text-4xl mb-4 opacity-50">
               <i className="fa-solid fa-magnifying-glass"></i>
             </div>
             <p className="font-bold">No results found.</p>
@@ -27,20 +27,20 @@ const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelec
           </div>
         ) : (
           sections.map((section, index) => (
-            <div key={section.title} className={index > 0 ? 'mt-6' : ''}>
-              <h3 className="font-bold text-xl mb-3 text-gray-800 dark:text-gray-100">{section.title}</h3>
-              <ul className="space-y-1">
+            <div key={section.title} className={index > 0 ? 'mt-8' : 'mt-2'}>
+              <h3 className="font-bold text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3 px-3">{section.title}</h3>
+              <ul className="space-y-0.5">
                 {section.topics.map(topic => (
                   <li key={topic.id}>
                     <a
-                      href="#"
+                      href={`#${topic.id}`}
                       onClick={(e) => {
                         e.preventDefault();
                         onTopicSelect(topic.id);
                       }}
-                      className={`block py-2 px-3 text-sm rounded-md transition-colors duration-150 flex items-center justify-between group ${activeTopicId === topic.id
-                          ? 'bg-indigo-600 text-white font-bold'
-                          : 'text-gray-600 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-700 dark:hover:text-white'
+                      className={`block py-2 px-3 text-sm rounded-lg transition-all duration-200 flex items-center justify-between group ${activeTopicId === topic.id
+                        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium shadow-md transform scale-[1.02]'
+                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-indigo-600 dark:hover:text-indigo-400'
                         }`}
                       aria-current={activeTopicId === topic.id ? 'page' : undefined}
                     >
