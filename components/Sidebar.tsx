@@ -1,5 +1,7 @@
 import React from 'react';
 import type { SidebarSection } from '../types';
+import { useParams } from 'react-router-dom';
+import { useProgress } from '../context/useProgress';
 
 interface SidebarProps {
   sections: SidebarSection[];
@@ -9,6 +11,9 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelect, searchQuery }) => {
+  const { courseId = 'html' } = useParams<{ courseId: string }>();
+  const { completedTopics } = useProgress(courseId);
+
   return (
     <aside role="navigation" aria-label="Tutorial topics" className="bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm w-64 h-screen-minus-nav sticky top-[60px] overflow-y-auto hidden md:block border-r border-gray-200 dark:border-gray-800 hide-scrollbar transition-colors duration-300">
       <div className="p-4 pb-20">
@@ -33,13 +38,16 @@ const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelec
                         e.preventDefault();
                         onTopicSelect(topic.id);
                       }}
-                      className={`block py-2 px-3 text-sm rounded-lg transition-all duration-200 ${activeTopicId === topic.id
-                          ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium shadow-md transform scale-[1.02]'
-                          : 'text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-indigo-600 dark:hover:text-indigo-400'
+                      className={`block py-2 px-3 text-sm rounded-lg transition-all duration-200 flex items-center justify-between group ${activeTopicId === topic.id
+                        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium shadow-md transform scale-[1.02]'
+                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-indigo-600 dark:hover:text-indigo-400'
                         }`}
                       aria-current={activeTopicId === topic.id ? 'page' : undefined}
                     >
-                      {topic.title}
+                      <span className="truncate pr-2">{topic.title}</span>
+                      {completedTopics.has(topic.id) && (
+                        <i className={`fa-solid fa-check-circle text-xs shrink-0 ${activeTopicId === topic.id ? 'text-indigo-200' : 'text-green-500'}`} title="Completed"></i>
+                      )}
                     </a>
                   </li>
                 ))}

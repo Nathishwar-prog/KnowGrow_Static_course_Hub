@@ -2,6 +2,8 @@ import React from 'react';
 import type { TutorialTopic } from '../types';
 import LoadingSpinner from './LoadingSpinner';
 import Highlighter from './Highlighter';
+import { useProgress } from '../context/useProgress';
+import { useParams } from 'react-router-dom';
 
 interface MainContentProps {
   activeView: 'tutorial' | 'reference' | 'exercise';
@@ -32,6 +34,19 @@ const NavButton: React.FC<{
 
 
 const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceContent, exerciseContent, isLoading, onNavigate, prevTopic, nextTopic, searchQuery, hasSearchResults }) => {
+  const { courseId = 'html', topicId = '' } = useParams<{ courseId: string, topicId: string }>();
+  const { completedTopics, markAsComplete, markAsIncomplete, isLoading: isProgressLoading } = useProgress(courseId);
+  const isCompleted = completedTopics.has(topic?.id || topicId);
+
+  const handleToggleComplete = async () => {
+    if (!topic) return;
+    if (isCompleted) {
+      await markAsIncomplete(topic.id);
+    } else {
+      await markAsComplete(topic.id);
+    }
+  };
+
   const renderTutorialContent = () => {
     if (!topic) {
       if (searchQuery && !hasSearchResults) {
@@ -72,18 +87,39 @@ const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceC
         </div>
         <hr className="my-8 border-gray-200 dark:border-gray-700" />
         <article className="prose prose-lg dark:prose-invert max-w-none prose-indigo prose-headings:font-bold prose-a:text-indigo-600 dark:prose-a:text-indigo-400 hover:prose-a:text-indigo-500 transition-colors">
-          <Highlighter query={searchQuery}>
-            {topic.content}
-          </Highlighter>
+          <React.Suspense fallback={<LoadingSpinner />}>
+            <Highlighter query={searchQuery}>
+              {topic.content}
+            </Highlighter>
+          </React.Suspense>
         </article>
+
+        {/* Progress Tracking Section */}
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={handleToggleComplete}
+            disabled={isProgressLoading}
+            className={`flex items-center space-x-2 px-6 py-3 rounded-full font-bold transition-all duration-300 ${isCompleted
+              ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 hover:bg-green-200 dark:hover:bg-green-900/60 ring-2 ring-green-500/50'
+              : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+              } ${isProgressLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+          >
+            <div className={`w-6 h-6 rounded-full flex items-center justify-center ${isCompleted ? 'bg-green-500 text-white' : 'bg-gray-300 dark:bg-gray-600 text-transparent'}`}>
+              <i className="fa-solid fa-check text-xs"></i>
+            </div>
+            <span>{isCompleted ? 'Completed' : 'Mark as Complete'}</span>
+          </button>
+        </div>
+
         <hr className="my-10 border-gray-200 dark:border-gray-700" />
-        <div className="flex justify-between items-center mt-8">
+        <div className="flex justify-between items-center mt-8 cursor-pointer">
           <NavButton
             onClick={() => prevTopic && onNavigate(prevTopic.id)}
             disabled={!prevTopic}
           >
             <i className="fa-solid fa-chevron-left mr-2"></i> Prev
           </NavButton>
+
           <NavButton
             onClick={() => nextTopic && onNavigate(nextTopic.id)}
             disabled={!nextTopic}

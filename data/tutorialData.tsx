@@ -1,530 +1,532 @@
 import React from 'react';
 import type { SidebarSection } from '../types';
-import ComingSoon from './Comming';
+const ComingSoon = React.lazy(() => import('./Comming'));
 // HTML Tutorial Topics
-import HtmlHome from './html/HtmlHome';
-import HtmlIntroduction from './html/HtmlIntroduction';
-import HtmlEditors from './html/HtmlEditors';
-import HtmlBasic from './html/HtmlBasic';
-import HtmlElements from './html/HtmlElements';
-import HtmlAttributes from './html/HtmlAttributes';
-import HtmlHeadings from './html/HtmlHeadings';
-import HtmlParagraphs from './html/HtmlParagraphs';
-import HtmlStyles from './html/HtmlStyles';
-import HtmlFormatting from './html/HtmlFormatting';
-import HtmlQuotations from './html/HtmlQuotations';
-import HtmlComments from './html/HtmlComments';
-import HtmlColors from './html/HtmlColors';
-import HtmlCss from './html/HtmlCss';
-import HtmlLinks from './html/HtmlLinks';
-import HtmlImages from './html/HtmlImages';
-import HtmlFavicon from './html/HtmlFavicon';
-import HtmlPageTitle from './html/HtmlPageTitle';
-import HtmlTables from './html/HtmlTables';
-import HtmlLists from './html/HtmlLists';
-import HtmlBlockInline from './html/HtmlBlockInline';
-import HtmlDiv from './html/HtmlDiv';
-import HtmlClasses from './html/HtmlClasses';
-import HtmlId from './html/HtmlId';
-import HtmlIframes from './html/HtmlIframes';
-import HtmlJavascript from './html/HtmlJavascript';
-import HtmlFilePaths from './html/HtmlFilePaths';
-import HtmlHead from './html/HtmlHead';
-import HtmlLayout from './html/HtmlLayout';
-import HtmlResponsive from './html/HtmlResponsive';
-import HtmlComputercode from './html/HtmlComputercode';
-import HtmlSemantics from './html/HtmlSemantics';
-import HtmlStyleGuide from './html/HtmlStyleGuide';
-import HtmlEntities from './html/HtmlEntities';
-import HtmlSymbols from './html/HtmlSymbols';
-import HtmlEmojis from './html/HtmlEmojis';
-import HtmlCharsets from './html/HtmlCharsets';
-import HtmlUrlEncode from './html/HtmlUrlEncode';
-import HtmlVsXhtml from './html/HtmlVsXhtml';
-import HtmlForms from './html/HtmlForms';
-import HtmlFormAttributes from './html/HtmlFormAttributes';
-import HtmlFormElements from './html/HtmlFormElements';
-import HtmlInputTypes from './html/HtmlInputTypes';
-import HtmlInputAttributes from './html/HtmlInputAttributes';
-import InputFormAttributes from './html/InputFormAttributes';
-import HtmlCanvas from './html/HtmlCanvas';
-import HtmlSvg from './html/HtmlSvg';
-import HtmlMedia from './html/HtmlMedia';
-import HtmlVideo from './html/HtmlVideo';
-import HtmlAudio from './html/HtmlAudio';
-import HtmlPlugins from './html/HtmlPlugins';
-import HtmlYoutube from './html/HtmlYoutube';
-import HtmlWebApis from './html/HtmlWebApis';
-import HtmlGeolocation from './html/HtmlGeolocation';
-import HtmlDragAndDrop from './html/HtmlDragAndDrop';
-import HtmlWebStorage from './html/HtmlWebStorage';
-import HtmlWebWorkers from './html/HtmlWebWorkers';
-import HtmlSse from './html/HtmlSse';
-import HtmlInterviewPrep from './html/HtmlInterviewPrep';
-import HtmlCertificate from './html/HtmlCertificate';
-import HtmlTagList from './html/HtmlTagList';
-import HtmlAttributesRef from './html/HtmlAttributesRef';
-import HtmlGlobalAttributes from './html/HtmlGlobalAttributes';
-import HtmlBrowserSupport from './html/HtmlBrowserSupport';
-import HtmlEvents from './html/HtmlEvents';
-import HtmlColorsRef from './html/HtmlColorsRef';
-import HtmlCanvasRef from './html/HtmlCanvasRef';
-import HtmlAudioVideoRef from './html/HtmlAudioVideoRef';
-import HtmlDoctypes from './html/HtmlDoctypes';
-import HtmlCharacterSets from './html/HtmlCharacterSets';
-import HtmlUrlEncodeRef from './html/HtmlUrlEncodeRef';
-import HtmlLangCodes from './html/HtmlLangCodes';
-import HtmlHttpMessages from './html/HtmlHttpMessages';
-import HtmlHttpMethods from './html/HtmlHttpMethods';
-import PxToEmConverter from './html/PxToEmConverter';
-import KeyboardShortcuts from './html/KeyboardShortcuts';
+const HtmlHome = React.lazy(() => import('./html/HtmlHome'));
+const HtmlIntroduction = React.lazy(() => import('./html/HtmlIntroduction'));
+const HtmlEditors = React.lazy(() => import('./html/HtmlEditors'));
+const HtmlIntroQuiz = React.lazy(() => import('./html/HtmlIntroQuiz'));
+const HtmlBasic = React.lazy(() => import('./html/HtmlBasic'));
+const HtmlElements = React.lazy(() => import('./html/HtmlElements'));
+const HtmlAttributes = React.lazy(() => import('./html/HtmlAttributes'));
+const HtmlHeadings = React.lazy(() => import('./html/HtmlHeadings'));
+const HtmlParagraphs = React.lazy(() => import('./html/HtmlParagraphs'));
+const HtmlStyles = React.lazy(() => import('./html/HtmlStyles'));
+const HtmlFormatting = React.lazy(() => import('./html/HtmlFormatting'));
+const HtmlQuotations = React.lazy(() => import('./html/HtmlQuotations'));
+const HtmlComments = React.lazy(() => import('./html/HtmlComments'));
+const HtmlColors = React.lazy(() => import('./html/HtmlColors'));
+const HtmlCss = React.lazy(() => import('./html/HtmlCss'));
+const HtmlLinks = React.lazy(() => import('./html/HtmlLinks'));
+const HtmlImages = React.lazy(() => import('./html/HtmlImages'));
+const HtmlFavicon = React.lazy(() => import('./html/HtmlFavicon'));
+const HtmlPageTitle = React.lazy(() => import('./html/HtmlPageTitle'));
+const HtmlTables = React.lazy(() => import('./html/HtmlTables'));
+const HtmlLists = React.lazy(() => import('./html/HtmlLists'));
+const HtmlBlockInline = React.lazy(() => import('./html/HtmlBlockInline'));
+const HtmlDiv = React.lazy(() => import('./html/HtmlDiv'));
+const HtmlClasses = React.lazy(() => import('./html/HtmlClasses'));
+const HtmlId = React.lazy(() => import('./html/HtmlId'));
+const HtmlIframes = React.lazy(() => import('./html/HtmlIframes'));
+const HtmlJavascript = React.lazy(() => import('./html/HtmlJavascript'));
+const HtmlFilePaths = React.lazy(() => import('./html/HtmlFilePaths'));
+const HtmlHead = React.lazy(() => import('./html/HtmlHead'));
+const HtmlLayout = React.lazy(() => import('./html/HtmlLayout'));
+const HtmlResponsive = React.lazy(() => import('./html/HtmlResponsive'));
+const HtmlComputercode = React.lazy(() => import('./html/HtmlComputercode'));
+const HtmlSemantics = React.lazy(() => import('./html/HtmlSemantics'));
+const HtmlStyleGuide = React.lazy(() => import('./html/HtmlStyleGuide'));
+const HtmlEntities = React.lazy(() => import('./html/HtmlEntities'));
+const HtmlSymbols = React.lazy(() => import('./html/HtmlSymbols'));
+const HtmlEmojis = React.lazy(() => import('./html/HtmlEmojis'));
+const HtmlCharsets = React.lazy(() => import('./html/HtmlCharsets'));
+const HtmlUrlEncode = React.lazy(() => import('./html/HtmlUrlEncode'));
+const HtmlVsXhtml = React.lazy(() => import('./html/HtmlVsXhtml'));
+const HtmlForms = React.lazy(() => import('./html/HtmlForms'));
+const HtmlFormAttributes = React.lazy(() => import('./html/HtmlFormAttributes'));
+const HtmlFormElements = React.lazy(() => import('./html/HtmlFormElements'));
+const HtmlInputTypes = React.lazy(() => import('./html/HtmlInputTypes'));
+const HtmlInputAttributes = React.lazy(() => import('./html/HtmlInputAttributes'));
+const InputFormAttributes = React.lazy(() => import('./html/InputFormAttributes'));
+const HtmlCanvas = React.lazy(() => import('./html/HtmlCanvas'));
+const HtmlSvg = React.lazy(() => import('./html/HtmlSvg'));
+const HtmlMedia = React.lazy(() => import('./html/HtmlMedia'));
+const HtmlVideo = React.lazy(() => import('./html/HtmlVideo'));
+const HtmlAudio = React.lazy(() => import('./html/HtmlAudio'));
+const HtmlPlugins = React.lazy(() => import('./html/HtmlPlugins'));
+const HtmlYoutube = React.lazy(() => import('./html/HtmlYoutube'));
+const HtmlWebApis = React.lazy(() => import('./html/HtmlWebApis'));
+const HtmlGeolocation = React.lazy(() => import('./html/HtmlGeolocation'));
+const HtmlDragAndDrop = React.lazy(() => import('./html/HtmlDragAndDrop'));
+const HtmlWebStorage = React.lazy(() => import('./html/HtmlWebStorage'));
+const HtmlWebWorkers = React.lazy(() => import('./html/HtmlWebWorkers'));
+const HtmlSse = React.lazy(() => import('./html/HtmlSse'));
+const HtmlInterviewPrep = React.lazy(() => import('./html/HtmlInterviewPrep'));
+const HtmlCertificate = React.lazy(() => import('./html/HtmlCertificate'));
+const HtmlTagList = React.lazy(() => import('./html/HtmlTagList'));
+const HtmlAttributesRef = React.lazy(() => import('./html/HtmlAttributesRef'));
+const HtmlGlobalAttributes = React.lazy(() => import('./html/HtmlGlobalAttributes'));
+const HtmlBrowserSupport = React.lazy(() => import('./html/HtmlBrowserSupport'));
+const HtmlEvents = React.lazy(() => import('./html/HtmlEvents'));
+const HtmlColorsRef = React.lazy(() => import('./html/HtmlColorsRef'));
+const HtmlCanvasRef = React.lazy(() => import('./html/HtmlCanvasRef'));
+const HtmlAudioVideoRef = React.lazy(() => import('./html/HtmlAudioVideoRef'));
+const HtmlDoctypes = React.lazy(() => import('./html/HtmlDoctypes'));
+const HtmlCharacterSets = React.lazy(() => import('./html/HtmlCharacterSets'));
+const HtmlUrlEncodeRef = React.lazy(() => import('./html/HtmlUrlEncodeRef'));
+const HtmlLangCodes = React.lazy(() => import('./html/HtmlLangCodes'));
+const HtmlHttpMessages = React.lazy(() => import('./html/HtmlHttpMessages'));
+const HtmlHttpMethods = React.lazy(() => import('./html/HtmlHttpMethods'));
+const PxToEmConverter = React.lazy(() => import('./html/PxToEmConverter'));
+const KeyboardShortcuts = React.lazy(() => import('./html/KeyboardShortcuts'));
 
 // CSS Tutorial Topics
-import CssHome from './css/CssHome';
-import CssIntroduction from './css/CssIntroduction';
-import CssSyntax from './css/CssSyntax';
-import CssSelectors from './css/CssSelectors';
-import CssHowTo from './css/CssHowTo';
-import CssComments from './css/CssComments';
-import CssErrors from './css/CssErrors';
-import CssColors from './css/CssColors';
-import CssBackgrounds from './css/CssBackgrounds';
-import CssBorders from './css/CssBorders';
-import CssMargins from './css/CssMargins';
-import CssPadding from './css/CssPadding';
-import CssHeightWidth from './css/CssHeightWidth';
-import CssBoxModel from './css/CssBoxModel';
-import CssOutline from './css/CssOutline';
-import CssText from './css/CssText';
-import CssFonts from './css/CssFonts';
-import CssIcons from './css/CssIcons';
-import CssLinks from './css/CssLinks';
-import CssLists from './css/CssLists';
-import CssTables from './css/CssTables';
-import CssDisplay from './css/CssDisplay';
-import CssMaxWidth from './css/CssMaxWidth';
-import CssPosition from './css/CssPosition';
-import CssZIndex from './css/CssZIndex';
-import CssOverflow from './css/CssOverflow';
-import CssFloat from './css/CssFloat';
-import CssInlineBlock from './css/CssInlineBlock';
-import CssAlign from './css/CssAlign';
-import CssCombinators from './css/CssCombinators';
-import CssPseudoClasses from './css/CssPseudoClasses';
-import CssPseudoElements from './css/CssPseudoElements';
-import CssOpacity from './css/CssOpacity';
-import CssNavigationBars from './css/CssNavigationBars';
-import CssDropdowns from './css/CssDropdowns';
-import CssImageGallery from './css/CssImageGallery';
-import CssImageSprites from './css/CssImageSprites';
-import CssAttrSelectors from './css/CssAttrSelectors';
-import CssForms from './css/CssForms';
-import CssCounters from './css/CssCounters';
-import CssUnits from './css/CssUnits';
-import CssSpecificity from './css/CssSpecificity';
-import CssImportant from './css/CssImportant';
-import CssMathFunctions from './css/CssMathFunctions';
-import CssOptimization from './css/CssOptimization';
-import CssAccessibility from './css/CssAccessibility';
-import CssWebsiteLayout from './css/CssWebsiteLayout';
-import CssRoundedCorners from './css/CssRoundedCorners';
-import CssBorderImages from './css/CssBorderImages';
-import CssAdvancedBackgrounds from './css/CssAdvancedBackgrounds';
-import CssAdvancedColors from './css/CssAdvancedColors';
-import CssColorKeywords from './css/CssColorKeywords';
-import CssGradients from './css/CssGradients';
-import CssShadows from './css/CssShadows';
-import CssTextEffects from './css/CssTextEffects';
-import CssWebFonts from './css/CssWebFonts';
-import Css2dTransforms from './css/Css2dTransforms';
-import Css3dTransforms from './css/Css3dTransforms';
-import CssTransitions from './css/CssTransitions';
-import CssAnimations from './css/CssAnimations';
-import CssTooltips from './css/CssTooltips';
-import CssImageStyling from './css/CssImageStyling';
-import CssImageCentering from './css/CssImageCentering';
-import CssImageFilters from './css/CssImageFilters';
-import CssImageShapes from './css/CssImageShapes';
-import CssObjectFit from './css/CssObjectFit';
-import CssObjectPosition from './css/CssObjectPosition';
-import CssMasking from './css/CssMasking';
-import CssButtons from './css/CssButtons';
-import CssPagination from './css/CssPagination';
-import CssMultipleColumns from './css/CssMultipleColumns';
-import CssUserInterface from './css/CssUserInterface';
-import CssVariables from './css/CssVariables';
-import CssProperty from './css/CssProperty';
-import CssBoxSizing from './css/CssBoxSizing';
-import CssMediaQueries from './css/CssMediaQueries';
-import CssMqExamples from './css/CssMqExamples';
-import CssFlexboxIntro from './css/CssFlexboxIntro';
-import CssFlexContainer from './css/CssFlexContainer';
-import CssFlexItems from './css/CssFlexItems';
-import CssFlexResponsive from './css/CssFlexResponsive';
-import CssGridIntro from './css/CssGridIntro';
-import CssGridColumnsRows from './css/CssGridColumnsRows';
-import CssGridLines from './css/CssGridLines';
-import CssGridContainer from './css/CssGridContainer';
-import CssGridItem from './css/CssGridItem';
-import CssSupports from './css/CssSupports';
-import CssRwdIntro from './css/CssRwdIntro';
-import CssRwdViewport from './css/CssRwdViewport';
-import CssRwdGridView from './css/CssRwdGridView';
-import CssRwdMediaQueries from './css/CssRwdMediaQueries';
-import CssRwdImages from './css/CssRwdImages';
-import CssRwdVideos from './css/CssRwdVideos';
-import CssRwdFrameworks from './css/CssRwdFrameworks';
-import CssRwdTemplates from './css/CssRwdTemplates';
-import CssSassTutorial from './css/CssSassTutorial';
+const CssHome = React.lazy(() => import('./css/CssHome'));
+const CssIntroduction = React.lazy(() => import('./css/CssIntroduction'));
+const CssSyntax = React.lazy(() => import('./css/CssSyntax'));
+const CssSelectors = React.lazy(() => import('./css/CssSelectors'));
+const CssIntroQuiz = React.lazy(() => import('./css/CssIntroQuiz'));
+const CssHowTo = React.lazy(() => import('./css/CssHowTo'));
+const CssComments = React.lazy(() => import('./css/CssComments'));
+const CssErrors = React.lazy(() => import('./css/CssErrors'));
+const CssColors = React.lazy(() => import('./css/CssColors'));
+const CssBackgrounds = React.lazy(() => import('./css/CssBackgrounds'));
+const CssBorders = React.lazy(() => import('./css/CssBorders'));
+const CssMargins = React.lazy(() => import('./css/CssMargins'));
+const CssPadding = React.lazy(() => import('./css/CssPadding'));
+const CssHeightWidth = React.lazy(() => import('./css/CssHeightWidth'));
+const CssBoxModel = React.lazy(() => import('./css/CssBoxModel'));
+const CssOutline = React.lazy(() => import('./css/CssOutline'));
+const CssText = React.lazy(() => import('./css/CssText'));
+const CssFonts = React.lazy(() => import('./css/CssFonts'));
+const CssIcons = React.lazy(() => import('./css/CssIcons'));
+const CssLinks = React.lazy(() => import('./css/CssLinks'));
+const CssLists = React.lazy(() => import('./css/CssLists'));
+const CssTables = React.lazy(() => import('./css/CssTables'));
+const CssDisplay = React.lazy(() => import('./css/CssDisplay'));
+const CssMaxWidth = React.lazy(() => import('./css/CssMaxWidth'));
+const CssPosition = React.lazy(() => import('./css/CssPosition'));
+const CssZIndex = React.lazy(() => import('./css/CssZIndex'));
+const CssOverflow = React.lazy(() => import('./css/CssOverflow'));
+const CssFloat = React.lazy(() => import('./css/CssFloat'));
+const CssInlineBlock = React.lazy(() => import('./css/CssInlineBlock'));
+const CssAlign = React.lazy(() => import('./css/CssAlign'));
+const CssCombinators = React.lazy(() => import('./css/CssCombinators'));
+const CssPseudoClasses = React.lazy(() => import('./css/CssPseudoClasses'));
+const CssPseudoElements = React.lazy(() => import('./css/CssPseudoElements'));
+const CssOpacity = React.lazy(() => import('./css/CssOpacity'));
+const CssNavigationBars = React.lazy(() => import('./css/CssNavigationBars'));
+const CssDropdowns = React.lazy(() => import('./css/CssDropdowns'));
+const CssImageGallery = React.lazy(() => import('./css/CssImageGallery'));
+const CssImageSprites = React.lazy(() => import('./css/CssImageSprites'));
+const CssAttrSelectors = React.lazy(() => import('./css/CssAttrSelectors'));
+const CssForms = React.lazy(() => import('./css/CssForms'));
+const CssCounters = React.lazy(() => import('./css/CssCounters'));
+const CssUnits = React.lazy(() => import('./css/CssUnits'));
+const CssSpecificity = React.lazy(() => import('./css/CssSpecificity'));
+const CssImportant = React.lazy(() => import('./css/CssImportant'));
+const CssMathFunctions = React.lazy(() => import('./css/CssMathFunctions'));
+const CssOptimization = React.lazy(() => import('./css/CssOptimization'));
+const CssAccessibility = React.lazy(() => import('./css/CssAccessibility'));
+const CssWebsiteLayout = React.lazy(() => import('./css/CssWebsiteLayout'));
+const CssRoundedCorners = React.lazy(() => import('./css/CssRoundedCorners'));
+const CssBorderImages = React.lazy(() => import('./css/CssBorderImages'));
+const CssAdvancedBackgrounds = React.lazy(() => import('./css/CssAdvancedBackgrounds'));
+const CssAdvancedColors = React.lazy(() => import('./css/CssAdvancedColors'));
+const CssColorKeywords = React.lazy(() => import('./css/CssColorKeywords'));
+const CssGradients = React.lazy(() => import('./css/CssGradients'));
+const CssShadows = React.lazy(() => import('./css/CssShadows'));
+const CssTextEffects = React.lazy(() => import('./css/CssTextEffects'));
+const CssWebFonts = React.lazy(() => import('./css/CssWebFonts'));
+const Css2dTransforms = React.lazy(() => import('./css/Css2dTransforms'));
+const Css3dTransforms = React.lazy(() => import('./css/Css3dTransforms'));
+const CssTransitions = React.lazy(() => import('./css/CssTransitions'));
+const CssAnimations = React.lazy(() => import('./css/CssAnimations'));
+const CssTooltips = React.lazy(() => import('./css/CssTooltips'));
+const CssImageStyling = React.lazy(() => import('./css/CssImageStyling'));
+const CssImageCentering = React.lazy(() => import('./css/CssImageCentering'));
+const CssImageFilters = React.lazy(() => import('./css/CssImageFilters'));
+const CssImageShapes = React.lazy(() => import('./css/CssImageShapes'));
+const CssObjectFit = React.lazy(() => import('./css/CssObjectFit'));
+const CssObjectPosition = React.lazy(() => import('./css/CssObjectPosition'));
+const CssMasking = React.lazy(() => import('./css/CssMasking'));
+const CssButtons = React.lazy(() => import('./css/CssButtons'));
+const CssPagination = React.lazy(() => import('./css/CssPagination'));
+const CssMultipleColumns = React.lazy(() => import('./css/CssMultipleColumns'));
+const CssUserInterface = React.lazy(() => import('./css/CssUserInterface'));
+const CssVariables = React.lazy(() => import('./css/CssVariables'));
+const CssProperty = React.lazy(() => import('./css/CssProperty'));
+const CssBoxSizing = React.lazy(() => import('./css/CssBoxSizing'));
+const CssMediaQueries = React.lazy(() => import('./css/CssMediaQueries'));
+const CssMqExamples = React.lazy(() => import('./css/CssMqExamples'));
+const CssFlexboxIntro = React.lazy(() => import('./css/CssFlexboxIntro'));
+const CssFlexContainer = React.lazy(() => import('./css/CssFlexContainer'));
+const CssFlexItems = React.lazy(() => import('./css/CssFlexItems'));
+const CssFlexResponsive = React.lazy(() => import('./css/CssFlexResponsive'));
+const CssGridIntro = React.lazy(() => import('./css/CssGridIntro'));
+const CssGridColumnsRows = React.lazy(() => import('./css/CssGridColumnsRows'));
+const CssGridLines = React.lazy(() => import('./css/CssGridLines'));
+const CssGridContainer = React.lazy(() => import('./css/CssGridContainer'));
+const CssGridItem = React.lazy(() => import('./css/CssGridItem'));
+const CssSupports = React.lazy(() => import('./css/CssSupports'));
+const CssRwdIntro = React.lazy(() => import('./css/CssRwdIntro'));
+const CssRwdViewport = React.lazy(() => import('./css/CssRwdViewport'));
+const CssRwdGridView = React.lazy(() => import('./css/CssRwdGridView'));
+const CssRwdMediaQueries = React.lazy(() => import('./css/CssRwdMediaQueries'));
+const CssRwdImages = React.lazy(() => import('./css/CssRwdImages'));
+const CssRwdVideos = React.lazy(() => import('./css/CssRwdVideos'));
+const CssRwdFrameworks = React.lazy(() => import('./css/CssRwdFrameworks'));
+const CssRwdTemplates = React.lazy(() => import('./css/CssRwdTemplates'));
+const CssSassTutorial = React.lazy(() => import('./css/CssSassTutorial'));
 
 // JS Tutorial Topics
-import JsHome from './js/JsHome';
-import JsIntroduction from './js/JsIntroduction';
-import JsWhereTo from './js/JsWhereTo';
-import JsOutput from './js/JsOutput';
-import JsSyntax from './js/JsSyntax';
-import JsStatements from './js/JsStatements';
-import JsComments from './js/JsComments';
-import JsVariables from './js/JsVariables';
-import JsDataTypes from './js/JsDataTypes';
-import JsLet from './js/JsLet';
-import JsConst from './js/JsConst';
-import JsOperators from './js/JsOperators';
-import JsArithmetic from './js/JsArithmetic';
-import JsAssignment from './js/JsAssignment';
-import JsFunctions from './js/JsFunctions';
-import JsObjects from './js/JsObjects';
-import JsEvents from './js/JsEvents';
-import JsStrings from './js/JsStrings';
-import JsStringTemplates from './js/JsStringTemplates';
-import JsNumbers from './js/JsNumbers';
-import JsArrays from './js/JsArrays';
-import JsDates from './js/JsDates';
-import JsMath from './js/JsMath';
-import JsBooleans from './js/JsBooleans';
-import JsComparisons from './js/JsComparisons';
-import JsLogical from './js/JsLogical';
-import JsIfElse from './js/JsIfElse';
-import JsSwitch from './js/JsSwitch';
-import JsLoops from './js/JsLoops';
-import JsBreak from './js/JsBreak';
-import JsContinue from './js/JsContinue';
-import JsErrors from './js/JsErrors';
-import JsScope from './js/JsScope';
-import JsCodeBlocks from './js/JsCodeBlocks';
-import JsUtf8Characters from './js/JsUtf8Characters';
-import JsNews from './js/JsNews';
-import JsKeywordsRef from './js/JsKeywordsRef';
-import JsKeywordsReserved from './js/JsKeywordsReserved';
-import JsComparisonOperators from './js/JsComparisonOperators';
-import JsLogicalOperators from './js/JsLogicalOperators';
-import JsBitwiseOperators from './js/JsBitwiseOperators';
-import JsOperatorRef from './js/JsOperatorRef';
-import JsOperatorPrecedence from './js/JsOperatorPrecedence';
-import JsTypeof from './js/JsTypeof';
-import JsToString from './js/JsToString';
-import JsTypeConversion from './js/JsTypeConversion';
-import JsStringMethods from './js/JsStringMethods';
-import JsStringSearch from './js/JsStringSearch';
-import JsStringRef from './js/JsStringRef';
-import JsNumberMethods from './js/JsNumberMethods';
-import JsNumberProperties from './js/JsNumberProperties';
-import JsNumberRef from './js/JsNumberRef';
-import JsMathRef from './js/JsMathRef';
-import JsRandom from './js/JsRandom';
-import JsBigInt from './js/JsBigInt';
-import JsBitwise from './js/JsBitwise';
-import JsDateFormats from './js/JsDateFormats';
-import JsDateGet from './js/JsDateGet';
-import JsDateSet from './js/JsDateSet';
-import JsDateRef from './js/JsDateRef';
-import JsArrayMethods from './js/JsArrayMethods';
-import JsArraySearch from './js/JsArraySearch';
-import JsArraySort from './js/JsArraySort';
-import JsArrayIterations from './js/JsArrayIterations';
-import JsArrayRef from './js/JsArrayRef';
-import JsArrayConst from './js/JsArrayConst';
-import JsFunctionDefinitions from './js/JsFunctionDefinitions';
-import JsFunctionArrows from './js/JsFunctionArrows';
-import JsFunctionParameters from './js/JsFunctionParameters';
-import JsFunctionInvocation from './js/JsFunctionInvocation';
-import JsFunctionThis from './js/JsFunctionThis';
-import JsFunctionCall from './js/JsFunctionCall';
-import JsFunctionApply from './js/JsFunctionApply';
-import JsFunctionBind from './js/JsFunctionBind';
-import JsFunctionClosures from './js/JsFunctionClosures';
-import JsObjectDefinitions from './js/JsObjectDefinitions';
-import JsObjectProperties from './js/JsObjectProperties';
-import JsObjectMethods from './js/JsObjectMethods';
-import JsObjectDisplay from './js/JsObjectDisplay';
-import JsObjectConstructors from './js/JsObjectConstructors';
-import JsObjectThis from './js/JsObjectThis';
-import JsObjectDestructuring from './js/JsObjectDestructuring';
-import JsObjectPrototypes from './js/JsObjectPrototypes';
-import JsObjectIterations from './js/JsObjectIterations';
-import JsObjectManagement from './js/JsObjectManagement';
-import JsObjectGetSet from './js/JsObjectGetSet';
-import JsObjectProtection from './js/JsObjectProtection';
-import JsObjectRef from './js/JsObjectRef';
-import JsClasses from './js/JsClasses';
-import JsClassInheritance from './js/JsClassInheritance';
-import JsClassStatic from './js/JsClassStatic';
-import JsSets from './js/JsSets';
-import JsSetMethods from './js/JsSetMethods';
-import JsSetLogic from './js/JsSetLogic';
-import JsSetWeakSet from './js/JsSetWeakSet';
-import JsSetRef from './js/JsSetRef';
-import JsMaps from './js/JsMaps';
-import JsMapMethods from './js/JsMapMethods';
-import JsMapWeakMap from './js/JsMapWeakMap';
-import JsMapRef from './js/JsMapRef';
-import JsLoopFor from './js/JsLoopFor';
-import JsLoopWhile from './js/JsLoopWhile';
-import JsLoopForIn from './js/JsLoopForIn';
-import JsLoopForOf from './js/JsLoopForOf';
-import JsIterables from './js/JsIterables';
-import JsIterators from './js/JsIterators';
-import JsGenerators from './js/JsGenerators';
-import JsRegExp from './js/JsRegExp';
-import JsRegExpFlags from './js/JsRegExpFlags';
-import JsRegExpClasses from './js/JsRegExpClasses';
-import JsRegExpMetachars from './js/JsRegExpMetachars';
-import JsRegExpAssertions from './js/JsRegExpAssertions';
-import JsRegExpQuantifiers from './js/JsRegExpQuantifiers';
-import JsRegExpPatterns from './js/JsRegExpPatterns';
-import JsRegExpObjects from './js/JsRegExpObjects';
-import JsRegExpMethods from './js/JsRegExpMethods';
-import JsTypedArrays from './js/JsTypedArrays';
-import JsTypedMethods from './js/JsTypedMethods';
-import JsTypedRef from './js/JsTypedRef';
-import JsCallbacks from './js/JsCallbacks';
-import JsAsynchronous from './js/JsAsynchronous';
-import JsPromises from './js/JsPromises';
-import JsAsyncAwait from './js/JsAsyncAwait';
-import JsStrictMode from './js/JsStrictMode';
-import JsScopes from './js/JsScopes';
-import JsHoisting from './js/JsHoisting';
-import JsDebugging from './js/JsDebugging';
-import JsModules from './js/JsModules';
-import JsStyleGuide from './js/JsStyleGuide';
-import JsBestPractices from './js/JsBestPractices';
-import JsMistakes from './js/JsMistakes';
-import JsPerformance from './js/JsPerformance';
-import DomIntro from './js/DomIntro';
-import DomMethods from './js/DomMethods';
-import DomDocument from './js/DomDocument';
-import DomElements from './js/DomElements';
-import DomHtml from './js/DomHtml';
-import DomForms from './js/DomForms';
-import DomCss from './js/DomCss';
-import DomAnimations from './js/DomAnimations';
-import DomEventListener from './js/DomEventListener';
-import DomNavigation from './js/DomNavigation';
-import DomNodes from './js/DomNodes';
-import DomCollections from './js/DomCollections';
-import DomNodeLists from './js/DomNodeLists';
-import JsWindow from './js/JsWindow';
-import JsScreen from './js/JsScreen';
-import JsLocation from './js/JsLocation';
-import JsHistory from './js/JsHistory';
-import JsNavigator from './js/JsNavigator';
-import JsPopupAlert from './js/JsPopupAlert';
-import JsTiming from './js/JsTiming';
-import JsCookies from './js/JsCookies';
-import WebApiIntro from './js/WebApiIntro';
-import WebValidationApi from './js/WebValidationApi';
-import WebHistoryApi from './js/WebHistoryApi';
-import WebStorageApi from './js/WebStorageApi';
-import WebWorkerApi from './js/WebWorkerApi';
-import WebFetchApi from './js/WebFetchApi';
-import WebGeolocationApi from './js/WebGeolocationApi';
-import AjaxIntro from './js/AjaxIntro';
-import AjaxXmlHttp from './js/AjaxXmlHttp';
-import AjaxRequest from './js/AjaxRequest';
-import AjaxResponse from './js/AjaxResponse';
-import AjaxXmlFile from './js/AjaxXmlFile';
-import AjaxPhp from './js/AjaxPhp';
-import AjaxAsp from './js/AjaxAsp';
-import AjaxDatabase from './js/AjaxDatabase';
-import AjaxApplications from './js/AjaxApplications';
-import AjaxExamples from './js/AjaxExamples';
-import JsonIntro from './js/JsonIntro';
-import JsonSyntax from './js/JsonSyntax';
-import JsonVsXml from './js/JsonVsXml';
-import JsonDataTypes from './js/JsonDataTypes';
-import JsonParse from './js/JsonParse';
-import JsonStringify from './js/JsonStringify';
-import JsonObjects from './js/JsonObjects';
-import JsonArrays from './js/JsonArrays';
-import JsonServer from './js/JsonServer';
-import JsonPhp from './js/JsonPhp';
-import JsonHtml from './js/JsonHtml';
-import JsonJsonp from './js/JsonJsonp';
-import JquerySelectors from './js/JquerySelectors';
-import JqueryHtml from './js/JqueryHtml';
-import JqueryCss from './js/JqueryCss';
-import JqueryDom from './js/JqueryDom';
-import JsGraphics from './js/JsGraphics';
-import JsCanvas from './js/JsCanvas';
-import JsPlotly from './js/JsPlotly';
-import JsChartJs from './js/JsChartJs';
-import JsGoogleChart from './js/JsGoogleChart';
-import JsD3Js from './js/JsD3Js';
-import JsHtmlInput from './js/JsHtmlInput';
-import JsHtmlObjects from './js/JsHtmlObjects';
-import JsHtmlEventsRef from './js/JsHtmlEventsRef';
-import DomObjectsRef from './js/DomObjectsRef';
+const JsHome = React.lazy(() => import('./js/JsHome'));
+const JsIntroduction = React.lazy(() => import('./js/JsIntroduction'));
+const JsWhereTo = React.lazy(() => import('./js/JsWhereTo'));
+const JsOutput = React.lazy(() => import('./js/JsOutput'));
+const JsSyntax = React.lazy(() => import('./js/JsSyntax'));
+const JsStatements = React.lazy(() => import('./js/JsStatements'));
+const JsComments = React.lazy(() => import('./js/JsComments'));
+const JsVariables = React.lazy(() => import('./js/JsVariables'));
+const JsDataTypes = React.lazy(() => import('./js/JsDataTypes'));
+const JsLet = React.lazy(() => import('./js/JsLet'));
+const JsConst = React.lazy(() => import('./js/JsConst'));
+const JsOperators = React.lazy(() => import('./js/JsOperators'));
+const JsArithmetic = React.lazy(() => import('./js/JsArithmetic'));
+const JsAssignment = React.lazy(() => import('./js/JsAssignment'));
+const JsFunctions = React.lazy(() => import('./js/JsFunctions'));
+const JsObjects = React.lazy(() => import('./js/JsObjects'));
+const JsEvents = React.lazy(() => import('./js/JsEvents'));
+const JsStrings = React.lazy(() => import('./js/JsStrings'));
+const JsStringTemplates = React.lazy(() => import('./js/JsStringTemplates'));
+const JsNumbers = React.lazy(() => import('./js/JsNumbers'));
+const JsArrays = React.lazy(() => import('./js/JsArrays'));
+const JsDates = React.lazy(() => import('./js/JsDates'));
+const JsMath = React.lazy(() => import('./js/JsMath'));
+const JsBooleans = React.lazy(() => import('./js/JsBooleans'));
+const JsComparisons = React.lazy(() => import('./js/JsComparisons'));
+const JsLogical = React.lazy(() => import('./js/JsLogical'));
+const JsIfElse = React.lazy(() => import('./js/JsIfElse'));
+const JsSwitch = React.lazy(() => import('./js/JsSwitch'));
+const JsLoops = React.lazy(() => import('./js/JsLoops'));
+const JsBreak = React.lazy(() => import('./js/JsBreak'));
+const JsContinue = React.lazy(() => import('./js/JsContinue'));
+const JsErrors = React.lazy(() => import('./js/JsErrors'));
+const JsScope = React.lazy(() => import('./js/JsScope'));
+const JsCodeBlocks = React.lazy(() => import('./js/JsCodeBlocks'));
+const JsUtf8Characters = React.lazy(() => import('./js/JsUtf8Characters'));
+const JsNews = React.lazy(() => import('./js/JsNews'));
+const JsKeywordsRef = React.lazy(() => import('./js/JsKeywordsRef'));
+const JsKeywordsReserved = React.lazy(() => import('./js/JsKeywordsReserved'));
+const JsComparisonOperators = React.lazy(() => import('./js/JsComparisonOperators'));
+const JsLogicalOperators = React.lazy(() => import('./js/JsLogicalOperators'));
+const JsBitwiseOperators = React.lazy(() => import('./js/JsBitwiseOperators'));
+const JsOperatorRef = React.lazy(() => import('./js/JsOperatorRef'));
+const JsOperatorPrecedence = React.lazy(() => import('./js/JsOperatorPrecedence'));
+const JsTypeof = React.lazy(() => import('./js/JsTypeof'));
+const JsToString = React.lazy(() => import('./js/JsToString'));
+const JsTypeConversion = React.lazy(() => import('./js/JsTypeConversion'));
+const JsStringMethods = React.lazy(() => import('./js/JsStringMethods'));
+const JsStringSearch = React.lazy(() => import('./js/JsStringSearch'));
+const JsStringRef = React.lazy(() => import('./js/JsStringRef'));
+const JsNumberMethods = React.lazy(() => import('./js/JsNumberMethods'));
+const JsNumberProperties = React.lazy(() => import('./js/JsNumberProperties'));
+const JsNumberRef = React.lazy(() => import('./js/JsNumberRef'));
+const JsMathRef = React.lazy(() => import('./js/JsMathRef'));
+const JsRandom = React.lazy(() => import('./js/JsRandom'));
+const JsBigInt = React.lazy(() => import('./js/JsBigInt'));
+const JsBitwise = React.lazy(() => import('./js/JsBitwise'));
+const JsDateFormats = React.lazy(() => import('./js/JsDateFormats'));
+const JsDateGet = React.lazy(() => import('./js/JsDateGet'));
+const JsDateSet = React.lazy(() => import('./js/JsDateSet'));
+const JsDateRef = React.lazy(() => import('./js/JsDateRef'));
+const JsArrayMethods = React.lazy(() => import('./js/JsArrayMethods'));
+const JsArraySearch = React.lazy(() => import('./js/JsArraySearch'));
+const JsArraySort = React.lazy(() => import('./js/JsArraySort'));
+const JsArrayIterations = React.lazy(() => import('./js/JsArrayIterations'));
+const JsArrayRef = React.lazy(() => import('./js/JsArrayRef'));
+const JsArrayConst = React.lazy(() => import('./js/JsArrayConst'));
+const JsFunctionDefinitions = React.lazy(() => import('./js/JsFunctionDefinitions'));
+const JsFunctionArrows = React.lazy(() => import('./js/JsFunctionArrows'));
+const JsFunctionParameters = React.lazy(() => import('./js/JsFunctionParameters'));
+const JsFunctionInvocation = React.lazy(() => import('./js/JsFunctionInvocation'));
+const JsFunctionThis = React.lazy(() => import('./js/JsFunctionThis'));
+const JsFunctionCall = React.lazy(() => import('./js/JsFunctionCall'));
+const JsFunctionApply = React.lazy(() => import('./js/JsFunctionApply'));
+const JsFunctionBind = React.lazy(() => import('./js/JsFunctionBind'));
+const JsFunctionClosures = React.lazy(() => import('./js/JsFunctionClosures'));
+const JsObjectDefinitions = React.lazy(() => import('./js/JsObjectDefinitions'));
+const JsObjectProperties = React.lazy(() => import('./js/JsObjectProperties'));
+const JsObjectMethods = React.lazy(() => import('./js/JsObjectMethods'));
+const JsObjectDisplay = React.lazy(() => import('./js/JsObjectDisplay'));
+const JsObjectConstructors = React.lazy(() => import('./js/JsObjectConstructors'));
+const JsObjectThis = React.lazy(() => import('./js/JsObjectThis'));
+const JsObjectDestructuring = React.lazy(() => import('./js/JsObjectDestructuring'));
+const JsObjectPrototypes = React.lazy(() => import('./js/JsObjectPrototypes'));
+const JsObjectIterations = React.lazy(() => import('./js/JsObjectIterations'));
+const JsObjectManagement = React.lazy(() => import('./js/JsObjectManagement'));
+const JsObjectGetSet = React.lazy(() => import('./js/JsObjectGetSet'));
+const JsObjectProtection = React.lazy(() => import('./js/JsObjectProtection'));
+const JsObjectRef = React.lazy(() => import('./js/JsObjectRef'));
+const JsClasses = React.lazy(() => import('./js/JsClasses'));
+const JsClassInheritance = React.lazy(() => import('./js/JsClassInheritance'));
+const JsClassStatic = React.lazy(() => import('./js/JsClassStatic'));
+const JsSets = React.lazy(() => import('./js/JsSets'));
+const JsSetMethods = React.lazy(() => import('./js/JsSetMethods'));
+const JsSetLogic = React.lazy(() => import('./js/JsSetLogic'));
+const JsSetWeakSet = React.lazy(() => import('./js/JsSetWeakSet'));
+const JsSetRef = React.lazy(() => import('./js/JsSetRef'));
+const JsMaps = React.lazy(() => import('./js/JsMaps'));
+const JsMapMethods = React.lazy(() => import('./js/JsMapMethods'));
+const JsMapWeakMap = React.lazy(() => import('./js/JsMapWeakMap'));
+const JsMapRef = React.lazy(() => import('./js/JsMapRef'));
+const JsLoopFor = React.lazy(() => import('./js/JsLoopFor'));
+const JsLoopWhile = React.lazy(() => import('./js/JsLoopWhile'));
+const JsLoopForIn = React.lazy(() => import('./js/JsLoopForIn'));
+const JsLoopForOf = React.lazy(() => import('./js/JsLoopForOf'));
+const JsIterables = React.lazy(() => import('./js/JsIterables'));
+const JsIterators = React.lazy(() => import('./js/JsIterators'));
+const JsGenerators = React.lazy(() => import('./js/JsGenerators'));
+const JsRegExp = React.lazy(() => import('./js/JsRegExp'));
+const JsRegExpFlags = React.lazy(() => import('./js/JsRegExpFlags'));
+const JsRegExpClasses = React.lazy(() => import('./js/JsRegExpClasses'));
+const JsRegExpMetachars = React.lazy(() => import('./js/JsRegExpMetachars'));
+const JsRegExpAssertions = React.lazy(() => import('./js/JsRegExpAssertions'));
+const JsRegExpQuantifiers = React.lazy(() => import('./js/JsRegExpQuantifiers'));
+const JsRegExpPatterns = React.lazy(() => import('./js/JsRegExpPatterns'));
+const JsRegExpObjects = React.lazy(() => import('./js/JsRegExpObjects'));
+const JsRegExpMethods = React.lazy(() => import('./js/JsRegExpMethods'));
+const JsTypedArrays = React.lazy(() => import('./js/JsTypedArrays'));
+const JsTypedMethods = React.lazy(() => import('./js/JsTypedMethods'));
+const JsTypedRef = React.lazy(() => import('./js/JsTypedRef'));
+const JsCallbacks = React.lazy(() => import('./js/JsCallbacks'));
+const JsAsynchronous = React.lazy(() => import('./js/JsAsynchronous'));
+const JsPromises = React.lazy(() => import('./js/JsPromises'));
+const JsAsyncAwait = React.lazy(() => import('./js/JsAsyncAwait'));
+const JsStrictMode = React.lazy(() => import('./js/JsStrictMode'));
+const JsScopes = React.lazy(() => import('./js/JsScopes'));
+const JsHoisting = React.lazy(() => import('./js/JsHoisting'));
+const JsDebugging = React.lazy(() => import('./js/JsDebugging'));
+const JsModules = React.lazy(() => import('./js/JsModules'));
+const JsStyleGuide = React.lazy(() => import('./js/JsStyleGuide'));
+const JsBestPractices = React.lazy(() => import('./js/JsBestPractices'));
+const JsMistakes = React.lazy(() => import('./js/JsMistakes'));
+const JsPerformance = React.lazy(() => import('./js/JsPerformance'));
+const DomIntro = React.lazy(() => import('./js/DomIntro'));
+const DomMethods = React.lazy(() => import('./js/DomMethods'));
+const DomDocument = React.lazy(() => import('./js/DomDocument'));
+const DomElements = React.lazy(() => import('./js/DomElements'));
+const DomHtml = React.lazy(() => import('./js/DomHtml'));
+const DomForms = React.lazy(() => import('./js/DomForms'));
+const DomCss = React.lazy(() => import('./js/DomCss'));
+const DomAnimations = React.lazy(() => import('./js/DomAnimations'));
+const DomEventListener = React.lazy(() => import('./js/DomEventListener'));
+const DomNavigation = React.lazy(() => import('./js/DomNavigation'));
+const DomNodes = React.lazy(() => import('./js/DomNodes'));
+const DomCollections = React.lazy(() => import('./js/DomCollections'));
+const DomNodeLists = React.lazy(() => import('./js/DomNodeLists'));
+const JsWindow = React.lazy(() => import('./js/JsWindow'));
+const JsScreen = React.lazy(() => import('./js/JsScreen'));
+const JsLocation = React.lazy(() => import('./js/JsLocation'));
+const JsHistory = React.lazy(() => import('./js/JsHistory'));
+const JsNavigator = React.lazy(() => import('./js/JsNavigator'));
+const JsPopupAlert = React.lazy(() => import('./js/JsPopupAlert'));
+const JsTiming = React.lazy(() => import('./js/JsTiming'));
+const JsCookies = React.lazy(() => import('./js/JsCookies'));
+const WebApiIntro = React.lazy(() => import('./js/WebApiIntro'));
+const WebValidationApi = React.lazy(() => import('./js/WebValidationApi'));
+const WebHistoryApi = React.lazy(() => import('./js/WebHistoryApi'));
+const WebStorageApi = React.lazy(() => import('./js/WebStorageApi'));
+const WebWorkerApi = React.lazy(() => import('./js/WebWorkerApi'));
+const WebFetchApi = React.lazy(() => import('./js/WebFetchApi'));
+const WebGeolocationApi = React.lazy(() => import('./js/WebGeolocationApi'));
+const AjaxIntro = React.lazy(() => import('./js/AjaxIntro'));
+const AjaxXmlHttp = React.lazy(() => import('./js/AjaxXmlHttp'));
+const AjaxRequest = React.lazy(() => import('./js/AjaxRequest'));
+const AjaxResponse = React.lazy(() => import('./js/AjaxResponse'));
+const AjaxXmlFile = React.lazy(() => import('./js/AjaxXmlFile'));
+const AjaxPhp = React.lazy(() => import('./js/AjaxPhp'));
+const AjaxAsp = React.lazy(() => import('./js/AjaxAsp'));
+const AjaxDatabase = React.lazy(() => import('./js/AjaxDatabase'));
+const AjaxApplications = React.lazy(() => import('./js/AjaxApplications'));
+const AjaxExamples = React.lazy(() => import('./js/AjaxExamples'));
+const JsonIntro = React.lazy(() => import('./js/JsonIntro'));
+const JsonSyntax = React.lazy(() => import('./js/JsonSyntax'));
+const JsonVsXml = React.lazy(() => import('./js/JsonVsXml'));
+const JsonDataTypes = React.lazy(() => import('./js/JsonDataTypes'));
+const JsonParse = React.lazy(() => import('./js/JsonParse'));
+const JsonStringify = React.lazy(() => import('./js/JsonStringify'));
+const JsonObjects = React.lazy(() => import('./js/JsonObjects'));
+const JsonArrays = React.lazy(() => import('./js/JsonArrays'));
+const JsonServer = React.lazy(() => import('./js/JsonServer'));
+const JsonPhp = React.lazy(() => import('./js/JsonPhp'));
+const JsonHtml = React.lazy(() => import('./js/JsonHtml'));
+const JsonJsonp = React.lazy(() => import('./js/JsonJsonp'));
+const JquerySelectors = React.lazy(() => import('./js/JquerySelectors'));
+const JqueryHtml = React.lazy(() => import('./js/JqueryHtml'));
+const JqueryCss = React.lazy(() => import('./js/JqueryCss'));
+const JqueryDom = React.lazy(() => import('./js/JqueryDom'));
+const JsGraphics = React.lazy(() => import('./js/JsGraphics'));
+const JsCanvas = React.lazy(() => import('./js/JsCanvas'));
+const JsPlotly = React.lazy(() => import('./js/JsPlotly'));
+const JsChartJs = React.lazy(() => import('./js/JsChartJs'));
+const JsGoogleChart = React.lazy(() => import('./js/JsGoogleChart'));
+const JsD3Js = React.lazy(() => import('./js/JsD3Js'));
+const JsHtmlInput = React.lazy(() => import('./js/JsHtmlInput'));
+const JsHtmlObjects = React.lazy(() => import('./js/JsHtmlObjects'));
+const JsHtmlEventsRef = React.lazy(() => import('./js/JsHtmlEventsRef'));
+const DomObjectsRef = React.lazy(() => import('./js/DomObjectsRef'));
 
 // SQL Tutorial Topics
-import SqlHome from './sql/SqlHome';
-import SqlIntro from './sql/SqlIntro';
-import SqlSyntax from './sql/SqlSyntax';
-import SqlSelect from './sql/SqlSelect';
-import SqlSelectDistinct from './sql/SqlSelectDistinct';
-import SqlWhere from './sql/SqlWhere';
-import SqlOrderBy from './sql/SqlOrderBy';
-import SqlAnd from './sql/SqlAnd';
-import SqlOr from './sql/SqlOr';
-import SqlNot from './sql/SqlNot';
-import SqlInsertInto from './sql/SqlInsertInto';
-import SqlNullValues from './sql/SqlNullValues';
-import SqlUpdate from './sql/SqlUpdate';
-import SqlDelete from './sql/SqlDelete';
-import SqlSelectTop from './sql/SqlSelectTop';
-import SqlAggregateFunctions from './sql/SqlAggregateFunctions';
-import SqlMinAndMax from './sql/SqlMinAndMax';
-import SqlCount from './sql/SqlCount';
-import SqlSum from './sql/SqlSum';
-import SqlAvg from './sql/SqlAvg';
-import SqlLike from './sql/SqlLike';
-import SqlWildcards from './sql/SqlWildcards';
-import SqlIn from './sql/SqlIn';
-import SqlBetween from './sql/SqlBetween';
-import SqlAliases from './sql/SqlAliases';
-import SqlJoins from './sql/SqlJoins';
-import SqlInnerJoin from './sql/SqlInnerJoin';
-import SqlLeftJoin from './sql/SqlLeftJoin';
-import SqlRightJoin from './sql/SqlRightJoin';
-import SqlFullJoin from './sql/SqlFullJoin';
-import SqlSelfJoin from './sql/SqlSelfJoin';
-import SqlUnion from './sql/SqlUnion';
-import SqlUnionAll from './sql/SqlUnionAll';
-import SqlGroupBy from './sql/SqlGroupBy';
-import SqlHaving from './sql/SqlHaving';
-import SqlExists from './sql/SqlExists';
-import SqlAnyAll from './sql/SqlAnyAll';
-import SqlSelectInto from './sql/SqlSelectInto';
-import SqlInsertIntoSelect from './sql/SqlInsertIntoSelect';
-import SqlCase from './sql/SqlCase';
-import SqlNullFunctions from './sql/SqlNullFunctions';
-import SqlStoredProcedures from './sql/SqlStoredProcedures';
-import SqlComments from './sql/SqlComments';
-import SqlOperators from './sql/SqlOperators';
-import SqlCreateDb from './sql/SqlCreateDb';
-import SqlDropDb from './sql/SqlDropDb';
-import SqlBackupDb from './sql/SqlBackupDb';
-import SqlCreateTable from './sql/SqlCreateTable';
-import SqlDropTable from './sql/SqlDropTable';
-import SqlAlterTable from './sql/SqlAlterTable';
-import SqlConstraints from './sql/SqlConstraints';
-import SqlNotNull from './sql/SqlNotNull';
-import SqlUnique from './sql/SqlUnique';
-import SqlPrimaryKey from './sql/SqlPrimaryKey';
-import SqlForeignKey from './sql/SqlForeignKey';
-import SqlCheck from './sql/SqlCheck';
-import SqlDefault from './sql/SqlDefault';
-import SqlIndex from './sql/SqlIndex';
-import SqlAutoIncrement from './sql/SqlAutoIncrement';
-import SqlDates from './sql/SqlDates';
-import SqlViews from './sql/SqlViews';
-import SqlInjection from './sql/SqlInjection';
-import SqlHosting from './sql/SqlHosting';
-import SqlDataTypes from './sql/SqlDataTypes';
-import SqlKeywords from './sql/SqlKeywords';
-import MySqlFunctions from './sql/MySqlFunctions';
-import SqlServerFunctions from './sql/SqlServerFunctions';
-import MsAccessFunctions from './sql/MsAccessFunctions';
-import SqlQuickRef from './sql/SqlQuickRef';
-import SqlExamples from './sql/SqlExamples';
-import SqlEditor from './sql/SqlEditor';
-import SqlExercises from './sql/SqlExercises';
-import SqlServer from './sql/SqlServer';
-import SqlSyllabus from './sql/SqlSyllabus';
-import SqlStudyPlan from './sql/SqlStudyPlan';
-import SqlBootcamp from './sql/SqlBootcamp';
-import SqlCertificate from './sql/SqlCertificate';
-import SqlTraining from './sql/SqlTraining';
+const SqlHome = React.lazy(() => import('./sql/SqlHome'));
+const SqlIntro = React.lazy(() => import('./sql/SqlIntro'));
+const SqlSyntax = React.lazy(() => import('./sql/SqlSyntax'));
+const SqlSelect = React.lazy(() => import('./sql/SqlSelect'));
+const SqlSelectDistinct = React.lazy(() => import('./sql/SqlSelectDistinct'));
+const SqlWhere = React.lazy(() => import('./sql/SqlWhere'));
+const SqlOrderBy = React.lazy(() => import('./sql/SqlOrderBy'));
+const SqlAnd = React.lazy(() => import('./sql/SqlAnd'));
+const SqlOr = React.lazy(() => import('./sql/SqlOr'));
+const SqlNot = React.lazy(() => import('./sql/SqlNot'));
+const SqlInsertInto = React.lazy(() => import('./sql/SqlInsertInto'));
+const SqlNullValues = React.lazy(() => import('./sql/SqlNullValues'));
+const SqlUpdate = React.lazy(() => import('./sql/SqlUpdate'));
+const SqlDelete = React.lazy(() => import('./sql/SqlDelete'));
+const SqlSelectTop = React.lazy(() => import('./sql/SqlSelectTop'));
+const SqlAggregateFunctions = React.lazy(() => import('./sql/SqlAggregateFunctions'));
+const SqlMinAndMax = React.lazy(() => import('./sql/SqlMinAndMax'));
+const SqlCount = React.lazy(() => import('./sql/SqlCount'));
+const SqlSum = React.lazy(() => import('./sql/SqlSum'));
+const SqlAvg = React.lazy(() => import('./sql/SqlAvg'));
+const SqlLike = React.lazy(() => import('./sql/SqlLike'));
+const SqlWildcards = React.lazy(() => import('./sql/SqlWildcards'));
+const SqlIn = React.lazy(() => import('./sql/SqlIn'));
+const SqlBetween = React.lazy(() => import('./sql/SqlBetween'));
+const SqlAliases = React.lazy(() => import('./sql/SqlAliases'));
+const SqlJoins = React.lazy(() => import('./sql/SqlJoins'));
+const SqlInnerJoin = React.lazy(() => import('./sql/SqlInnerJoin'));
+const SqlLeftJoin = React.lazy(() => import('./sql/SqlLeftJoin'));
+const SqlRightJoin = React.lazy(() => import('./sql/SqlRightJoin'));
+const SqlFullJoin = React.lazy(() => import('./sql/SqlFullJoin'));
+const SqlSelfJoin = React.lazy(() => import('./sql/SqlSelfJoin'));
+const SqlUnion = React.lazy(() => import('./sql/SqlUnion'));
+const SqlUnionAll = React.lazy(() => import('./sql/SqlUnionAll'));
+const SqlGroupBy = React.lazy(() => import('./sql/SqlGroupBy'));
+const SqlHaving = React.lazy(() => import('./sql/SqlHaving'));
+const SqlExists = React.lazy(() => import('./sql/SqlExists'));
+const SqlAnyAll = React.lazy(() => import('./sql/SqlAnyAll'));
+const SqlSelectInto = React.lazy(() => import('./sql/SqlSelectInto'));
+const SqlInsertIntoSelect = React.lazy(() => import('./sql/SqlInsertIntoSelect'));
+const SqlCase = React.lazy(() => import('./sql/SqlCase'));
+const SqlNullFunctions = React.lazy(() => import('./sql/SqlNullFunctions'));
+const SqlStoredProcedures = React.lazy(() => import('./sql/SqlStoredProcedures'));
+const SqlComments = React.lazy(() => import('./sql/SqlComments'));
+const SqlOperators = React.lazy(() => import('./sql/SqlOperators'));
+const SqlCreateDb = React.lazy(() => import('./sql/SqlCreateDb'));
+const SqlDropDb = React.lazy(() => import('./sql/SqlDropDb'));
+const SqlBackupDb = React.lazy(() => import('./sql/SqlBackupDb'));
+const SqlCreateTable = React.lazy(() => import('./sql/SqlCreateTable'));
+const SqlDropTable = React.lazy(() => import('./sql/SqlDropTable'));
+const SqlAlterTable = React.lazy(() => import('./sql/SqlAlterTable'));
+const SqlConstraints = React.lazy(() => import('./sql/SqlConstraints'));
+const SqlNotNull = React.lazy(() => import('./sql/SqlNotNull'));
+const SqlUnique = React.lazy(() => import('./sql/SqlUnique'));
+const SqlPrimaryKey = React.lazy(() => import('./sql/SqlPrimaryKey'));
+const SqlForeignKey = React.lazy(() => import('./sql/SqlForeignKey'));
+const SqlCheck = React.lazy(() => import('./sql/SqlCheck'));
+const SqlDefault = React.lazy(() => import('./sql/SqlDefault'));
+const SqlIndex = React.lazy(() => import('./sql/SqlIndex'));
+const SqlAutoIncrement = React.lazy(() => import('./sql/SqlAutoIncrement'));
+const SqlDates = React.lazy(() => import('./sql/SqlDates'));
+const SqlViews = React.lazy(() => import('./sql/SqlViews'));
+const SqlInjection = React.lazy(() => import('./sql/SqlInjection'));
+const SqlHosting = React.lazy(() => import('./sql/SqlHosting'));
+const SqlDataTypes = React.lazy(() => import('./sql/SqlDataTypes'));
+const SqlKeywords = React.lazy(() => import('./sql/SqlKeywords'));
+const MySqlFunctions = React.lazy(() => import('./sql/MySqlFunctions'));
+const SqlServerFunctions = React.lazy(() => import('./sql/SqlServerFunctions'));
+const MsAccessFunctions = React.lazy(() => import('./sql/MsAccessFunctions'));
+const SqlQuickRef = React.lazy(() => import('./sql/SqlQuickRef'));
+const SqlExamples = React.lazy(() => import('./sql/SqlExamples'));
+const SqlEditor = React.lazy(() => import('./sql/SqlEditor'));
+const SqlExercises = React.lazy(() => import('./sql/SqlExercises'));
+const SqlServer = React.lazy(() => import('./sql/SqlServer'));
+const SqlSyllabus = React.lazy(() => import('./sql/SqlSyllabus'));
+const SqlStudyPlan = React.lazy(() => import('./sql/SqlStudyPlan'));
+const SqlBootcamp = React.lazy(() => import('./sql/SqlBootcamp'));
+const SqlCertificate = React.lazy(() => import('./sql/SqlCertificate'));
+const SqlTraining = React.lazy(() => import('./sql/SqlTraining'));
 
 // Python Tutorial Topics
-import PythonHome from './python/PythonHome';
-import PythonIntro from './python/PythonIntro';
-import PythonGetStarted from './python/PythonGetStarted';
-import PythonSyntax from './python/PythonSyntax';
-import PythonComments from './python/PythonComments';
-import PythonVariables from './python/PythonVariables';
-import PythonDataTypes from './python/PythonDataTypes';
-import PythonNumbers from './python/PythonNumbers';
-import PythonCasting from './python/PythonCasting';
-import PythonStrings from './python/PythonStrings';
-import PythonBooleans from './python/PythonBooleans';
-import PythonOperators from './python/PythonOperators';
-import PythonLists from './python/PythonLists';
-import PythonTuples from './python/PythonTuples';
-import PythonSets from './python/PythonSets';
-import PythonDictionaries from './python/PythonDictionaries';
-import PythonIfElse from './python/PythonIfElse';
-import PythonMatch from './python/PythonMatch';
-import PythonWhileLoops from './python/PythonWhileLoops';
-import PythonForLoops from './python/PythonForLoops';
-import PythonFunctions from './python/PythonFunctions';
-import PythonDecorators from './python/PythonDecorators';
-import PythonRange from './python/PythonRange';
-import PythonLambda from './python/PythonLambda';
-import PythonArrays from './python/PythonArrays';
-import PythonOOP from './python/PythonOOP';
-import PythonClassesObjects from './python/PythonClassesObjects';
-import PythonInheritance from './python/PythonInheritance';
-import PythonIterators from './python/PythonIterators';
-import PythonPolymorphism from './python/PythonPolymorphism';
-import PythonScope from './python/PythonScope';
-import PythonModules from './python/PythonModules';
-import PythonDates from './python/PythonDates';
-import PythonMath from './python/PythonMath';
-import PythonJSON from './python/PythonJSON';
-import PythonRegEx from './python/PythonRegEx';
-import PythonPIP from './python/PythonPIP';
-import PythonTryExcept from './python/PythonTryExcept';
-import PythonStringFormatting from './python/PythonStringFormatting';
-import PythonNone from './python/PythonNone';
-import PythonUserInput from './python/PythonUserInput';
-import PythonVirtualEnv from './python/PythonVirtualEnv';
-import PythonFileHandling from './python/PythonFileHandling';
-import PythonReadFiles from './python/PythonReadFiles';
-import PythonWriteCreateFiles from './python/PythonWriteCreateFiles';
-import PythonDeleteFiles from './python/PythonDeleteFiles';
+const PythonHome = React.lazy(() => import('./python/PythonHome'));
+const PythonIntro = React.lazy(() => import('./python/PythonIntro'));
+const PythonGetStarted = React.lazy(() => import('./python/PythonGetStarted'));
+const PythonSyntax = React.lazy(() => import('./python/PythonSyntax'));
+const PythonComments = React.lazy(() => import('./python/PythonComments'));
+const PythonVariables = React.lazy(() => import('./python/PythonVariables'));
+const PythonDataTypes = React.lazy(() => import('./python/PythonDataTypes'));
+const PythonNumbers = React.lazy(() => import('./python/PythonNumbers'));
+const PythonCasting = React.lazy(() => import('./python/PythonCasting'));
+const PythonStrings = React.lazy(() => import('./python/PythonStrings'));
+const PythonBooleans = React.lazy(() => import('./python/PythonBooleans'));
+const PythonOperators = React.lazy(() => import('./python/PythonOperators'));
+const PythonLists = React.lazy(() => import('./python/PythonLists'));
+const PythonTuples = React.lazy(() => import('./python/PythonTuples'));
+const PythonSets = React.lazy(() => import('./python/PythonSets'));
+const PythonDictionaries = React.lazy(() => import('./python/PythonDictionaries'));
+const PythonIfElse = React.lazy(() => import('./python/PythonIfElse'));
+const PythonMatch = React.lazy(() => import('./python/PythonMatch'));
+const PythonWhileLoops = React.lazy(() => import('./python/PythonWhileLoops'));
+const PythonForLoops = React.lazy(() => import('./python/PythonForLoops'));
+const PythonFunctions = React.lazy(() => import('./python/PythonFunctions'));
+const PythonDecorators = React.lazy(() => import('./python/PythonDecorators'));
+const PythonRange = React.lazy(() => import('./python/PythonRange'));
+const PythonLambda = React.lazy(() => import('./python/PythonLambda'));
+const PythonArrays = React.lazy(() => import('./python/PythonArrays'));
+const PythonOOP = React.lazy(() => import('./python/PythonOOP'));
+const PythonClassesObjects = React.lazy(() => import('./python/PythonClassesObjects'));
+const PythonInheritance = React.lazy(() => import('./python/PythonInheritance'));
+const PythonIterators = React.lazy(() => import('./python/PythonIterators'));
+const PythonPolymorphism = React.lazy(() => import('./python/PythonPolymorphism'));
+const PythonScope = React.lazy(() => import('./python/PythonScope'));
+const PythonModules = React.lazy(() => import('./python/PythonModules'));
+const PythonDates = React.lazy(() => import('./python/PythonDates'));
+const PythonMath = React.lazy(() => import('./python/PythonMath'));
+const PythonJSON = React.lazy(() => import('./python/PythonJSON'));
+const PythonRegEx = React.lazy(() => import('./python/PythonRegEx'));
+const PythonPIP = React.lazy(() => import('./python/PythonPIP'));
+const PythonTryExcept = React.lazy(() => import('./python/PythonTryExcept'));
+const PythonStringFormatting = React.lazy(() => import('./python/PythonStringFormatting'));
+const PythonNone = React.lazy(() => import('./python/PythonNone'));
+const PythonUserInput = React.lazy(() => import('./python/PythonUserInput'));
+const PythonVirtualEnv = React.lazy(() => import('./python/PythonVirtualEnv'));
+const PythonFileHandling = React.lazy(() => import('./python/PythonFileHandling'));
+const PythonReadFiles = React.lazy(() => import('./python/PythonReadFiles'));
+const PythonWriteCreateFiles = React.lazy(() => import('./python/PythonWriteCreateFiles'));
+const PythonDeleteFiles = React.lazy(() => import('./python/PythonDeleteFiles'));
 
 
 // Numpy Tutorial Topics
 
-import NumpyHome from './numpy/NumpyHome';
-import NumpyIntro from './numpy/NumpyIntro';
+const NumpyHome = React.lazy(() => import('./numpy/NumpyHome'));
+const NumpyIntro = React.lazy(() => import('./numpy/NumpyIntro'));
 
 
 // Pandas Tutorial Topics
 
-import PandasHome from './pandas/PandasHome';
-import PandasIntro from './pandas/PandasIntro';
+const PandasHome = React.lazy(() => import('./pandas/PandasHome'));
+const PandasIntro = React.lazy(() => import('./pandas/PandasIntro'));
 
 
 // MatplotLib Tutorial Topics
 
-import MatplotlibHome from './matplotlib/MatplotlibHome';
-import MatplotlibIntro from './matplotlib/MatplotlibIntro';
+const MatplotlibHome = React.lazy(() => import('./matplotlib/MatplotLibHome'));
+const MatplotlibIntro = React.lazy(() => import('./matplotlib/MatplotLibIntro'));
 // Seaborn Tutorial Topics
 
-import SeabornHome from './seaborn/SeabornHome';
-import SeabornIntro from './seaborn/SeabornIntro';
-import NumpyMathOperations from './numpy/MathematicalOperations';
+const SeabornHome = React.lazy(() => import('./seaborn/SeabornHome'));
+const SeabornIntro = React.lazy(() => import('./seaborn/SeabornIntro'));
+const NumpyMathOperations = React.lazy(() => import('./numpy/MathematicalOperations'));
 export const HTML_TUTORIAL_DATA: SidebarSection[] = [
   {
     title: 'HTML Tutorial',
@@ -532,6 +534,7 @@ export const HTML_TUTORIAL_DATA: SidebarSection[] = [
       { id: 'html_home', title: 'HTML HOME', content: <HtmlHome /> },
       { id: 'html_introduction', title: 'HTML Introduction', content: <HtmlIntroduction /> },
       { id: 'html_editors', title: 'HTML Editors', content: <HtmlEditors /> },
+      { id: 'html_intro_quiz', title: 'HTML Intro Quiz', content: <HtmlIntroQuiz /> },
       { id: 'html_basic', title: 'HTML Basic', content: <HtmlBasic /> },
       { id: 'html_elements', title: 'HTML Elements', content: <HtmlElements /> },
       { id: 'html_attributes', title: 'HTML Attributes', content: <HtmlAttributes /> },
@@ -647,6 +650,7 @@ export const CSS_TUTORIAL_DATA: SidebarSection[] = [
       { id: 'css_introduction', title: 'CSS Introduction', content: <CssIntroduction /> },
       { id: 'css_syntax', title: 'CSS Syntax', content: <CssSyntax /> },
       { id: 'css_selectors', title: 'CSS Selectors', content: <CssSelectors /> },
+      { id: 'css_intro_quiz', title: 'CSS Intro Quiz', content: <CssIntroQuiz /> },
       { id: 'css_how_to', title: 'CSS How To', content: <CssHowTo /> },
       { id: 'css_comments', title: 'CSS Comments', content: <CssComments /> },
       { id: 'css_errors', title: 'CSS Errors', content: <CssErrors /> },
@@ -1157,188 +1161,188 @@ export const SQL_TUTORIAL_DATA: SidebarSection[] = [
   {
     title: 'SQL Database',
     topics: [
-        { id: 'sql_create_db', title: 'SQL Create DB', content: <SqlCreateDb /> },
-        { id: 'sql_drop_db', title: 'SQL Drop DB', content: <SqlDropDb /> },
-        { id: 'sql_backup_db', title: 'SQL Backup DB', content: <SqlBackupDb /> },
-        { id: 'sql_create_table', title: 'SQL Create Table', content: <SqlCreateTable /> },
-        { id: 'sql_drop_table', title: 'SQL Drop Table', content: <SqlDropTable /> },
-        { id: 'sql_alter_table', title: 'SQL Alter Table', content: <SqlAlterTable /> },
-        { id: 'sql_constraints', title: 'SQL Constraints', content: <SqlConstraints /> },
-        { id: 'sql_not_null', title: 'SQL Not Null', content: <SqlNotNull /> },
-        { id: 'sql_unique', title: 'SQL Unique', content: <SqlUnique /> },
-        { id: 'sql_primary_key', title: 'SQL Primary Key', content: <SqlPrimaryKey /> },
-        { id: 'sql_foreign_key', title: 'SQL Foreign Key', content: <SqlForeignKey /> },
-        { id: 'sql_check', title: 'SQL Check', content: <SqlCheck /> },
-        { id: 'sql_default', title: 'SQL Default', content: <SqlDefault /> },
-        { id: 'sql_index', title: 'SQL Index', content: <SqlIndex /> },
-        { id: 'sql_auto_increment', title: 'SQL Auto Increment', content: <SqlAutoIncrement /> },
-        { id: 'sql_dates', title: 'SQL Dates', content: <SqlDates /> },
-        { id: 'sql_views', title: 'SQL Views', content: <SqlViews /> },
-        { id: 'sql_injection', title: 'SQL Injection', content: <SqlInjection /> },
-        { id: 'sql_hosting', title: 'SQL Hosting', content: <SqlHosting /> },
-        { id: 'sql_data_types', title: 'SQL Data Types', content: <SqlDataTypes /> },
+      { id: 'sql_create_db', title: 'SQL Create DB', content: <SqlCreateDb /> },
+      { id: 'sql_drop_db', title: 'SQL Drop DB', content: <SqlDropDb /> },
+      { id: 'sql_backup_db', title: 'SQL Backup DB', content: <SqlBackupDb /> },
+      { id: 'sql_create_table', title: 'SQL Create Table', content: <SqlCreateTable /> },
+      { id: 'sql_drop_table', title: 'SQL Drop Table', content: <SqlDropTable /> },
+      { id: 'sql_alter_table', title: 'SQL Alter Table', content: <SqlAlterTable /> },
+      { id: 'sql_constraints', title: 'SQL Constraints', content: <SqlConstraints /> },
+      { id: 'sql_not_null', title: 'SQL Not Null', content: <SqlNotNull /> },
+      { id: 'sql_unique', title: 'SQL Unique', content: <SqlUnique /> },
+      { id: 'sql_primary_key', title: 'SQL Primary Key', content: <SqlPrimaryKey /> },
+      { id: 'sql_foreign_key', title: 'SQL Foreign Key', content: <SqlForeignKey /> },
+      { id: 'sql_check', title: 'SQL Check', content: <SqlCheck /> },
+      { id: 'sql_default', title: 'SQL Default', content: <SqlDefault /> },
+      { id: 'sql_index', title: 'SQL Index', content: <SqlIndex /> },
+      { id: 'sql_auto_increment', title: 'SQL Auto Increment', content: <SqlAutoIncrement /> },
+      { id: 'sql_dates', title: 'SQL Dates', content: <SqlDates /> },
+      { id: 'sql_views', title: 'SQL Views', content: <SqlViews /> },
+      { id: 'sql_injection', title: 'SQL Injection', content: <SqlInjection /> },
+      { id: 'sql_hosting', title: 'SQL Hosting', content: <SqlHosting /> },
+      { id: 'sql_data_types', title: 'SQL Data Types', content: <SqlDataTypes /> },
     ]
   },
   {
     title: 'SQL References',
     topics: [
-        { id: 'sql_keywords', title: 'SQL Keywords', content: <SqlKeywords /> },
-        { id: 'mysql_functions', title: 'MySQL Functions', content: <MySqlFunctions /> },
-        { id: 'sql_server_functions', title: 'SQL Server Functions', content: <SqlServerFunctions /> },
-        { id: 'ms_access_functions', title: 'MS Access Functions', content: <MsAccessFunctions /> },
-        { id: 'sql_quick_ref', title: 'SQL Quick Ref', content: <SqlQuickRef /> },
+      { id: 'sql_keywords', title: 'SQL Keywords', content: <SqlKeywords /> },
+      { id: 'mysql_functions', title: 'MySQL Functions', content: <MySqlFunctions /> },
+      { id: 'sql_server_functions', title: 'SQL Server Functions', content: <SqlServerFunctions /> },
+      { id: 'ms_access_functions', title: 'MS Access Functions', content: <MsAccessFunctions /> },
+      { id: 'sql_quick_ref', title: 'SQL Quick Ref', content: <SqlQuickRef /> },
     ]
   },
   {
     title: 'SQL Examples',
     topics: [
-        { id: 'sql_examples', title: 'SQL Examples', content: <SqlExamples /> },
-        { id: 'sql_editor', title: 'SQL Editor', content: <SqlEditor /> },
-        { id: 'sql_exercises', title: 'SQL Exercises', content: <SqlExercises /> },
-        { id: 'sql_server', title: 'SQL Server', content: <SqlServer /> },
-        { id: 'sql_syllabus', title: 'SQL Syllabus', content: <SqlSyllabus /> },
-        { id: 'sql_study_plan', title: 'SQL Study Plan', content: <SqlStudyPlan /> },
-        { id: 'sql_bootcamp', title: 'SQL Bootcamp', content: <SqlBootcamp /> },
-        { id: 'sql_certificate', title: 'SQL Certificate', content: <SqlCertificate /> },
-        { id: 'sql_training', title: 'SQL Training', content: <SqlTraining /> },
+      { id: 'sql_examples', title: 'SQL Examples', content: <SqlExamples /> },
+      { id: 'sql_editor', title: 'SQL Editor', content: <SqlEditor /> },
+      { id: 'sql_exercises', title: 'SQL Exercises', content: <SqlExercises /> },
+      { id: 'sql_server', title: 'SQL Server', content: <SqlServer /> },
+      { id: 'sql_syllabus', title: 'SQL Syllabus', content: <SqlSyllabus /> },
+      { id: 'sql_study_plan', title: 'SQL Study Plan', content: <SqlStudyPlan /> },
+      { id: 'sql_bootcamp', title: 'SQL Bootcamp', content: <SqlBootcamp /> },
+      { id: 'sql_certificate', title: 'SQL Certificate', content: <SqlCertificate /> },
+      { id: 'sql_training', title: 'SQL Training', content: <SqlTraining /> },
     ]
   }
 ];
 
 export const PYTHON_TUTORIAL_DATA: SidebarSection[] = [
-    {
-        title: 'Python Tutorial',
-        topics: [
-            { id: 'python_home', title: 'Python HOME', content: <PythonHome /> },
-            { id: 'python_intro', title: 'Python Intro', content: <PythonIntro /> },
-            { id: 'python_get_started', title: 'Python Get Started', content: <PythonGetStarted /> },
-            { id: 'python_syntax', title: 'Python Syntax', content: <PythonSyntax /> },
-            { id: 'python_comments', title: 'Python Comments', content: <PythonComments /> },
-            { id: 'python_variables', title: 'Python Variables', content: <PythonVariables /> },
-            { id: 'python_data_types', title: 'Python Data Types', content: <PythonDataTypes /> },
-            { id: 'python_numbers', title: 'Python Numbers', content: <PythonNumbers /> },
-            { id: 'python_casting', title: 'Python Casting', content: <PythonCasting /> },
-            { id: 'python_strings', title: 'Python Strings', content: <PythonStrings /> },
-            { id: 'python_booleans', title: 'Python Booleans', content: <PythonBooleans /> },
-            { id: 'python_operators', title: 'Python Operators', content: <PythonOperators /> },
-            { id: 'python_lists', title: 'Python Lists', content: <PythonLists /> },
-            { id: 'python_tuples', title: 'Python Tuples', content: <PythonTuples /> },
-            { id: 'python_sets', title: 'Python Sets', content: <PythonSets /> },
-            { id: 'python_dictionaries', title: 'Python Dictionaries', content: <PythonDictionaries /> },
-            { id: 'python_if_else', title: 'Python If...Else', content: <PythonIfElse /> },
-            { id: 'python_match', title: 'Python Match', content: <PythonMatch /> },
-            { id: 'python_while_loops', title: 'Python While Loops', content: <PythonWhileLoops /> },
-            { id: 'python_for_loops', title: 'Python For Loops', content: <PythonForLoops /> },
-            { id: 'python_functions', title: 'Python Functions', content: <PythonFunctions /> },
-            { id: 'python_decorators', title: 'Python Decorators', content: <PythonDecorators /> },
-            { id: 'python_range', title: 'Python Range', content: <PythonRange /> },
-            { id: 'python_lambda', title: 'Python Lambda', content: <PythonLambda /> },
-            { id: 'python_arrays', title: 'Python Arrays', content: <PythonArrays /> },
-            { id: 'python_oop', title: 'Python OOP', content: <PythonOOP /> },
-            { id: 'python_classes_objects', title: 'Python Classes/Objects', content: <PythonClassesObjects /> },
-            { id: 'python_inheritance', title: 'Python Inheritance', content: <PythonInheritance /> },
-            { id: 'python_iterators', title: 'Python Iterators', content: <PythonIterators /> },
-            { id: 'python_polymorphism', title: 'Python Polymorphism', content: <PythonPolymorphism /> },
-            { id: 'python_scope', title: 'Python Scope', content: <PythonScope /> },
-            { id: 'python_modules', title: 'Python Modules', content: <PythonModules /> },
-            { id: 'python_dates', title: 'Python Dates', content: <PythonDates /> },
-            { id: 'python_math', title: 'Python Math', content: <PythonMath /> },
-            { id: 'python_json', title: 'Python JSON', content: <PythonJSON /> },
-            { id: 'python_regex', title: 'Python RegEx', content: <PythonRegEx /> },
-            { id: 'python_pip', title: 'Python PIP', content: <PythonPIP /> },
-            { id: 'python_try_except', title: 'Python Try...Except', content: <PythonTryExcept /> },
-            { id: 'python_string_formatting', title: 'Python String Formatting', content: <PythonStringFormatting /> },
-            { id: 'python_none', title: 'Python None', content: <PythonNone /> },
-            { id: 'python_user_input', title: 'Python User Input', content: <PythonUserInput /> },
-            { id: 'python_virtualenv', title: 'Python VirtualEnv', content: <PythonVirtualEnv /> },
-        ]
-    },
-    {
-        title: 'File Handling',
-        topics: [
-            { id: 'python_file_handling', title: 'Python File Handling', content: <PythonFileHandling /> },
-            { id: 'python_read_files', title: 'Python Read Files', content: <PythonReadFiles /> },
-            { id: 'python_write_create_files', title: 'Python Write/Create Files', content: <PythonWriteCreateFiles /> },
-            { id: 'python_delete_files', title: 'Python Delete Files', content: <PythonDeleteFiles /> },
-        ]
-    }
+  {
+    title: 'Python Tutorial',
+    topics: [
+      { id: 'python_home', title: 'Python HOME', content: <PythonHome /> },
+      { id: 'python_intro', title: 'Python Intro', content: <PythonIntro /> },
+      { id: 'python_get_started', title: 'Python Get Started', content: <PythonGetStarted /> },
+      { id: 'python_syntax', title: 'Python Syntax', content: <PythonSyntax /> },
+      { id: 'python_comments', title: 'Python Comments', content: <PythonComments /> },
+      { id: 'python_variables', title: 'Python Variables', content: <PythonVariables /> },
+      { id: 'python_data_types', title: 'Python Data Types', content: <PythonDataTypes /> },
+      { id: 'python_numbers', title: 'Python Numbers', content: <PythonNumbers /> },
+      { id: 'python_casting', title: 'Python Casting', content: <PythonCasting /> },
+      { id: 'python_strings', title: 'Python Strings', content: <PythonStrings /> },
+      { id: 'python_booleans', title: 'Python Booleans', content: <PythonBooleans /> },
+      { id: 'python_operators', title: 'Python Operators', content: <PythonOperators /> },
+      { id: 'python_lists', title: 'Python Lists', content: <PythonLists /> },
+      { id: 'python_tuples', title: 'Python Tuples', content: <PythonTuples /> },
+      { id: 'python_sets', title: 'Python Sets', content: <PythonSets /> },
+      { id: 'python_dictionaries', title: 'Python Dictionaries', content: <PythonDictionaries /> },
+      { id: 'python_if_else', title: 'Python If...Else', content: <PythonIfElse /> },
+      { id: 'python_match', title: 'Python Match', content: <PythonMatch /> },
+      { id: 'python_while_loops', title: 'Python While Loops', content: <PythonWhileLoops /> },
+      { id: 'python_for_loops', title: 'Python For Loops', content: <PythonForLoops /> },
+      { id: 'python_functions', title: 'Python Functions', content: <PythonFunctions /> },
+      { id: 'python_decorators', title: 'Python Decorators', content: <PythonDecorators /> },
+      { id: 'python_range', title: 'Python Range', content: <PythonRange /> },
+      { id: 'python_lambda', title: 'Python Lambda', content: <PythonLambda /> },
+      { id: 'python_arrays', title: 'Python Arrays', content: <PythonArrays /> },
+      { id: 'python_oop', title: 'Python OOP', content: <PythonOOP /> },
+      { id: 'python_classes_objects', title: 'Python Classes/Objects', content: <PythonClassesObjects /> },
+      { id: 'python_inheritance', title: 'Python Inheritance', content: <PythonInheritance /> },
+      { id: 'python_iterators', title: 'Python Iterators', content: <PythonIterators /> },
+      { id: 'python_polymorphism', title: 'Python Polymorphism', content: <PythonPolymorphism /> },
+      { id: 'python_scope', title: 'Python Scope', content: <PythonScope /> },
+      { id: 'python_modules', title: 'Python Modules', content: <PythonModules /> },
+      { id: 'python_dates', title: 'Python Dates', content: <PythonDates /> },
+      { id: 'python_math', title: 'Python Math', content: <PythonMath /> },
+      { id: 'python_json', title: 'Python JSON', content: <PythonJSON /> },
+      { id: 'python_regex', title: 'Python RegEx', content: <PythonRegEx /> },
+      { id: 'python_pip', title: 'Python PIP', content: <PythonPIP /> },
+      { id: 'python_try_except', title: 'Python Try...Except', content: <PythonTryExcept /> },
+      { id: 'python_string_formatting', title: 'Python String Formatting', content: <PythonStringFormatting /> },
+      { id: 'python_none', title: 'Python None', content: <PythonNone /> },
+      { id: 'python_user_input', title: 'Python User Input', content: <PythonUserInput /> },
+      { id: 'python_virtualenv', title: 'Python VirtualEnv', content: <PythonVirtualEnv /> },
+    ]
+  },
+  {
+    title: 'File Handling',
+    topics: [
+      { id: 'python_file_handling', title: 'Python File Handling', content: <PythonFileHandling /> },
+      { id: 'python_read_files', title: 'Python Read Files', content: <PythonReadFiles /> },
+      { id: 'python_write_create_files', title: 'Python Write/Create Files', content: <PythonWriteCreateFiles /> },
+      { id: 'python_delete_files', title: 'Python Delete Files', content: <PythonDeleteFiles /> },
+    ]
+  }
 ];
 
 export const NUMPY_TUTORIAL_DATA: SidebarSection[] = [
-    {
-        title: 'Numpy Tutorial',
-        topics: [
-            { id: 'numpy_home', title: 'NumPy HOME', content: <NumpyHome/> },
-            { id: 'numpy_intro', title: 'NumPy Intro', content: <NumpyIntro/> },
-            { id: 'numpy_math_operations', title: 'NumPy Intro', content: <NumpyMathOperations/> },
-        ]
-    },
+  {
+    title: 'Numpy Tutorial',
+    topics: [
+      { id: 'numpy_home', title: 'NumPy HOME', content: <NumpyHome /> },
+      { id: 'numpy_intro', title: 'NumPy Intro', content: <NumpyIntro /> },
+      { id: 'numpy_math_operations', title: 'NumPy Intro', content: <NumpyMathOperations /> },
+    ]
+  },
 ];
 
 export const PANDAS_TUTORIAL_DATA: SidebarSection[] = [
-    {
-        title: 'Pandas Tutorial',
-        topics: [
-            { id: 'pandas_home', title: 'Pandas HOME', content: <ComingSoon/> },
-            { id: 'pandas_intro', title: 'Pandas Intro', content: <ComingSoon/> },
-        ]
-    },
+  {
+    title: 'Pandas Tutorial',
+    topics: [
+      { id: 'pandas_home', title: 'Pandas HOME', content: <ComingSoon /> },
+      { id: 'pandas_intro', title: 'Pandas Intro', content: <ComingSoon /> },
+    ]
+  },
 ];
 
 export const MATPLOTLIB_TUTORIAL_DATA: SidebarSection[] = [
-    {
-        title: 'MatplotLib Tutorial',
-        topics: [
-            { id: 'matplotlib_home', title: 'MatplotLib HOME', content: <ComingSoon/> },
-            { id: 'matplotlib_intro', title: 'MatplotLib Intro', content: <ComingSoon/> },
-        ]
-    },
+  {
+    title: 'MatplotLib Tutorial',
+    topics: [
+      { id: 'matplotlib_home', title: 'MatplotLib HOME', content: <ComingSoon /> },
+      { id: 'matplotlib_intro', title: 'MatplotLib Intro', content: <ComingSoon /> },
+    ]
+  },
 ];
 
 export const SEABORN_TUTORIAL_DATA: SidebarSection[] = [
-    {
-        title: 'Seaborn Tutorial',
-        topics: [
-            { id: 'seaborn_home', title: 'Seaborn HOME', content: <ComingSoon/> },
-            { id: 'seaborn_intro', title: 'Seaborn Intro', content: <ComingSoon /> },
-        ]
-    },
+  {
+    title: 'Seaborn Tutorial',
+    topics: [
+      { id: 'seaborn_home', title: 'Seaborn HOME', content: <ComingSoon /> },
+      { id: 'seaborn_intro', title: 'Seaborn Intro', content: <ComingSoon /> },
+    ]
+  },
 ];
 export const ALL_COURSES = {
-    html: {
-        data: HTML_TUTORIAL_DATA,
-        homeTopicId: 'html_home',
-    },
-    css: {
-        data: CSS_TUTORIAL_DATA,
-        homeTopicId: 'css_home',
-    },
-    js: {
-        data: JS_TUTORIAL_DATA,
-        homeTopicId: 'js_home',
-    },
-    sql: {
-        data: SQL_TUTORIAL_DATA,
-        homeTopicId: 'sql_home',
-    },
-    python: {
-        data: PYTHON_TUTORIAL_DATA,
-        homeTopicId: 'python_home',
-    },
-    numpy: {
-        data: NUMPY_TUTORIAL_DATA,
-        homeTopicId: 'numpy_home',
-    },
-    pandas: {
-        data: PANDAS_TUTORIAL_DATA,
-        homeTopicId: 'pandas_home',
-    },
-    matplotlib: {
-        data: MATPLOTLIB_TUTORIAL_DATA,
-        homeTopicId: 'matplotlib_home',
-    },
-    seaborn: {
-        data: SEABORN_TUTORIAL_DATA,
-        homeTopicId: 'seaborn_home',
-    },
+  html: {
+    data: HTML_TUTORIAL_DATA,
+    homeTopicId: 'html_home',
+  },
+  css: {
+    data: CSS_TUTORIAL_DATA,
+    homeTopicId: 'css_home',
+  },
+  js: {
+    data: JS_TUTORIAL_DATA,
+    homeTopicId: 'js_home',
+  },
+  sql: {
+    data: SQL_TUTORIAL_DATA,
+    homeTopicId: 'sql_home',
+  },
+  python: {
+    data: PYTHON_TUTORIAL_DATA,
+    homeTopicId: 'python_home',
+  },
+  numpy: {
+    data: NUMPY_TUTORIAL_DATA,
+    homeTopicId: 'numpy_home',
+  },
+  pandas: {
+    data: PANDAS_TUTORIAL_DATA,
+    homeTopicId: 'pandas_home',
+  },
+  matplotlib: {
+    data: MATPLOTLIB_TUTORIAL_DATA,
+    homeTopicId: 'matplotlib_home',
+  },
+  seaborn: {
+    data: SEABORN_TUTORIAL_DATA,
+    homeTopicId: 'seaborn_home',
+  },
 };
