@@ -9,7 +9,7 @@ import LoadingSpinner from './LoadingSpinner';
 const Dashboard: React.FC = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
-    const { allCompletedTopics, isLoading } = useAllProgress();
+    const { allCompletedTopics, quizScores, isLoading } = useAllProgress();
 
     if (!user) {
         return (
@@ -53,12 +53,21 @@ const Dashboard: React.FC = () => {
 
         const percentage = totalTopics > 0 ? Math.round((completedTopics / totalTopics) * 100) : 0;
 
+        // Calculate average quiz score for this course
+        const courseQuizScores = quizScores.filter(q => q.course_id === courseId);
+        let averageQuizScore = 0;
+        if (courseQuizScores.length > 0) {
+            const totalScore = courseQuizScores.reduce((acc, q) => acc + (q.score / q.total), 0);
+            averageQuizScore = Math.round((totalScore / courseQuizScores.length) * 100);
+        }
+
         return {
             id: courseId,
             name: courseId.toUpperCase(),
             total: totalTopics,
             completed: completedTopics,
             percentage,
+            averageQuizScore,
             homeUrl: `/tutorial/${courseId}/${courseData.homeTopicId}`
         };
     }).filter(stat => stat.total > 0);
@@ -103,9 +112,15 @@ const Dashboard: React.FC = () => {
                                 </div>
                             </div>
 
-                            <div className="text-sm text-gray-600 dark:text-gray-400 mb-8 flex-1 font-medium bg-gray-50/50 dark:bg-gray-900/30 rounded-xl p-3 border border-gray-100 dark:border-gray-800">
-                                <i className="fa-solid fa-graduation-cap mr-2 text-brand-500 dark:text-brand-400"></i>
-                                {stat.completed} <span className="opacity-70">of</span> {stat.total} <span className="opacity-70">topics</span>
+                            <div className="flex justify-between items-center mb-8 gap-2">
+                                <div className="text-sm text-gray-600 dark:text-gray-400 flex-1 font-medium bg-gray-50/50 dark:bg-gray-900/30 rounded-xl p-3 border border-gray-100 dark:border-gray-800">
+                                    <i className="fa-solid fa-graduation-cap mr-2 text-brand-500 dark:text-brand-400"></i>
+                                    {stat.completed} <span className="opacity-70">of</span> {stat.total}
+                                </div>
+                                <div className="text-sm text-gray-600 dark:text-gray-400 flex-1 font-medium bg-amber-50/50 dark:bg-amber-900/10 rounded-xl p-3 border border-amber-100 dark:border-amber-800/30">
+                                    <i className="fa-solid fa-trophy mr-2 text-amber-500 dark:text-amber-400"></i>
+                                    {stat.averageQuizScore}% <span className="opacity-70">Avg</span>
+                                </div>
                             </div>
 
                             <Link

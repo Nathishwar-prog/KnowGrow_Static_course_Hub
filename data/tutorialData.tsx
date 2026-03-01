@@ -5,6 +5,7 @@ const ComingSoon = React.lazy(() => import('./Comming'));
 const HtmlHome = React.lazy(() => import('./html/HtmlHome'));
 const HtmlIntroduction = React.lazy(() => import('./html/HtmlIntroduction'));
 const HtmlEditors = React.lazy(() => import('./html/HtmlEditors'));
+const HtmlIntroQuiz = React.lazy(() => import('./html/HtmlIntroQuiz'));
 const HtmlBasic = React.lazy(() => import('./html/HtmlBasic'));
 const HtmlElements = React.lazy(() => import('./html/HtmlElements'));
 const HtmlAttributes = React.lazy(() => import('./html/HtmlAttributes'));
@@ -84,6 +85,7 @@ const CssHome = React.lazy(() => import('./css/CssHome'));
 const CssIntroduction = React.lazy(() => import('./css/CssIntroduction'));
 const CssSyntax = React.lazy(() => import('./css/CssSyntax'));
 const CssSelectors = React.lazy(() => import('./css/CssSelectors'));
+const CssIntroQuiz = React.lazy(() => import('./css/CssIntroQuiz'));
 const CssHowTo = React.lazy(() => import('./css/CssHowTo'));
 const CssComments = React.lazy(() => import('./css/CssComments'));
 const CssErrors = React.lazy(() => import('./css/CssErrors'));
@@ -532,6 +534,7 @@ export const HTML_TUTORIAL_DATA: SidebarSection[] = [
       { id: 'html_home', title: 'HTML HOME', content: <HtmlHome /> },
       { id: 'html_introduction', title: 'HTML Introduction', content: <HtmlIntroduction /> },
       { id: 'html_editors', title: 'HTML Editors', content: <HtmlEditors /> },
+      { id: 'html_intro_quiz', title: 'HTML Intro Quiz', content: <HtmlIntroQuiz /> },
       { id: 'html_basic', title: 'HTML Basic', content: <HtmlBasic /> },
       { id: 'html_elements', title: 'HTML Elements', content: <HtmlElements /> },
       { id: 'html_attributes', title: 'HTML Attributes', content: <HtmlAttributes /> },
@@ -647,6 +650,7 @@ export const CSS_TUTORIAL_DATA: SidebarSection[] = [
       { id: 'css_introduction', title: 'CSS Introduction', content: <CssIntroduction /> },
       { id: 'css_syntax', title: 'CSS Syntax', content: <CssSyntax /> },
       { id: 'css_selectors', title: 'CSS Selectors', content: <CssSelectors /> },
+      { id: 'css_intro_quiz', title: 'CSS Intro Quiz', content: <CssIntroQuiz /> },
       { id: 'css_how_to', title: 'CSS How To', content: <CssHowTo /> },
       { id: 'css_comments', title: 'CSS Comments', content: <CssComments /> },
       { id: 'css_errors', title: 'CSS Errors', content: <CssErrors /> },

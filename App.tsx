@@ -88,12 +88,16 @@ const AppContent: React.FC = () => {
 
   // Redirect if URL is incomplete or invalid
   useEffect(() => {
-    if (!courseId || !ALL_COURSES[courseId as Course]) {
-      navigate('/html', { replace: true });
-    } else if (!topicId) {
-      navigate(`/${courseId}/${ALL_COURSES[courseId as Course].homeTopicId}`, { replace: true });
+    if (isDashboard) return;
+
+    if (activeView === 'tutorial') {
+      if (!courseId || !ALL_COURSES[courseId as Course]) {
+        navigate(`/tutorial/html/${ALL_COURSES['html'].homeTopicId}`, { replace: true });
+      } else if (!topicId) {
+        navigate(`/tutorial/${courseId}/${ALL_COURSES[courseId as Course].homeTopicId}`, { replace: true });
+      }
     }
-  }, [courseId, topicId, navigate]);
+  }, [courseId, topicId, navigate, isDashboard, activeView]);
 
   const TUTORIAL_DATA = useMemo(() => ALL_COURSES[activeCourse].data, [activeCourse]);
   const allTopics: TutorialTopic[] = useMemo(() => TUTORIAL_DATA.flatMap(section => section.topics), [TUTORIAL_DATA]);
