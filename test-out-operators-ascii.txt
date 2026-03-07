@@ -1,0 +1,178 @@
+
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90mD:/New folder/KnowGrow_Static_course_Hub[39m
+
+ [31m???[39m data/python/render.spec.tsx [2m([22m[2m0 test[22m[2m)[22m
+node.exe : 
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (:String) [],    
+ RemoteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+[31m??????????????????
+[39m[1m[41m Failed 
+Suites 1 [49m[22m[31
+m?????????????????????
+[39m
+
+[41m[1m FAIL 
+[22m[49m data/python/
+render.spec.tsx[2m [ d
+ata/python/render.spec.
+tsx ][22m
+[31m[1mError[22m: 
+Transform failed with 
+2 errors:
+D:/New folder/KnowGrow_
+Static_course_Hub/data/
+python/PythonOperators.
+tsx:163:168: ERROR: 
+The character ">" is 
+not valid inside a JSX 
+element
+D:/New folder/KnowGrow_
+Static_course_Hub/data/
+python/PythonOperators.
+tsx:175:166: ERROR: 
+Expected identifier 
+but found "<"[39m
+  Plugin: 
+[35mvite:esbuild[39m
+  File: [36mD:/New fol
+der/KnowGrow_Static_cou
+rse_Hub/data/python/Pyt
+honOperators.tsx[39m:1
+63:168
+[33m  
+  [33mThe character 
+">" is not valid 
+inside a JSX 
+element[33m
+  161|              
+</div>
+  162|              
+<div className="p-3 
+border 
+border-slate-200 
+dark:border-slate-700 
+rounded-lg flex 
+items-center 
+bg-slate-50 
+dark:bg-slate-900/50">
+  163|                
+<span 
+className="font-bold 
+text-slate-800 
+dark:text-slate-200 mr-
+2">Comparison</span> 
+<span className="text-s
+late-500 text-xs 
+ml-auto">Compare 
+values (== >)</span>
+     |                 
+                       
+                       
+                       
+                       
+                       
+                       
+               ^
+  164|              
+</div>
+  165|              
+<div className="p-3 
+border 
+border-slate-200 
+dark:border-slate-700 
+rounded-lg flex 
+items-center 
+bg-slate-50 
+dark:bg-slate-900/50">
+  
+  [33mExpected 
+identifier but found 
+"<"[33m
+  173|              
+</div>
+  174|              
+<div className="p-3 
+border 
+border-slate-200 
+dark:border-slate-700 
+rounded-lg flex 
+items-center 
+bg-slate-50 
+dark:bg-slate-900/50 
+sm:col-span-2">
+  175|                
+<span 
+className="font-bold 
+text-slate-800 
+dark:text-slate-200 
+mr-2">Bitwise</span> 
+<span className="text-s
+late-500 text-xs 
+ml-auto">Bit-level ops 
+(& | <<)</span>
+     |                 
+                       
+                       
+                       
+                       
+                       
+                       
+             ^
+  176|              
+</div>
+  177|            
+</div>
+  [39m
+[90m [2m???[22m 
+failureErrorWithLog nod
+e_modules/esbuild/lib/m
+ain.js:[2m1467:15[22m
+[39m
+[90m [2m???[22m node
+_modules/esbuild/lib/ma
+in.js:[2m736:50[22m[
+39m
+[90m [2m???[22m resp
+onseCallbacks.<computed
+> node_modules/esbuild/
+lib/main.js:[2m603:9[
+22m[39m
+[90m [2m???[22m 
+handleIncomingPacket no
+de_modules/esbuild/lib/
+main.js:[2m658:12[22m
+[39m
+[90m [2m???[22m 
+Socket.readFromStdout n
+ode_modules/esbuild/lib
+/main.js:[2m581:7[22m
+[39m
+
+[31m[2m??????????????
+???????????????????????
+???????????????????????
+????????????[1/1]???[2
+2m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [2mno tests[22m
+[2m   Start at [22m 14:34:54
+[2m   Duration [22m 2.25s[2m (transform 86ms, setup 0ms, import 0ms, tests 0ms, environment 1.54s)[22m
+
