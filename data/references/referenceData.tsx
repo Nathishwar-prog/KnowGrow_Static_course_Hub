@@ -6,6 +6,11 @@ import JsReference from './JsReference';
 import SqlReference from './SqlReference';
 import PythonReference from './PythonReference';
 
+const NumpyReference = () => <div className="p-8 text-center text-gray-500">NumPy References Coming Soon</div>;
+const PandasReference = () => <div className="p-8 text-center text-gray-500">Pandas References Coming Soon</div>;
+const MatplotlibReference = () => <div className="p-8 text-center text-gray-500">Matplotlib References Coming Soon</div>;
+const SeabornReference = () => <div className="p-8 text-center text-gray-500">Seaborn References Coming Soon</div>;
+
 export const ReferenceCard: React.FC<{ icon: string; title: string; children: React.ReactNode }> = ({ icon, title, children }) => (
   <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 h-full">
     <h3 className="text-xl font-bold mb-4 flex items-center text-gray-800 dark:text-gray-100">
@@ -33,4 +38,8 @@ export const ALL_REFERENCES: Partial<Record<Course, { component: React.FC<any> }
   js: { component: JsReference },
   sql: { component: SqlReference },
   python: { component: PythonReference },
+  numpy: { component: NumpyReference },
+  pandas: { component: PandasReference },
+  matplotlib: { component: MatplotlibReference },
+  seaborn: { component: SeabornReference },
 };

@@ -7,6 +7,11 @@ import SqlExercisePage from './sql/SqlExercisePage';
 import PythonExercisePage from './python/PythonExercisePage';
 import { BrowserMockup } from '../components';
 
+const NumpyExercisePage = () => <div className="p-8 text-center text-gray-500">NumPy Exercises Coming Soon</div>;
+const PandasExercisePage = () => <div className="p-8 text-center text-gray-500">Pandas Exercises Coming Soon</div>;
+const MatplotlibExercisePage = () => <div className="p-8 text-center text-gray-500">Matplotlib Exercises Coming Soon</div>;
+const SeabornExercisePage = () => <div className="p-8 text-center text-gray-500">Seaborn Exercises Coming Soon</div>;
+
 interface ExerciseProps {
     title: string;
     instruction: React.ReactNode;
@@ -41,7 +46,7 @@ export const Exercise: React.FC<ExerciseProps> = ({ title, instruction, initialC
     const runJsCode = () => {
         const newOutput: string[] = [];
         const originalConsoleLog = console.log;
-        
+
         // Override console.log to capture output
         console.log = (...args) => {
             newOutput.push(args.map(arg => {
@@ -112,26 +117,26 @@ export const Exercise: React.FC<ExerciseProps> = ({ title, instruction, initialC
 
             {/* Output Section */}
             {(language === 'html' || (language === 'javascript' && jsOutput.length > 0)) && (
-                 <div className="border-t border-gray-200 dark:border-gray-700 p-4 bg-gray-50 dark:bg-gray-900/50 rounded-b-lg">
+                <div className="border-t border-gray-200 dark:border-gray-700 p-4 bg-gray-50 dark:bg-gray-900/50 rounded-b-lg">
                     <h5 className="font-bold text-lg mb-2 text-gray-700 dark:text-gray-200">Output</h5>
                     {language === 'html' && (
                         <BrowserMockup title="Output Preview">
-                             <iframe
-                                 srcDoc={iframeSrcDoc}
-                                 title="HTML Output"
-                                 sandbox="allow-scripts"
-                                 className="w-full h-48 border-0 bg-white"
-                             />
-                         </BrowserMockup>
+                            <iframe
+                                srcDoc={iframeSrcDoc}
+                                title="HTML Output"
+                                sandbox="allow-scripts"
+                                className="w-full h-48 border-0 bg-white"
+                            />
+                        </BrowserMockup>
                     )}
-                     {language === 'javascript' && jsOutput.length > 0 && (
-                         <pre className="bg-gray-900 text-white font-mono text-sm p-4 rounded-md max-h-48 overflow-y-auto">
-                             <code>
-                                 {jsOutput.join('\n')}
-                             </code>
-                         </pre>
-                     )}
-                 </div>
+                    {language === 'javascript' && jsOutput.length > 0 && (
+                        <pre className="bg-gray-900 text-white font-mono text-sm p-4 rounded-md max-h-48 overflow-y-auto">
+                            <code>
+                                {jsOutput.join('\n')}
+                            </code>
+                        </pre>
+                    )}
+                </div>
             )}
         </div>
     );
@@ -144,4 +149,8 @@ export const ALL_EXERCISES: { [key in Course]: { component: React.FC<any> } } = 
     js: { component: JsExercisePage },
     sql: { component: SqlExercisePage },
     python: { component: PythonExercisePage },
+    numpy: { component: NumpyExercisePage },
+    pandas: { component: PandasExercisePage },
+    matplotlib: { component: MatplotlibExercisePage },
+    seaborn: { component: SeabornExercisePage },
 };
