@@ -460,7 +460,7 @@ username = <span className="text-blue-500 font-bold">input</span>(<span classNam
                    <h4 className="font-bold mb-1">Combine Input and F-String Formatting</h4>
                    <p className="text-[12px] text-slate-300 mb-2">Create vastly more interactive experiences contextually.</p>
                    <code className="font-mono text-[10px] block bg-black/40 p-2 rounded border border-white/10 text-amber-200">
-                     name = input("Name: ")<br/>print(f"Welcome {{name}}!")
+                     name = input("Name: ")<br/>print(f"Welcome {'{'}name{'}'}!")
                    </code>
                 </div>
              </div>
