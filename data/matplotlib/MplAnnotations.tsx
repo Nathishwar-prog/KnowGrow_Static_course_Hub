@@ -264,14 +264,14 @@ const MplAnnotations: React.FC = () => {
                       
                       <div className="mb-6">
                            <ResultTable 
-                                headers={['Parameter', 'Purpose']}
-                                rows={[
+                               headers={['Parameter', 'Purpose']}
+                               rows={[
                                    [<code className="text-violet-400 font-bold">xy</code>, 'Data point location'],
                                    [<code className="text-violet-400 font-bold">xytext</code>, 'Text position'],
                                    [<code className="text-violet-400 font-bold">arrowprops</code>, 'Arrow style'],
                                    [<code className="text-violet-400 font-bold">fontsize</code>, 'Text size'],
                                    [<code className="text-violet-400 font-bold">color</code>, 'Text color']
-                                ]}
+                               ]}
                            />
                       </div>
                       
