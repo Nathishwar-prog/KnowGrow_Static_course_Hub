@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, createContext, useContext } from 'react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from './AuthContext';
+import { SRSStats, calculateNextSRS, INITIAL_STATS } from '../utils/srsUtils';
 
 export interface CourseProgressRecord {
     topic_id: string;
@@ -21,6 +22,7 @@ interface ProgressState {
     totalXp: number;
     streak: number;
     lastActivityDate: string | null;
+    srsData?: Record<string, SRSStats>;
 }
 
 interface AllProgressContextType {
@@ -28,10 +30,12 @@ interface AllProgressContextType {
     quizScores: QuizScoreRecord[];
     totalXp: number;
     streak: number;
+    srsData: Record<string, SRSStats>;
     isLoading: boolean;
     refreshProgress: () => Promise<void>;
     updateQuizScore: (courseId: string, topicId: string, score: number, total: number) => Promise<void>;
     markTopicAsCompleted: (courseId: string, topicId: string) => Promise<void>;
+    updateFlashcard: (cardId: string, quality: number) => void;
 }
 
 const AllProgressContext = createContext<AllProgressContextType | undefined>(undefined);
@@ -44,6 +48,7 @@ export const AllProgressProvider: React.FC<{ children: React.ReactNode }> = ({ c
     const [quizScores, setQuizScores] = useState<QuizScoreRecord[]>([]);
     const [totalXp, setTotalXp] = useState(0);
     const [streak, setStreak] = useState(0);
+    const [srsData, setSrsData] = useState<Record<string, SRSStats>>({});
     const [isLoading, setIsLoading] = useState(true);
 
     const calculateStreak = (lastDateStr: string | null) => {
@@ -69,6 +74,7 @@ export const AllProgressProvider: React.FC<{ children: React.ReactNode }> = ({ c
                 setAllCompletedTopics(parsed.completedTopics || []);
                 setQuizScores(parsed.quizScores || []);
                 setTotalXp(parsed.totalXp || 0);
+                setSrsData(parsed.srsData || {});
                 
                 const streakAction = calculateStreak(parsed.lastActivityDate);
                 if (streakAction === 1) setStreak((parsed.streak || 0) + 1);
@@ -81,13 +87,14 @@ export const AllProgressProvider: React.FC<{ children: React.ReactNode }> = ({ c
         }
     };
 
-    const saveLocalProgress = (topics: CourseProgressRecord[], scores: QuizScoreRecord[], xp: number, currentStreak: number) => {
+    const saveLocalProgress = (topics: CourseProgressRecord[], scores: QuizScoreRecord[], xp: number, currentStreak: number, currentSrs?: Record<string, SRSStats>) => {
         const state: ProgressState = {
             completedTopics: topics,
             quizScores: scores,
             totalXp: xp,
             streak: currentStreak,
-            lastActivityDate: new Date().toISOString()
+            lastActivityDate: new Date().toISOString(),
+            srsData: currentSrs || srsData
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     };
@@ -191,6 +198,19 @@ export const AllProgressProvider: React.FC<{ children: React.ReactNode }> = ({ c
         }
     };
 
+    const updateFlashcard = (cardId: string, quality: number) => {
+        const currentStats = srsData[cardId] || INITIAL_STATS;
+        const newStats = calculateNextSRS(currentStats, quality);
+        
+        const newSrsData = {
+            ...srsData,
+            [cardId]: newStats
+        };
+        
+        setSrsData(newSrsData);
+        saveLocalProgress(allCompletedTopics, quizScores, totalXp, streak, newSrsData);
+    };
+
     useEffect(() => {
         fetchAllProgress();
     }, [fetchAllProgress]);
@@ -200,10 +220,12 @@ export const AllProgressProvider: React.FC<{ children: React.ReactNode }> = ({ c
         quizScores,
         totalXp,
         streak,
+        srsData,
         isLoading,
         refreshProgress: fetchAllProgress,
         updateQuizScore,
-        markTopicAsCompleted
+        markTopicAsCompleted,
+        updateFlashcard
     };
 
     return <AllProgressContext.Provider value={value}>{children}</AllProgressContext.Provider>;
@@ -216,3 +238,4 @@ export const useAllProgress = () => {
     }
     return context;
 };
+

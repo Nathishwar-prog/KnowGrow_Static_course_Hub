@@ -13,6 +13,7 @@ import ReferencesModal from './components/ReferencesModal';
 import ExercisesModal from './components/ExercisesModal';
 import IntroAnimation from './components/IntroAnimation';
 import BottomNav from './components/BottomNav';
+import ReviewSession from './components/srs/ReviewSession';
 import { ALL_COURSES } from './data/tutorialData';
 import { ALL_REFERENCES } from './data/references/referenceData';
 import { ALL_EXERCISES } from './data/exercises/exerciseData';
@@ -61,7 +62,8 @@ const AppContent: React.FC = () => {
   const location = useLocation();
 
   const isDashboard = location.pathname === '/dashboard';
-  const activeView = isDashboard ? 'dashboard' : (view as 'tutorial' | 'reference' | 'exercise' || 'tutorial');
+  const isReview = location.pathname === '/review';
+  const activeView = isDashboard ? 'dashboard' : isReview ? 'review' : (view as 'tutorial' | 'reference' | 'exercise' || 'tutorial');
   const isValidCourse = courseId ? (ALL_COURSES[courseId as Course] !== undefined) : false;
   const activeCourse = (isValidCourse ? courseId : 'html') as Course;
 
@@ -89,7 +91,7 @@ const AppContent: React.FC = () => {
 
   // Redirect if URL is incomplete or invalid
   useEffect(() => {
-    if (isDashboard) return;
+    if (isDashboard || isReview) return;
 
     if (activeView === 'tutorial') {
       if (!courseId || !ALL_COURSES[courseId as Course]) {
@@ -392,6 +394,7 @@ const AppContent: React.FC = () => {
                 topic={activeTopic}
                 referenceContent={ReferenceComponent ? <ReferenceComponent onSwitchToTutorial={handleCourseSelect} /> : null}
                 exerciseContent={ExerciseComponent ? <ExerciseComponent /> : null}
+                reviewContent={<ReviewSession />}
                 isLoading={isLoading}
                 onNavigate={(id) => handleTopicSelect(id)}
                 prevTopic={prevTopic}
@@ -443,6 +446,7 @@ const App: React.FC = () => {
     <Routes>
       <Route path="/" element={<Navigate to={`/tutorial/html/${ALL_COURSES['html'].homeTopicId}`} replace />} />
       <Route path="/dashboard" element={<AppContent />} />
+      <Route path="/review" element={<AppContent />} />
       <Route path="/:view/:courseId" element={<AppContent />} />
       <Route path="/:view/:courseId/:topicId" element={<AppContent />} />
     </Routes>

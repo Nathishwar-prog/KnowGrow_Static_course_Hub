@@ -5,11 +5,20 @@ import { useAllProgress } from '../context/useAllProgress';
 import { ALL_COURSES } from '../data/tutorialData';
 import type { Course } from '../App';
 import LoadingSpinner from './LoadingSpinner';
+import { ALL_FLASHCARDS } from '../data/flashcards/flashcardData';
+import { isCardDue } from '../utils/srsUtils';
+import { Brain, Sparkles, ArrowRight } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
-    const { allCompletedTopics, quizScores, totalXp, streak, isLoading } = useAllProgress();
+    const { allCompletedTopics, quizScores, totalXp, streak, srsData, isLoading } = useAllProgress();
+
+    const dueCardsCount = ALL_FLASHCARDS.filter(card => {
+        const stats = srsData[card.id];
+        if (!stats) return true;
+        return isCardDue(stats.nextReview);
+    }).length;
 
     const getRank = (xp: number) => {
         if (xp < 100) return { title: 'Beginner', color: 'text-gray-400' };
@@ -131,6 +140,46 @@ const Dashboard: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                {/* SRS Flashcard Review Card */}
+                <div className="group bg-gradient-to-br from-brand-600 to-indigo-700 rounded-3xl shadow-xl shadow-brand-500/20 p-7 flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-brand-500/40 hover:-translate-y-2 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+                        <Brain className="w-24 h-24" />
+                    </div>
+                    <div className="relative z-10 flex flex-col h-full">
+                        <div className="flex items-center space-x-2 mb-4">
+                            <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
+                                <Sparkles className="w-4 h-4 text-brand-200" />
+                            </div>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-brand-100">Daily Goal</span>
+                        </div>
+                        
+                        <h2 className="text-2xl font-black text-white mb-2">Daily Review</h2>
+                        <p className="text-brand-100/80 text-sm mb-6 font-medium">
+                            Keep your concepts sharp with spaced repetition.
+                        </p>
+
+                        <div className="mt-auto">
+                            <div className="flex items-end justify-between mb-4">
+                                <div>
+                                    <div className="text-4xl font-black text-white leading-none">{dueCardsCount}</div>
+                                    <div className="text-[10px] font-bold text-brand-200 uppercase tracking-widest mt-1">Cards Due</div>
+                                </div>
+                                <div className="text-right">
+                                    <div className="text-lg font-black text-white leading-none">{ALL_FLASHCARDS.length}</div>
+                                    <div className="text-[10px] font-bold text-brand-200 uppercase tracking-widest mt-1">Total Cards</div>
+                                </div>
+                            </div>
+
+                            <Link
+                                to="/review"
+                                className="w-full bg-white text-brand-700 py-3.5 rounded-2xl font-black text-sm flex items-center justify-center group-hover:bg-brand-50 transition-colors shadow-lg"
+                            >
+                                Start Review <ArrowRight className="w-4 h-4 ml-2" />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
                 {courseStats.map((stat) => (
                     <div key={stat.id} className="group bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl rounded-3xl shadow-sm border border-gray-200/60 dark:border-gray-700/60 p-7 flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-brand-500/10 hover:-translate-y-2 relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/0 dark:from-white/5 dark:to-transparent pointer-events-none rounded-3xl"></div>

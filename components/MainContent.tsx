@@ -10,10 +10,11 @@ import Breadcrumbs from './Breadcrumbs';
 import { ChevronRight, ArrowRight } from 'lucide-react';
 
 interface MainContentProps {
-  activeView: 'tutorial' | 'reference' | 'exercise';
+  activeView: 'tutorial' | 'reference' | 'exercise' | 'review';
   topic?: TutorialTopic;
   referenceContent?: React.ReactNode;
   exerciseContent?: React.ReactNode;
+  reviewContent?: React.ReactNode;
   isLoading: boolean;
   onNavigate: (id: string) => void;
   prevTopic: TutorialTopic | null;
@@ -37,7 +38,7 @@ const NavButton: React.FC<{
 )
 
 
-const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceContent, exerciseContent, isLoading, onNavigate, prevTopic, nextTopic, searchQuery, hasSearchResults }) => {
+const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceContent, exerciseContent, reviewContent, isLoading, onNavigate, prevTopic, nextTopic, searchQuery, hasSearchResults }) => {
   const { courseId = 'html', topicId = '' } = useParams<{ courseId: string, topicId: string }>();
   const navigate = useNavigate();
   const { allCompletedTopics, markTopicAsCompleted, isLoading: isProgressLoading } = useAllProgress();
@@ -190,6 +191,10 @@ const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceC
 
     if (activeView === 'exercise') {
       return exerciseContent;
+    }
+
+    if (activeView === 'review') {
+      return reviewContent;
     }
 
     return renderTutorialContent();
