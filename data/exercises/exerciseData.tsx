@@ -8,25 +8,42 @@ import PythonExercisePage from './python/PythonExercisePage';
 import NumpyExercisePage from './numpy/NumpyExercisePage';
 import { BrowserMockup } from '../components';
 import PythonRunner from '../../components/PythonRunner';
+import { useAllProgress } from '../../context/useAllProgress';
+import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import confetti from 'canvas-confetti';
 
 const PandasExercisePage = () => <div className="p-8 text-center text-gray-500">Pandas Exercises Coming Soon</div>;
 const MatplotlibExercisePage = () => <div className="p-8 text-center text-gray-500">Matplotlib Exercises Coming Soon</div>;
 const SeabornExercisePage = () => <div className="p-8 text-center text-gray-500">Seaborn Exercises Coming Soon</div>;
 
+export interface TestCase {
+    id: string;
+    description: string;
+    code: string; // Python code to run after user code, should raise Exception on failure
+}
+
 interface ExerciseProps {
+    id: string; // Unique ID for progress tracking
     title: string;
     instruction: React.ReactNode;
     initialCode: string;
     solution: string;
     language: 'html' | 'javascript' | 'python';
+    testCases?: TestCase[];
 }
 
-export const Exercise: React.FC<ExerciseProps> = ({ title, instruction, initialCode, solution, language }) => {
+export const Exercise: React.FC<ExerciseProps> = ({ id, title, instruction, initialCode, solution, language, testCases }) => {
     const [code, setCode] = useState(initialCode);
     const [showSolution, setShowSolution] = useState(false);
     const [jsOutput, setJsOutput] = useState<string[]>([]);
     const [isPythonRunning, setIsPythonRunning] = useState(false);
     const [pythonError, setPythonError] = useState<string | null>(null);
+    const [testResults, setTestResults] = useState<{ id: string; passed: boolean; error?: string }[]>([]);
+    const [allTestsPassed, setAllTestsPassed] = useState(false);
+
+    const { markTopicAsCompleted } = useAllProgress();
+    const { courseId = 'python' } = useParams<{ courseId: string }>();
 
     const iframeSrcDoc = `
         <!DOCTYPE html>
@@ -104,7 +121,47 @@ export const Exercise: React.FC<ExerciseProps> = ({ title, instruction, initialC
                     {language === 'python' && (
                         <PythonRunner 
                             code={code} 
-                            onOutput={setJsOutput} 
+                            testCode={testCases?.map(tc => `
+try:
+    ${tc.code.replace(/\n/g, '\n    ')}
+    print("__TEST_RESULT__${tc.id}:PASS")
+except Exception as e:
+    print(f"__TEST_RESULT__${tc.id}:FAIL:{str(e)}")
+`).join('\n')}
+                            onOutput={(lines) => {
+                                // Extract test results from output
+                                const newResults: typeof testResults = [];
+                                const filteredOutput: string[] = [];
+                                
+                                lines.forEach(line => {
+                                    if (line.startsWith('__TEST_RESULT__')) {
+                                        const [_, content] = line.split('__TEST_RESULT__');
+                                        const [id, status, ...error] = content.split(':');
+                                        newResults.push({
+                                            id,
+                                            passed: status === 'PASS',
+                                            error: error.join(':')
+                                        });
+                                    } else {
+                                        filteredOutput.push(line);
+                                    }
+                                });
+                                
+                                setJsOutput(filteredOutput);
+                                if (newResults.length > 0) {
+                                    setTestResults(newResults);
+                                    const allPassed = newResults.every(r => r.passed);
+                                    setAllTestsPassed(allPassed);
+                                    if (allPassed) {
+                                        markTopicAsCompleted(courseId, id);
+                                        confetti({
+                                            particleCount: 100,
+                                            spread: 70,
+                                            origin: { y: 0.6 }
+                                        });
+                                    }
+                                }
+                            }} 
                             onError={setPythonError} 
                             isRunning={isPythonRunning} 
                             setIsRunning={setIsPythonRunning} 
@@ -142,6 +199,75 @@ export const Exercise: React.FC<ExerciseProps> = ({ title, instruction, initialC
                             <code>{solution}</code>
                         </pre>
                     </div>
+                )}
+
+                {/* Test Cases Section */}
+                {testCases && testCases.length > 0 && (
+                    <div className="mt-8">
+                        <h5 className="font-black text-xs uppercase tracking-widest text-slate-500 mb-4 flex items-center">
+                            <i className="fa-solid fa-vial mr-2"></i>
+                            Verification Tests
+                        </h5>
+                        <div className="space-y-3">
+                            {testCases.map((tc) => {
+                                const result = testResults.find(r => r.id === tc.id);
+                                return (
+                                    <div 
+                                        key={tc.id}
+                                        className={`flex items-center justify-between p-3 rounded-xl border-2 transition-all duration-300 ${
+                                            result 
+                                                ? result.passed 
+                                                    ? 'bg-emerald-50 border-emerald-100 dark:bg-emerald-900/10 dark:border-emerald-900/40' 
+                                                    : 'bg-red-50 border-red-100 dark:bg-red-900/10 dark:border-red-900/40'
+                                                : 'bg-slate-50 border-slate-100 dark:bg-slate-800/50 dark:border-slate-800'
+                                        }`}
+                                    >
+                                        <div className="flex items-center space-x-3">
+                                            <div className={`w-6 h-6 rounded-lg flex items-center justify-center ${
+                                                result
+                                                    ? result.passed ? 'bg-emerald-500 text-white' : 'bg-red-500 text-white'
+                                                    : 'bg-slate-200 dark:bg-slate-700 text-slate-400'
+                                            }`}>
+                                                <i className={`fa-solid ${
+                                                    result
+                                                        ? result.passed ? 'fa-check' : 'fa-xmark'
+                                                        : 'fa-circle-dot text-[8px]'
+                                                } text-xs`}></i>
+                                            </div>
+                                            <span className={`text-sm font-bold ${
+                                                result 
+                                                    ? result.passed ? 'text-emerald-700 dark:text-emerald-400' : 'text-red-700 dark:text-red-400'
+                                                    : 'text-slate-600 dark:text-slate-400'
+                                            }`}>
+                                                {tc.description}
+                                            </span>
+                                        </div>
+                                        {result && !result.passed && result.error && (
+                                            <span className="text-[10px] bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-300 px-2 py-1 rounded-md font-mono">
+                                                {result.error}
+                                            </span>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                )}
+
+                {allTestsPassed && (
+                    <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mt-6 p-4 bg-emerald-100 dark:bg-emerald-900/40 border-2 border-emerald-500/20 rounded-2xl flex items-center space-x-4"
+                    >
+                        <div className="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg shadow-emerald-500/30">
+                            <i className="fa-solid fa-trophy"></i>
+                        </div>
+                        <div>
+                            <h6 className="font-black text-emerald-800 dark:text-emerald-300">Perfect Solution!</h6>
+                            <p className="text-sm text-emerald-700 dark:text-emerald-400">All test cases passed. You've earned 10 XP!</p>
+                        </div>
+                    </motion.div>
                 )}
             </div>
 

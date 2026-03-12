@@ -4,13 +4,15 @@ import { Loader2, Play, AlertCircle } from 'lucide-react';
 
 interface PythonRunnerProps {
   code: string;
+  testCode?: string;
   onOutput: (output: string[]) => void;
+  onTestResults?: (results: { id: string; passed: boolean; error?: string }[]) => void;
   onError: (error: string | null) => void;
   isRunning: boolean;
   setIsRunning: (val: boolean) => void;
 }
 
-const PythonRunner: React.FC<PythonRunnerProps> = ({ code, onOutput, onError, isRunning, setIsRunning }) => {
+const PythonRunner: React.FC<PythonRunnerProps> = ({ code, testCode, onOutput, onTestResults, onError, isRunning, setIsRunning }) => {
   const { status, error: initError, runPython, initPyodide } = usePyodide();
 
   useEffect(() => {
@@ -27,12 +29,38 @@ const PythonRunner: React.FC<PythonRunnerProps> = ({ code, onOutput, onError, is
       await initPyodide();
     }
 
-    const result = await runPython(code);
-    
-    if (result.error) {
-      onError(result.error);
-    } else {
+    try {
+      // 1. Run user code
+      const result = await runPython(code);
+      
+      if (result.error) {
+        onError(result.error);
+        setIsRunning(false);
+        return;
+      }
+
       onOutput([result.output]);
+
+      // 2. If testCode exists, run validation
+      if (testCode && onTestResults) {
+        // We wrap test execution to capture specific failures per test
+        // The testCode should be formatted as a JSON string when printed from Python
+        const wrappedTestCode = `
+import json
+results = []
+try:
+    ${testCode.replace(/\n/g, '\n    ')}
+except Exception as e:
+    # If the setup fails, it's a global error
+    pass
+`;
+        const testResult = await runPython(wrappedTestCode);
+        
+        // Alternative: Run individual test strings and capture results
+        // For simplicity now, we'll assume the parent component might pass specific code snippets
+      }
+    } catch (err: any) {
+        onError(err.message || 'An unexpected error occurred');
     }
     
     setIsRunning(false);

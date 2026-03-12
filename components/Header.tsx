@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import SearchResultsDropdown from './SearchResultsDropdown';
 import type { RankedSearchResult } from '../App';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import AuthModal from './AuthModal';
 
@@ -82,10 +83,10 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onTutorialsClick, onRefere
     <>
       <header role="banner" className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60 text-gray-800 dark:text-gray-100 flex items-center justify-between sticky top-0 z-40 px-6 h-[72px] border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm transition-all duration-300">
         <div className="flex items-center space-x-6">
-          <a href="#" className="font-display text-2xl font-extrabold tracking-tight flex items-center gap-2 group hover:opacity-90 transition-opacity">
+          <Link to="/dashboard" className="font-display text-2xl font-extrabold tracking-tight flex items-center gap-2 group hover:opacity-90 transition-opacity">
             <span className="bg-gradient-to-br from-brand-600 to-indigo-500 text-transparent bg-clip-text">Know</span>
             <span className="bg-gradient-to-br from-emerald-500 to-green-400 text-transparent bg-clip-text">Grow</span>
-          </a>
+          </Link>
           <nav role="navigation" aria-label="Primary navigation" className="hidden md:flex items-center space-x-1">
             <NavLink onClick={onTutorialsClick} hasDropdown>Tutorials</NavLink>
             <NavLink onClick={onReferencesClick} hasDropdown>References</NavLink>
@@ -152,12 +153,12 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onTutorialsClick, onRefere
 
             {user ? (
               <div className="flex items-center space-x-4 ml-2 border-l border-gray-200/50 dark:border-gray-700/50 pl-4">
-                <a
-                  href="/dashboard"
+                <Link
+                  to="/dashboard"
                   className="text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-white text-sm font-semibold transition-colors"
                 >
                   Dashboard
-                </a>
+                </Link>
                 <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-brand-600 to-indigo-400 text-white shadow-md flex items-center justify-center font-bold text-sm select-none">
                   {user.email?.charAt(0).toUpperCase()}
                 </div>

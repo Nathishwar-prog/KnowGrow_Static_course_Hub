@@ -3,9 +3,11 @@ import type { TutorialTopic } from '../types';
 import LoadingSpinner from './LoadingSpinner';
 import Highlighter from './Highlighter';
 import { useAllProgress } from '../context/useAllProgress';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
+import Breadcrumbs from './Breadcrumbs';
+import { ChevronRight, ArrowRight } from 'lucide-react';
 
 interface MainContentProps {
   activeView: 'tutorial' | 'reference' | 'exercise';
@@ -37,6 +39,7 @@ const NavButton: React.FC<{
 
 const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceContent, exerciseContent, isLoading, onNavigate, prevTopic, nextTopic, searchQuery, hasSearchResults }) => {
   const { courseId = 'html', topicId = '' } = useParams<{ courseId: string, topicId: string }>();
+  const navigate = useNavigate();
   const { allCompletedTopics, markTopicAsCompleted, isLoading: isProgressLoading } = useAllProgress();
   const isCompleted = allCompletedTopics.some(t => t.topic_id === (topic?.id || topicId) && t.course_id === courseId);
 
@@ -76,6 +79,8 @@ const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceC
 
     return (
       <>
+        <Breadcrumbs courseId={courseId} topicTitle={topic.title} />
+        
         <h1 className="text-4xl md:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 tracking-tight">
           <Highlighter query={searchQuery}>{topic.title}</Highlighter>
         </h1>
@@ -134,6 +139,22 @@ const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceC
             >
               <i className="fa-solid fa-star mr-2"></i>
               You've earned 10 XP for this lesson!
+            </motion.div>
+          )}
+
+          {isCompleted && nextTopic && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="pt-4"
+            >
+              <button
+                onClick={() => onNavigate(nextTopic.id)}
+                className="group flex items-center space-x-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+              >
+                <span>Continue to {nextTopic.title}</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
             </motion.div>
           )}
         </div>

@@ -12,6 +12,7 @@ import TutorialsModal from './components/TutorialsModal';
 import ReferencesModal from './components/ReferencesModal';
 import ExercisesModal from './components/ExercisesModal';
 import IntroAnimation from './components/IntroAnimation';
+import BottomNav from './components/BottomNav';
 import { ALL_COURSES } from './data/tutorialData';
 import { ALL_REFERENCES } from './data/references/referenceData';
 import { ALL_EXERCISES } from './data/exercises/exerciseData';
@@ -200,13 +201,7 @@ const AppContent: React.FC = () => {
     };
   }, []);
 
-  useEffect(() => {
-    return () => {
-      if (loadingTimeoutRef.current) {
-        clearTimeout(loadingTimeoutRef.current);
-      }
-    };
-  }, []);
+
 
 
   const handleCourseSelect = (course: Course) => {
@@ -253,6 +248,32 @@ const AppContent: React.FC = () => {
   const currentIndex = getTopicIndex(activeTopicId);
   const prevTopic = currentIndex > 0 ? allTopics[currentIndex - 1] : null;
   const nextTopic = currentIndex < allTopics.length - 1 ? allTopics[currentIndex + 1] : null;
+
+  // Keyboard Shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignore if user is typing in an input/textarea
+      if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName)) {
+        if (e.key === 'Escape') {
+          (e.target as HTMLElement).blur();
+        }
+        return;
+      }
+
+      if (e.key === 'ArrowLeft' && prevTopic && activeView === 'tutorial') {
+        handleTopicSelect(prevTopic.id);
+      } else if (e.key === 'ArrowRight' && nextTopic && activeView === 'tutorial') {
+        handleTopicSelect(nextTopic.id);
+      } else if (e.key === '/') {
+        e.preventDefault();
+        const searchInput = document.querySelector('input[type="search"]') as HTMLInputElement;
+        searchInput?.focus();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [prevTopic, nextTopic, activeView]);
 
   const openAnimationPage = (options: AnimationOptions) => {
     const { animationId, title, props = {} } = options;
@@ -405,6 +426,7 @@ const AppContent: React.FC = () => {
           onClose={closeExercisesModal}
           onExerciseSelect={handleModalExerciseSelect}
         />
+        <BottomNav />
       </div>
     </AnimationProvider>
   );

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { motion } from 'framer-motion';
 import type { SidebarSection } from '../types';
 import { useParams } from 'react-router-dom';
 import { useProgress } from '../context/useProgress';
@@ -14,9 +15,38 @@ const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelec
   const { courseId = 'html' } = useParams<{ courseId: string }>();
   const { completedTopics } = useProgress(courseId);
 
+  const stats = useMemo(() => {
+    const total = sections.reduce((acc, s) => acc + s.topics.length, 0);
+    const completed = Array.from(completedTopics).filter(id => 
+      sections.some(s => s.topics.some(t => t.id === id))
+    ).length;
+    return {
+      total,
+      completed,
+      percentage: total > 0 ? Math.round((completed / total) * 100) : 0
+    };
+  }, [sections, completedTopics]);
+
   return (
     <aside role="navigation" aria-label="Tutorial topics" className="bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm w-64 h-screen-minus-nav sticky top-[60px] overflow-y-auto hidden md:block border-r border-gray-200 dark:border-gray-800 hide-scrollbar transition-colors duration-300">
       <div className="p-4 pb-20">
+        {/* Course Progress Mini-Bar */}
+        {!searchQuery && stats.total > 0 && (
+          <div className="mb-8 px-3">
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">Course Progress</span>
+              <span className="text-[10px] font-black text-brand-600 bg-brand-50 dark:bg-brand-900/40 px-1.5 py-0.5 rounded">{stats.percentage}%</span>
+            </div>
+            <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: `${stats.percentage}%` }}
+                className="h-full bg-gradient-to-r from-brand-600 to-indigo-500 rounded-full"
+              />
+            </div>
+          </div>
+        )}
+
         {searchQuery && sections.length === 0 ? (
           <div className="text-center text-gray-500 dark:text-gray-400 p-4 mt-8">
             <div className="text-4xl mb-4 opacity-50">

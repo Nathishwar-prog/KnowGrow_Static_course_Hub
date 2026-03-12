@@ -5,6 +5,7 @@ const HtmlExercises: React.FC = () => {
     return (
         <div>
             <Exercise
+                id="html-heading"
                 title="Exercise 1: Add a Heading"
                 instruction={<p>Add an <code>&lt;h1&gt;</code> tag with the text "My First Heading". The output will appear in the preview below.</p>}
                 initialCode={`<!-- Type your code here -->`}
@@ -13,6 +14,7 @@ const HtmlExercises: React.FC = () => {
             />
 
             <Exercise
+                id="html-link"
                 title="Exercise 2: Create a Link"
                 instruction={<p>Create an <code>&lt;a&gt;</code> tag that links to "https://www.knowgrow.dev" and has the text "Visit KnowGrow".</p>}
                 initialCode={`<!-- Type your code here -->`}
