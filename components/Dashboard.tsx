@@ -9,7 +9,17 @@ import LoadingSpinner from './LoadingSpinner';
 const Dashboard: React.FC = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
-    const { allCompletedTopics, quizScores, isLoading } = useAllProgress();
+    const { allCompletedTopics, quizScores, totalXp, streak, isLoading } = useAllProgress();
+
+    const getRank = (xp: number) => {
+        if (xp < 100) return { title: 'Beginner', color: 'text-gray-400' };
+        if (xp < 500) return { title: 'Code Apprentice', color: 'text-emerald-500' };
+        if (xp < 1000) return { title: 'Logic Master', color: 'text-brand-500' };
+        if (xp < 2000) return { title: 'Data Scientist', color: 'text-indigo-500' };
+        return { title: 'KnowGrow Guru', color: 'text-amber-500' };
+    };
+
+    const rank = getRank(totalXp);
 
     if (!user) {
         return (
@@ -84,6 +94,39 @@ const Dashboard: React.FC = () => {
                     <p className="text-lg text-gray-600 dark:text-gray-400">
                         Welcome back, <span className="font-semibold text-brand-600 dark:text-brand-400">{user.email}</span>
                     </p>
+                </div>
+                
+                {/* Gamification Stats Bar */}
+                <div className="flex flex-wrap gap-4 md:gap-8 justify-center md:justify-end">
+                    <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-md p-4 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 flex items-center space-x-3 shadow-sm shadow-brand-500/5">
+                        <div className="w-10 h-10 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center text-amber-600 dark:text-amber-400">
+                            <i className="fa-solid fa-bolt text-xl"></i>
+                        </div>
+                        <div>
+                            <div className="text-2xl font-black text-gray-900 dark:text-white leading-none">{totalXp}</div>
+                            <div className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-tighter">Total XP</div>
+                        </div>
+                    </div>
+
+                    <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-md p-4 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 flex items-center space-x-3 shadow-sm shadow-orange-500/5">
+                        <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center text-orange-600 dark:text-orange-400">
+                            <i className="fa-solid fa-fire text-xl"></i>
+                        </div>
+                        <div>
+                            <div className="text-2xl font-black text-gray-900 dark:text-white leading-none">{streak}</div>
+                            <div className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-tighter">Streak Day</div>
+                        </div>
+                    </div>
+
+                    <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-md p-4 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 flex items-center space-x-3 shadow-sm shadow-emerald-500/5">
+                        <div className="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                            <i className="fa-solid fa-award text-xl"></i>
+                        </div>
+                        <div>
+                            <div className={`text-xl font-black leading-none ${rank.color}`}>{rank.title}</div>
+                            <div className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-tighter">Current Rank</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

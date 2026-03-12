@@ -2,8 +2,10 @@ import React from 'react';
 import type { TutorialTopic } from '../types';
 import LoadingSpinner from './LoadingSpinner';
 import Highlighter from './Highlighter';
-import { useProgress } from '../context/useProgress';
+import { useAllProgress } from '../context/useAllProgress';
 import { useParams } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import confetti from 'canvas-confetti';
 
 interface MainContentProps {
   activeView: 'tutorial' | 'reference' | 'exercise';
@@ -35,15 +37,21 @@ const NavButton: React.FC<{
 
 const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceContent, exerciseContent, isLoading, onNavigate, prevTopic, nextTopic, searchQuery, hasSearchResults }) => {
   const { courseId = 'html', topicId = '' } = useParams<{ courseId: string, topicId: string }>();
-  const { completedTopics, markAsComplete, markAsIncomplete, isLoading: isProgressLoading } = useProgress(courseId);
-  const isCompleted = completedTopics.has(topic?.id || topicId);
+  const { allCompletedTopics, markTopicAsCompleted, isLoading: isProgressLoading } = useAllProgress();
+  const isCompleted = allCompletedTopics.some(t => t.topic_id === (topic?.id || topicId) && t.course_id === courseId);
 
   const handleToggleComplete = async () => {
     if (!topic) return;
-    if (isCompleted) {
-      await markAsIncomplete(topic.id);
-    } else {
-      await markAsComplete(topic.id);
+    if (!isCompleted) {
+        await markTopicAsCompleted(courseId, topic.id);
+        
+        // Celebrate!
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#6366f1', '#10b981', '#f59e0b']
+        });
     }
   };
 
@@ -95,20 +103,39 @@ const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceC
         </article>
 
         {/* Progress Tracking Section */}
-        <div className="mt-12 flex justify-center">
-          <button
-            onClick={handleToggleComplete}
-            disabled={isProgressLoading}
-            className={`flex items-center space-x-2 px-6 py-3 rounded-full font-bold transition-all duration-300 ${isCompleted
-              ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 hover:bg-green-200 dark:hover:bg-green-900/60 ring-2 ring-green-500/50'
-              : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-              } ${isProgressLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
-          >
-            <div className={`w-6 h-6 rounded-full flex items-center justify-center ${isCompleted ? 'bg-green-500 text-white' : 'bg-gray-300 dark:bg-gray-600 text-transparent'}`}>
-              <i className="fa-solid fa-check text-xs"></i>
-            </div>
-            <span>{isCompleted ? 'Completed' : 'Mark as Complete'}</span>
-          </button>
+        <div className="mt-12 flex flex-col items-center space-y-4">
+          <AnimatePresence mode="wait">
+            <motion.button
+              key={isCompleted ? 'completed' : 'incomplete'}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={handleToggleComplete}
+              disabled={isProgressLoading || isCompleted}
+              className={`flex items-center space-x-3 px-8 py-4 rounded-2xl font-black transition-all duration-500 shadow-lg ${isCompleted
+                ? 'bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400 cursor-default border-2 border-emerald-500/20'
+                : 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white hover:shadow-brand-500/25 hover:-translate-y-1 active:scale-95'
+                } ${isProgressLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            >
+              <div className={`w-7 h-7 rounded-xl flex items-center justify-center transition-all duration-500 ${isCompleted ? 'bg-emerald-500 text-white rotate-0' : 'bg-white/20 text-transparent -rotate-12'}`}>
+                <i className="fa-solid fa-check text-sm font-bold"></i>
+              </div>
+              <span className="tracking-wide">
+                {isCompleted ? 'Topic Mastered!' : 'Complete & Earn 10 XP'}
+              </span>
+            </motion.button>
+          </AnimatePresence>
+          
+          {isCompleted && (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-emerald-600 dark:text-emerald-400 font-bold text-sm flex items-center animate-bounce-soft"
+            >
+              <i className="fa-solid fa-star mr-2"></i>
+              You've earned 10 XP for this lesson!
+            </motion.div>
+          )}
         </div>
 
         <hr className="my-10 border-gray-200 dark:border-gray-700" />

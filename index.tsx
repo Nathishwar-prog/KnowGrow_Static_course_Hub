@@ -5,6 +5,7 @@ import App from './App';
 import './index.css';
 import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
+import { AllProgressProvider } from './context/useAllProgress';
 const rootElement = document.getElementById('root');
 if (!rootElement) {
   throw new Error("Could not find root element to mount to");
@@ -16,7 +17,9 @@ root.render(
     <BrowserRouter>
       <ThemeProvider>
         <AuthProvider>
-          <App />
+          <AllProgressProvider>
+            <App />
+          </AllProgressProvider>
         </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>
