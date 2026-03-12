@@ -5,9 +5,10 @@ import CssExercisePage from './css/CssExercisePage';
 import JsExercisePage from './js/JsExercisePage';
 import SqlExercisePage from './sql/SqlExercisePage';
 import PythonExercisePage from './python/PythonExercisePage';
+import NumpyExercisePage from './numpy/NumpyExercisePage';
 import { BrowserMockup } from '../components';
+import PythonRunner from '../../components/PythonRunner';
 
-const NumpyExercisePage = () => <div className="p-8 text-center text-gray-500">NumPy Exercises Coming Soon</div>;
 const PandasExercisePage = () => <div className="p-8 text-center text-gray-500">Pandas Exercises Coming Soon</div>;
 const MatplotlibExercisePage = () => <div className="p-8 text-center text-gray-500">Matplotlib Exercises Coming Soon</div>;
 const SeabornExercisePage = () => <div className="p-8 text-center text-gray-500">Seaborn Exercises Coming Soon</div>;
@@ -17,13 +18,15 @@ interface ExerciseProps {
     instruction: React.ReactNode;
     initialCode: string;
     solution: string;
-    language: 'html' | 'javascript';
+    language: 'html' | 'javascript' | 'python';
 }
 
 export const Exercise: React.FC<ExerciseProps> = ({ title, instruction, initialCode, solution, language }) => {
     const [code, setCode] = useState(initialCode);
     const [showSolution, setShowSolution] = useState(false);
     const [jsOutput, setJsOutput] = useState<string[]>([]);
+    const [isPythonRunning, setIsPythonRunning] = useState(false);
+    const [pythonError, setPythonError] = useState<string | null>(null);
 
     const iframeSrcDoc = `
         <!DOCTYPE html>
@@ -75,6 +78,14 @@ export const Exercise: React.FC<ExerciseProps> = ({ title, instruction, initialC
         }
     };
 
+    const handleRunClick = () => {
+        if (language === 'javascript') {
+            runJsCode();
+        } else if (language === 'python') {
+            setIsPythonRunning(true);
+        }
+    };
+
     return (
         <div className="border border-gray-200 dark:border-gray-700 rounded-lg mb-8">
             <div className="p-4 bg-gray-50 dark:bg-gray-900/50 rounded-t-lg border-b border-gray-200 dark:border-gray-700">
@@ -89,21 +100,40 @@ export const Exercise: React.FC<ExerciseProps> = ({ title, instruction, initialC
                     aria-label="Code editor for exercise"
                     spellCheck="false"
                 />
-                <div className="mt-4 flex space-x-2">
-                    {language === 'javascript' && (
-                        <button
-                            onClick={runJsCode}
-                            className="bg-green-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-700 transition-colors text-sm flex items-center"
-                        >
-                            <i className="fa-solid fa-play mr-2"></i>Run Code
-                        </button>
+                <div className="mt-4 flex flex-col space-y-2">
+                    {language === 'python' && (
+                        <PythonRunner 
+                            code={code} 
+                            onOutput={setJsOutput} 
+                            onError={setPythonError} 
+                            isRunning={isPythonRunning} 
+                            setIsRunning={setIsPythonRunning} 
+                        />
                     )}
-                    <button
-                        onClick={() => setShowSolution(!showSolution)}
-                        className="bg-gray-500 text-white font-bold py-2 px-4 rounded-md hover:bg-gray-600 transition-colors text-sm"
-                    >
-                        {showSolution ? 'Hide Answer' : 'Show Answer'}
-                    </button>
+                    {pythonError && (
+                        <div className="text-red-500 text-sm mb-2 flex items-center">
+                            <i className="fa-solid fa-circle-exclamation mr-2"></i>
+                            {pythonError}
+                        </div>
+                    )}
+                    <div className="flex space-x-2">
+                        {(language === 'javascript' || language === 'python') && (
+                            <button
+                                onClick={handleRunClick}
+                                disabled={isPythonRunning}
+                                className={`${isPythonRunning ? 'bg-green-400' : 'bg-green-600 hover:bg-green-700'} text-white font-bold py-2 px-4 rounded-md transition-colors text-sm flex items-center`}
+                            >
+                                <i className={`fa-solid ${isPythonRunning ? 'fa-spinner fa-spin' : 'fa-play'} mr-2`}></i>
+                                {isPythonRunning ? 'Running...' : 'Run Code'}
+                            </button>
+                        )}
+                        <button
+                            onClick={() => setShowSolution(!showSolution)}
+                            className="bg-gray-500 text-white font-bold py-2 px-4 rounded-md hover:bg-gray-600 transition-colors text-sm"
+                        >
+                            {showSolution ? 'Hide Answer' : 'Show Answer'}
+                        </button>
+                    </div>
                 </div>
                 {showSolution && (
                     <div className="mt-4 p-4 bg-emerald-50 dark:bg-emerald-900/30 rounded-md border-l-4 border-emerald-500">
@@ -116,7 +146,7 @@ export const Exercise: React.FC<ExerciseProps> = ({ title, instruction, initialC
             </div>
 
             {/* Output Section */}
-            {(language === 'html' || (language === 'javascript' && jsOutput.length > 0)) && (
+            {(language === 'html' || ((language === 'javascript' || language === 'python') && jsOutput.length > 0)) && (
                 <div className="border-t border-gray-200 dark:border-gray-700 p-4 bg-gray-50 dark:bg-gray-900/50 rounded-b-lg">
                     <h5 className="font-bold text-lg mb-2 text-gray-700 dark:text-gray-200">Output</h5>
                     {language === 'html' && (
@@ -129,7 +159,7 @@ export const Exercise: React.FC<ExerciseProps> = ({ title, instruction, initialC
                             />
                         </BrowserMockup>
                     )}
-                    {language === 'javascript' && jsOutput.length > 0 && (
+                    {(language === 'javascript' || language === 'python') && jsOutput.length > 0 && (
                         <pre className="bg-gray-900 text-white font-mono text-sm p-4 rounded-md max-h-48 overflow-y-auto">
                             <code>
                                 {jsOutput.join('\n')}
