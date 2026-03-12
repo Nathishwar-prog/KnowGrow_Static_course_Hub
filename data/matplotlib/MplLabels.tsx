@@ -1,363 +1,580 @@
 import React, { useState } from 'react';
-import {
-  Type, Copy, Check, Info, ArrowRight,
-  Maximize2, Terminal, Eye, Layout, 
-  Activity, Code, List, BarChart2,
-  TrendingUp, Briefcase, Zap, Settings,
-  Hash, AlignLeft, MoveHorizontal, MoveVertical,
-  RotateCw, MousePointer2, FlaskConical, Globe, LineChart
+import { 
+  Type, Info, Code, Terminal, 
+  ArrowLeftRight, ArrowUpDown, Layout, AlignLeft,
+  Play, Lightbulb, Zap, CheckCircle2,
+  AlertCircle, Sparkles, MousePointer2,
+  BarChart, List, MoveRight, HelpCircle,
+  TrendingUp, Users, Presentation, ClipboardCheck,
+  Activity, Brush, RotateCcw, Check,
+  Eye, Ruler
 } from 'lucide-react';
 
-const CodeSnippetBlock = ({ codeSnippet, title, language = 'python' }: { codeSnippet: string, title?: string, language?: string }) => {
-  const [copied, setCopied] = useState(false);
-  const handleCopy = () => {
-    navigator.clipboard.writeText(codeSnippet).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  };
-  return (
-    <div className="mb-6 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm relative group w-full">
-      {title && (
-        <div className="bg-gray-50 dark:bg-gray-800 px-4 py-2 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-          <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">{title}</span>
-          <div className="flex space-x-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-400/80"></div>
-            <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></div>
-            <div className="w-2.5 h-2.5 rounded-full bg-green-400/80"></div>
-          </div>
-        </div>
-      )}
-      <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
-        <button onClick={handleCopy} className="p-1.5 rounded-md bg-gray-800 text-gray-400 hover:bg-emerald-500 hover:text-white transition-colors border border-gray-700" title="Copy code">
-          {copied ? <Check size={14} /> : <Copy size={14} />}
-        </button>
-      </div>
-      <pre className="p-4 overflow-x-auto text-sm font-mono bg-gray-900 text-emerald-300 leading-relaxed border-t-0 border border-gray-800 rounded-b-xl">
-        <code>{codeSnippet}</code>
-      </pre>
-    </div>
-  );
-};
-
-const ResultTable = ({ headers, rows }: { headers: string[], rows: (string | number | React.ReactNode)[][] }) => (
-  <div className="overflow-x-auto ring-1 ring-gray-200 dark:ring-gray-700 rounded-xl mb-4 shadow-sm w-full font-sans">
-    <table className="w-full text-sm text-left">
-      <thead className="bg-gray-50 dark:bg-gray-900/80 text-gray-900 dark:text-white uppercase font-bold text-xs">
-        <tr>
-          {headers.map((h, i) => (
-            <th key={i} className="px-4 py-3 border-b border-gray-200 dark:border-gray-700">{h}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody className="bg-white dark:bg-gray-800 font-medium text-gray-700 dark:text-gray-300">
-        {rows.map((row, i) => (
-          <tr key={i} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors border-b border-gray-100 dark:border-gray-700/50">
-            {row.map((cell, j) => (
-               <td key={j} className="px-4 py-3">{cell}</td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
-
 const MplLabels: React.FC = () => {
+  const [consoleOutput, setConsoleOutput] = useState<string[]>([]);
+  const [activeTab, setActiveTab] = useState<'titles' | 'axes' | 'styling' | 'rotation' | 'real_world'>('titles');
+
+  const runDemo = (action: string) => {
+    let outLines: string[] = [];
+
+    switch (action) {
+      case 'add_title':
+        outLines = [
+          'Initializing Plot Canvas...',
+          'Metadata Update: title="Sales Growth"',
+          'Executing plt.title("Sales Growth")',
+          'Success: Chart title rendered at center-top.'
+        ];
+        break;
+      case 'add_axis':
+        outLines = [
+          'Setting X-Axis Label: "Months"',
+          'Setting Y-Axis Label: "Sales"',
+          'Mapping axis units to spatial coordinates...',
+          'plt.xlabel("Months") -> Active',
+          'plt.ylabel("Sales") -> Active',
+          'Success: Contextual labels added to primary axes.'
+        ];
+        break;
+      case 'style_labels':
+        outLines = [
+          'Styling Title: fontsize=14',
+          'Styling X-Axis: fontsize=12, color="blue"',
+          'Styling Y-Axis: fontsize=12, color="green"',
+          'Applying typography changes...',
+          'Success: Custom styled labels active.'
+        ];
+        break;
+      case 'rotate_labels':
+        outLines = [
+          'Scanning tick labels on X-axis...',
+          'Long labels detected: ["Laptop", "Smartphone", ...]',
+          'Applying rotation=45...',
+          'Recalculating layout margins to prevent clipping.',
+          'Success: High-readability rotated labels applied.'
+        ];
+        break;
+      case 'traffic_case':
+        outLines = [
+          'Dataset: Website Traffic [Mon-Fri]',
+          'Title: "Website Traffic"',
+          'X-Label: "Day of the Week"',
+          'Y-Label: "Number of Visitors"',
+          'Success: Professional traffic chart descriptive layers ready.'
+        ];
+        break;
+      case 'exercise':
+        outLines = [
+          'Analyzing Exercise Plot...',
+          'Title: "Daily Exercise Routine" -> OK',
+          'X-Label: "Days" -> OK',
+          'Y-Label: "Exercise Time (minutes)" -> OK',
+          'Marker: "o" -> Detected',
+          'Result: 100% Correct. The chart is fully descriptive!'
+        ];
+        break;
+    }
+
+    setConsoleOutput(outLines);
+  };
+
+  const resetConsole = () => setConsoleOutput([]);
+
   return (
-    <div className="p-4 sm:p-8 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-900 dark:to-emerald-950/20 min-h-screen font-sans">
+    <div className="p-4 sm:p-8 bg-slate-50 dark:bg-slate-950 min-h-screen font-sans text-slate-800 dark:text-slate-100">
       
-      {/* 1. Header & Intro */}
-      <header className="max-w-4xl mx-auto text-center mb-16 relative">
-        <div className="absolute top-0 left-1/4 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl -z-10"></div>
-        <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl mb-6 shadow-xl transform hover:-translate-y-1 transition-transform cursor-default relative">
-          <Type className="w-8 h-8 text-white relative z-10" />
+      {/* 1. Impactful Header */}
+      <header className="max-w-5xl mx-auto text-center mb-16 pt-12 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-[120px] -z-10"></div>
+        <div className="inline-flex items-center justify-center p-4 bg-blue-100 dark:bg-blue-900/30 rounded-3xl mb-8 shadow-sm border border-blue-200 dark:border-blue-800/50 transform hover:scale-110 transition-transform">
+          <Type className="w-12 h-12 text-blue-600 dark:text-blue-400" />
         </div>
-        <h1 className="text-4xl sm:text-6xl font-black text-gray-900 dark:text-white mb-6 tracking-tight">
-          Matplotlib Labels
+        <div className="inline-flex items-center px-4 py-1.5 bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-full text-[10px] font-bold mb-6 border border-blue-500/20 tracking-[0.3em] uppercase">
+          Lesson 0.14
+        </div>
+        <h1 className="text-5xl sm:text-6xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tighter">
+          Matplotlib <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">Labels & Titles</span>
         </h1>
-        <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-medium leading-relaxed">
-           Providing clarity and context by explaining the data axes of your visualizations.
+        <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed font-normal">
+          The voice of your data. Without clear titles and axis labels, even the most beautiful chart remains a mystery.
         </p>
       </header>
 
-      {/* 1 & 2. Intro and Importance */}
-      <section className="max-w-6xl mx-auto mb-16 grid lg:grid-cols-2 gap-8 items-stretch">
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col justify-center">
-          <h2 className="text-2xl font-bold flex items-center text-gray-900 dark:text-white mb-6">
-            <Info className="w-6 h-6 mr-3 text-emerald-500" /> 1. Introduction
-          </h2>
-          <div className="space-y-4">
-              <p className="text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
-                In Matplotlib, <strong>Labels</strong> are used to describe different parts of a graph, specifically the horizontal (X) and vertical (Y) axes.
-              </p>
-              <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-xl border border-emerald-100 dark:border-emerald-800/40">
-                <p className="text-emerald-800 dark:text-emerald-300 text-sm font-bold mb-2 uppercase tracking-wider underline">Simple Definition:</p>
-                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed italic">
-                    Text descriptions that explain what the data ranges on the axes actually represent.
-                </p>
+      {/* 2. Conceptual Foundation Section */}
+      <section className="max-w-6xl mx-auto mb-20 px-4">
+        <div className="grid lg:grid-cols-2 gap-10 items-stretch">
+          
+          <div className="bg-white dark:bg-slate-900 p-10 rounded-[3rem] shadow-xl border border-slate-200 dark:border-slate-800 relative group overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-[80px]"></div>
+            <div className="relative z-10">
+              <div className="flex items-center mb-8">
+                <div className="p-3 bg-blue-500 rounded-2xl shadow-lg shadow-blue-500/20 mr-4">
+                  <Info className="w-6 h-6 text-white" />
+                </div>
+                <h2 className="text-3xl font-bold tracking-tight">1️⃣ What are Labels?</h2>
               </div>
-          </div>
-        </div>
-
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col justify-center relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-5">
-              <AlignLeft size={150} />
-          </div>
-          <h2 className="text-2xl font-bold flex items-center text-gray-900 dark:text-white mb-6 relative z-10">
-            <Zap className="w-6 h-6 mr-3 text-yellow-500" /> 2. Why Labels Matter
-          </h2>
-          <div className="space-y-4 relative z-10">
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Without labels, a graph is just a collection of dots or lines. Labels turn raw visualization into a meaningful story.
+              <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-medium italic border-l-4 border-blue-500 pl-6">
+                "Matplotlib labels are text elements used to describe the X-axis, Y-axis, and title of a chart, making it clear and meaningful."
               </p>
-              <div className="grid grid-cols-2 gap-4">
-                  <div className="p-3 bg-red-50 dark:bg-red-950/20 border border-red-100 dark:border-red-900/30 rounded-xl">
-                      <p className="text-[10px] font-bold text-red-400 uppercase mb-2">No Labels (Confusing)</p>
-                      <pre className="text-[10px] font-mono leading-none text-red-500/60">
-{`   *
-      *
- *`}
-                      </pre>
-                  </div>
-                  <div className="p-3 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30 rounded-xl">
-                      <p className="text-[10px] font-bold text-emerald-400 uppercase mb-2">With Labels (Clear)</p>
-                      <pre className="text-[10px] font-mono leading-none text-emerald-500">
-{`Sales
-30 |      *
-20 |   *
-10 | *
-   ------------------
-    Jan Feb Mar`}
-                      </pre>
-                  </div>
-              </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3 & 4. Types & Functions */}
-      <section className="max-w-6xl mx-auto mb-16">
-          <div className="bg-slate-900 p-8 lg:p-12 rounded-[2rem] shadow-2xl relative overflow-hidden border border-slate-700 text-white">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -z-10"></div>
-              <h2 className="text-3xl font-black mb-10 flex items-center border-b border-slate-700 pb-4">
-                  <Terminal className="w-8 h-8 mr-4 text-emerald-400" /> 3 & 4. Label Types & Functions
-              </h2>
               
-              <div className="grid lg:grid-cols-2 gap-12 items-start">
-                  <div className="space-y-8">
-                    <div>
-                        <h3 className="text-emerald-400 font-bold mb-4 uppercase tracking-widest text-xs">Primary Axis Labels</h3>
-                        <ResultTable 
-                            headers={['Label Type', 'Description']}
-                            rows={[
-                                [<span className="font-bold">X-axis Label</span>, 'Describes the horizontal axis data'],
-                                [<span className="font-bold">Y-axis Label</span>, 'Describes the vertical axis data']
-                            ]}
-                        />
-                    </div>
-                    <div>
-                        <h3 className="text-emerald-400 font-bold mb-4 uppercase tracking-widest text-xs">Matplotlib Commands</h3>
-                        <div className="space-y-3 font-mono text-sm uppercase">
-                            <div className="p-3 bg-emerald-950/30 rounded-lg border border-emerald-500/20 flex justify-between">
-                                <span className="text-emerald-200">plt.xlabel()</span>
-                                <span className="text-slate-500">Horizontal</span>
-                            </div>
-                            <div className="p-3 bg-teal-950/30 rounded-lg border border-teal-500/20 flex justify-between">
-                                <span className="text-teal-200">plt.ylabel()</span>
-                                <span className="text-slate-500">Vertical</span>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                  <div className="space-y-6">
-                    <p className="text-slate-400 italic text-sm">Pass the descriptive string directly into the function:</p>
-                    <CodeSnippetBlock codeSnippet={`plt.xlabel("X-axis label")\nplt.ylabel("Y-axis label")`} title="Syntax" />
-                  </div>
+              <div className="space-y-4">
+                 <h4 className="text-[10px] font-black text-blue-500 uppercase tracking-widest flex items-center">
+                   <List className="w-4 h-4 mr-2" /> 2️⃣ Main Types of Labels
+                 </h4>
+                 <div className="overflow-hidden rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 shadow-inner">
+                    <table className="w-full text-left">
+                       <thead className="bg-blue-500/5 text-[9px] font-black uppercase text-slate-400 tracking-[0.2em]">
+                          <tr>
+                             <th className="px-8 py-4">Label Type</th>
+                             <th className="px-8 py-4">Function</th>
+                          </tr>
+                       </thead>
+                       <tbody className="text-xs font-bold divide-y divide-slate-100 dark:divide-slate-800/50">
+                          {[
+                            { l: "Title", f: "Describes the entire chart" },
+                            { l: "X-axis Label", f: "Describes horizontal axis" },
+                            { l: "Y-axis Label", f: "Describes vertical axis" }
+                          ].map((row, i) => (
+                            <tr key={i} className="hover:bg-blue-500/5 transition-colors">
+                               <td className="px-8 py-3 text-blue-500">{row.l}</td>
+                               <td className="px-8 py-3 text-slate-600 dark:text-slate-400">{row.f}</td>
+                            </tr>
+                          ))}
+                       </tbody>
+                    </table>
+                 </div>
               </div>
+            </div>
           </div>
-      </section>
 
-      {/* 5 & 6. Basic Example & Visualization */}
-      <section className="max-w-6xl mx-auto mb-16 grid lg:grid-cols-12 gap-8 items-stretch">
-            <div className="lg:col-span-5 bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col justify-center">
-                <h2 className="text-2xl font-bold mb-6 flex items-center text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-700 pb-4 w-full">
-                    <LineChart className="w-6 h-6 mr-3 text-emerald-500" /> 5. Basic Label Example
-                </h2>
-                <CodeSnippetBlock codeSnippet={`import matplotlib.pyplot as plt\n\nx = [1,2,3,4]\ny = [10,20,15,25]\n\nplt.plot(x,y)\n\nplt.xlabel("Months")\nplt.ylabel("Sales")\n\nplt.title("Monthly Sales Data")\nplt.show()`} title="Sales Data Script" />
-            </div>
-
-            <div className="lg:col-span-7 bg-white dark:bg-gray-800 p-8 lg:p-12 rounded-3xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col items-center justify-center text-center">
-                <h3 className="text-xs font-black text-emerald-500 mb-8 uppercase tracking-widest">6. Visual Output Architecture</h3>
-                <div className="bg-gray-950 rounded-2xl p-8 sm:p-12 font-mono text-emerald-400 shadow-inner relative overflow-hidden border border-gray-800 w-full flex justify-center transform hover:scale-[1.02] transition-transform duration-500">
-                    <div className="absolute left-4 top-1/2 -translate-y-1/2 -rotate-90 text-[10px] font-bold text-emerald-600/50 uppercase tracking-[0.3em]">Vertical Axis Label</div>
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] font-bold text-emerald-600/50 uppercase tracking-[0.3em]">Horizontal Axis Label</div>
-<pre className="text-xs sm:text-sm leading-loose">
-{`Sales
-25 |        *
-20 |     *
-15 |   *
-10 | *
-   -----------------------
-    1   2   3   4
-        Months`}
-</pre>
-                </div>
-                <div className="mt-8 flex space-x-4">
-                   <div className="flex items-center text-[10px] font-bold text-gray-400"><MoveHorizontal className="w-3 h-3 mr-1 text-emerald-500" /> Months (X)</div>
-                   <div className="flex items-center text-[10px] font-bold text-gray-400"><MoveVertical className="w-3 h-3 mr-1 text-teal-500" /> Sales (Y)</div>
-                </div>
-            </div>
-      </section>
-
-      {/* 7. Customizing Label Appearance */}
-      <section className="max-w-6xl mx-auto mb-16">
-          <div className="bg-white dark:bg-gray-800 p-8 lg:p-12 rounded-[2.5rem] shadow-xl border border-gray-200 dark:border-gray-700">
-              <h2 className="text-3xl font-black mb-8 flex items-center text-gray-900 dark:text-white pb-4 border-b border-gray-100 dark:border-gray-700">
-                  <Settings className="w-8 h-8 mr-4 text-emerald-500" /> 7. Label Customization
-              </h2>
-              <div className="grid lg:grid-cols-2 gap-12 items-start">
-                  <div className="space-y-6">
-                    <p className="text-gray-600 dark:text-gray-300 font-medium">Styles are applied using keyword arguments within the label functions.</p>
-                    <ResultTable 
-                        headers={['Parameter', 'Description']}
-                        rows={[
-                            [<code className="text-emerald-600 dark:text-emerald-400 font-bold">fontsize</code>, 'Controls text size (e.g., 14, 18)'],
-                            [<code className="text-emerald-600 dark:text-emerald-400 font-bold">color</code>, 'Changes text color ("blue", "red")'],
-                            [<code className="text-emerald-600 dark:text-emerald-400 font-bold">fontweight</code>, 'Controls bolding ("bold", "normal")']
-                        ]}
-                    />
-                    <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl border border-emerald-100 dark:border-emerald-800/40">
-                        <p className="text-xs text-emerald-700 dark:text-emerald-300 font-bold italic">Example: <code className="text-black dark:text-white ml-2">plt.xlabel("Months", fontsize=14, color="blue")</code></p>
-                    </div>
-                  </div>
-                  <CodeSnippetBlock codeSnippet={`# Bold and Big Labels\nplt.xlabel("Months", fontweight="bold")\n\n# Colorful Labels\nplt.ylabel("Sales", fontsize=14, color="green")`} title="Style Examples" />
-              </div>
-          </div>
-      </section>
-
-      {/* 8. Label Rotation */}
-      <section className="max-w-6xl mx-auto mb-16 grid lg:grid-cols-2 gap-8 items-stretch">
-            <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col items-start justify-center">
-                <h2 className="text-2xl font-bold mb-6 flex items-center text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-700 pb-4 w-full">
-                    <RotateCw className="w-6 h-6 mr-3 text-emerald-500" /> 8. Label Rotation
-                </h2>
-                <p className="text-gray-600 dark:text-gray-300 mb-6 font-medium leading-relaxed">
-                    Essential when labels are long or space is limited on the canvas.
-                </p>
-                <div className="bg-slate-900 rounded-xl p-4 w-full mb-6 relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:rotate-45 transition-transform duration-700">
-                        <RotateCw size={100} className="text-emerald-400" />
-                    </div>
-                    <code className="text-emerald-300 font-mono italic">plt.xlabel("Months", rotation=45)</code>
-                </div>
-                <div className="flex space-x-4 w-full">
-                    <div className="p-3 bg-emerald-50 dark:bg-emerald-900/10 rounded-xl flex-grow border border-emerald-100 dark:border-emerald-800/30">
-                        <p className="text-[10px] font-black text-emerald-500 uppercase mb-1">Use Case 1</p>
-                        <p className="text-[11px] text-gray-500">Long Category Names</p>
-                    </div>
-                    <div className="p-3 bg-teal-50 dark:bg-teal-900/10 rounded-xl flex-grow border border-teal-100 dark:border-teal-800/30">
-                        <p className="text-[10px] font-black text-teal-500 uppercase mb-1">Use Case 2</p>
-                        <p className="text-[11px] text-gray-500">Dense Datasets</p>
-                    </div>
-                </div>
-            </div>
-
-            <div className="bg-gray-900 rounded-3xl p-12 flex flex-col items-center justify-center relative overflow-hidden border border-slate-800">
-                <div className="flex items-end space-x-4 border-b border-slate-700 pb-4 mb-4">
-                    <div className="w-1 h-32 bg-emerald-500/20"></div>
-                    <div className="w-1 h-32 bg-emerald-500/20"></div>
-                    <div className="w-1 h-32 bg-emerald-500/20"></div>
-                </div>
-                <div className="flex space-x-6 text-emerald-400/80 font-mono text-[10px]">
-                    <span className="rotate-45 -translate-x-2">Category_A_Label</span>
-                    <span className="rotate-45 -translate-x-2">Category_B_Label</span>
-                    <span className="rotate-45 -translate-x-2">Category_C_Label</span>
-                </div>
-                <p className="mt-12 text-[10px] text-slate-500 font-bold tracking-tighter uppercase italic">Simulated rotated x-tick labels</p>
-            </div>
-      </section>
-
-      {/* 9 & 10. Bar Charts with Labels */}
-      <section className="max-w-6xl mx-auto mb-16">
-          <div className="bg-white dark:bg-gray-800 p-8 lg:p-12 rounded-[2.5rem] shadow-sm border border-gray-200 dark:border-gray-700">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h2 className="text-2xl font-bold mb-6 flex items-center text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-700 pb-4">
-                            <BarChart2 className="w-6 h-6 mr-3 text-emerald-500" /> 9 & 10. Labels in Bar Charts
-                        </h2>
-                        <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">Labels are exceptionally useful in categorical bar charts to define groups and measurement metrics.</p>
-                        <div className="bg-gray-950 p-6 rounded-2xl border border-gray-800 shadow-inner mb-6">
-                            <p className="text-xs font-black text-emerald-500 mb-4 uppercase tracking-widest text-center">Labeled Bar Visual</p>
-<pre className="text-[10px] sm:text-xs font-mono text-emerald-300 leading-relaxed text-center">
-{`Marks
-90 |       █
-80 |   █
-70 |           █
-60 |      █
-   ----------------
-    A  B  C  D
-     Students`}
-</pre>
-                        </div>
-                    </div>
-                    <CodeSnippetBlock codeSnippet={`students = ["A","B","C","D"]\nmarks = [80,65,90,70]\n\nplt.bar(students, marks)\n\nplt.xlabel("Students")\nplt.ylabel("Marks")\n\nplt.title("Student Performance")\nplt.show()`} title="Categorical Labeled Plot" />
-                </div>
-          </div>
-      </section>
-
-      {/* 11. Real World Applications */}
-      <section className="max-w-6xl mx-auto mb-16">
-          <div className="bg-gradient-to-br from-emerald-600 to-teal-800 rounded-[2.5rem] p-8 lg:p-12 shadow-2xl text-white text-center relative overflow-hidden">
-               <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.1),transparent)]"></div>
-               <h2 className="text-3xl font-black mb-10 pb-4 border-b border-white/20 relative z-10">
-                   11. Real World Applications
-               </h2>
+          <div className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 p-10 rounded-[3rem] shadow-2xl border border-blue-500/20 flex flex-col justify-center relative overflow-hidden group">
+            <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none group-hover:scale-125 transition-transform duration-1000"></div>
+            <div className="relative z-10 text-white">
+               <h3 className="text-2xl font-black mb-10 flex items-center tracking-tighter italic">
+                 <Layout className="w-8 h-8 mr-4 text-blue-400" />
+                 Label Best Practices
+               </h3>
+               <div className="space-y-6">
+                 {[
+                   { t: "Clarity", d: "Explain exactly what the plot represents.", i: Eye },
+                   { t: "Context", d: "Help users interpret X and Y measurements.", i: Users },
+                   { t: "Professionalism", d: "Essential for data analysis and reports.", i: Presentation },
+                   { t: "Navigation", d: "Guide the viewer's eye through data.", i: MousePointer2 }
+                 ].map((mod, i) => (
+                   <div key={i} className="flex items-center p-4 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/15 transition-all">
+                      <mod.i className="w-5 h-5 mr-5 text-blue-400 shrink-0" />
+                      <div>
+                         <h5 className="font-bold text-sm tracking-tight">{mod.t}</h5>
+                         <p className="text-[10px] text-blue-100/40">{mod.d}</p>
+                      </div>
+                   </div>
+                 ))}
+               </div>
                
-               <div className="grid md:grid-cols-3 gap-8 relative z-10 text-left">
-                   
-                   <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:translate-y-[-4px] transition-transform group">
-                       <h3 className="font-bold text-emerald-200 flex items-center mb-4 text-lg">
-                           <Briefcase className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform" /> Business Reports
-                       </h3>
-                       <p className="text-sm text-emerald-50 leading-relaxed">
-                            Visualizing <strong>Revenue vs Month</strong>. Essential for stakeholder comprehension.
-                       </p>
-                   </div>
-
-                   <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:translate-y-[-4px] transition-transform group">
-                       <h3 className="font-bold text-teal-200 flex items-center mb-4 text-lg">
-                           <FlaskConical className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform" /> Scientific Research
-                       </h3>
-                       <p className="text-sm text-teal-50 leading-relaxed">
-                            Tracking <strong>Temperature vs Time</strong>. Precise labels are mandatory for validation.
-                       </p>
-                   </div>
-
-                   <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:translate-y-[-4px] transition-transform group">
-                       <h3 className="font-bold text-sky-200 flex items-center mb-4 text-lg">
-                           <Globe className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform" /> Machine Learning
-                       </h3>
-                       <p className="text-sm text-sky-50 leading-relaxed">
-                            Plotting <strong>Epoch vs Accuracy</strong>. Defines the success metrics of training models.
-                       </p>
-                   </div>
-
+               <div className="mt-10 p-5 bg-blue-500/20 rounded-2xl border border-blue-500/30 flex items-center shadow-xl">
+                  <Lightbulb className="w-5 h-5 text-blue-400 mr-4 animate-pulse" />
+                  <p className="text-[11px] text-blue-100 font-bold leading-tight uppercase tracking-tighter">
+                    "Charts without labels are not useful in real-world reports."
+                  </p>
                </div>
+            </div>
+          </div>
 
-               <div className="mt-12 flex flex-col items-center relative z-10">
-                  <div className="flex flex-wrap justify-center items-center gap-4 bg-emerald-950/40 backdrop-blur-sm p-6 rounded-3xl border border-emerald-400/30 font-bold">
-                    <span className="text-emerald-300">Raw Data</span>
-                    <ArrowRight size={14} className="text-white/40" />
-                    <span className="text-emerald-300">Create Graph</span>
-                    <ArrowRight size={14} className="text-white/40" />
-                    <span className="text-emerald-300 ring-2 ring-emerald-400 px-3 py-1 rounded-full bg-emerald-500 shadow-lg text-white">Add Labels</span>
-                    <ArrowRight size={14} className="text-white/40" />
-                    <span className="text-teal-400">Clear Visualization</span>
+        </div>
+      </section>
+
+      {/* 3. Interactive Lab & Console Simulation */}
+      <section className="max-w-6xl mx-auto mb-20 px-2 lg:px-4">
+        <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between mb-10 gap-8">
+           <div className="flex items-center">
+             <div className="p-4 bg-blue-100 dark:bg-blue-900/40 rounded-3xl mr-6 shadow-sm border border-blue-200 dark:border-blue-800">
+               <Terminal className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+             </div>
+             <div>
+               <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white leading-tight">Label Customization Lab</h2>
+               <p className="text-sm text-slate-500 font-bold uppercase tracking-[0.3em] mt-2 italic underline decoration-blue-500/30 underline-offset-4">Interactive Playground</p>
+             </div>
+           </div>
+
+           <div className="flex bg-white dark:bg-slate-900 p-1.5 rounded-[2.5rem] shadow-xl border border-slate-200 dark:border-slate-800 overflow-x-auto max-w-full no-scrollbar">
+            {[
+              { id: 'titles', label: 'Titles', icon: Type },
+              { id: 'axes', label: 'Axis Labels', icon: ArrowLeftRight },
+              { id: 'styling', label: 'Styling', icon: Brush },
+              { id: 'rotation', label: 'Rotation', icon: RotateCcw },
+              { id: 'real_world', label: 'Real Case', icon: Activity }
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as any)}
+                className={`flex items-center px-6 py-3.5 rounded-3xl text-xs font-bold transition-all whitespace-nowrap ${
+                  activeTab === tab.id 
+                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30' 
+                    : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                }`}
+              >
+                <tab.icon className="w-4 h-4 mr-3" />
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid lg:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-12 xl:col-span-7 space-y-6">
+            <div className="bg-white dark:bg-slate-900 p-8 sm:p-12 rounded-[4.5rem] shadow-2xl border border-slate-200 dark:border-slate-800 transition-all min-h-[580px] flex flex-col relative overflow-hidden">
+              
+              {/* Tab: Titles */}
+              {activeTab === 'titles' && (
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 flex flex-col">
+                  <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-blue-500">
+                    <Type className="w-6 h-6 mr-4" />
+                    3️⃣ Adding a Title
+                  </h3>
+                  <div className="space-y-6 flex-1">
+                    <div className="flex justify-between items-center mb-2 px-6 py-3 bg-blue-500/5 rounded-2xl border border-blue-500/10">
+                       <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Function Name</span>
+                       <code className="text-sm font-mono font-black text-blue-500">plt.title()</code>
+                    </div>
+                    <div className="bg-slate-950 rounded-[2.5rem] p-10 border border-slate-800 relative group shadow-2xl">
+                        <div className="absolute top-4 right-8 p-1 bg-blue-500/20 text-blue-400 text-[8px] font-black rounded uppercase tracking-tighter">Header Mode</div>
+                        <pre className="font-mono text-sm leading-relaxed text-slate-300">
+                           plt.plot(x, y)<br/><br/>
+                           plt.<code className="text-blue-400 font-black">title</code>(<code className="text-emerald-400">"Sales Growth"</code>)<br/><br/>
+                           plt.show()
+                        </pre>
+                        <button onClick={() => runDemo('add_title')} className="absolute bottom-6 right-6 p-4 bg-blue-600 text-white rounded-2xl shadow-xl hover:bg-blue-500 transition-all active:scale-95">
+                           <Play className="w-5 h-5 fill-current" />
+                        </button>
+                    </div>
+                    
+                    <div className="grid grid-cols-3 gap-3">
+                       {['left', 'center', 'right'].map((pos) => (
+                         <div key={pos} className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 text-center group cursor-pointer hover:border-blue-500">
+                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-2">{pos}</span>
+                            <AlignLeft className={`w-5 h-5 mx-auto ${pos === 'center' ? 'rotate-0' : pos === 'left' ? 'rotate-0' : 'rotate-180'} text-blue-500 opacity-30 group-hover:opacity-100 transition-opacity`} />
+                         </div>
+                       ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tab: Axes */}
+              {activeTab === 'axes' && (
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8">
+                  <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-indigo-500">
+                    <ArrowLeftRight className="w-6 h-6 mr-4" />
+                    4️⃣ Adding Axis Labels
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                     <div className="p-6 bg-slate-50 dark:bg-slate-950 rounded-[2rem] border border-slate-100 dark:border-slate-800">
+                        <div className="flex items-center mb-4">
+                           <ArrowLeftRight className="w-5 h-5 text-indigo-500 mr-3" />
+                           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">X-Axis Label</span>
+                        </div>
+                        <code className="text-xs font-mono font-bold text-indigo-500">plt.xlabel("Months")</code>
+                     </div>
+                     <div className="p-6 bg-slate-50 dark:bg-slate-950 rounded-[2rem] border border-slate-100 dark:border-slate-800">
+                        <div className="flex items-center mb-4">
+                           <ArrowUpDown className="w-5 h-5 text-violet-500 mr-3" />
+                           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Y-Axis Label</span>
+                        </div>
+                        <code className="text-xs font-mono font-bold text-violet-500">plt.ylabel("Sales")</code>
+                     </div>
+                  </div>
+                  <div className="bg-slate-950 p-10 rounded-[3rem] border border-slate-800 shadow-2xl relative overflow-hidden group">
+                     <pre className="font-mono text-sm leading-relaxed text-slate-400">
+                        plt.plot(months, sales)<br/><br/>
+                        plt.<span className="text-indigo-400 font-bold">xlabel</span>("Months")<br/>
+                        plt.<span className="text-indigo-400 font-bold">ylabel</span>("Sales")<br/><br/>
+                        plt.title("Monthly Sales")
+                     </pre>
+                  </div>
+                  <button onClick={() => runDemo('add_axis')} className="w-full py-5 bg-indigo-600 text-white font-black rounded-3xl shadow-xl hover:bg-indigo-500 transition-all text-xs tracking-widest uppercase italic">Apply Descriptive Labels</button>
+                </div>
+              )}
+
+              {/* Tab: Styling */}
+              {activeTab === 'styling' && (
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8 flex flex-col">
+                  <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-emerald-500">
+                    <Brush className="w-6 h-6 mr-4" />
+                    5️⃣ Styling Labels
+                  </h3>
+                  
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                     {[
+                       { p: "fontsize", v: "12", c: "text-blue-500" },
+                       { p: "color", v: "'blue'", c: "text-emerald-500" },
+                       { p: "fontweight", v: "'bold'", c: "text-indigo-500" },
+                       { p: "loc", v: "'left'", c: "text-violet-500" }
+                     ].map((prop, i) => (
+                       <div key={i} className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 text-center group cursor-pointer">
+                          <code className={`text-[9px] font-black ${prop.c} uppercase block mb-1`}>{prop.p}</code>
+                          <span className="text-[10px] font-mono font-bold text-slate-500">{prop.v}</span>
+                       </div>
+                     ))}
+                  </div>
+
+                  <div className="bg-slate-950 p-10 rounded-[3rem] border border-slate-800 shadow-2xl relative flex-1 min-h-[220px] flex flex-col justify-center">
+                     <pre className="font-mono text-sm leading-relaxed text-slate-300">
+                        plt.xlabel("Time", <br/>
+                        &nbsp;&nbsp;<span className="text-blue-400">fontsize=12</span>, <br/>
+                        &nbsp;&nbsp;<span className="text-blue-400">color="blue"</span><br/>
+                        )<br/>
+                        plt.title("Styled Labels", <span className="text-emerald-400">fontsize=14</span>)
+                     </pre>
+                  </div>
+                  <button onClick={() => runDemo('style_labels')} className="w-full py-5 bg-emerald-700 text-white font-black rounded-3xl shadow-xl hover:bg-emerald-600 transition-all text-xs uppercase tracking-widest">Apply Typographic parameters</button>
+                </div>
+              )}
+
+              {/* Tab: Rotation */}
+              {activeTab === 'rotation' && (
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8">
+                  <h3 className="text-2xl font-bold flex items-center mb-10 pb-4 border-b border-slate-100 dark:border-slate-800 text-amber-500 italic">
+                    <RotateCcw className="w-6 h-6 mr-4" />
+                    8️⃣ Rotating Labels (Ticks)
+                  </h3>
+                  <div className="bg-amber-500/5 p-6 rounded-[2.5rem] border border-amber-500/10 flex items-center gap-6">
+                     <div className="p-4 bg-amber-500 rounded-2xl shrink-0 shadow-lg rotate-45"><Type className="w-8 h-8 text-white" /></div>
+                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-semibold italic">
+                        "Sometimes axis labels overlap, especially when category names are long. Use rotation for better readability."
+                     </p>
+                  </div>
+                  <div className="bg-slate-950 p-10 rounded-[3.5rem] border border-slate-800 shadow-2xl relative group">
+                     <pre className="font-mono text-[13px] leading-relaxed text-slate-400">
+                        {`# Categories: Laptop, Smartphone, Tablet...
+plt.bar(products, sales)
+
+# Rotate labels 45 degrees
+plt.xticks(rotation=45)
+
+plt.title("Product Sales")`}
+                     </pre>
+                  </div>
+                  <button onClick={() => runDemo('rotate_labels')} className="w-full py-5 bg-amber-600 text-white font-black rounded-3xl shadow-xl hover:bg-amber-500 transition-all text-xs uppercase tracking-widest tracking-tighter">Fix Label Overlap</button>
+                </div>
+              )}
+
+              {/* Tab: Real World */}
+              {activeTab === 'real_world' && (
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8">
+                  <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-blue-500">
+                    <Activity className="w-6 h-6 mr-4" />
+                    7️⃣ Case Study: Website Traffic
+                  </h3>
+                  <div className="flex flex-col sm:flex-row gap-6">
+                     <div className="flex-1 bg-white dark:bg-slate-950 p-6 rounded-[2.2rem] border dark:border-slate-800 shadow-sm flex flex-col justify-center text-center">
+                        <div className="text-3xl font-black text-blue-500 mb-2">120+</div>
+                        <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Mon Visitors</div>
+                     </div>
+                     <div className="flex-[2] bg-slate-950 p-10 rounded-[3rem] border border-slate-800 relative shadow-2xl overflow-hidden group">
+                        <pre className="font-mono text-[12px] leading-6 text-slate-400">
+                           {`days = ["Mon", "Tue", "Wed", "Thu", "Fri"]
+visitors = [120, 150, 170, 160, 180]
+
+plt.plot(days, visitors, marker="o")
+
+plt.xlabel("Day of the Week")
+plt.ylabel("Number of Visitors")
+plt.title("Website Traffic")`}
+                        </pre>
+                        <div className="mt-8 flex justify-end">
+                           <button onClick={() => runDemo('traffic_case')} className="px-10 py-5 bg-blue-600 text-white font-black rounded-[2rem] shadow-xl hover:bg-blue-500 transition-all text-xs uppercase flex items-center tracking-tighter italic shadow-blue-900/40">
+                              <Sparkles className="w-4 h-4 mr-3" /> Map Analytics Labels
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                </div>
+              )}
+
+            </div>
+          </div>
+
+          <div className="lg:col-span-12 xl:col-span-5 flex flex-col gap-6">
+            
+            {/* Terminal Console Simulation */}
+            <div className="bg-[#0a0a0d] rounded-[3.5rem] p-10 border border-slate-800 h-full min-h-[480px] shadow-2xl relative overflow-hidden group/terminal flex flex-col">
+               <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px] group-hover/terminal:bg-blue-500/10 transition-all duration-1000"></div>
+               
+               <div className="relative z-10 flex flex-col h-full flex-1">
+                  <div className="flex items-center justify-between mb-10 border-b border-slate-800 pb-6 px-2">
+                    <div className="flex items-center">
+                      <Terminal className="w-6 h-6 mr-4 text-blue-500/70" />
+                      <h3 className="font-bold text-slate-600 uppercase text-[10px] tracking-[0.4em] font-mono">
+                        LABEL_TEXT_ENGINE
+                      </h3>
+                    </div>
+                    <div className="flex space-x-2">
+                       <div className="w-2.5 h-2.5 rounded-full bg-slate-900 ring-1 ring-slate-800"></div>
+                       <div className="w-2.5 h-2.5 rounded-full bg-slate-900 ring-1 ring-slate-800"></div>
+                       <div className="w-2.5 h-2.5 rounded-full bg-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.5)]"></div>
+                    </div>
+                  </div>
+
+                  <div className="font-mono text-[11px] flex flex-col flex-1 overflow-y-auto max-h-[380px] custom-scrollbar px-3 space-y-4">
+                  {consoleOutput.length === 0 ? (
+                     <div className="text-slate-900 flex flex-col items-center justify-center flex-1 h-full mt-24 space-y-8 opacity-20 select-none grayscale cursor-wait">
+                        <Type className="w-20 h-20 animate-pulse duration-[3000ms]" />
+                        <div className="text-center">
+                           <span className="block text-[8px] uppercase tracking-[0.6em] font-black text-blue-500 mb-2">Typography Buffer Idle</span>
+                           <span className="text-[10px] font-bold italic">Assign Metadata to the Canvas</span>
+                        </div>
+                     </div>
+                  ) : (
+                     <div className="space-y-4">
+                        {consoleOutput.map((line, i) => (
+                           <div key={i} className="animate-in fade-in slide-in-from-left-4 duration-500 flex items-start group/line">
+                              <span className="text-blue-500/30 mr-4 font-black select-none text-[8px] mt-1 shrink-0 italic">TX::LBL</span>
+                              <span className={`leading-relaxed font-semibold transition-colors ${
+                                line.includes('Success') || line.includes('Correct') ? 'text-emerald-400 font-bold' :
+                                line.includes('Initializing') || line.includes('Setting') ? 'text-amber-400 underline decoration-amber-500/20 underline-offset-4' :
+                                line.includes('Mapping') || line.includes('Applying') ? 'text-indigo-400' :
+                                line.includes('Result') ? 'text-blue-400 font-black' :
+                                'text-slate-400 italic'
+                              }`}>
+                                {line}
+                              </span>
+                           </div>
+                        ))}
+                        <div className="pt-10 flex justify-between items-center border-t border-slate-800/40 mt-8">
+                           <div className="flex items-center gap-2">
+                              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 animate-ping"></span>
+                              <span className="text-[8px] text-slate-600 font-black uppercase tracking-[0.3em] italic">Text Layers Synchronized</span>
+                           </div>
+                           <button onClick={resetConsole} className="text-[9px] text-blue-500 hover:text-blue-400 font-black uppercase tracking-[0.2em] transition-colors">Clear Engine</button>
+                        </div>
+                     </div>
+                  )}
                   </div>
                </div>
+            </div>
+
+            {/* Teaching Order Visualizer */}
+            <div className="bg-gradient-to-br from-indigo-900 via-blue-950 to-slate-900 p-10 rounded-[4rem] border border-white/10 shadow-2xl relative overflow-hidden group">
+               <div className="absolute top-[-20%] right-[-20%] w-64 h-64 bg-blue-500/5 rounded-full blur-[100px]"></div>
+               <h4 className="text-white font-extrabold text-[10px] mb-8 flex items-center uppercase tracking-[0.4em] opacity-80">
+                 <ClipboardCheck className="w-4 h-4 text-emerald-400 mr-3" />
+                 Readability Sequence
+               </h4>
+               <div className="space-y-3 px-2 relative z-10">
+                  {[
+                    "Matplotlib Titles", "Matplotlib Labels", "Matplotlib Grid", "Matplotlib Legends", "Matplotlib Colors"
+                  ].map((path, i) => (
+                    <div key={i} className="flex items-center group/item transition-all duration-300">
+                       <div className={`w-12 h-10 rounded-2xl flex items-center justify-center mr-6 transition-all duration-500 ${i === 1 ? 'bg-blue-600 shadow-xl shadow-blue-500/40 rotate-12 scale-110' : 'bg-white/5 border border-white/5 opacity-50'}`}>
+                          <span className={`text-[11px] font-black ${i === 1 ? 'text-white' : 'text-slate-700'}`}>{i+1}</span>
+                       </div>
+                       <span className={`text-[11px] font-bold tracking-widest transition-colors ${i === 1 ? 'text-white font-black italic' : 'text-slate-500 group-hover/item:text-slate-300'}`}>{path}</span>
+                       {i === 1 && <Sparkles className="w-3.5 h-3.5 ml-auto text-blue-400 animate-pulse" />}
+                    </div>
+                  ))}
+               </div>
+            </div>
           </div>
+        </div>
       </section>
+
+      {/* 4. Tips & Tricks Section */}
+      <section className="max-w-6xl mx-auto mb-20 px-4">
+        <div className="bg-white dark:bg-slate-900 p-12 sm:p-24 rounded-[5.5rem] shadow-2xl border border-slate-100 dark:border-slate-800 relative overflow-hidden group">
+          <div className="absolute top-0 right-0 p-12 opacity-[0.03] scale-150 rotate-12 -z-0">
+             <Type className="w-96 h-96 text-blue-500" />
+          </div>
+          
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-24 gap-8 relative z-10">
+             <div>
+                <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-4 flex items-center tracking-tighter italic underline decoration-blue-500/20 underline-offset-8">
+                   Professional Advice
+                </h2>
+                <p className="text-lg text-slate-500 dark:text-slate-400 font-medium tracking-tight">Best practices for crystal-clear data storytelling.</p>
+             </div>
+             <div className="h-0.5 w-40 bg-blue-500/20 hidden md:block"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 relative z-10">
+             {[
+               { t: "The Label Mandate", d: "Always include a Title, X-axis, and Y-axis label. An unlabelled chart is professional guesswork.", i: Check, c: "text-blue-500" },
+               { t: "Efficiency First", d: "Keep labels short and punchy. Use 'Monthly Sales' instead of long, descriptive sentences.", i: Zap, c: "text-amber-500" },
+               { t: "Units of Measure", d: "Always include units when necessary: Revenue ($), Temp (°C), or Distance (km).", i: Ruler, c: "text-rose-500" },
+               { t: "Actionable Titles", d: "Your title should explain what the chart shows, not just what the axes are.", i: Layout, c: "text-emerald-500" }
+             ].map((tip, i) => (
+               <div key={i} className="flex items-start group/tip">
+                 <div className={`p-6 bg-slate-50 dark:bg-slate-800 rounded-[2.8rem] mr-8 shadow-sm group-hover/tip:bg-blue-500/10 transition-all duration-500 ${tip.c} bg-opacity-10 shrink-0`}>
+                    <tip.i className="w-8 h-8 group-hover/tip:rotate-12 group-hover/tip:scale-110 transition-transform" />
+                 </div>
+                 <div className="pt-2">
+                    <h4 className="font-extrabold text-slate-900 dark:text-white mb-4 group-hover/tip:text-blue-600 transition-colors uppercase tracking-[0.2em] text-[10px]">⭐ PRO TIP 0{i+1}: {tip.t}</h4>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-semibold italic">{tip.d}</p>
+                 </div>
+               </div>
+             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Practice Mission */}
+      <section className="max-w-4xl mx-auto pb-24 px-6">
+        <div className="bg-gradient-to-br from-blue-600 via-indigo-700 to-slate-950 p-12 sm:p-24 rounded-[6rem] shadow-2xl relative overflow-hidden group">
+          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-300/10 rounded-full blur-[100px] -z-0"></div>
+          
+          <div className="relative z-10 flex flex-col xl:flex-row gap-16 items-center">
+            <div className="flex-1 text-center xl:text-left">
+              <div className="inline-flex items-center px-4 py-2 bg-white/20 text-white rounded-full text-[10px] font-black mb-10 border border-white/20 tracking-[0.4em] uppercase">
+                🎯 Lab Mission
+              </div>
+              <h2 className="text-5xl font-black text-white mb-8 leading-tight tracking-tighter italic">
+                Daily Exercise Routine
+              </h2>
+              <p className="text-blue-100 text-lg mb-12 leading-relaxed font-semibold pr-4">
+                Create a plot for daily exercise (Mon-Fri) with <b>circular markers</b>. Your mission: Add a clear <b>Title</b>, <b>X-Label</b>, and <b>Y-Label (with minutes unit)</b>.
+              </p>
+
+               <button 
+                  onClick={() => runDemo('exercise')}
+                  className="bg-white text-blue-900 hover:bg-slate-100 px-12 py-6 rounded-[2.5rem] text-[11px] font-black transition-all shadow-2xl flex items-center group/btn active:scale-95 uppercase tracking-[0.1em] italic mx-auto xl:mx-0"
+               >
+                 <Play className="w-5 h-5 mr-4 fill-blue-900 group-hover/btn:scale-125 transition-transform" />
+                 VALIDATE LABEL METADATA
+               </button>
+            </div>
+
+            <div className="w-full xl:w-96 relative">
+               <div className="bg-slate-950 rounded-[4.5rem] border border-white/10 p-16 relative shadow-2xl overflow-hidden group-hover:scale-[1.05] transition-transform duration-700">
+                  <div className="flex justify-between items-center mb-10 px-2 opacity-50">
+                    <div className="flex gap-2">
+                       <div className="w-2.5 h-2.5 rounded-full bg-blue-500/40"></div>
+                       <div className="w-2.5 h-2.5 rounded-full bg-blue-500/40"></div>
+                    </div>
+                    <span className="text-[10px] font-mono text-slate-600 font-black uppercase tracking-[0.4em]">EXERCISE_LAB.v1</span>
+                  </div>
+
+                  {/* Mock Visual representation */}
+                  <div className="h-44 relative bg-blue-500/5 rounded-[3rem] overflow-hidden border border-blue-500/10 flex flex-col items-center justify-center">
+                     <div className="text-[10px] text-blue-400 font-black mb-4 uppercase tracking-[0.2em] animate-pulse">Daily Routine</div>
+                     <Activity className="w-16 h-16 text-blue-500/40" />
+                     <div className="absolute bottom-4 left-6 text-[8px] text-slate-600 font-bold uppercase tracking-widest">Days -{'>'}</div>
+                  </div>
+                  
+                  <div className="mt-12 flex items-center justify-center gap-3 text-white/20 text-[10px] font-black uppercase tracking-[0.4em]">
+                     <CheckCircle2 className="w-3 h-3 text-emerald-500/40" />
+                     Text Layers Synced
+                  </div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Summary Footer */}
+      <footer className="max-w-4xl mx-auto text-center pb-20 opacity-40 hover:opacity-100 transition-opacity">
+         <p className="text-xs font-bold text-slate-500 dark:text-slate-400 italic">
+            Proper labelling is the difference between a random line and a powerful data insight.
+         </p>
+      </footer>
 
     </div>
   );
