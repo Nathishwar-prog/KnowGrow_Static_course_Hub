@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   PieChart as PieChartIcon, Info, Code, Terminal, 
   Play, Lightbulb, Zap, CheckCircle2, 
@@ -21,7 +21,7 @@ function MplPieCharts() {
           'Initializing Canvas...',
           'Data: [40, 25, 20, 15]',
           'Calculating sum: 100',
-          'Computing slice angles (360° total)...',
+          'Computing slice angles (360Â° total)...',
           'Executing plt.pie(data)...',
           'Success: Simple proportional distribution rendered.'
         ];
@@ -204,7 +204,7 @@ function MplPieCharts() {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 flex flex-col relative z-10">
                   <h3 className="text-2xl font-extrabold flex items-center mb-10 pb-4 border-b border-slate-100 dark:border-slate-800 text-rose-500 tracking-tighter italic">
                     <Code className="w-6 h-6 mr-4" />
-                    3️⃣ & 4️⃣ Basic Pie Chart
+                    3ï¸âƒ£ & 4ï¸âƒ£ Basic Pie Chart
                   </h3>
                   <div className="space-y-6 flex-1">
                     <div className="p-6 bg-rose-500/5 rounded-3xl border border-rose-500/10 italic">
@@ -236,7 +236,7 @@ function MplPieCharts() {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8 relative z-10 flex flex-col">
                   <h3 className="text-2xl font-extrabold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-orange-500 italic uppercase tracking-tighter">
                     <List className="w-6 h-6 mr-4" />
-                    5️⃣ Adding Slice Labels
+                    5ï¸âƒ£ Adding Slice Labels
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
                      {["Python", "Java", "C++", "JavaScript"].map((lang, i) => (
@@ -261,7 +261,7 @@ function MplPieCharts() {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8 relative z-10 flex flex-col justify-center">
                   <h3 className="text-2xl font-extrabold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-rose-500 italic underline decoration-rose-500/10 underline-offset-8">
                     <Percent className="w-6 h-6 mr-4" />
-                    6️⃣ Displaying Percentages
+                    6ï¸âƒ£ Displaying Percentages
                   </h3>
                   <div className="p-8 bg-rose-500/5 rounded-[3rem] border border-rose-500/10 mb-4 group/pct cursor-pointer transition-transform">
                      <span className="text-[10px] font-black text-rose-600 uppercase tracking-widest block mb-4">Precision Parameter</span>
@@ -287,7 +287,7 @@ function MplPieCharts() {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8 relative z-10 flex flex-col justify-center">
                   <h3 className="text-2xl font-extrabold flex items-center mb-10 pb-4 border-b border-slate-100 dark:border-slate-800 text-amber-500 italic uppercase">
                     <Scissors className="w-6 h-6 mr-4" />
-                    8️⃣ Exploding a Slice
+                    8ï¸âƒ£ Exploding a Slice
                   </h3>
                   <div className="bg-amber-500/5 p-10 rounded-[4rem] border border-amber-500/10 relative overflow-hidden group/exp">
                      <p className="text-sm font-bold text-slate-500 dark:text-slate-400 mb-8 leading-relaxed italic pr-12">
@@ -313,7 +313,7 @@ function MplPieCharts() {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 flex flex-col justify-center space-y-8 relative z-10">
                   <h3 className="text-2xl font-extrabold flex items-center mb-6 border-b dark:border-slate-800 pb-4 text-rose-600 italic tracking-tighter uppercase">
                     <Activity className="w-6 h-6 mr-4" />
-                    9️⃣ Monthly Expense Distribution
+                    9ï¸âƒ£ Monthly Expense Distribution
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
                      <div className="bg-slate-50 dark:bg-slate-950 p-8 rounded-[3rem] border border-slate-100 dark:border-slate-800 flex flex-col items-center justify-center">
@@ -355,7 +355,7 @@ function MplPieCharts() {
                   <div className="font-mono text-[11px] flex flex-col flex-1 overflow-y-auto max-h-[350px] custom-scrollbar px-4 space-y-5">
                   {consoleOutput.length === 0 ? (
                      <div className="text-slate-900 flex flex-col items-center justify-center flex-1 h-full mt-24 space-y-10 opacity-20 filter grayscale hover:grayscale-0 transition-all duration-700 select-none italic font-black">
-                        <PieChartIcon className="w-24 h-24 animate-bounce duration-[4000ms]" />
+                        <PieChartIcon className="w-24 h-24 animate-bounce [animation-duration:4000ms]" />
                         <div className="text-center">
                            <span className="block text-[8px] uppercase tracking-[0.5em] font-black text-rose-500 mb-2 font-mono">Awaiting Proportional Data</span>
                            <span className="text-[10px] font-bold text-white/50 underline decoration-rose-500/20 underline-offset-8">Execute Distribution Sequence</span>
@@ -439,7 +439,7 @@ function MplPieCharts() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 relative z-10">
              {[
-               { t: "The Slicing Limit", d: "Avoid too many categories. 3–6 slices is the sweet spot for professional readability.", i: Target, c: "text-rose-500" },
+               { t: "The Slicing Limit", d: "Avoid too many categories. 3â€“6 slices is the sweet spot for professional readability.", i: Target, c: "text-rose-500" },
                { t: "Strategic Explosion", d: "Use explode=[0.1, 0, ...] to fracture the most important category for emphasis.", i: Scissors, c: "text-amber-500" },
                { t: "The Percent Mandate", d: "Always include percentages using autopct='%1.1f%%' to anchor visual guessing.", i: Percent, c: "text-orange-500" },
                { t: "Color Differentiation", d: "Choose distinct, high-contrast colors to help users differentiate thin slices.", i: Palette, c: "text-rose-600" }
@@ -449,7 +449,7 @@ function MplPieCharts() {
                     <tip.i className="w-9 h-9 group-hover/tip:rotate-12 group-hover/tip:scale-110 transition-transform italic" />
                  </div>
                  <div className="pt-2">
-                    <h4 className="font-black text-slate-900 dark:text-white mb-4 group-hover/tip:text-rose-600 transition-colors uppercase tracking-[0.3em] text-[10px]">⭐ PRO TIP 0{i + 1}: {tip.t}</h4>
+                    <h4 className="font-black text-slate-900 dark:text-white mb-4 group-hover/tip:text-rose-600 transition-colors uppercase tracking-[0.3em] text-[10px]">â­ PRO TIP 0{i + 1}: {tip.t}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-black italic tracking-tight">{tip.d}</p>
                  </div>
                </div>
@@ -461,12 +461,12 @@ function MplPieCharts() {
       {/* 5. Practice Mission */}
       <section className="max-w-4xl mx-auto pb-24 px-6 md:px-0">
         <div className="bg-gradient-to-br from-rose-600 via-orange-700 to-slate-950 p-12 sm:p-24 rounded-[6.5rem] shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/10 rounded-full blur-[120px] -z-0 pointer-events-none group-hover:scale-110 transition-transform duration-[3000ms]"></div>
+          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/10 rounded-full blur-[120px] -z-0 pointer-events-none group-hover:scale-110 transition-transform [transition-duration:3000ms]"></div>
           
           <div className="relative z-10 flex flex-col xl:flex-row gap-20 items-center">
             <div className="flex-1 text-center xl:text-left">
               <div className="inline-flex items-center px-5 py-2.5 bg-white/10 text-white rounded-full text-[10px] font-black mb-10 border border-white/20 tracking-[0.4em] uppercase shadow-lg backdrop-blur-md italic font-mono">
-                🎯 Proportional Task
+                ðŸŽ¯ Proportional Task
               </div>
               <h2 className="text-5xl font-black text-white mb-10 leading-[1.1] tracking-tighter italic">
                 Life Cycle Analysis

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   Activity, Info, Code, Terminal, 
   Play, Lightbulb, Zap, CheckCircle2, 
@@ -102,7 +102,7 @@ function MplViolin() {
                 <div className="p-3 bg-rose-500 rounded-2xl shadow-lg shadow-rose-500/20 mr-6 group-hover:rotate-6 transition-transform">
                   <Info className="w-6 h-6 text-white italic shadow-2xl" />
                 </div>
-                <h2 className="text-3xl font-black tracking-tight italic uppercase tracking-tighter decoration-rose-500/10 underline underline-offset-8 font-black">1️⃣ Probability Density</h2>
+                <h2 className="text-3xl font-black tracking-tight italic uppercase tracking-tighter decoration-rose-500/10 underline underline-offset-8 font-black">1ï¸âƒ£ Probability Density</h2>
               </div>
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed font-semibold italic border-l-4 border-rose-500 pl-8 transition-colors group-hover:text-slate-900 dark:group-hover:text-white underline decoration-rose-500/5 underline-offset-8 font-black">
                 "A violin plot combines features of a box plot and a density plot to show the distribution of numerical data by displaying its probability density."
@@ -129,7 +129,7 @@ function MplViolin() {
             <div className="relative z-10 text-white font-black italic uppercase italic shadow-sm italic">
                <h3 className="text-2xl font-black mb-10 flex items-center tracking-tighter underline decoration-white/20 underline-offset-8 font-black">
                  <ShieldCheck className="w-8 h-8 mr-5" />
-                 2️⃣ Why Statistics?
+                 2ï¸âƒ£ Why Statistics?
                </h3>
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 leading-tight">
                  {[
@@ -205,7 +205,7 @@ function MplViolin() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 flex flex-col relative z-10 italic font-black">
                   <h3 className="text-3xl font-black flex items-center mb-10 pb-6 border-b border-slate-50 dark:border-slate-800 text-rose-600 tracking-tighter uppercase italic underline decoration-rose-500/20 underline-offset-8 font-black">
                     <Code className="w-10 h-10 mr-6 text-rose-500 font-bold italic shadow-2xl" />
-                    3️⃣ & 4️⃣ Core Implementation
+                    3ï¸âƒ£ & 4ï¸âƒ£ Core Implementation
                   </h3>
                   <div className="space-y-12 flex-1 flex flex-col justify-center italic font-black">
                     <div className="p-8 bg-rose-500/5 rounded-[3rem] border border-rose-500/10 italic font-black">
@@ -241,7 +241,7 @@ function MplViolin() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 space-y-12 relative z-10 flex flex-col justify-center italic font-black">
                   <h3 className="text-3xl font-black flex items-center mb-8 pb-6 border-b border-slate-50 dark:border-slate-800 text-rose-500 uppercase tracking-tighter italic font-black underline decoration-rose-500/10 underline-offset-8">
                     <Layers className="w-10 h-10 mr-6 text-rose-500 font-bold italic shadow-2xl" />
-                    5️⃣ & 6️⃣ Comparative Analysis
+                    5ï¸âƒ£ & 6ï¸âƒ£ Comparative Analysis
                   </h3>
                   <div className="bg-rose-500/5 p-10 rounded-[5rem] border border-rose-500/10 italic font-black">
                      <p className="text-sm font-bold text-slate-500 mb-10 leading-relaxed italic pr-12 text-slate-400 font-black lowercase underline decoration-rose-500/5 underline-offset-8 italic shadow-sm">
@@ -264,7 +264,7 @@ plt.xticks([1,2,3], ["A", "B", "C"])`}
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 space-y-10 relative z-10 flex flex-col justify-center italic font-black">
                   <h3 className="text-3xl font-black flex items-center mb-8 pb-6 border-b border-slate-50 dark:border-slate-800 text-pink-500 uppercase tracking-tighter italic font-black underline decoration-rose-500/20 underline-offset-8 font-black">
                     <GitCommit className="w-10 h-10 mr-6 text-pink-500 font-bold italic shadow-2xl font-black" />
-                    7️⃣ Indicators (Mean & Median)
+                    7ï¸âƒ£ Indicators (Mean & Median)
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 font-black italic shadow-sm italic">
                     {[
@@ -295,7 +295,7 @@ plt.xticks([1,2,3], ["A", "B", "C"])`}
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 flex flex-col justify-center space-y-12 relative z-10 italic uppercase font-black font-black italic shadow-2xl">
                   <h3 className="text-3xl font-black flex items-center mb-6 text-rose-600 tracking-tighter border-b dark:border-slate-800 pb-6 uppercase italic underline decoration-rose-500/10 underline-offset-8 font-black">
                     <Presentation className="w-10 h-10 mr-6 text-rose-500 font-bold italic shadow-2xl" />
-                    8️⃣ Exam Score Analytics Case
+                    8ï¸âƒ£ Exam Score Analytics Case
                   </h3>
                   <div className="bg-rose-500/5 p-14 rounded-[5.5rem] border border-rose-500/20 flex flex-col items-center justify-center relative overflow-hidden group/case italic font-black shadow-sm">
                      <div className="absolute top-0 right-0 p-14 opacity-[0.05] grayscale-0 group-hover/case:rotate-12 transition-transform duration-1000 font-black shadow-2xl italic"><Activity className="w-48 h-48 text-rose-400 font-bold italic shadow-2xl shadow-sm font-black shadow-sm" /></div>
@@ -334,7 +334,7 @@ plt.xticks([1,2,3], ["A", "B", "C"])`}
                   <div className="font-mono text-[11px] flex flex-col flex-1 overflow-y-auto max-h-[420px] custom-scrollbar px-6 space-y-8 leading-loose uppercase italic tracking-tighter font-black shadow-2xl shadow-sm italic shadow-sm">
                   {consoleOutput.length === 0 ? (
                      <div className="text-slate-900 flex flex-col items-center justify-center flex-1 h-full mt-24 space-y-14 opacity-20 select-none filter hover:brightness-150 transition-all duration-700 grayscale hover:grayscale-0 font-black italic shadow-2xl shadow-sm shadow-sm font-black shadow-sm">
-                        <MonitorPlay className="w-28 h-28 stroke-[1px] animate-pulse duration-[6000ms] font-black shadow-sm shadow-sm shadow-sm" />
+                        <MonitorPlay className="w-28 h-28 stroke-[1px] animate-pulse [animation-duration:6000ms] font-black shadow-sm shadow-sm shadow-sm" />
                         <div className="text-center font-black lg:text-left shadow-sm shadow-sm shadow-sm shadow-sm">
                            <span className="block text-[9px] uppercase tracking-[0.8em] font-black text-rose-600 mb-4 underline decoration-rose-500/30 underline-offset-10 italic shadow-sm">Engine Standby...</span>
                            <span className="text-[11px] font-black text-white/40 tracking-widest decoration-white/5 underline underline-offset-4 font-black shadow-sm italic shadow-sm shadow-sm">Statistical Raster Logic Required</span>
@@ -397,7 +397,7 @@ plt.xticks([1,2,3], ["A", "B", "C"])`}
       {/* 4. Professional Distribution Advice */}
       <section className="max-w-6xl mx-auto mb-24 px-4 overflow-hidden italic font-black shadow-sm">
         <div className="bg-white dark:bg-slate-900 p-16 sm:p-28 rounded-[7rem] shadow-2xl border border-slate-100 dark:border-slate-800 relative overflow-hidden group font-black italic shadow-2xl shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
-          <div className="absolute bottom-0 left-0 p-24 opacity-[0.04] scale-150 rotate-12 -z-0 pointer-events-none grayscale-0 group-hover:-rotate-12 transition-transform duration-[4000ms] transition-all font-black shadow-2xl shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm"><Activity className="w-[40rem] h-[40rem] text-rose-500 font-black shadow-2xl shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm" /></div>
+          <div className="absolute bottom-0 left-0 p-24 opacity-[0.04] scale-150 rotate-12 -z-0 pointer-events-none grayscale-0 group-hover:-rotate-12 transition-transform [transition-duration:4000ms] transition-all font-black shadow-2xl shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm"><Activity className="w-[40rem] h-[40rem] text-rose-500 font-black shadow-2xl shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm" /></div>
           
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-28 gap-12 relative z-10 tracking-tighter decoration-rose-500/20 underline underline-offset-[20px] italic font-black uppercase italic underline shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
              <div className="flex items-center font-black italic uppercase italic shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
@@ -426,7 +426,7 @@ plt.xticks([1,2,3], ["A", "B", "C"])`}
                     <tip.i className="w-12 h-12 group-hover/tip:rotate-12 group-hover/tip:scale-125 transition-transform font-bold italic shadow-2xl font-black shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm" />
                  </div>
                  <div className="pt-2 italic font-black shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
-                    <h4 className="font-black text-slate-900 dark:text-white mb-6 group-hover/tip:text-rose-600 transition-colors uppercase tracking-[0.5em] text-[11px] underline decoration-rose-500/10 italic font-black shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">⭐ STAT TIP 0{i+1}: {tip.t}</h4>
+                    <h4 className="font-black text-slate-900 dark:text-white mb-6 group-hover/tip:text-rose-600 transition-colors uppercase tracking-[0.5em] text-[11px] underline decoration-rose-500/10 italic font-black shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">â­ STAT TIP 0{i+1}: {tip.t}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-black italic tracking-tighter opacity-80 lowercase decoration-rose-500/5 underline underline-offset-8 decoration-dashed font-black shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">{tip.d}</p>
                  </div>
                </div>
@@ -438,12 +438,12 @@ plt.xticks([1,2,3], ["A", "B", "C"])`}
       {/* 5. Production Challenge Mission */}
       <section className="max-w-4xl mx-auto pb-28 px-6 md:px-0 font-black italic shadow-2xl transition-all shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
         <div className="bg-gradient-to-br from-rose-700 via-rose-800 to-indigo-950 p-16 sm:p-28 rounded-[8.5rem] shadow-2xl relative overflow-hidden group border-b-[12px] border-rose-900/40 transform hover:scale-[1.01] transition-all italic font-black shadow-2xl shadow-sm shadow-sm shadow-sm shadow-sm text-white shadow-2xl shadow-sm shadow-sm">
-          <div className="absolute top-[-20%] right-[-20%] w-[60%] h-[60%] bg-white/10 rounded-full blur-[140px] -z-0 pointer-events-none group-hover:scale-125 transition-transform duration-[5000ms] font-black shadow-2xl shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm"></div>
+          <div className="absolute top-[-20%] right-[-20%] w-[60%] h-[60%] bg-white/10 rounded-full blur-[140px] -z-0 pointer-events-none group-hover:scale-125 transition-transform [transition-duration:5000ms] font-black shadow-2xl shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm"></div>
           
           <div className="relative z-10 flex flex-col xl:flex-row gap-24 items-center italic font-black text-white italic font-black shadow-2xl shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
             <div className="flex-1 text-center xl:text-left font-black italic shadow-2xl shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
               <div className="inline-flex items-center px-8 py-3 bg-white/10 text-white rounded-full text-[11px] font-black mb-14 border border-white/20 tracking-[0.5em] uppercase shadow-2xl backdrop-blur-2xl italic tracking-tighter decoration-white/20 underline underline-offset-10 italic font-black shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
-                🎯 Statistical Trial Mission
+                ðŸŽ¯ Statistical Trial Mission
               </div>
               <h2 className="text-6xl font-black text-white mb-12 leading-[1.0] tracking-tighter uppercase italic decoration-white/10 underline underline-offset-[16px] font-black shadow-sm italic shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
                 Study Distribution
@@ -472,7 +472,7 @@ plt.xticks([1,2,3], ["A", "B", "C"])`}
                   </div>
 
                   <div className="h-56 relative flex items-center justify-center p-12 bg-rose-500/5 rounded-[5rem] border border-rose-500/10 overflow-hidden font-black group/m font-black italic shadow-2xl shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
-                     <Activity className="w-28 h-28 text-rose-600/30 group-hover/m:rotate-[360deg] transition-transform duration-[6000ms] font-black shadow-2xl shadow-sm italic shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm" />
+                     <Activity className="w-28 h-28 text-rose-600/30 group-hover/m:rotate-[360deg] transition-transform [transition-duration:6000ms] font-black shadow-2xl shadow-sm italic shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm" />
                      <div className="absolute inset-0 flex items-center justify-center italic text-[10px] font-black text-rose-500/10 tracking-[2.5em] uppercase cursor-help select-none font-bold font-black shadow-sm italic shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">HULL_RASTERIZING...</div>
                   </div>
                   

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   Tag, Info, Code, Terminal, 
   Layout, Maximize, Play, Lightbulb, 
@@ -203,7 +203,7 @@ function MplLegend() {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 flex flex-col relative z-10">
                   <h3 className="text-2xl font-extrabold flex items-center mb-10 pb-4 border-b border-slate-100 dark:border-slate-800 text-emerald-500 italic">
                     <Code className="w-6 h-6 mr-4" />
-                    4️⃣ Basic Legend Example
+                    4ï¸âƒ£ Basic Legend Example
                   </h3>
                   <div className="space-y-6 flex-1">
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-bold italic underline decoration-emerald-500/20 underline-offset-8">
@@ -235,7 +235,7 @@ function MplLegend() {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8 relative z-10 flex flex-col">
                   <h3 className="text-2xl font-extrabold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-indigo-500 uppercase tracking-tighter italic">
                     <Maximize className="w-6 h-6 mr-4" />
-                    5️⃣ Changing Legend Position
+                    5ï¸âƒ£ Changing Legend Position
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2 pb-6">
                     {[
@@ -262,7 +262,7 @@ function MplLegend() {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-10 relative z-10 flex flex-col justify-center">
                   <h3 className="text-2xl font-extrabold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-teal-500 italic underline decoration-teal-500/20 underline-offset-8">
                     <Brush className="w-6 h-6 mr-4" />
-                    6️⃣ & 7️⃣ Titles & Styling
+                    6ï¸âƒ£ & 7ï¸âƒ£ Titles & Styling
                   </h3>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     {[
@@ -296,7 +296,7 @@ function MplLegend() {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8 relative z-10">
                   <h3 className="text-2xl font-extrabold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-emerald-500">
                     <BarChart className="w-6 h-6 mr-4" />
-                    8️⃣ Legend with Bar Chart
+                    8ï¸âƒ£ Legend with Bar Chart
                   </h3>
                   <div className="bg-emerald-500/5 p-8 rounded-[3rem] border border-emerald-500/10 relative overflow-hidden group/bar">
                     <p className="text-sm font-bold text-slate-500 dark:text-slate-400 mb-8 leading-relaxed italic pr-12">
@@ -366,7 +366,7 @@ plt.legend() # Automatically links bar colors`}
                 <div className="font-mono text-[11px] flex flex-col flex-1 overflow-y-auto max-h-[350px] custom-scrollbar px-4 space-y-5">
                   {consoleOutput.length === 0 ? (
                     <div className="text-slate-900 flex flex-col items-center justify-center flex-1 h-full mt-24 space-y-8 opacity-20 filter grayscale hover:grayscale-0 transition-all duration-700 select-none">
-                      <Tag className="w-20 h-20 animate-bounce duration-[3000ms]" />
+                      <Tag className="w-20 h-20 animate-bounce [animation-duration:3000ms]" />
                       <div className="text-center">
                         <span className="block text-[8px] uppercase tracking-[0.5em] font-black text-emerald-500 mb-2 underline decoration-emerald-500/20 underline-offset-4">Buffer Awaiting Signal</span>
                         <span className="text-[10px] font-bold italic">Initialize Descriptive Box</span>
@@ -453,7 +453,7 @@ plt.legend() # Automatically links bar colors`}
                   <tip.i className="w-9 h-9 group-hover/tip:rotate-12 group-hover/tip:scale-110 transition-transform" />
                 </div>
                 <div className="pt-2">
-                  <h4 className="font-black text-slate-900 dark:text-white mb-4 group-hover/tip:text-emerald-600 transition-colors uppercase tracking-[0.3em] text-[10px]">⭐ PRO TIP 0{i + 1}: {tip.t}</h4>
+                  <h4 className="font-black text-slate-900 dark:text-white mb-4 group-hover/tip:text-emerald-600 transition-colors uppercase tracking-[0.3em] text-[10px]">â­ PRO TIP 0{i + 1}: {tip.t}</h4>
                   <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-bold italic tracking-tight">{tip.d}</p>
                 </div>
               </div>
@@ -465,12 +465,12 @@ plt.legend() # Automatically links bar colors`}
       {/* 5. Practice Mission */}
       <section className="max-w-4xl mx-auto pb-24 px-6">
         <div className="bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-950 p-12 sm:p-24 rounded-[6.5rem] shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/10 rounded-full blur-[120px] -z-0 pointer-events-none group-hover:scale-110 transition-transform duration-[3000ms]"></div>
+          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/10 rounded-full blur-[120px] -z-0 pointer-events-none group-hover:scale-110 transition-transform [transition-duration:3000ms]"></div>
 
           <div className="relative z-10 flex flex-col xl:flex-row gap-20 items-center">
             <div className="flex-1 text-center xl:text-left">
               <div className="inline-flex items-center px-5 py-2.5 bg-white/20 text-white rounded-full text-[10px] font-black mb-10 border border-white/20 tracking-[0.4em] uppercase shadow-xl">
-                🎯 Lab Challenge
+                ðŸŽ¯ Lab Challenge
               </div>
               <h2 className="text-5xl font-black text-white mb-10 leading-[1.1] tracking-tighter italic">
                 Business Intelligence Dashboard

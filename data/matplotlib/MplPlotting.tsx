@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   LineChart, Info, Code, Terminal, 
   Play, Lightbulb, Zap, CheckCircle2, 
@@ -226,7 +226,7 @@ function MplPlotting() {
                 <div className="animate-in fade-in slide-in-from-bottom-6 duration-700 flex-1 flex flex-col relative z-10 font-bold italic">
                   <h3 className="text-2xl font-black flex items-center mb-10 pb-4 border-b border-slate-50 dark:border-slate-800 text-blue-600 tracking-tighter">
                     <Code className="w-7 h-7 mr-4" />
-                    3️⃣ & 4️⃣ Basic Plotting & Imports
+                    3ï¸âƒ£ & 4ï¸âƒ£ Basic Plotting & Imports
                   </h3>
                   <div className="space-y-8 flex-1">
                     <div className="p-8 bg-blue-500/5 rounded-[2.5rem] border border-blue-500/10 mb-2">
@@ -262,7 +262,7 @@ function MplPlotting() {
                 <div className="animate-in fade-in slide-in-from-bottom-6 duration-700 flex-1 space-y-10 relative z-10 flex flex-col justify-center italic">
                   <h3 className="text-2xl font-black flex items-center mb-6 pb-4 border-b border-slate-50 dark:border-slate-800 text-indigo-500 uppercase tracking-tighter">
                     <Layout className="w-7 h-7 mr-4" />
-                    5️⃣ Automatic X-axis Generation
+                    5ï¸âƒ£ Automatic X-axis Generation
                   </h3>
                   <div className="bg-indigo-500/5 p-10 rounded-[3.5rem] border border-indigo-500/10">
                     <p className="text-sm font-bold text-slate-500 mb-10 leading-relaxed pr-8">
@@ -290,7 +290,7 @@ plt.plot(y)
                 <div className="animate-in fade-in slide-in-from-bottom-6 duration-700 flex-1 space-y-10 relative z-10 flex flex-col justify-center">
                   <h3 className="text-2xl font-black flex items-center mb-8 pb-4 border-b border-slate-50 dark:border-slate-800 text-blue-500 italic">
                     <Target className="w-7 h-7 mr-4" />
-                    6️⃣ Adding Plot Markers
+                    6ï¸âƒ£ Adding Plot Markers
                   </h3>
                   <div className="grid grid-cols-2 gap-6 pb-6">
                      <div className="p-8 bg-blue-500/5 rounded-[3rem] border border-blue-500/10 group/marker cursor-pointer transition-all hover:bg-blue-500/10">
@@ -315,7 +315,7 @@ plt.plot(y)
                 <div className="animate-in fade-in slide-in-from-bottom-6 duration-700 flex-1 space-y-10 relative z-10 flex flex-col justify-center italic">
                   <h3 className="text-2xl font-black flex items-center mb-8 pb-4 border-b border-slate-50 dark:border-slate-800 text-violet-500 uppercase tracking-tighter">
                     <Layers className="w-7 h-7 mr-4" />
-                    7️⃣ Multiple Data Series
+                    7ï¸âƒ£ Multiple Data Series
                   </h3>
                   <div className="bg-violet-500/5 p-10 rounded-[4rem] border border-violet-500/10">
                      <p className="text-sm font-bold text-slate-500 mb-10 leading-relaxed pr-12">
@@ -341,7 +341,7 @@ plt.show()`}
                 <div className="animate-in fade-in slide-in-from-bottom-6 duration-700 flex-1 flex flex-col space-y-10 relative z-10">
                   <h3 className="text-2xl font-black flex items-center mb-6 pb-4 border-b border-slate-50 dark:border-slate-800 text-blue-600 italic">
                     <ClipboardCheck className="w-7 h-7 mr-4" />
-                    8️⃣ Metadata: Titles & Labels
+                    8ï¸âƒ£ Metadata: Titles & Labels
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
                      <div className="bg-slate-50 dark:bg-slate-950 p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800">
@@ -394,7 +394,7 @@ plt.show()`}
                   <div className="font-mono text-[11px] flex flex-col flex-1 overflow-y-auto max-h-[380px] custom-scrollbar px-4 space-y-6">
                   {consoleOutput.length === 0 ? (
                      <div className="text-slate-900 flex flex-col items-center justify-center flex-1 h-full mt-24 space-y-10 opacity-30 select-none grayscale hover:grayscale-0 transition-all duration-700">
-                        <MonitorPlay className="w-24 h-24 stroke-[1px] animate-bounce duration-[4000ms]" />
+                        <MonitorPlay className="w-24 h-24 stroke-[1px] animate-bounce [animation-duration:4000ms]" />
                         <div className="text-center">
                            <span className="block text-[8px] uppercase tracking-[0.6em] font-black text-blue-500 mb-3 underline decoration-blue-500/20 underline-offset-8">Awaiting Command...</span>
                            <span className="text-[10px] font-bold text-white/50 tracking-tighter">Initialize Visual Rasterization</span>
@@ -457,7 +457,7 @@ plt.show()`}
       {/* 4. Professional Tips Grid */}
       <section className="max-w-6xl mx-auto mb-24 px-4 overflow-hidden">
         <div className="bg-white dark:bg-slate-900 p-16 sm:p-24 rounded-[6rem] shadow-2xl border border-slate-100 dark:border-slate-800 relative overflow-hidden group">
-          <div className="absolute bottom-0 left-0 p-20 opacity-[0.03] scale-150 rotate-12 -z-0 pointer-events-none grayscale-0 group-hover:rotate-0 transition-transform duration-[2000ms]">
+          <div className="absolute bottom-0 left-0 p-20 opacity-[0.03] scale-150 rotate-12 -z-0 pointer-events-none grayscale-0 group-hover:rotate-0 transition-transform [transition-duration:2000ms]">
              <Activity className="w-96 h-96 text-blue-500" />
           </div>
           
@@ -488,7 +488,7 @@ plt.show()`}
                     <tip.i className="w-10 h-10 group-hover/tip:rotate-12 group-hover/tip:scale-110 transition-transform italic" />
                  </div>
                  <div className="pt-2">
-                    <h4 className="font-black text-slate-900 dark:text-white mb-4 group-hover/tip:text-blue-600 transition-colors uppercase tracking-[0.4em] text-[10px] underline decoration-blue-500/10 italic">⭐ PRO TIP 0{i+1}: {tip.t}</h4>
+                    <h4 className="font-black text-slate-900 dark:text-white mb-4 group-hover/tip:text-blue-600 transition-colors uppercase tracking-[0.4em] text-[10px] underline decoration-blue-500/10 italic">â­ PRO TIP 0{i+1}: {tip.t}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-black tracking-tight italic">{tip.d}</p>
                  </div>
                </div>
@@ -503,7 +503,7 @@ plt.show()`}
             <div className="absolute top-0 right-0 p-10 opacity-[0.05] grayscale"><Users className="w-80 h-80 text-blue-500" /></div>
             <div className="relative z-10 flex flex-col md:flex-row items-center gap-16">
                <div className="flex-1">
-                  <h3 className="text-4xl font-black text-blue-600 mb-8 tracking-tighter uppercase italic">9️⃣ Website Traffic Case Study</h3>
+                  <h3 className="text-4xl font-black text-blue-600 mb-8 tracking-tighter uppercase italic">9ï¸âƒ£ Website Traffic Case Study</h3>
                   <p className="text-lg font-bold text-slate-500 dark:text-slate-400 mb-10 leading-relaxed">
                      "This real-world example demonstrates how a daily traffic plot reveals growth trends throughout the business week."
                   </p>
@@ -521,7 +521,7 @@ plt.show()`}
                </div>
                <div className="w-full md:w-1/3 bg-slate-950 p-10 rounded-[4rem] border border-blue-500/20 shadow-2xl group/ex">
                   <div className="flex items-center justify-center h-48 relative overflow-hidden mb-6">
-                     <TrendingUp className="w-24 h-24 text-blue-500/20 group-hover/ex:scale-125 transition-transform duration-[2000ms]" />
+                     <TrendingUp className="w-24 h-24 text-blue-500/20 group-hover/ex:scale-125 transition-transform [transition-duration:2000ms]" />
                      <div className="absolute inset-0 flex items-center justify-center italic text-[9px] font-black text-blue-500/10 tracking-[1em] uppercase">VISUALIZATION_READY</div>
                   </div>
                   <div className="h-0.5 w-full bg-blue-500/20 mb-8 px-4"></div>
@@ -537,12 +537,12 @@ plt.show()`}
       {/* 6. Practice Mission Section */}
       <section className="max-w-4xl mx-auto pb-24 px-6 md:px-0">
         <div className="bg-gradient-to-br from-blue-700 via-indigo-800 to-slate-950 p-14 sm:p-24 rounded-[6.5rem] shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/10 rounded-full blur-[120px] -z-0 pointer-events-none group-hover:scale-110 transition-transform duration-[3000ms]"></div>
+          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/10 rounded-full blur-[120px] -z-0 pointer-events-none group-hover:scale-110 transition-transform [transition-duration:3000ms]"></div>
           
           <div className="relative z-10 flex flex-col xl:flex-row gap-20 items-center italic">
             <div className="flex-1 text-center xl:text-left">
               <div className="inline-flex items-center px-5 py-2.5 bg-white/10 text-white rounded-full text-[10px] font-black mb-10 border border-white/20 tracking-[0.4em] uppercase shadow-lg backdrop-blur-md">
-                🎯 Lab Challenge
+                ðŸŽ¯ Lab Challenge
               </div>
               <h2 className="text-6xl font-black text-white mb-10 leading-[1.1] tracking-tighter">
                 Daily Study Performance

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   Target, Info, Code, Terminal, 
   Play, Lightbulb, Zap, CheckCircle2, 
@@ -212,7 +212,7 @@ function MplMarkers() {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 flex flex-col relative z-10">
                   <h3 className="text-2xl font-extrabold flex items-center mb-10 pb-4 border-b border-slate-100 dark:border-slate-800 text-indigo-500 italic">
                     <Code className="w-6 h-6 mr-4" />
-                    3️⃣ & 4️⃣ Adding Markers
+                    3ï¸âƒ£ & 4ï¸âƒ£ Adding Markers
                   </h3>
                   <div className="space-y-6 flex-1">
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-bold italic underline decoration-indigo-500/20 underline-offset-8">
@@ -243,17 +243,17 @@ function MplMarkers() {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8 relative z-10 flex flex-col">
                   <h3 className="text-2xl font-extrabold flex items-center mb-6 pb-4 border-b border-slate-100 dark:border-slate-800 text-blue-500 uppercase tracking-tighter">
                     <LayoutList className="w-6 h-6 mr-4" />
-                    5️⃣ Common Marker Types
+                    5ï¸âƒ£ Common Marker Types
                   </h3>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                      {[
-                       { m: "o", s: "○", d: "Circle" },
-                       { m: "s", s: "■", d: "Square" },
-                       { m: "^", s: "▲", d: "Triangle" },
-                       { m: "*", s: "★", d: "Star" },
-                       { m: "x", s: "✖", d: "Cross" },
+                       { m: "o", s: "â—‹", d: "Circle" },
+                       { m: "s", s: "â– ", d: "Square" },
+                       { m: "^", s: "â–²", d: "Triangle" },
+                       { m: "*", s: "â˜…", d: "Star" },
+                       { m: "x", s: "âœ–", d: "Cross" },
                        { m: "+", s: "+", d: "Plus" },
-                       { m: "D", s: "◆", d: "Diamond" }
+                       { m: "D", s: "â—†", d: "Diamond" }
                      ].map((marker) => (
                        <div key={marker.m} className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-3xl border dark:border-slate-800 text-center hover:border-blue-500 transition-all cursor-pointer group hover:-translate-y-2 shadow-sm">
                           <span className="text-2xl text-blue-500 font-black block mb-2">{marker.s}</span>
@@ -271,7 +271,7 @@ function MplMarkers() {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8 relative z-10 flex flex-col justify-center">
                   <h3 className="text-2xl font-extrabold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-cyan-500 italic">
                     <Maximize2 className="w-6 h-6 mr-4" />
-                    6️⃣ & 7️⃣ Sizing & Face Color
+                    6ï¸âƒ£ & 7ï¸âƒ£ Sizing & Face Color
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-4 italic">
                      <div className="bg-cyan-500/5 p-8 rounded-[3rem] border border-cyan-500/10">
@@ -306,7 +306,7 @@ function MplMarkers() {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-6 relative z-10">
                   <h3 className="text-2xl font-extrabold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-indigo-500">
                     <Brush className="w-6 h-6 mr-4" />
-                    8️⃣ Marker Edge Customization
+                    8ï¸âƒ£ Marker Edge Customization
                   </h3>
                   <div className="bg-indigo-500/5 p-8 rounded-[3.5rem] border border-indigo-500/10">
                      <p className="text-sm font-bold text-slate-500 italic mb-8 leading-relaxed pr-8">
@@ -332,11 +332,11 @@ function MplMarkers() {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 flex flex-col justify-center space-y-10 relative z-10">
                   <h3 className="text-2xl font-extrabold flex items-center mb-4 text-indigo-500 italic decoration-indigo-500/20 underline underline-offset-8">
                     <Thermometer className="w-6 h-6 mr-4" />
-                    9️⃣ Temperature Trend
+                    9ï¸âƒ£ Temperature Trend
                   </h3>
                   <div className="bg-indigo-500/5 p-10 rounded-[4rem] border border-indigo-500/20 flex flex-col items-center justify-center relative overflow-hidden group/temp">
                      <div className="absolute top-0 right-0 p-10 opacity-[0.05] grayscale group-hover/temp:grayscale-0 transition-all"><Droplets className="w-32 h-32 text-indigo-400" /></div>
-                     <div className="text-5xl font-black text-indigo-600 mb-6 group-hover/temp:scale-110 transition-transform italic tracking-tighter">30°C</div>
+                     <div className="text-5xl font-black text-indigo-600 mb-6 group-hover/temp:scale-110 transition-transform italic tracking-tighter">30Â°C</div>
                      <p className="text-sm font-bold text-slate-500 text-center leading-relaxed italic max-w-sm">
                         "Markers make it easy to identify individual temperature values for each day, especially when the line trend is subtle."
                      </p>
@@ -371,7 +371,7 @@ function MplMarkers() {
                   <div className="font-mono text-[11px] flex flex-col flex-1 overflow-y-auto max-h-[350px] custom-scrollbar px-4 space-y-5">
                   {consoleOutput.length === 0 ? (
                      <div className="text-slate-900 flex flex-col items-center justify-center flex-1 h-full mt-24 space-y-8 opacity-30 filter grayscale hover:grayscale-0 transition-all duration-1000 select-none">
-                        <Target className="w-20 h-20 animate-bounce duration-[4000ms]" />
+                        <Target className="w-20 h-20 animate-bounce [animation-duration:4000ms]" />
                         <div className="text-center">
                            <span className="block text-[8px] uppercase tracking-[0.5em] font-black text-indigo-500 mb-2">Awaiting Trigger</span>
                            <span className="text-[10px] font-bold text-white/50">Initialize Marker Rasterization</span>
@@ -465,7 +465,7 @@ function MplMarkers() {
                     <tip.i className="w-10 h-10 group-hover/tip:rotate-12 group-hover/tip:scale-110 transition-transform" />
                  </div>
                  <div className="pt-2">
-                    <h4 className="font-black text-slate-900 dark:text-white mb-4 group-hover/tip:text-indigo-600 transition-colors uppercase tracking-[0.3em] text-[10px]">⭐ PRO TIP 0{i + 1}: {tip.t}</h4>
+                    <h4 className="font-black text-slate-900 dark:text-white mb-4 group-hover/tip:text-indigo-600 transition-colors uppercase tracking-[0.3em] text-[10px]">â­ PRO TIP 0{i + 1}: {tip.t}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-bold italic tracking-tight">{tip.d}</p>
                  </div>
                </div>
@@ -477,12 +477,12 @@ function MplMarkers() {
       {/* 5. Practice Mission */}
       <section className="max-w-4xl mx-auto pb-24 px-6 md:px-0">
         <div className="bg-gradient-to-br from-indigo-600 via-blue-700 to-slate-950 p-12 sm:p-24 rounded-[6.5rem] shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/10 rounded-full blur-[120px] -z-0 pointer-events-none group-hover:scale-110 transition-transform duration-[3000ms]"></div>
+          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/10 rounded-full blur-[120px] -z-0 pointer-events-none group-hover:scale-110 transition-transform [transition-duration:3000ms]"></div>
           
           <div className="relative z-10 flex flex-col xl:flex-row gap-20 items-center">
             <div className="flex-1 text-center xl:text-left">
               <div className="inline-flex items-center px-5 py-2.5 bg-white/10 text-white rounded-full text-[10px] font-black mb-10 border border-white/20 tracking-[0.4em] uppercase shadow-lg backdrop-blur-md">
-                🎯 Discrete Lab Task
+                ðŸŽ¯ Discrete Lab Task
               </div>
               <h2 className="text-5xl font-black text-white mb-10 leading-[1.1] tracking-tighter italic">
                 Hydration Monitor v1

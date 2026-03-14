@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   Grid3X3, Info, Code, Terminal, 
   Layers, Layout, Eye, Hash,
@@ -106,7 +106,7 @@ const MplGrid: React.FC = () => {
               <div className="p-3 bg-amber-500 rounded-2xl shadow-lg shadow-amber-500/20 mr-4 group-hover:rotate-12 transition-transform">
                 <Info className="w-6 h-6 text-white" />
               </div>
-              <h2 className="text-3xl font-bold tracking-tight">1️⃣ What is a Grid?</h2>
+              <h2 className="text-3xl font-bold tracking-tight">1ï¸âƒ£ What is a Grid?</h2>
             </div>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed font-medium italic border-l-4 border-amber-500 pl-6">
               "A set of horizontal and vertical lines that appear behind the data in a chart to improve readability and make value comparisons easier."
@@ -144,7 +144,7 @@ const MplGrid: React.FC = () => {
                   <div className="p-3 bg-amber-600 rounded-2xl shadow-lg shadow-amber-600/20 mr-4">
                     <TrendingUp className="w-6 h-6 text-white" />
                   </div>
-                  <h2 className="text-3xl font-bold text-slate-900 dark:text-white">2️⃣ Why Grids Matter</h2>
+                  <h2 className="text-3xl font-bold text-slate-900 dark:text-white">2ï¸âƒ£ Why Grids Matter</h2>
                 </div>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-1">
@@ -219,7 +219,7 @@ const MplGrid: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 flex flex-col">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-amber-500">
                     <Code className="w-6 h-6 mr-4" />
-                    4️⃣ Basic Grid Example
+                    4ï¸âƒ£ Basic Grid Example
                   </h3>
                   <div className="space-y-8 flex-1">
                     <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
@@ -254,7 +254,7 @@ const MplGrid: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-indigo-500">
                     <MoveRight className="w-6 h-6 mr-4" />
-                    5️⃣ Grid on Specific Axis
+                    5ï¸âƒ£ Grid on Specific Axis
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                      <div className="p-6 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-100 dark:border-slate-800 group hover:border-indigo-500 transition-colors">
@@ -290,7 +290,7 @@ const MplGrid: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8 flex flex-col">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-emerald-500 italic">
                     <Brush className="w-6 h-6 mr-4" />
-                    6️⃣ Customizing Grid Look
+                    6ï¸âƒ£ Customizing Grid Look
                   </h3>
                   
                   <div className="grid grid-cols-3 gap-3">
@@ -325,7 +325,7 @@ const MplGrid: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-amber-500">
                     <BarChart className="w-6 h-6 mr-4" />
-                    7️⃣ Grid with Bar Charts
+                    7ï¸âƒ£ Grid with Bar Charts
                   </h3>
                   <div className="bg-amber-500/5 p-6 rounded-3xl border border-amber-500/10 flex items-center gap-6">
                      <div className="p-4 bg-amber-500 rounded-2xl shrink-0"><BarChart className="w-8 h-8 text-white" /></div>
@@ -355,16 +355,16 @@ plt.title("Product Sales Comparision")`}
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-rose-500">
                     <Activity className="w-6 h-6 mr-4" />
-                    8️⃣ Monthly Temperature Case
+                    8ï¸âƒ£ Monthly Temperature Case
                   </h3>
                   <div className="flex flex-col sm:flex-row gap-6">
                      <div className="flex-1 bg-white dark:bg-slate-950 p-6 rounded-3xl border dark:border-slate-800 shadow-sm">
                         <h4 className="font-black text-[10px] text-slate-400 uppercase mb-4 tracking-widest text-center">Dataset Analysis</h4>
                         <div className="space-y-3">
                            {[
-                             { m: "Jan", t: "25°" },
-                             { m: "Feb", t: "28°" },
-                             { m: "Mar", t: "30°" }
+                             { m: "Jan", t: "25Â°" },
+                             { m: "Feb", t: "28Â°" },
+                             { m: "Mar", t: "30Â°" }
                            ].map((item, i) => (
                              <div key={i} className="flex justify-between items-center text-xs font-bold border-b dark:border-slate-800 pb-2">
                                 <span className="text-slate-500">{item.m}</span>
@@ -416,7 +416,7 @@ plt.show()`}
                   <div className="font-mono text-[11px] flex flex-col flex-1 overflow-y-auto max-h-[380px] custom-scrollbar px-3 space-y-4">
                   {consoleOutput.length === 0 ? (
                      <div className="text-slate-900 flex flex-col items-center justify-center flex-1 h-full mt-24 space-y-8 opacity-20 select-none grayscale">
-                        <Grid3X3 className="w-20 h-20 animate-pulse duration-[3000ms]" />
+                        <Grid3X3 className="w-20 h-20 animate-pulse [animation-duration:3000ms]" />
                         <div className="text-center">
                            <span className="block text-[8px] uppercase tracking-[0.6em] font-black text-amber-500 mb-2">Reference Engine Idle</span>
                            <span className="text-[10px] font-bold">Launch a Rendering Simulation</span>
@@ -506,7 +506,7 @@ plt.show()`}
                     <tip.i className="w-8 h-8 group-hover/tip:scale-110 transition-transform" />
                  </div>
                  <div className="pt-2">
-                    <h4 className="font-extrabold text-slate-900 dark:text-white mb-3 group-hover/tip:text-amber-600 transition-colors uppercase tracking-[0.2em] text-[10px]">⭐ PRO TIP 0{i+1}: {tip.t}</h4>
+                    <h4 className="font-extrabold text-slate-900 dark:text-white mb-3 group-hover/tip:text-amber-600 transition-colors uppercase tracking-[0.2em] text-[10px]">â­ PRO TIP 0{i+1}: {tip.t}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">{tip.d}</p>
                  </div>
                </div>
@@ -523,7 +523,7 @@ plt.show()`}
           <div className="relative z-10 flex flex-col xl:flex-row gap-16 items-center">
             <div className="flex-1 text-center xl:text-left">
               <div className="inline-flex items-center px-4 py-1.5 bg-white/20 text-white rounded-full text-[10px] font-black mb-10 border border-white/20 tracking-[0.3em] uppercase">
-                🎯 Lab Challenge
+                ðŸŽ¯ Lab Challenge
               </div>
               <h2 className="text-4xl sm:text-5xl font-black text-white mb-8 leading-tight tracking-tighter">
                 Daily Study Performance

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   Type, Info, Code, Terminal, 
   ArrowLeftRight, ArrowUpDown, Layout, AlignLeft,
@@ -111,7 +111,7 @@ const MplLabels: React.FC = () => {
                 <div className="p-3 bg-blue-500 rounded-2xl shadow-lg shadow-blue-500/20 mr-4">
                   <Info className="w-6 h-6 text-white" />
                 </div>
-                <h2 className="text-3xl font-bold tracking-tight">1️⃣ What are Labels?</h2>
+                <h2 className="text-3xl font-bold tracking-tight">1ï¸âƒ£ What are Labels?</h2>
               </div>
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-medium italic border-l-4 border-blue-500 pl-6">
                 "Matplotlib labels are text elements used to describe the X-axis, Y-axis, and title of a chart, making it clear and meaningful."
@@ -119,7 +119,7 @@ const MplLabels: React.FC = () => {
               
               <div className="space-y-4">
                  <h4 className="text-[10px] font-black text-blue-500 uppercase tracking-widest flex items-center">
-                   <List className="w-4 h-4 mr-2" /> 2️⃣ Main Types of Labels
+                   <List className="w-4 h-4 mr-2" /> 2ï¸âƒ£ Main Types of Labels
                  </h4>
                  <div className="overflow-hidden rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 shadow-inner">
                     <table className="w-full text-left">
@@ -229,7 +229,7 @@ const MplLabels: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 flex flex-col">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-blue-500">
                     <Type className="w-6 h-6 mr-4" />
-                    3️⃣ Adding a Title
+                    3ï¸âƒ£ Adding a Title
                   </h3>
                   <div className="space-y-6 flex-1">
                     <div className="flex justify-between items-center mb-2 px-6 py-3 bg-blue-500/5 rounded-2xl border border-blue-500/10">
@@ -265,7 +265,7 @@ const MplLabels: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-indigo-500">
                     <ArrowLeftRight className="w-6 h-6 mr-4" />
-                    4️⃣ Adding Axis Labels
+                    4ï¸âƒ£ Adding Axis Labels
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                      <div className="p-6 bg-slate-50 dark:bg-slate-950 rounded-[2rem] border border-slate-100 dark:border-slate-800">
@@ -300,7 +300,7 @@ const MplLabels: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8 flex flex-col">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-emerald-500">
                     <Brush className="w-6 h-6 mr-4" />
-                    5️⃣ Styling Labels
+                    5ï¸âƒ£ Styling Labels
                   </h3>
                   
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -335,7 +335,7 @@ const MplLabels: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8">
                   <h3 className="text-2xl font-bold flex items-center mb-10 pb-4 border-b border-slate-100 dark:border-slate-800 text-amber-500 italic">
                     <RotateCcw className="w-6 h-6 mr-4" />
-                    8️⃣ Rotating Labels (Ticks)
+                    8ï¸âƒ£ Rotating Labels (Ticks)
                   </h3>
                   <div className="bg-amber-500/5 p-6 rounded-[2.5rem] border border-amber-500/10 flex items-center gap-6">
                      <div className="p-4 bg-amber-500 rounded-2xl shrink-0 shadow-lg rotate-45"><Type className="w-8 h-8 text-white" /></div>
@@ -363,7 +363,7 @@ plt.title("Product Sales")`}
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-blue-500">
                     <Activity className="w-6 h-6 mr-4" />
-                    7️⃣ Case Study: Website Traffic
+                    7ï¸âƒ£ Case Study: Website Traffic
                   </h3>
                   <div className="flex flex-col sm:flex-row gap-6">
                      <div className="flex-1 bg-white dark:bg-slate-950 p-6 rounded-[2.2rem] border dark:border-slate-800 shadow-sm flex flex-col justify-center text-center">
@@ -418,7 +418,7 @@ plt.title("Website Traffic")`}
                   <div className="font-mono text-[11px] flex flex-col flex-1 overflow-y-auto max-h-[380px] custom-scrollbar px-3 space-y-4">
                   {consoleOutput.length === 0 ? (
                      <div className="text-slate-900 flex flex-col items-center justify-center flex-1 h-full mt-24 space-y-8 opacity-20 select-none grayscale cursor-wait">
-                        <Type className="w-20 h-20 animate-pulse duration-[3000ms]" />
+                        <Type className="w-20 h-20 animate-pulse [animation-duration:3000ms]" />
                         <div className="text-center">
                            <span className="block text-[8px] uppercase tracking-[0.6em] font-black text-blue-500 mb-2">Typography Buffer Idle</span>
                            <span className="text-[10px] font-bold italic">Assign Metadata to the Canvas</span>
@@ -499,7 +499,7 @@ plt.title("Website Traffic")`}
              {[
                { t: "The Label Mandate", d: "Always include a Title, X-axis, and Y-axis label. An unlabelled chart is professional guesswork.", i: Check, c: "text-blue-500" },
                { t: "Efficiency First", d: "Keep labels short and punchy. Use 'Monthly Sales' instead of long, descriptive sentences.", i: Zap, c: "text-amber-500" },
-               { t: "Units of Measure", d: "Always include units when necessary: Revenue ($), Temp (°C), or Distance (km).", i: Ruler, c: "text-rose-500" },
+               { t: "Units of Measure", d: "Always include units when necessary: Revenue ($), Temp (Â°C), or Distance (km).", i: Ruler, c: "text-rose-500" },
                { t: "Actionable Titles", d: "Your title should explain what the chart shows, not just what the axes are.", i: Layout, c: "text-emerald-500" }
              ].map((tip, i) => (
                <div key={i} className="flex items-start group/tip">
@@ -507,7 +507,7 @@ plt.title("Website Traffic")`}
                     <tip.i className="w-8 h-8 group-hover/tip:rotate-12 group-hover/tip:scale-110 transition-transform" />
                  </div>
                  <div className="pt-2">
-                    <h4 className="font-extrabold text-slate-900 dark:text-white mb-4 group-hover/tip:text-blue-600 transition-colors uppercase tracking-[0.2em] text-[10px]">⭐ PRO TIP 0{i+1}: {tip.t}</h4>
+                    <h4 className="font-extrabold text-slate-900 dark:text-white mb-4 group-hover/tip:text-blue-600 transition-colors uppercase tracking-[0.2em] text-[10px]">â­ PRO TIP 0{i+1}: {tip.t}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-semibold italic">{tip.d}</p>
                  </div>
                </div>
@@ -524,7 +524,7 @@ plt.title("Website Traffic")`}
           <div className="relative z-10 flex flex-col xl:flex-row gap-16 items-center">
             <div className="flex-1 text-center xl:text-left">
               <div className="inline-flex items-center px-4 py-2 bg-white/20 text-white rounded-full text-[10px] font-black mb-10 border border-white/20 tracking-[0.4em] uppercase">
-                🎯 Lab Mission
+                ðŸŽ¯ Lab Mission
               </div>
               <h2 className="text-5xl font-black text-white mb-8 leading-tight tracking-tighter italic">
                 Daily Exercise Routine

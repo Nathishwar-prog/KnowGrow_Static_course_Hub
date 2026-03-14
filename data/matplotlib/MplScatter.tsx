@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   Target, Info, Code, Terminal, 
   Play, Lightbulb, Zap, CheckCircle2, 
@@ -213,7 +213,7 @@ function MplScatter() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 flex flex-col relative z-10 italic">
                   <h3 className="text-3xl font-black flex items-center mb-10 pb-6 border-b border-slate-50 dark:border-slate-800 text-red-600 tracking-tighter uppercase">
                     <Code className="w-10 h-10 mr-6 text-red-500 italic decoration-red-500/20 underline underline-offset-8" />
-                    3️⃣ & 4️⃣ Basic Scatter Logic
+                    3ï¸âƒ£ & 4ï¸âƒ£ Basic Scatter Logic
                   </h3>
                   <div className="space-y-12 flex-1 flex flex-col justify-center">
                     <div className="grid grid-cols-2 gap-6">
@@ -256,7 +256,7 @@ function MplScatter() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 space-y-12 relative z-10 flex flex-col justify-center italic">
                   <h3 className="text-3xl font-black flex items-center mb-8 pb-6 border-b border-slate-50 dark:border-slate-800 text-orange-500 uppercase tracking-tighter italic">
                     <Palette className="w-10 h-10 mr-6 text-orange-500 italic decoration-orange-500/20 underline underline-offset-8" />
-                    5️⃣ & 6️⃣ Custom Colors & Sizes
+                    5ï¸âƒ£ & 6ï¸âƒ£ Custom Colors & Sizes
                   </h3>
                   <div className="grid grid-cols-2 gap-8 font-black">
                      <div className="p-10 bg-orange-500/5 rounded-[4rem] border border-orange-500/10 hover:bg-orange-500/10 transition-all group/p">
@@ -282,7 +282,7 @@ function MplScatter() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 space-y-10 relative z-10 flex flex-col justify-center italic">
                   <h3 className="text-3xl font-black flex items-center mb-8 pb-6 border-b border-slate-50 dark:border-slate-800 text-red-500 uppercase tracking-tighter italic">
                     <Layers className="w-10 h-10 mr-6 text-red-500 decoration-red-500/20 underline underline-offset-8" />
-                    7️⃣ Multiple Correlation Analysis
+                    7ï¸âƒ£ Multiple Correlation Analysis
                   </h3>
                   <div className="bg-red-500/5 p-12 rounded-[5rem] border border-red-500/10">
                      <p className="text-sm font-bold text-slate-500 mb-12 leading-relaxed italic pr-12 text-slate-400">
@@ -308,7 +308,7 @@ plt.legend()`}
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 space-y-12 relative z-10 flex flex-col justify-center">
                   <h3 className="text-3xl font-black flex items-center mb-10 pb-6 border-b border-slate-50 dark:border-slate-800 text-indigo-500 italic uppercase italic">
                     <Users className="w-10 h-10 mr-6 text-indigo-500 decoration-indigo-500/20 underline underline-offset-8" />
-                    8️⃣ Individual Point Grouping
+                    8ï¸âƒ£ Individual Point Grouping
                   </h3>
                   <div className="p-10 bg-indigo-500/5 rounded-[4.5rem] border border-indigo-500/10 italic">
                      <div className="flex flex-wrap gap-4 mb-12 justify-center">
@@ -332,7 +332,7 @@ plt.legend()`}
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 flex flex-col justify-center space-y-12 relative z-10 italic uppercase font-black">
                   <h3 className="text-3xl font-black flex items-center mb-6 text-red-600 tracking-tighter border-b dark:border-slate-800 pb-6 uppercase italic">
                     <Activity className="w-10 h-10 mr-6 text-red-500" />
-                    9️⃣ Physiological Case Study
+                    9ï¸âƒ£ Physiological Case Study
                   </h3>
                   <div className="bg-red-500/5 p-14 rounded-[5.5rem] border border-red-500/20 flex flex-col items-center justify-center relative overflow-hidden group/case italic">
                      <div className="absolute top-0 right-0 p-14 opacity-[0.05] grayscale-0 group-hover/case:rotate-12 transition-transform duration-1000"><Presentation className="w-48 h-48 text-red-400" /></div>
@@ -371,7 +371,7 @@ plt.legend()`}
                   <div className="font-mono text-[11px] flex flex-col flex-1 overflow-y-auto max-h-[420px] custom-scrollbar px-6 space-y-8 leading-loose uppercase italic tracking-tighter">
                   {consoleOutput.length === 0 ? (
                      <div className="text-slate-900 flex flex-col items-center justify-center flex-1 h-full mt-24 space-y-14 opacity-20 select-none filter hover:brightness-150 transition-all duration-700 grayscale hover:grayscale-0">
-                        <MonitorPlay className="w-28 h-28 stroke-[1px] animate-pulse duration-[6000ms]" />
+                        <MonitorPlay className="w-28 h-28 stroke-[1px] animate-pulse [animation-duration:6000ms]" />
                         <div className="text-center">
                            <span className="block text-[9px] uppercase tracking-[0.8em] font-black text-red-600 mb-4 underline decoration-red-500/30 underline-offset-10 italic">Buffer Standby...</span>
                            <span className="text-[11px] font-black text-white/40 tracking-widest decoration-white/5 underline underline-offset-4">Rasterization Logic Required</span>
@@ -434,7 +434,7 @@ plt.legend()`}
       {/* 4. Professional Analysis Advice */}
       <section className="max-w-6xl mx-auto mb-24 px-4 overflow-hidden italic font-black">
         <div className="bg-white dark:bg-slate-900 p-16 sm:p-28 rounded-[7rem] shadow-2xl border border-slate-100 dark:border-slate-800 relative overflow-hidden group">
-          <div className="absolute bottom-0 left-0 p-24 opacity-[0.04] scale-150 rotate-12 -z-0 pointer-events-none grayscale-0 group-hover:-rotate-12 transition-transform duration-[4000ms] transition-all">
+          <div className="absolute bottom-0 left-0 p-24 opacity-[0.04] scale-150 rotate-12 -z-0 pointer-events-none grayscale-0 group-hover:-rotate-12 transition-transform [transition-duration:4000ms] transition-all">
              <Target className="w-[40rem] h-[40rem] text-red-500 font-black" />
           </div>
           
@@ -465,7 +465,7 @@ plt.legend()`}
                     <tip.i className="w-12 h-12 group-hover/tip:rotate-12 group-hover/tip:scale-125 transition-transform font-bold italic shadow-2xl" />
                  </div>
                  <div className="pt-2">
-                    <h4 className="font-black text-slate-900 dark:text-white mb-6 group-hover/tip:text-red-600 transition-colors uppercase tracking-[0.5em] text-[11px] underline decoration-red-500/10 italic">⭐ SCALAR TIP 0{i+1}: {tip.t}</h4>
+                    <h4 className="font-black text-slate-900 dark:text-white mb-6 group-hover/tip:text-red-600 transition-colors uppercase tracking-[0.5em] text-[11px] underline decoration-red-500/10 italic">â­ SCALAR TIP 0{i+1}: {tip.t}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-black italic tracking-tighter opacity-80 lowercase decoration-red-500/5 underline underline-offset-8">{tip.d}</p>
                  </div>
                </div>
@@ -477,10 +477,10 @@ plt.legend()`}
       {/* 5. Real-World Analysis Showcase */}
       <section className="max-w-6xl mx-auto mb-20 px-4">
          <div className="bg-red-600/5 rounded-[6rem] p-16 sm:p-24 border border-red-500/10 relative group overflow-hidden italic shadow-2xl backdrop-blur-3xl font-black transition-all">
-            <div className="absolute top-0 right-0 p-14 opacity-[0.06] grayscale hover:grayscale-0 transition-all duration-[2000ms]"><MonitorPlay className="w-[35rem] h-[35rem] text-red-500 font-bold" /></div>
+            <div className="absolute top-0 right-0 p-14 opacity-[0.06] grayscale hover:grayscale-0 transition-all [transition-duration:2000ms]"><MonitorPlay className="w-[35rem] h-[35rem] text-red-500 font-bold" /></div>
             <div className="relative z-10 flex flex-col xl:flex-row items-center gap-20">
                <div className="flex-1 text-center xl:text-left">
-                  <h3 className="text-5xl font-black text-red-600 mb-10 tracking-tighter uppercase italic underline decoration-red-500/10 underline-offset-[16px]">9️⃣ Height vs Weight Model</h3>
+                  <h3 className="text-5xl font-black text-red-600 mb-10 tracking-tighter uppercase italic underline decoration-red-500/10 underline-offset-[16px]">9ï¸âƒ£ Height vs Weight Model</h3>
                   <p className="text-xl font-black text-slate-500 dark:text-slate-400 mb-14 leading-relaxed italic opacity-80 lowercase decoration-red-500/5 underline underline-offset-10">
                      "Measuring the physiological correlation between stature and mass. A foundational study in biological data science."
                   </p>
@@ -498,7 +498,7 @@ plt.legend()`}
                </div>
                <div className="w-full xl:w-[28rem] bg-slate-950 p-14 rounded-[7rem] border border-red-500/30 shadow-2xl group/ex transform hover:-rotate-1 transition-transform">
                   <div className="flex items-center justify-center h-56 relative overflow-hidden mb-10 bg-red-500/5 rounded-[4rem] border border-red-500/10 shadow-inner">
-                     <Target className="w-32 h-32 text-red-500/20 group-hover/ex:scale-150 transition-transform duration-[4000ms] font-black" />
+                     <Target className="w-32 h-32 text-red-500/20 group-hover/ex:scale-150 transition-transform [transition-duration:4000ms] font-black" />
                      <div className="absolute inset-0 flex items-center justify-center italic text-[10px] font-black text-red-500/10 tracking-[1.5em] uppercase select-none cursor-not-allowed">MODEL_LOCKED</div>
                   </div>
                   <div className="h-0.5 w-full bg-red-500/20 mb-10 px-6"></div>
@@ -514,12 +514,12 @@ plt.legend()`}
       {/* 6. Practice Laboratory Mission */}
       <section className="max-w-4xl mx-auto pb-28 px-6 md:px-0">
         <div className="bg-gradient-to-br from-red-700 via-orange-800 to-slate-950 p-16 sm:p-28 rounded-[8.5rem] shadow-2xl relative overflow-hidden group border-b-[12px] border-red-900/40 transform hover:scale-[1.01] transition-all">
-          <div className="absolute top-[-20%] right-[-20%] w-[60%] h-[60%] bg-white/10 rounded-full blur-[140px] -z-0 pointer-events-none group-hover:scale-125 transition-transform duration-[5000ms]"></div>
+          <div className="absolute top-[-20%] right-[-20%] w-[60%] h-[60%] bg-white/10 rounded-full blur-[140px] -z-0 pointer-events-none group-hover:scale-125 transition-transform [transition-duration:5000ms]"></div>
           
           <div className="relative z-10 flex flex-col xl:flex-row gap-24 items-center italic font-black">
             <div className="flex-1 text-center xl:text-left">
               <div className="inline-flex items-center px-8 py-3 bg-white/10 text-white rounded-full text-[11px] font-black mb-14 border border-white/20 tracking-[0.5em] uppercase shadow-2xl backdrop-blur-2xl italic tracking-tighter decoration-white/20 underline underline-offset-8">
-                🎯 Correlation Lab
+                ðŸŽ¯ Correlation Lab
               </div>
               <h2 className="text-6xl font-black text-white mb-12 leading-[1.0] tracking-tighter uppercase italic decoration-white/10 underline underline-offset-[16px]">
                 Exercise vs Calories
@@ -548,7 +548,7 @@ plt.legend()`}
                   </div>
 
                   <div className="h-56 relative flex items-center justify-center p-12 bg-red-500/5 rounded-[5rem] border border-red-500/10 overflow-hidden font-black group/m">
-                     <Target className="w-28 h-28 text-red-500/20 group-hover/m:rotate-[360deg] transition-transform duration-[6000ms] font-black shadow-2xl" />
+                     <Target className="w-28 h-28 text-red-500/20 group-hover/m:rotate-[360deg] transition-transform [transition-duration:6000ms] font-black shadow-2xl" />
                      <div className="absolute inset-0 flex items-center justify-center italic text-[10px] font-black text-red-500/10 tracking-[2em] uppercase cursor-help select-none font-bold">CALIBRATING...</div>
                   </div>
                   

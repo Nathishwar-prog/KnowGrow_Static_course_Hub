@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   Palette, Info, Code, Terminal, 
   Play, Lightbulb, Zap, 
@@ -216,7 +216,7 @@ function MplStyles() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 flex flex-col relative z-10">
                   <h3 className="text-3xl font-black flex items-center mb-10 pb-6 border-b border-slate-50 dark:border-slate-800 text-fuchsia-600 tracking-tighter uppercase italic underline decoration-fuchsia-500/10 underline-offset-8">
                     <Code className="w-10 h-10 mr-6 text-fuchsia-500" />
-                    3️⃣ Universal Application
+                    3ï¸âƒ£ Universal Application
                   </h3>
                   <div className="space-y-12 flex-1 flex flex-col justify-center">
                     <div className="p-10 bg-fuchsia-500/5 rounded-[4rem] border border-fuchsia-500/20 italic">
@@ -245,7 +245,7 @@ function MplStyles() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 space-y-12 relative z-10 flex flex-col justify-center italic">
                   <h3 className="text-3xl font-black flex items-center mb-8 pb-6 border-b border-slate-50 dark:border-slate-800 text-fuchsia-600 uppercase tracking-tighter italic underline decoration-fuchsia-500/10 underline-offset-8">
                     <List className="w-10 h-10 mr-6 text-fuchsia-500" />
-                    4️⃣ Exploring the Theme Library
+                    4ï¸âƒ£ Exploring the Theme Library
                   </h3>
                   <div className="p-10 bg-slate-950 rounded-[4rem] border border-fuchsia-500/20 shadow-2xl relative font-mono">
                      <span className="block text-[9px] text-slate-500 uppercase tracking-widest mb-6 underline decoration-white/5 underline-offset-4">Inspect available themes</span>
@@ -266,7 +266,7 @@ function MplStyles() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 space-y-10 relative z-10 flex flex-col justify-center italic">
                   <h3 className="text-3xl font-black flex items-center mb-8 pb-6 border-b border-slate-50 dark:border-slate-800 text-rose-500 uppercase tracking-tighter italic decoration-rose-500/10 underline underline-offset-8">
                     <Sparkles className="w-10 h-10 mr-6 text-rose-500" />
-                    5️⃣ Popular Style Catalog
+                    5ï¸âƒ£ Popular Style Catalog
                   </h3>
                   <div className="grid grid-cols-2 gap-4 pb-6 leading-tight">
                      {[
@@ -293,7 +293,7 @@ function MplStyles() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 space-y-12 relative z-10 flex flex-col justify-center">
                   <h3 className="text-3xl font-black flex items-center mb-10 pb-6 border-b border-slate-50 dark:border-slate-800 text-fuchsia-500 italic uppercase">
                     <Box className="w-10 h-10 mr-6 text-fuchsia-500 decoration-fuchsia-500/20 underline underline-offset-8" />
-                    8️⃣ Temporary Style Context
+                    8ï¸âƒ£ Temporary Style Context
                   </h3>
                   <div className="p-10 bg-fuchsia-500/5 rounded-[4.5rem] border border-fuchsia-500/10 italic">
                      <p className="text-sm font-bold text-slate-500 mb-10 leading-relaxed italic opacity-80 decoration-fuchsia-500/20 underline underline-offset-4">
@@ -317,7 +317,7 @@ function MplStyles() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 flex flex-col justify-center space-y-12 relative z-10 italic uppercase font-black">
                   <h3 className="text-3xl font-black flex items-center mb-6 text-fuchsia-600 tracking-tighter border-b dark:border-slate-800 pb-6 uppercase italic underline decoration-fuchsia-500/10 underline-offset-8">
                     <Presentation className="w-10 h-10 mr-6 text-fuchsia-500" />
-                    9️⃣ Case Study: Dashboard Report
+                    9ï¸âƒ£ Case Study: Dashboard Report
                   </h3>
                   <div className="bg-fuchsia-500/5 p-14 rounded-[5.5rem] border border-fuchsia-500/20 flex flex-col items-center justify-center relative overflow-hidden group/case italic">
                      <div className="absolute top-0 right-0 p-14 opacity-[0.05] grayscale-0 group-hover/case:rotate-12 transition-transform duration-1000"><LayoutDashboard className="w-48 h-48 text-fuchsia-400" /></div>
@@ -356,7 +356,7 @@ function MplStyles() {
                   <div className="font-mono text-[11px] flex flex-col flex-1 overflow-y-auto max-h-[420px] custom-scrollbar px-6 space-y-8 leading-loose uppercase italic tracking-tighter">
                   {consoleOutput.length === 0 ? (
                      <div className="text-slate-900 flex flex-col items-center justify-center flex-1 h-full mt-24 space-y-14 opacity-20 select-none filter hover:brightness-150 transition-all duration-700 grayscale hover:grayscale-0">
-                        <MonitorPlay className="w-28 h-28 stroke-[1px] animate-pulse duration-[6000ms]" />
+                        <MonitorPlay className="w-28 h-28 stroke-[1px] animate-pulse [animation-duration:6000ms]" />
                         <div className="text-center">
                            <span className="block text-[9px] uppercase tracking-[0.8em] font-black text-fuchsia-600 mb-4 underline decoration-fuchsia-500/30 underline-offset-10 italic">Engine Standby...</span>
                            <span className="text-[11px] font-black text-white/40 tracking-widest decoration-white/5 underline underline-offset-4">Theme Rasterization Logic Required</span>
@@ -419,7 +419,7 @@ function MplStyles() {
       {/* 4. Professional Design Advice */}
       <section className="max-w-6xl mx-auto mb-24 px-4 overflow-hidden italic font-black">
         <div className="bg-white dark:bg-slate-900 p-16 sm:p-28 rounded-[7rem] shadow-2xl border border-slate-100 dark:border-slate-800 relative overflow-hidden group font-black italic">
-          <div className="absolute bottom-0 left-0 p-24 opacity-[0.04] scale-150 rotate-12 -z-0 pointer-events-none grayscale-0 group-hover:-rotate-12 transition-transform duration-[4000ms] transition-all">
+          <div className="absolute bottom-0 left-0 p-24 opacity-[0.04] scale-150 rotate-12 -z-0 pointer-events-none grayscale-0 group-hover:-rotate-12 transition-transform [transition-duration:4000ms] transition-all">
              <Palette className="w-[40rem] h-[40rem] text-fuchsia-500 font-black" />
           </div>
           
@@ -450,7 +450,7 @@ function MplStyles() {
                     <tip.i className="w-12 h-12 group-hover/tip:rotate-12 group-hover/tip:scale-125 transition-transform font-bold italic shadow-2xl" />
                  </div>
                  <div className="pt-2">
-                    <h4 className="font-black text-slate-900 dark:text-white mb-6 group-hover/tip:text-fuchsia-600 transition-colors uppercase tracking-[0.5em] text-[11px] underline decoration-fuchsia-500/10 italic">⭐ STYLE TIP 0{i+1}: {tip.t}</h4>
+                    <h4 className="font-black text-slate-900 dark:text-white mb-6 group-hover/tip:text-fuchsia-600 transition-colors uppercase tracking-[0.5em] text-[11px] underline decoration-fuchsia-500/10 italic">â­ STYLE TIP 0{i+1}: {tip.t}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-black italic tracking-tighter opacity-80 lowercase decoration-fuchsia-500/5 underline underline-offset-8 decoration-dashed">{tip.d}</p>
                  </div>
                </div>
@@ -462,10 +462,10 @@ function MplStyles() {
       {/* 5. Production Sample Showcase */}
       <section className="max-w-6xl mx-auto mb-20 px-4 font-black italic">
          <div className="bg-fuchsia-600/5 rounded-[6rem] p-16 sm:p-24 border border-fuchsia-500/10 relative group overflow-hidden italic shadow-2xl backdrop-blur-3xl font-black transition-all">
-            <div className="absolute top-0 right-0 p-14 opacity-[0.06] grayscale hover:grayscale-0 transition-all duration-[2000ms]"><Share2 className="w-[35rem] h-[35rem] text-fuchsia-500 font-bold" /></div>
+            <div className="absolute top-0 right-0 p-14 opacity-[0.06] grayscale hover:grayscale-0 transition-all [transition-duration:2000ms]"><Share2 className="w-[35rem] h-[35rem] text-fuchsia-500 font-bold" /></div>
             <div className="relative z-10 flex flex-col xl:flex-row items-center gap-20">
                <div className="flex-1 text-center xl:text-left">
-                  <h3 className="text-5xl font-black text-fuchsia-600 mb-10 tracking-tighter uppercase italic underline decoration-fuchsia-500/10 underline-offset-[16px]">9️⃣ Styled Traffic Asset</h3>
+                  <h3 className="text-5xl font-black text-fuchsia-600 mb-10 tracking-tighter uppercase italic underline decoration-fuchsia-500/10 underline-offset-[16px]">9ï¸âƒ£ Styled Traffic Asset</h3>
                   <p className="text-xl font-black text-slate-500 dark:text-slate-400 mb-14 leading-relaxed italic opacity-80 lowercase decoration-fuchsia-500/5 underline underline-offset-10">
                      "Leveraging ggplot themes to generate production-ready website traffic reports. Visual polish is automated."
                   </p>
@@ -483,7 +483,7 @@ function MplStyles() {
                </div>
                <div className="w-full xl:w-[28rem] bg-slate-950 p-14 rounded-[7rem] border border-fuchsia-500/30 shadow-2xl group/ex transform hover:-rotate-1 transition-transform">
                   <div className="flex items-center justify-center h-56 relative overflow-hidden mb-10 bg-fuchsia-500/5 rounded-[4rem] border border-fuchsia-500/10 shadow-inner">
-                     <Palette className="w-32 h-32 text-fuchsia-500/20 group-hover/ex:scale-150 transition-transform duration-[4000ms] font-black" />
+                     <Palette className="w-32 h-32 text-fuchsia-500/20 group-hover/ex:scale-150 transition-transform [transition-duration:4000ms] font-black" />
                      <div className="absolute inset-0 flex items-center justify-center italic text-[10px] font-black text-fuchsia-500/10 tracking-[2em] uppercase select-none cursor-not-allowed">STYLE_BUFFER_OK</div>
                   </div>
                   <div className="h-0.5 w-full bg-fuchsia-500/20 mb-10 px-6"></div>
@@ -499,12 +499,12 @@ function MplStyles() {
       {/* 6. Practice Design Mission */}
       <section className="max-w-4xl mx-auto pb-28 px-6 md:px-0">
         <div className="bg-gradient-to-br from-fuchsia-700 via-rose-800 to-slate-950 p-16 sm:p-28 rounded-[8.5rem] shadow-2xl relative overflow-hidden group border-b-[12px] border-fuchsia-900/40 transform hover:scale-[1.01] transition-all italic font-black">
-          <div className="absolute top-[-20%] right-[-20%] w-[60%] h-[60%] bg-white/10 rounded-full blur-[140px] -z-0 pointer-events-none group-hover:scale-125 transition-transform duration-[5000ms]"></div>
+          <div className="absolute top-[-20%] right-[-20%] w-[60%] h-[60%] bg-white/10 rounded-full blur-[140px] -z-0 pointer-events-none group-hover:scale-125 transition-transform [transition-duration:5000ms]"></div>
           
           <div className="relative z-10 flex flex-col xl:flex-row gap-24 items-center italic font-black">
             <div className="flex-1 text-center xl:text-left font-black italic">
               <div className="inline-flex items-center px-8 py-3 bg-white/10 text-white rounded-full text-[11px] font-black mb-14 border border-white/20 tracking-[0.5em] uppercase shadow-2xl backdrop-blur-2xl italic tracking-tighter decoration-white/20 underline underline-offset-8">
-                🎯 Design Lab Mission
+                ðŸŽ¯ Design Lab Mission
               </div>
               <h2 className="text-6xl font-black text-white mb-12 leading-[1.0] tracking-tighter uppercase italic decoration-white/10 underline underline-offset-[16px]">
                 Hydration Monitor
@@ -533,7 +533,7 @@ function MplStyles() {
                   </div>
 
                   <div className="h-56 relative flex items-center justify-center p-12 bg-fuchsia-500/5 rounded-[5rem] border border-fuchsia-500/10 overflow-hidden font-black group/m font-black italic">
-                     <Brush className="w-28 h-28 text-fuchsia-600/30 group-hover/m:rotate-[360deg] transition-transform duration-[6000ms] font-black shadow-2xl" />
+                     <Brush className="w-28 h-28 text-fuchsia-600/30 group-hover/m:rotate-[360deg] transition-transform [transition-duration:6000ms] font-black shadow-2xl" />
                      <div className="absolute inset-0 flex items-center justify-center italic text-[10px] font-black text-fuchsia-500/10 tracking-[2em] uppercase cursor-help select-none font-bold">STYLING_ENGINE...</div>
                   </div>
                   

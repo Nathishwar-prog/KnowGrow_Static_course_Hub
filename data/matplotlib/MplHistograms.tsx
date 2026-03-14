@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 <<<<<<< HEAD
 import { 
   BarChart2, Info, Code, Terminal, 
@@ -111,7 +111,7 @@ const MplHistograms: React.FC = () => {
                 <div className="p-3 bg-violet-500 rounded-2xl shadow-lg shadow-violet-500/20 mr-4">
                   <Info className="w-6 h-6 text-white" />
                 </div>
-                <h2 className="text-3xl font-bold tracking-tight">1️⃣ What is a Histogram?</h2>
+                <h2 className="text-3xl font-bold tracking-tight">1ï¸âƒ£ What is a Histogram?</h2>
               </div>
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-medium italic border-l-4 border-violet-500 pl-6">
                 "A histogram is a chart that shows how frequently data values occur within specific ranges, called bins."
@@ -119,7 +119,7 @@ const MplHistograms: React.FC = () => {
               
               <div className="space-y-6">
                  <h4 className="text-xs font-black text-violet-500 uppercase tracking-widest flex items-center">
-                   <Hash className="w-4 h-4 mr-2" /> 2️⃣ Example Frequency Data
+                   <Hash className="w-4 h-4 mr-2" /> 2ï¸âƒ£ Example Frequency Data
                  </h4>
                  <div className="overflow-hidden rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50">
                     <table className="w-full text-left">
@@ -131,11 +131,11 @@ const MplHistograms: React.FC = () => {
                        </thead>
                        <tbody className="text-xs font-bold divide-y divide-slate-100 dark:divide-slate-800/50">
                           {[
-                            { r: "50 – 60", f: "2" },
-                            { r: "60 – 70", f: "3" },
-                            { r: "70 – 80", f: "3" },
-                            { r: "80 – 90", f: "3" },
-                            { r: "90 – 100", f: "1" }
+                            { r: "50 â€“ 60", f: "2" },
+                            { r: "60 â€“ 70", f: "3" },
+                            { r: "70 â€“ 80", f: "3" },
+                            { r: "80 â€“ 90", f: "3" },
+                            { r: "90 â€“ 100", f: "1" }
                           ].map((row, i) => (
                             <tr key={i} className="hover:bg-violet-500/5 transition-colors">
                                <td className="px-8 py-3 text-slate-600 dark:text-slate-300">{row.r}</td>
@@ -187,7 +187,7 @@ const MplHistograms: React.FC = () => {
              </div>
              <div>
                <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white leading-tight">Histogram Frequency Lab</h2>
-               <p className="text-sm text-slate-500 font-bold uppercase tracking-[0.3em] mt-2 underline decoration-violet-500/30 underline-offset-4">3️⃣ Function: plt.hist()</p>
+               <p className="text-sm text-slate-500 font-bold uppercase tracking-[0.3em] mt-2 underline decoration-violet-500/30 underline-offset-4">3ï¸âƒ£ Function: plt.hist()</p>
              </div>
            </div>
 
@@ -224,7 +224,7 @@ const MplHistograms: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 flex flex-col">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-violet-500 italic">
                     <Code className="w-6 h-6 mr-4" />
-                    4️⃣ Basic Histogram Example
+                    4ï¸âƒ£ Basic Histogram Example
                   </h3>
                   <div className="space-y-6 flex-1">
                     <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-semibold">
@@ -262,7 +262,7 @@ const MplHistograms: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-indigo-500 underline decoration-indigo-500/20 underline-offset-8">
                     <Hash className="w-6 h-6 mr-4" />
-                    5️⃣ Controlling Number of Bins
+                    5ï¸âƒ£ Controlling Number of Bins
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
                      <div className="p-6 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-100 dark:border-slate-800 text-center">
@@ -291,7 +291,7 @@ const MplHistograms: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-fuchsia-500">
                     <Brush className="w-6 h-6 mr-4" />
-                    6️⃣ & 7️⃣ Styling & Edge Colors
+                    6ï¸âƒ£ & 7ï¸âƒ£ Styling & Edge Colors
                   </h3>
                   <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl border dark:border-slate-800 shadow-sm flex items-center gap-8">
                      <div className="w-16 h-16 rounded-2xl bg-sky-400 ring-4 ring-black ring-offset-2 ring-offset-slate-900 shadow-xl shrink-0"></div>
@@ -316,7 +316,7 @@ const MplHistograms: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-10">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-emerald-500">
                     <PieChart className="w-6 h-6 mr-4" />
-                    8️⃣ Normal Distribution (NumPy)
+                    8ï¸âƒ£ Normal Distribution (NumPy)
                   </h3>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                      {[
@@ -351,7 +351,7 @@ plt.title("Normal Distribution Histogram")`}
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8 flex flex-col justify-center">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-violet-500 italic">
                     <Users className="w-6 h-6 mr-4" />
-                    9️⃣ Age Distribution Case
+                    9ï¸âƒ£ Age Distribution Case
                   </h3>
                   <div className="bg-violet-500/5 p-10 rounded-[3rem] border border-violet-500/10 relative overflow-hidden group/case">
                      <div className="absolute top-0 right-0 p-8 opacity-[0.05] group-hover/case:scale-125 transition-transform duration-1000"><PieChart className="w-24 h-24 text-violet-500" /></div>
@@ -400,7 +400,7 @@ plt.title("Normal Distribution Histogram")`}
                   <div className="font-mono text-[11px] flex flex-col flex-1 overflow-y-auto max-h-[380px] custom-scrollbar px-3 space-y-4 font-semibold tracking-tight">
                   {consoleOutput.length === 0 ? (
                      <div className="text-slate-900 flex flex-col items-center justify-center flex-1 h-full mt-24 space-y-6 opacity-20 filter grayscale select-none">
-                        <Hash className="w-20 h-20 animate-bounce duration-[2000ms]" />
+                        <Hash className="w-20 h-20 animate-bounce [animation-duration:2000ms]" />
                         <div className="text-center">
                            <span className="block text-[8px] uppercase tracking-[0.4em] font-black text-violet-500 mb-2">Memory Latencies Detected</span>
                            <span className="text-[10px] font-bold">Pick a Distribution Mode to Render</span>
@@ -481,7 +481,7 @@ plt.title("Normal Distribution Histogram")`}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
              {[
-               { t: "The Bin Sweet Spot", d: "Too few bins oversimplify; too many add noise. Start with 10–30 bins for most datasets.", i: Hash, c: "text-violet-500" },
+               { t: "The Bin Sweet Spot", d: "Too few bins oversimplify; too many add noise. Start with 10â€“30 bins for most datasets.", i: Hash, c: "text-violet-500" },
                { t: "Distribution Archetypes", d: "Histograms are ideal for Income, Exam scores, Age distribution, and ML feature analysis.", i: Users, c: "text-indigo-500" },
                { t: "Density Pairings", d: "Professional projects often overlay kernel density curves for smooth statistical analysis.", i: Activity, c: "text-fuchsia-500" },
                { t: "EDA Mandatory", d: "Always build histograms during Exploratory Data Analysis to identify outliers or skewness.", i: PieChart, c: "text-emerald-500" }
@@ -491,7 +491,7 @@ plt.title("Normal Distribution Histogram")`}
                     <tip.i className="w-8 h-8 group-hover:rotate-12 group-hover:scale-110 transition-transform" />
                  </div>
                  <div className="pt-2">
-                    <h4 className="font-extrabold text-slate-900 dark:text-white mb-3 group-hover:text-violet-600 transition-colors uppercase tracking-[0.2em] text-[10px]">⭐ PRO TIP 0{i+1}: {tip.t}</h4>
+                    <h4 className="font-extrabold text-slate-900 dark:text-white mb-3 group-hover:text-violet-600 transition-colors uppercase tracking-[0.2em] text-[10px]">â­ PRO TIP 0{i+1}: {tip.t}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-semibold italic">{tip.d}</p>
                  </div>
                </div>
@@ -508,7 +508,7 @@ plt.title("Normal Distribution Histogram")`}
           <div className="relative z-10 flex flex-col xl:flex-row gap-16 items-center">
             <div className="flex-1 text-center xl:text-left">
               <div className="inline-flex items-center px-4 py-2 bg-white/20 text-white rounded-full text-[10px] font-black mb-10 border border-white/20 tracking-[0.4em] uppercase">
-                🎯 Lab Challenge
+                ðŸŽ¯ Lab Challenge
               </div>
               <h2 className="text-4xl sm:text-5xl font-black text-white mb-8 leading-tight tracking-tighter italic">
                 Daily App Usage
@@ -714,11 +714,11 @@ const MplHistograms: React.FC = () => {
                     <ResultTable 
                         headers={['Score Range', 'Frequency']}
                         rows={[
-                            ['40 – 50', <span className="text-violet-400 font-bold">2</span>],
-                            ['50 – 60', <span className="text-violet-400 font-bold">3</span>],
-                            ['60 – 70', <span className="text-violet-400 font-bold">3</span>],
-                            ['70 – 80', <span className="text-violet-400 font-bold">2</span>],
-                            ['80 – 90', <span className="text-violet-400 font-bold">1</span>]
+                            ['40 â€“ 50', <span className="text-violet-400 font-bold">2</span>],
+                            ['50 â€“ 60', <span className="text-violet-400 font-bold">3</span>],
+                            ['60 â€“ 70', <span className="text-violet-400 font-bold">3</span>],
+                            ['70 â€“ 80', <span className="text-violet-400 font-bold">2</span>],
+                            ['80 â€“ 90', <span className="text-violet-400 font-bold">1</span>]
                         ]}
                     />
                   </div>
@@ -728,9 +728,9 @@ const MplHistograms: React.FC = () => {
                       <div className="flex flex-col items-center">
                           <pre className="text-xs sm:text-sm font-mono text-slate-300 leading-relaxed">
 {`Frequency
-3 |      █
-2 |  █   █   █
-1 |      █   █   █
+3 |      â–ˆ
+2 |  â–ˆ   â–ˆ   â–ˆ
+1 |      â–ˆ   â–ˆ   â–ˆ
    ---------------------
    40  50  60  70  80
        Score Range`}
@@ -768,7 +768,7 @@ const MplHistograms: React.FC = () => {
                     ]}
                 />
                 <div className="p-4 bg-violet-50 dark:bg-violet-900/10 rounded-xl border border-violet-100 dark:border-violet-800/40 w-full">
-                    <p className="text-xs text-violet-700 dark:text-violet-400 font-bold">💡 Matplotlib automatically calculates bin sizes if not specified.</p>
+                    <p className="text-xs text-violet-700 dark:text-violet-400 font-bold">ðŸ’¡ Matplotlib automatically calculates bin sizes if not specified.</p>
                 </div>
             </div>
       </section>
@@ -783,9 +783,9 @@ const MplHistograms: React.FC = () => {
                      <div className="bg-gray-950 rounded-2xl p-10 font-mono text-violet-400 text-sm shadow-inner border border-gray-800">
 <pre className="leading-relaxed">
 {`Frequency
-3 |      █
-2 |  █   █   █
-1 |      █   █   █
+3 |      â–ˆ
+2 |  â–ˆ   â–ˆ   â–ˆ
+1 |      â–ˆ   â–ˆ   â–ˆ
    ---------------------
    40  50  60  70  80
        Score Range`}
@@ -819,9 +819,9 @@ const MplHistograms: React.FC = () => {
                 <p className="text-[10px] uppercase font-bold text-violet-400 mb-4 tracking-widest italic">Granular View (5 Bins)</p>
 <pre className="text-xs font-mono text-slate-300 leading-none">
 {`Frequency
-3 |     █
-2 | █   █
-1 | █   █   █
+3 |     â–ˆ
+2 | â–ˆ   â–ˆ
+1 | â–ˆ   â–ˆ   â–ˆ
    ------------------
    40 50 60 70 80`}
 </pre>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   Heading1, Info, Code, Terminal, 
   Play, Lightbulb, Zap, CheckCircle2, 
@@ -135,7 +135,7 @@ function MplTitle() {
             <div className="relative z-10 text-white font-black italic uppercase italic shadow-sm italic">
                <h3 className="text-2xl font-black mb-10 flex items-center tracking-tighter underline decoration-white/20 underline-offset-8 font-black">
                  <ShieldCheck className="w-8 h-8 mr-5" />
-                 2️⃣ Title Logistics
+                 2ï¸âƒ£ Title Logistics
                </h3>
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 leading-tight">
                  {[
@@ -212,7 +212,7 @@ function MplTitle() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 flex flex-col relative z-10 italic font-black">
                   <h3 className="text-3xl font-black flex items-center mb-10 pb-6 border-b border-slate-50 dark:border-slate-800 text-violet-600 tracking-tighter uppercase italic underline decoration-violet-500/20 underline-offset-8 font-black">
                     <Code className="w-10 h-10 mr-6 text-violet-500 font-bold italic shadow-2xl" />
-                    3️⃣ & 4️⃣ Headline Basics
+                    3ï¸âƒ£ & 4ï¸âƒ£ Headline Basics
                   </h3>
                   <div className="space-y-12 flex-1 flex flex-col justify-center italic font-black">
                     <div className="p-8 bg-violet-500/5 rounded-[3rem] border border-violet-500/10 italic font-black shadow-sm">
@@ -247,7 +247,7 @@ function MplTitle() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 space-y-12 relative z-10 flex flex-col justify-center italic font-black">
                   <h3 className="text-3xl font-black flex items-center mb-8 pb-6 border-b border-slate-50 dark:border-slate-800 text-blue-500 uppercase tracking-tighter italic font-black underline decoration-blue-500/10 underline-offset-8">
                     <Palette className="w-10 h-10 mr-6 text-blue-500 font-bold italic" />
-                    5️⃣ Aesthetic Customization
+                    5ï¸âƒ£ Aesthetic Customization
                   </h3>
                   <div className="grid grid-cols-2 gap-8 font-black italic shadow-sm">
                      <div className="p-10 bg-blue-500/5 rounded-[4rem] border border-blue-500/10 hover:bg-blue-500/10 transition-all group/p italic font-black">
@@ -274,7 +274,7 @@ function MplTitle() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 space-y-12 relative z-10 flex flex-col justify-center italic font-black">
                   <h3 className="text-3xl font-black flex items-center mb-10 pb-6 border-b border-slate-50 dark:border-slate-800 text-indigo-500 uppercase tracking-tighter italic font-black underline decoration-indigo-500/20 underline-offset-8">
                     <AlignCenter className="w-10 h-10 mr-6 text-indigo-500 font-bold italic" />
-                    6️⃣ Alignment Control (loc)
+                    6ï¸âƒ£ Alignment Control (loc)
                   </h3>
                   <div className="grid grid-cols-3 gap-6 font-black italic shadow-sm">
                      {[
@@ -302,7 +302,7 @@ function MplTitle() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 space-y-12 relative z-10 flex flex-col justify-center italic font-black">
                   <h3 className="text-3xl font-black flex items-center mb-8 pb-6 border-b border-slate-50 dark:border-slate-800 text-violet-500 uppercase tracking-tighter italic font-black underline decoration-violet-500/20 underline-offset-8">
                     <Box className="w-10 h-10 mr-6 text-violet-500 font-bold italic shadow-2xl" />
-                    7️⃣ Spatial Padding (pad)
+                    7ï¸âƒ£ Spatial Padding (pad)
                   </h3>
                   <div className="p-12 bg-violet-500/10 rounded-[5rem] border border-violet-500/20 italic font-black shadow-sm">
                      <div className="flex justify-center mb-12">
@@ -326,7 +326,7 @@ function MplTitle() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 flex flex-col justify-center space-y-12 relative z-10 italic uppercase font-black font-black italic shadow-2xl">
                   <h3 className="text-3xl font-black flex items-center mb-6 text-violet-600 tracking-tighter border-b dark:border-slate-800 pb-6 uppercase italic underline decoration-violet-500/10 underline-offset-8 font-black">
                     <TrendingUp className="w-10 h-10 mr-6 text-violet-500 font-bold italic shadow-2xl" />
-                    8️⃣ Website Traffic Hub Case Study
+                    8ï¸âƒ£ Website Traffic Hub Case Study
                   </h3>
                   <div className="bg-violet-500/5 p-14 rounded-[5.5rem] border border-violet-500/20 flex flex-col items-center justify-center relative overflow-hidden group/case italic font-black shadow-sm">
                      <div className="absolute top-0 right-0 p-14 opacity-[0.05] grayscale-0 group-hover/case:rotate-12 transition-transform duration-1000 font-black shadow-2xl italic"><MonitorPlay className="w-48 h-48 text-violet-400 font-bold italic shadow-2xl" /></div>
@@ -365,7 +365,7 @@ function MplTitle() {
                   <div className="font-mono text-[11px] flex flex-col flex-1 overflow-y-auto max-h-[420px] custom-scrollbar px-6 space-y-8 leading-loose uppercase italic tracking-tighter font-black shadow-2xl shadow-sm italic">
                   {consoleOutput.length === 0 ? (
                      <div className="text-slate-900 flex flex-col items-center justify-center flex-1 h-full mt-24 space-y-14 opacity-20 select-none filter hover:brightness-150 transition-all duration-700 grayscale hover:grayscale-0 font-black italic shadow-2xl shadow-sm shadow-sm">
-                        <MonitorPlay className="w-28 h-28 stroke-[1px] animate-pulse duration-[6000ms] font-black shadow-sm" />
+                        <MonitorPlay className="w-28 h-28 stroke-[1px] animate-pulse [animation-duration:6000ms] font-black shadow-sm" />
                         <div className="text-center font-black lg:text-left">
                            <span className="block text-[9px] uppercase tracking-[0.8em] font-black text-violet-600 mb-4 underline decoration-violet-500/30 underline-offset-10 italic shadow-sm">Engine Standby...</span>
                            <span className="text-[11px] font-black text-white/40 tracking-widest decoration-white/5 underline underline-offset-4 font-black shadow-sm italic shadow-sm">Topic Labeling Logic Required</span>
@@ -428,7 +428,7 @@ function MplTitle() {
       {/* 4. Professional Title Advice */}
       <section className="max-w-6xl mx-auto mb-24 px-4 overflow-hidden italic font-black">
         <div className="bg-white dark:bg-slate-900 p-16 sm:p-28 rounded-[7rem] shadow-2xl border border-slate-100 dark:border-slate-800 relative overflow-hidden group font-black italic shadow-2xl shadow-sm shadow-sm">
-          <div className="absolute bottom-0 left-0 p-24 opacity-[0.04] scale-150 rotate-12 -z-0 pointer-events-none grayscale-0 group-hover:-rotate-12 transition-transform duration-[4000ms] transition-all font-black shadow-2xl shadow-sm"><Heading1 className="w-[40rem] h-[40rem] text-violet-500 font-black shadow-2xl shadow-sm shadow-sm" /></div>
+          <div className="absolute bottom-0 left-0 p-24 opacity-[0.04] scale-150 rotate-12 -z-0 pointer-events-none grayscale-0 group-hover:-rotate-12 transition-transform [transition-duration:4000ms] transition-all font-black shadow-2xl shadow-sm"><Heading1 className="w-[40rem] h-[40rem] text-violet-500 font-black shadow-2xl shadow-sm shadow-sm" /></div>
           
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-28 gap-12 relative z-10 tracking-tighter decoration-violet-500/20 underline underline-offset-[20px] italic font-black uppercase italic underline shadow-sm shadow-sm">
              <div className="flex items-center font-black italic uppercase italic shadow-sm">
@@ -457,7 +457,7 @@ function MplTitle() {
                     <tip.i className="w-12 h-12 group-hover/tip:rotate-12 group-hover/tip:scale-125 transition-transform font-bold italic shadow-2xl font-black shadow-sm" />
                  </div>
                  <div className="pt-2 italic font-black shadow-sm shadow-sm">
-                    <h4 className="font-black text-slate-900 dark:text-white mb-6 group-hover/tip:text-violet-600 transition-colors uppercase tracking-[0.5em] text-[11px] underline decoration-violet-500/10 italic font-black shadow-sm shadow-sm">⭐ TITLE TIP 0{i+1}: {tip.t}</h4>
+                    <h4 className="font-black text-slate-900 dark:text-white mb-6 group-hover/tip:text-violet-600 transition-colors uppercase tracking-[0.5em] text-[11px] underline decoration-violet-500/10 italic font-black shadow-sm shadow-sm">â­ TITLE TIP 0{i+1}: {tip.t}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-black italic tracking-tighter opacity-80 lowercase decoration-violet-500/5 underline underline-offset-8 decoration-dashed font-black shadow-sm">{tip.d}</p>
                  </div>
                </div>
@@ -469,10 +469,10 @@ function MplTitle() {
       {/* 5. Production Sample Showcase */}
       <section className="max-w-6xl mx-auto mb-20 px-4 font-black italic shadow-2xl transition-all shadow-sm">
          <div className="bg-violet-600/5 rounded-[6rem] p-16 sm:p-24 border border-violet-500/10 relative group overflow-hidden italic shadow-2xl backdrop-blur-3xl font-black transition-all shadow-sm">
-            <div className="absolute top-0 right-0 p-14 opacity-[0.06] grayscale hover:grayscale-0 transition-all duration-[2000ms] font-black shadow-2xl shadow-sm"><MoveRight className="w-[35rem] h-[35rem] text-violet-500 font-bold italic shadow-2xl shadow-sm shadow-sm" /></div>
+            <div className="absolute top-0 right-0 p-14 opacity-[0.06] grayscale hover:grayscale-0 transition-all [transition-duration:2000ms] font-black shadow-2xl shadow-sm"><MoveRight className="w-[35rem] h-[35rem] text-violet-500 font-bold italic shadow-2xl shadow-sm shadow-sm" /></div>
             <div className="relative z-10 flex flex-col xl:flex-row items-center gap-20 italic font-black shadow-2xl shadow-sm shadow-sm">
                <div className="flex-1 text-center xl:text-left font-black italic shadow-2xl shadow-sm shadow-sm">
-                  <h3 className="text-5xl font-black text-violet-600 mb-10 tracking-tighter uppercase italic underline decoration-violet-500/10 underline-offset-[16px] font-black shadow-sm shadow-sm shadow-sm italic">8️⃣ Informed Analytics Asset</h3>
+                  <h3 className="text-5xl font-black text-violet-600 mb-10 tracking-tighter uppercase italic underline decoration-violet-500/10 underline-offset-[16px] font-black shadow-sm shadow-sm shadow-sm italic">8ï¸âƒ£ Informed Analytics Asset</h3>
                   <p className="text-xl font-black text-slate-500 dark:text-slate-400 mb-14 leading-relaxed italic opacity-80 lowercase decoration-violet-500/5 underline underline-offset-10 font-black shadow-sm shadow-sm shadow-sm">
                      "Leveraging plt.title() in conjunction with axis labels to build a completely understandable and professional Weekly Website Visitors chart."
                   </p>
@@ -490,7 +490,7 @@ function MplTitle() {
                </div>
                <div className="w-full xl:w-[28rem] bg-slate-950 p-14 rounded-[7rem] border border-violet-500/30 shadow-2xl group/ex transform hover:-rotate-1 transition-transform font-black shadow-2xl shadow-sm italic shadow-sm shadow-sm">
                   <div className="flex items-center justify-center h-56 relative overflow-hidden mb-10 bg-violet-500/5 rounded-[4rem] border border-violet-500/10 shadow-inner font-black shadow-2xl shadow-sm shadow-sm">
-                     <Heading1 className="w-32 h-32 text-violet-500/20 group-hover/ex:scale-150 transition-transform duration-[4000ms] font-black shadow-2xl shadow-sm shadow-sm shadow-sm" />
+                     <Heading1 className="w-32 h-32 text-violet-500/20 group-hover/ex:scale-150 transition-transform [transition-duration:4000ms] font-black shadow-2xl shadow-sm shadow-sm shadow-sm" />
                      <div className="absolute inset-0 flex items-center justify-center italic text-[10px] font-black text-violet-500/10 tracking-[2em] uppercase select-none cursor-not-allowed font-black shadow-sm italic shadow-2xl shadow-sm shadow-sm">RASTER_HEADER_OK</div>
                   </div>
                   <div className="h-0.5 w-full bg-violet-500/20 mb-10 px-6 font-black italic shadow-2xl shadow-sm shadow-sm"></div>
@@ -506,12 +506,12 @@ function MplTitle() {
       {/* 6. Practice Design Mission */}
       <section className="max-w-4xl mx-auto pb-28 px-6 md:px-0 font-black italic shadow-2xl transition-all shadow-sm shadow-sm">
         <div className="bg-gradient-to-br from-violet-700 via-purple-800 to-indigo-950 p-16 sm:p-28 rounded-[8.5rem] shadow-2xl relative overflow-hidden group border-b-[12px] border-violet-900/40 transform hover:scale-[1.01] transition-all italic font-black shadow-2xl shadow-sm shadow-sm text-white shadow-2xl">
-          <div className="absolute top-[-20%] right-[-20%] w-[60%] h-[60%] bg-white/10 rounded-full blur-[140px] -z-0 pointer-events-none group-hover:scale-125 transition-transform duration-[5000ms] font-black shadow-2xl shadow-sm shadow-sm shadow-sm"></div>
+          <div className="absolute top-[-20%] right-[-20%] w-[60%] h-[60%] bg-white/10 rounded-full blur-[140px] -z-0 pointer-events-none group-hover:scale-125 transition-transform [transition-duration:5000ms] font-black shadow-2xl shadow-sm shadow-sm shadow-sm"></div>
           
           <div className="relative z-10 flex flex-col xl:flex-row gap-24 items-center italic font-black text-white italic font-black shadow-2xl shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
             <div className="flex-1 text-center xl:text-left font-black italic shadow-2xl shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
               <div className="inline-flex items-center px-8 py-3 bg-white/10 text-white rounded-full text-[11px] font-black mb-14 border border-white/20 tracking-[0.5em] uppercase shadow-2xl backdrop-blur-2xl italic tracking-tighter decoration-white/20 underline underline-offset-10 italic font-black shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
-                🎯 Title Design Mission
+                ðŸŽ¯ Title Design Mission
               </div>
               <h2 className="text-6xl font-black text-white mb-12 leading-[1.0] tracking-tighter uppercase italic decoration-white/10 underline underline-offset-[16px] font-black shadow-sm italic shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
                 Study Journal
@@ -540,7 +540,7 @@ function MplTitle() {
                   </div>
 
                   <div className="h-56 relative flex items-center justify-center p-12 bg-violet-500/5 rounded-[5rem] border border-violet-500/10 overflow-hidden font-black group/m font-black italic shadow-2xl shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">
-                     <Heading1 className="w-28 h-28 text-violet-600/30 group-hover/m:rotate-[360deg] transition-transform duration-[6000ms] font-black shadow-2xl shadow-sm italic shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm" />
+                     <Heading1 className="w-28 h-28 text-violet-600/30 group-hover/m:rotate-[360deg] transition-transform [transition-duration:6000ms] font-black shadow-2xl shadow-sm italic shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm" />
                      <div className="absolute inset-0 flex items-center justify-center italic text-[10px] font-black text-violet-500/10 tracking-[2.5em] uppercase cursor-help select-none font-bold font-black shadow-sm italic shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm shadow-sm">HEADER_RASTERIZING...</div>
                   </div>
                   

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   Maximize2, Info, Code, Terminal, 
   Layers, Layout, Monitor, Save,
@@ -116,7 +116,7 @@ const MplFigure: React.FC = () => {
               <div className="p-3 bg-blue-500 rounded-2xl shadow-lg shadow-blue-500/20 mr-4 group-hover:scale-110 transition-transform">
                 <Info className="w-6 h-6 text-white" />
               </div>
-              <h2 className="text-3xl font-bold italic tracking-tight underline decoration-blue-500/20 underline-offset-8 decoration-4">1️⃣ What is a Figure?</h2>
+              <h2 className="text-3xl font-bold italic tracking-tight underline decoration-blue-500/20 underline-offset-8 decoration-4">1ï¸âƒ£ What is a Figure?</h2>
             </div>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed font-medium italic border-l-4 border-blue-500 pl-6">
               "Think of a Figure as the canvas, and the plots are drawn on that canvas. It is the top-level container for all elements."
@@ -125,7 +125,7 @@ const MplFigure: React.FC = () => {
             <div className="space-y-6">
                <h3 className="font-bold text-slate-900 dark:text-white flex items-center text-xs uppercase tracking-widest">
                  <Layers className="w-5 h-5 mr-3 text-indigo-500" />
-                 2️⃣ Plot Structure Hierarchy
+                 2ï¸âƒ£ Plot Structure Hierarchy
                </h3>
                <div className="p-8 bg-slate-50 dark:bg-slate-950 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 relative shadow-inner overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-[40px]"></div>
@@ -190,7 +190,7 @@ const MplFigure: React.FC = () => {
             </div>
             <div>
               <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white leading-tight">Figure Canvas Lab</h2>
-              <p className="text-sm text-slate-500 font-bold uppercase tracking-[0.2em] mt-2 italic">3️⃣ Function: plt.figure()</p>
+              <p className="text-sm text-slate-500 font-bold uppercase tracking-[0.2em] mt-2 italic">3ï¸âƒ£ Function: plt.figure()</p>
             </div>
           </div>
 
@@ -228,7 +228,7 @@ const MplFigure: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 flex flex-col">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-blue-500">
                     <Code className="w-6 h-6 mr-4" />
-                    4️⃣ Basic Implementation
+                    4ï¸âƒ£ Basic Implementation
                   </h3>
                   <div className="space-y-8 flex-1">
                     <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
@@ -269,7 +269,7 @@ const MplFigure: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-indigo-500">
                     <Maximize2 className="w-6 h-6 mr-4" />
-                    5️⃣ Setting Figure Size
+                    5ï¸âƒ£ Setting Figure Size
                   </h3>
                   <p className="text-sm font-medium text-slate-500 leading-relaxed italic border-l-4 border-indigo-500 pl-4">"You can control the physical dimensions of the window using the figsize parameter (Width, Height in inches)."</p>
                   
@@ -301,7 +301,7 @@ const MplFigure: React.FC = () => {
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-emerald-500">
                     <Monitor className="w-6 h-6 mr-4" />
-                    6️⃣ Multiple Figure Windows
+                    6ï¸âƒ£ Multiple Figure Windows
                   </h3>
                   <div className="bg-slate-950 rounded-[2.5rem] p-10 border border-slate-800 shadow-2xl relative overflow-hidden">
                      <div className="absolute top-0 right-0 p-8 opacity-10"><Monitor className="w-20 h-20 text-white" /></div>
@@ -331,7 +331,7 @@ plt.show() # Both windows pop up!`}
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-8 h-full max-h-[600px] overflow-y-auto no-scrollbar pr-2">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-orange-500">
                     <Grid className="w-6 h-6 mr-4" />
-                    7️⃣ Figure with Subplots
+                    7ï¸âƒ£ Figure with Subplots
                   </h3>
                   <div className="grid grid-cols-3 gap-3 mb-6">
                      {[
@@ -366,7 +366,7 @@ ax2.plot([1,2,3], [30,20,10])`}
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-10">
                   <h3 className="text-2xl font-bold flex items-center mb-10 pb-4 border-b border-slate-100 dark:border-slate-800 text-rose-500 italic">
                     <Save className="w-6 h-6 mr-4" />
-                    8️⃣ Exporting Figures
+                    8ï¸âƒ£ Exporting Figures
                   </h3>
                   
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -396,7 +396,7 @@ ax2.plot([1,2,3], [30,20,10])`}
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex-1 space-y-10">
                   <h3 className="text-2xl font-bold flex items-center mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 text-blue-500">
                     <TrendingUp className="w-6 h-6 mr-4" />
-                    9️⃣ Case Study: Monthly Sales Trend
+                    9ï¸âƒ£ Case Study: Monthly Sales Trend
                   </h3>
                   
                   <div className="bg-blue-500/5 p-8 rounded-[3rem] border border-blue-500/10 flex flex-col md:flex-row items-center gap-10">
@@ -457,7 +457,7 @@ ax2.plot([1,2,3], [30,20,10])`}
                   <div className="font-mono text-[11px] flex flex-col flex-1 overflow-y-auto max-h-[380px] custom-scrollbar px-3 space-y-4">
                   {consoleOutput.length === 0 ? (
                      <div className="text-slate-900 flex flex-col items-center justify-center flex-1 h-full mt-24 space-y-8 opacity-30 select-none">
-                        <Monitor className="w-20 h-20 animate-pulse duration-[3000ms]" />
+                        <Monitor className="w-20 h-20 animate-pulse [animation-duration:3000ms]" />
                         <div className="text-center">
                            <span className="block text-[8px] uppercase tracking-[0.5em] font-black text-blue-500 mb-2">Hierarchy Idle</span>
                            <span className="text-[10px] font-bold">Select a component to Render</span>
@@ -553,7 +553,7 @@ ax2.plot([1,2,3], [30,20,10])`}
                     <tip.i className="w-8 h-8" />
                  </div>
                  <div className="pt-2">
-                    <h4 className="font-extrabold text-slate-900 dark:text-white mb-3 group-hover:text-blue-500 transition-colors uppercase tracking-[0.2em] text-[10px]">⭐ TIP 0{i+1}: {tip.t}</h4>
+                    <h4 className="font-extrabold text-slate-900 dark:text-white mb-3 group-hover:text-blue-500 transition-colors uppercase tracking-[0.2em] text-[10px]">â­ TIP 0{i+1}: {tip.t}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-semibold italic">{tip.d}</p>
                  </div>
                </div>
@@ -570,7 +570,7 @@ ax2.plot([1,2,3], [30,20,10])`}
           <div className="relative z-10 flex flex-col xl:flex-row gap-16 items-center">
             <div className="flex-1 text-center xl:text-left">
               <div className="inline-flex items-center px-5 py-2 bg-white/20 text-white rounded-full text-[10px] font-black mb-10 border border-white/20 tracking-[0.4em] uppercase">
-                🎯 Production Challenge
+                ðŸŽ¯ Production Challenge
               </div>
               <h2 className="text-4xl sm:text-5xl font-black text-white mb-8 leading-tight tracking-tighter italic">
                 Presentation-Ready Trends

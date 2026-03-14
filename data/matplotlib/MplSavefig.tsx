@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   Save, Info, Code, Terminal, 
   Play, Lightbulb, Zap, CheckCircle2, 
@@ -202,7 +202,7 @@ function MplSavefig() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 flex flex-col relative z-10">
                   <h3 className="text-2xl font-black flex items-center mb-10 pb-4 border-b border-slate-50 dark:border-slate-800 text-slate-700 dark:text-slate-300 tracking-tighter uppercase">
                     <Code className="w-7 h-7 mr-4 text-slate-500" />
-                    3️⃣ & 4️⃣ Basic Export Flow
+                    3ï¸âƒ£ & 4ï¸âƒ£ Basic Export Flow
                   </h3>
                   <div className="space-y-10 flex-1 flex flex-col justify-center">
                     <div className="grid grid-cols-2 gap-4">
@@ -243,7 +243,7 @@ function MplSavefig() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 space-y-10 relative z-10 flex flex-col justify-center">
                   <h3 className="text-2xl font-black flex items-center mb-6 pb-4 border-b border-slate-50 dark:border-slate-800 text-slate-700 dark:text-slate-300 uppercase italic">
                     <FileDown className="w-7 h-7 mr-4 text-slate-500" />
-                    5️⃣ Diverse Export Formats
+                    5ï¸âƒ£ Diverse Export Formats
                   </h3>
                   <div className="grid grid-cols-2 gap-4 pb-4">
                      {[
@@ -276,7 +276,7 @@ function MplSavefig() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 space-y-10 relative z-10 flex flex-col justify-center">
                   <h3 className="text-2xl font-black flex items-center mb-8 pb-4 border-b border-slate-50 dark:border-slate-800 text-slate-600 dark:text-slate-400 italic">
                     <Maximize className="w-7 h-7 mr-4 text-slate-400" />
-                    6️⃣ Precision Output: DPI
+                    6ï¸âƒ£ Precision Output: DPI
                   </h3>
                   <div className="grid grid-cols-3 gap-3">
                      {[
@@ -303,7 +303,7 @@ function MplSavefig() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 space-y-10 relative z-10 flex flex-col justify-center">
                   <h3 className="text-2xl font-black flex items-center mb-8 pb-4 border-b border-slate-50 dark:border-slate-800 text-slate-500 italic uppercase tracking-tighter">
                     <Filter className="w-7 h-7 mr-4" />
-                    7️⃣ Eliminating White Space
+                    7ï¸âƒ£ Eliminating White Space
                   </h3>
                   <div className="bg-slate-800 text-white p-12 rounded-[4rem] shadow-2xl relative overflow-hidden group/tight">
                      <div className="absolute top-0 right-0 p-10 opacity-5 group-hover/tight:scale-110 transition-transform"><Maximize className="w-40 h-40" /></div>
@@ -326,7 +326,7 @@ function MplSavefig() {
                 <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 flex-1 flex flex-col justify-center space-y-10 relative z-10 italic">
                   <h3 className="text-2xl font-black flex items-center mb-4 text-slate-800 dark:text-slate-200 tracking-tighter uppercase border-b dark:border-slate-800 pb-4">
                     <Activity className="w-7 h-7 mr-4 text-slate-500" />
-                    9️⃣ Asset Generation: Website Traffic
+                    9ï¸âƒ£ Asset Generation: Website Traffic
                   </h3>
                   <div className="bg-slate-500/5 p-12 rounded-[4rem] border border-slate-500/20 flex flex-col items-center justify-center relative overflow-hidden group/case">
                      <div className="absolute top-0 right-0 p-10 opacity-[0.05] grayscale-0 group-hover/case:rotate-12 transition-transform duration-1000"><Share2 className="w-40 h-40 text-slate-400" /></div>
@@ -365,7 +365,7 @@ function MplSavefig() {
                   <div className="font-mono text-[11px] flex flex-col flex-1 overflow-y-auto max-h-[380px] custom-scrollbar px-6 space-y-6">
                   {consoleOutput.length === 0 ? (
                      <div className="text-slate-900 flex flex-col items-center justify-center flex-1 h-full mt-24 space-y-12 opacity-30 select-none filter hover:brightness-125 transition-all duration-700 font-black italic">
-                        <Save className="w-24 h-24 stroke-[1px] animate-bounce duration-[5000ms]" />
+                        <Save className="w-24 h-24 stroke-[1px] animate-bounce [animation-duration:5000ms]" />
                         <div className="text-center">
                            <span className="block text-[8px] uppercase tracking-[0.7em] font-black text-slate-500 mb-3 underline decoration-slate-500/20 underline-offset-8">Awaiting IO Signal...</span>
                            <span className="text-[10px] text-white/40 tracking-tighter">Initialize Export Logic</span>
@@ -428,7 +428,7 @@ function MplSavefig() {
       {/* 4. Professional Advice Grid */}
       <section className="max-w-6xl mx-auto mb-24 px-4 overflow-hidden italic font-black">
         <div className="bg-white dark:bg-slate-900 p-16 sm:p-24 rounded-[6rem] shadow-2xl border border-slate-100 dark:border-slate-800 relative overflow-hidden group">
-          <div className="absolute bottom-0 left-0 p-20 opacity-[0.03] scale-150 rotate-12 -z-0 pointer-events-none grayscale-0 group-hover:-rotate-12 transition-transform duration-[3000ms] transition-all">
+          <div className="absolute bottom-0 left-0 p-20 opacity-[0.03] scale-150 rotate-12 -z-0 pointer-events-none grayscale-0 group-hover:-rotate-12 transition-transform [transition-duration:3000ms] transition-all">
              <Download className="w-96 h-96 text-slate-500" />
           </div>
           
@@ -459,7 +459,7 @@ function MplSavefig() {
                     <tip.i className="w-10 h-10 group-hover/tip:rotate-12 group-hover/tip:scale-110 transition-transform font-bold italic" />
                  </div>
                  <div className="pt-2">
-                    <h4 className="font-black text-slate-900 dark:text-white mb-4 group-hover/tip:text-slate-600 transition-colors uppercase tracking-[0.4em] text-[10px] underline decoration-slate-500/10 italic">⭐ PRO TIP 0{i+1}: {tip.t}</h4>
+                    <h4 className="font-black text-slate-900 dark:text-white mb-4 group-hover/tip:text-slate-600 transition-colors uppercase tracking-[0.4em] text-[10px] underline decoration-slate-500/10 italic">â­ PRO TIP 0{i+1}: {tip.t}</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-black italic tracking-tight">{tip.d}</p>
                  </div>
                </div>
@@ -471,12 +471,12 @@ function MplSavefig() {
       {/* 5. Practice Mission Section */}
       <section className="max-w-4xl mx-auto pb-24 px-6 md:px-0">
         <div className="bg-gradient-to-br from-slate-700 via-slate-800 to-black p-16 sm:p-24 rounded-[7.5rem] shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/10 rounded-full blur-[120px] -z-0 pointer-events-none group-hover:scale-110 transition-transform duration-[4000ms]"></div>
+          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/10 rounded-full blur-[120px] -z-0 pointer-events-none group-hover:scale-110 transition-transform [transition-duration:4000ms]"></div>
           
           <div className="relative z-10 flex flex-col xl:flex-row gap-20 items-center italic">
             <div className="flex-1 text-center xl:text-left">
               <div className="inline-flex items-center px-6 py-2.5 bg-white/10 text-white rounded-full text-[10px] font-black mb-12 border border-white/20 tracking-[0.4em] uppercase shadow-2xl backdrop-blur-xl italic font-mono tracking-tighter decoration-white/20 underline underline-offset-4">
-                🎯 Production Challenge
+                ðŸŽ¯ Production Challenge
               </div>
               <h2 className="text-6xl font-black text-white mb-10 leading-[1.1] tracking-tighter uppercase italic">
                 Exercise Monitor v2
