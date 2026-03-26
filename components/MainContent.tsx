@@ -8,6 +8,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import Breadcrumbs from './Breadcrumbs';
 import { ChevronRight, ArrowRight } from 'lucide-react';
+import PaginationControls from './PaginationControls';
+import TableOfContents from './TableOfContents';
 
 interface MainContentProps {
   activeView: 'tutorial' | 'reference' | 'exercise' | 'review';
@@ -23,19 +25,7 @@ interface MainContentProps {
   hasSearchResults: boolean;
 }
 
-const NavButton: React.FC<{
-  children: React.ReactNode,
-  onClick?: () => void,
-  disabled?: boolean
-}> = ({ children, onClick, disabled = false }) => (
-  <button
-    onClick={onClick}
-    disabled={disabled}
-    className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-2.5 px-6 rounded-lg hover:shadow-lg hover:from-indigo-700 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center transform hover:-translate-y-0.5 active:translate-y-0"
-  >
-    {children}
-  </button>
-)
+
 
 
 const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceContent, exerciseContent, reviewContent, isLoading, onNavigate, prevTopic, nextTopic, searchQuery, hasSearchResults }) => {
@@ -85,26 +75,15 @@ const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceC
         <h1 className="text-4xl md:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 tracking-tight">
           <Highlighter query={searchQuery}>{topic.title}</Highlighter>
         </h1>
-        <div className="flex justify-between items-center mb-10">
-          <NavButton
-            onClick={() => prevTopic && onNavigate(prevTopic.id)}
-            disabled={!prevTopic}
-          >
-            <i className="fa-solid fa-chevron-left mr-2"></i> Prev
-          </NavButton>
-          <NavButton
-            onClick={() => nextTopic && onNavigate(nextTopic.id)}
-            disabled={!nextTopic}
-          >
-            Next <i className="fa-solid fa-chevron-right ml-2"></i>
-          </NavButton>
-        </div>
+        <PaginationControls 
+          prevTopic={prevTopic} 
+          nextTopic={nextTopic} 
+          onNavigate={onNavigate} 
+        />
         <hr className="my-8 border-gray-200 dark:border-gray-700" />
         <article className="prose prose-lg dark:prose-invert max-w-none prose-indigo prose-headings:font-bold prose-a:text-indigo-600 dark:prose-a:text-indigo-400 hover:prose-a:text-indigo-500 transition-colors">
           <React.Suspense fallback={<LoadingSpinner />}>
-            <Highlighter query={searchQuery}>
               {topic.content}
-            </Highlighter>
           </React.Suspense>
         </article>
 
@@ -161,21 +140,12 @@ const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceC
         </div>
 
         <hr className="my-10 border-gray-200 dark:border-gray-700" />
-        <div className="flex justify-between items-center mt-8 cursor-pointer">
-          <NavButton
-            onClick={() => prevTopic && onNavigate(prevTopic.id)}
-            disabled={!prevTopic}
-          >
-            <i className="fa-solid fa-chevron-left mr-2"></i> Prev
-          </NavButton>
-
-          <NavButton
-            onClick={() => nextTopic && onNavigate(nextTopic.id)}
-            disabled={!nextTopic}
-          >
-            Next <i className="fa-solid fa-chevron-right ml-2"></i>
-          </NavButton>
-        </div>
+        <PaginationControls 
+          prevTopic={prevTopic} 
+          nextTopic={nextTopic} 
+          onNavigate={onNavigate} 
+          className="flex justify-between items-center mt-8 cursor-pointer"
+        />
       </>
     );
   };
@@ -201,11 +171,22 @@ const MainContent: React.FC<MainContentProps> = ({ activeView, topic, referenceC
   };
 
   const isCenteringNeeded = isLoading || (activeView === 'tutorial' && searchQuery && !hasSearchResults);
+  const showToc = activeView === 'tutorial' && !isCenteringNeeded && topic;
 
   return (
-    <main className="flex-1 p-4 md:p-8 bg-gray-50 dark:bg-gray-900 overflow-y-auto h-screen-minus-nav scroll-smooth">
-      <div className={`max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 md:p-12 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 transition-all duration-300 ${isCenteringNeeded ? 'flex items-center justify-center min-h-[60vh]' : ''}`}>
-        {mainContent()}
+    <main className="flex-1 p-4 md:p-8 bg-gray-50 dark:bg-gray-900 overflow-y-auto h-screen-minus-nav scroll-smooth" id="scroll-container">
+      <div className={`max-w-4xl lg:max-w-6xl xl:max-w-[90rem] mx-auto bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 md:p-12 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 transition-all duration-300 ${isCenteringNeeded ? 'flex items-center justify-center min-h-[60vh]' : ''}`}>
+        <div className="flex flex-col xl:flex-row xl:gap-12 relative items-start">
+          <div className={`flex-1 min-w-0 ${showToc ? 'xl:max-w-4xl' : 'max-w-4xl lg:max-w-6xl'}`}>
+            {mainContent()}
+          </div>
+          
+          {showToc && (
+            <aside className="hidden xl:block w-72 flex-shrink-0 sticky top-4">
+              <TableOfContents topicDependency={topic?.id} />
+            </aside>
+          )}
+        </div>
       </div>
     </main>
   );

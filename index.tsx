@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
 import { ThemeProvider } from './context/ThemeContext';
@@ -14,7 +14,7 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter>
       <ThemeProvider>
         <AuthProvider>
           <AllProgressProvider>
@@ -22,6 +22,6 @@ root.render(
           </AllProgressProvider>
         </AuthProvider>
       </ThemeProvider>
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>
 );

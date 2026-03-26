@@ -1,100 +1,87 @@
-import { useState, useEffect, useCallback } from 'react';
-
-declare global {
-  interface Window {
-    loadPyodide: any;
-    pyodide: any;
-  }
-}
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 export type PyodideStatus = 'idle' | 'loading' | 'ready' | 'error';
 
 export const usePyodide = () => {
   const [status, setStatus] = useState<PyodideStatus>('idle');
   const [error, setError] = useState<string | null>(null);
-
+  
+  const workerRef = useRef<Worker | null>(null);
+  const resolversRef = useRef<{ [key: string]: { resolve: (val: any) => void; reject: (err: any) => void } }>({});
+  
   const initPyodide = useCallback(async () => {
-    if (window.pyodide) {
-      setStatus('ready');
-      return;
-    }
-
-    if (status === 'loading') return;
-
+    if (workerRef.current && status === 'ready') return;
+    
     setStatus('loading');
+    setError(null);
 
-    try {
-      // Load the script if not already present
-      if (!window.loadPyodide) {
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js';
-        script.async = true;
-        document.head.appendChild(script);
+    return new Promise<void>((resolve, reject) => {
+      // Create new worker instance
+      const worker = new Worker(new URL('./pyodideWorker.ts', import.meta.url), { type: 'module' });
+      workerRef.current = worker;
 
-        await new Promise((resolve, reject) => {
-          script.onload = resolve;
-          script.onerror = reject;
-        });
-      }
-
-      window.pyodide = await window.loadPyodide({
-        indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.25.1/full/',
-        stdout: (text: string) => {
-           console.log('Python Output:', text);
-           // We will handle output capture in the run function
-        },
-        stderr: (text: string) => {
-           console.error('Python Error:', text);
+      worker.onmessage = (e) => {
+        const { type, error: msgError, id, output } = e.data;
+        if (type === 'INIT_DONE') {
+          setStatus('ready');
+          resolve();
+        } else if (type === 'INIT_ERROR') {
+          setError(msgError || 'Failed to initialize Python Worker');
+          setStatus('error');
+          reject(new Error(msgError));
+        } else if (type === 'RUN_DONE') {
+          if (resolversRef.current[id]) {
+            resolversRef.current[id].resolve({ output, error: msgError });
+            delete resolversRef.current[id];
+          }
         }
-      });
+      };
 
-      setStatus('ready');
-    } catch (err: any) {
-      console.error('Pyodide initialization failed:', err);
-      setError(err.message || 'Failed to load Python engine');
-      setStatus('error');
-    }
+      worker.onerror = (e) => {
+        setError('Worker encountered a fatal error');
+        setStatus('error');
+        reject(e);
+      };
+
+      // Start initialization
+      worker.postMessage({ type: 'INIT' });
+    });
   }, [status]);
 
   const runPython = useCallback(async (code: string) => {
-    if (!window.pyodide || status !== 'ready') {
+    if (status !== 'ready' || !workerRef.current) {
       await initPyodide();
     }
 
-    if (!window.pyodide) return { output: '', error: 'Python engine not ready' };
+    return new Promise<{ output: string; error: string | null }>((resolve) => {
+      const id = Math.random().toString(36).substr(2, 9);
+      resolversRef.current[id] = { resolve, reject: () => {} };
 
-    const output: string[] = [];
-    
-    // Override stdout to capture output for this specific run
-    window.pyodide.setStdout({
-      batched: (text: string) => {
-        output.push(text);
-      }
+      workerRef.current?.postMessage({ type: 'RUN', code, id });
+
+      // Timeout execution: 10 seconds limit to catch infinite loops
+      setTimeout(() => {
+        if (resolversRef.current[id]) {
+          resolve({ output: '', error: 'Execution Timed Out (Possible Infinite Loop)' });
+          delete resolversRef.current[id];
+          
+          // Terminate and recreate the worker to restore state
+          workerRef.current?.terminate();
+          setStatus('idle');
+          workerRef.current = null;
+        }
+      }, 10000);
     });
-
-    try {
-      // Automatically load packages if detected in code
-      const packages = [];
-      if (code.includes('import numpy') || code.includes('from numpy')) packages.push('numpy');
-      if (code.includes('import pandas') || code.includes('from pandas')) packages.push('pandas');
-      if (code.includes('import matplotlib') || code.includes('from matplotlib')) packages.push('matplotlib');
-
-      if (packages.length > 0) {
-        await window.pyodide.loadPackage(packages);
-      }
-
-      const result = await window.pyodide.runPythonAsync(code);
-      
-      // If the last line returns something and we didn't print anything, show the result
-      if (output.length === 0 && result !== undefined) {
-         output.push(String(result));
-      }
-
-      return { output: output.join('\n'), error: null };
-    } catch (err: any) {
-      return { output: output.join('\n'), error: err.message };
-    }
   }, [status, initPyodide]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (workerRef.current) {
+        workerRef.current.terminate();
+      }
+    };
+  }, []);
 
   return { status, error, runPython, initPyodide };
 };
