@@ -8,6 +8,7 @@ import {
   Cpu, BarChart, Database, Lock, Settings, MonitorPlay,
   Clock, Calendar, CpuIcon
 } from 'lucide-react';
+import QuizBlock from '../../components/QuizBlock';
 
 const CodeSnippetBlock = ({ codeSnippet, title }: { codeSnippet: string, title?: string }) => {
   const [copied, setCopied] = useState(false);
@@ -606,6 +607,21 @@ int main(){
                 </div>
             ))}
          </div>
+      </section>
+
+      <section className="max-w-4xl mx-auto mb-16">
+          <hr className="my-10 border-slate-200 dark:border-slate-700 border-2 border-dashed" />
+          <QuizBlock 
+            question="What is the defining characteristic of Python's design philosophy?"
+            options={[
+              "It requires all variables to be statically typed before execution.",
+              "It emphasizes code readability using significant whitespace (indentation).",
+              "It compiles directly to native machine code for maximum speed.",
+              "It uses curly braces {} to define code blocks."
+            ]}
+            correctAnswerIndex={1}
+            explanation="Exactly! Python is famous for using significant indentation to define code blocks, forcing developers to write readable, cleanly formatted code instead of relying on curly braces."
+          />
       </section>
 
     </div>
