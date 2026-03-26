@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Play } from 'lucide-react';
 
 // A powerful, self-contained sandbox for executing NumPy-like code in JavaScript.
@@ -35,7 +35,10 @@ const NumpySandbox = {
       return arr.flat().reduce((s: any, v: any) => s + v, 0);
     },
     prod: (arr: any[]) => arr.flat().reduce((p: number, v: number) => p * v, 1),
-    mean: (arr: { flat: () => { (): any; new(): any; reduce: { (arg0: (s: any, v: any) => any, arg1: number): number; new(): any; }; length: number; }; }) => arr.flat().reduce((s: any, v: any) => s + v, 0) / arr.flat().length,
+    mean: (arr: any) => {
+      const flat = arr.flat();
+      return flat.reduce((s: number, v: number) => s + v, 0) / flat.length;
+    },
     median: (arr: any[]) => {
       const sorted = [...arr.flat()].sort((a, b) => a - b);
       const mid = Math.floor(sorted.length / 2);
@@ -43,20 +46,16 @@ const NumpySandbox = {
     },
     std: (arr: any[], ddof = 0) => {
         const flatArr = arr.flat();
-        const mean = newFunction();
+        const mean = NumpySandbox.np.mean(arr);
         const variance = flatArr.reduce((s: number, v: number) => s + (v - mean) ** 2, 0) / (flatArr.length - ddof);
         return Math.sqrt(variance);
-
-      function newFunction() {
-        return NumpySandbox.np.mean(flatArr);
-      }
     },
     min: (arr: any[]) => Math.min(...arr.flat()),
     max: (arr: any[]) => Math.max(...arr.flat()),
-    argmin: (arr: { flat: () => number[]; }) => arr.flat().indexOf(Math.min(...arr.flat())),
-    argmax: (arr: { flat: () => number[]; }) => arr.flat().indexOf(Math.max(...arr.flat())),
+    argmin: (arr: any) => arr.flat().indexOf(Math.min(...arr.flat())),
+    argmax: (arr: any) => arr.flat().indexOf(Math.max(...arr.flat())),
     clip: (arr: any[], min: number, max: number) => arr.map((v: number) => Math.max(min, Math.min(max, v))),
-    dot: (a: any[], b: { [x: string]: number; }) => a.reduce((s: number, v: number, i: string | number) => s + v * b[i], 0),
+    dot: (a: any[], b: any) => a.reduce((s: number, v: number, i: number) => s + v * b[i], 0),
     matmul: (A: string | any[], B: number[][]) => {
       const C = Array(A.length).fill(0).map(() => Array(B[0].length).fill(0));
       for (let i = 0; i < A.length; i++) {
@@ -108,11 +107,23 @@ const NumpySandbox = {
          throw new Error("Eigenvalue calculation is only implemented for the specific example in this sandbox.");
        },
       matrix_rank: (A: any) => (NumpySandbox.np.linalg.det(A) !== 0 ? 2 : 1),
-      norm: (arr: any[], { ord } = {}) => {
-          if(!ord || ord === 2) return Math.sqrt(arr.flat().reduce((s: number, v: number) => s + v * v, 0));
-          if(ord === 1) return arr.flat().reduce((s: number, v: number) => s + Math.abs(v), 0);
-          return Math.sqrt(arr.flat().reduce((s: number, v: number) => s + v * v, 0));
-      }
+      _norm: (arr: any[], { ord }: any = {}) => {
+        if (!ord || ord === 2) return Math.sqrt(arr.flat().reduce((s: number, v: number) => s + v * v, 0));
+        if (ord === 1) return arr.flat().reduce((s: number, v: number) => s + Math.abs(v), 0);
+        return Math.sqrt(arr.flat().reduce((s: number, v: number) => s + v * v, 0));
+      },
+      get norm_1() {
+        return this._norm;
+      },
+      set norm_1(value) {
+        this._norm = value;
+      },
+      get norm() {
+        return this._norm;
+      },
+      set norm(value) {
+        this._norm = value;
+      },
     },
   },
 
@@ -157,7 +168,17 @@ const NumpySandbox = {
 
 
 export default function NumpyMathOperations() {
-  const FunctionCard = ({ title, color, definition, syntax, visual, example, defaultCode }) => {
+  interface FunctionCardProps {
+    title: string;
+    color: string;
+    definition: string;
+    syntax: string;
+    visual: React.ReactNode;
+    example: string;
+    defaultCode: string;
+  }
+
+  const FunctionCard = ({ title, color, definition, syntax, visual, example, defaultCode }: FunctionCardProps) => {
     const [code, setCode] = useState(defaultCode);
     const [output, setOutput] = useState('');
     const [isRunning, setIsRunning] = useState(false);
@@ -255,7 +276,7 @@ export default function NumpyMathOperations() {
               </div>
               <textarea
                 value={code}
-                onChange={(e: { target: { value: any; }; }) => setCode(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setCode(e.target.value)}
                 className="w-full h-64 bg-slate-950 text-green-400 font-mono text-sm p-4 focus:outline-none focus:ring-2 focus:ring-green-500/50 resize-none"
                 style={{
                   backgroundColor: '#0f172a',
@@ -289,7 +310,13 @@ export default function NumpyMathOperations() {
   };
   
   // ... (rest of the component remains the same)
-  const ArrayBlock = ({ items, result, operator }) => (
+  interface ArrayBlockProps {
+    items: any[][];
+    result: any[];
+    operator: string;
+  }
+
+  const ArrayBlock = ({ items, result, operator }: ArrayBlockProps) => (
     <div className="flex flex-col items-center gap-3">
       <div className="flex items-center gap-2 flex-wrap justify-center">
         {items[0] && items[0].length > 0 && (

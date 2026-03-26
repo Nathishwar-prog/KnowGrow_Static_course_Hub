@@ -38,7 +38,7 @@ function NumpyHome() {
     href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/NumPy_logo_2020.svg/32px-NumPy_logo_2020.svg.png"
   />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Code+Pro:wght@400;600&display=swap"
     rel="stylesheet"
@@ -1095,7 +1095,7 @@ function NumpyHome() {
     <section id="other-functions" className="py-12">
       <div className="grid md:grid-cols-2 gap-16">
         {/* Important Functions */}
-        <div className="text-center">
+        <div id="important-functions" className="text-center">
           <h2 className="text-3xl font-bold text-white">
             Important Functions{" "}
             <span className="text-lg font-semibold text-amber-400">
@@ -1128,7 +1128,7 @@ function NumpyHome() {
           </div>
         </div>
         {/* Utility Functions */}
-        <div className="text-center">
+        <div id="utility-functions" className="text-center">
           <h2 className="text-3xl font-bold text-white">
             Utility Functions{" "}
             <span className="text-lg font-semibold text-rose-400">
@@ -1253,7 +1253,95 @@ function NumpyHome() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-700">
-              {/* Rows will be populated by JS */}
+              {/* Array Creation */}
+              <tr id="array-creation" className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.array()</td>
+                <td className="p-4 text-gray-300">Convert lists/tuples to arrays. Foundation of NumPy.</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.arange()</td>
+                <td className="p-4 text-gray-300">Create arrays with a step value. Similar to range().</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.linspace()</td>
+                <td className="p-4 text-gray-300">Create arrays with N evenly spaced points.</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.zeros()</td>
+                <td className="p-4 text-gray-300">Create an array filled with 0s.</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.ones()</td>
+                <td className="p-4 text-gray-300">Create an array filled with 1s.</td>
+              </tr>
+              {/* Indexing & Slicing */}
+              <tr id="indexing-concepts" className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">Indexing</td>
+                <td className="p-4 text-gray-300">Access elements using brackets [i, j].</td>
+              </tr>
+              <tr id="slicing-concepts" className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">Slicing</td>
+                <td className="p-4 text-gray-300">Extract sub-arrays using [start:stop:step].</td>
+              </tr>
+              {/* Math Ops */}
+              <tr id="mathematical-operations" className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.add()</td>
+                <td className="p-4 text-gray-300">Element-wise addition (+).</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.subtract()</td>
+                <td className="p-4 text-gray-300">Element-wise subtraction (-).</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.multiply()</td>
+                <td className="p-4 text-gray-300">Element-wise multiplication (*).</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.divide()</td>
+                <td className="p-4 text-gray-300">Element-wise division (/).</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.sqrt()</td>
+                <td className="p-4 text-gray-300">Square root of every element.</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.exp()</td>
+                <td className="p-4 text-gray-300">Exponential (e^x).</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.log()</td>
+                <td className="p-4 text-gray-300">Natural logarithm.</td>
+              </tr>
+              {/* Aggregations */}
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.sum()</td>
+                <td className="p-4 text-gray-300">Sum of all elements.</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.mean()</td>
+                <td className="p-4 text-gray-300">Average of all elements.</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.std()</td>
+                <td className="p-4 text-gray-300">Standard deviation.</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.min() / max()</td>
+                <td className="p-4 text-gray-300">Minimum and maximum values.</td>
+              </tr>
+              {/* Linear Algebra */}
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.dot()</td>
+                <td className="p-4 text-gray-300">Dot product of two arrays.</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.matmul()</td>
+                <td className="p-4 text-gray-300">Matrix multiplication (@).</td>
+              </tr>
+              <tr className="hover:bg-gray-700/50">
+                <td className="p-4 font-bold text-sky-400 font-code">np.linalg.inv()</td>
+                <td className="p-4 text-gray-300">Compute the inverse of a matrix.</td>
+              </tr>
             </tbody>
           </table>
         </div>
