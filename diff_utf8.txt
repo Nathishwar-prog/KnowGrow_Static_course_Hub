@@ -1,0 +1,27 @@
+﻿diff --cc data/matplotlib/MplHistograms.tsx
+index dde6a7f,ed6e1cc..0000000
+--- a/data/matplotlib/MplHistograms.tsx
++++ b/data/matplotlib/MplHistograms.tsx
+@@@ -1,4 -1,4 +1,8 @@@
+++<<<<<<< HEAD
+ +∩╗┐import React, { useState } from 'react';
+++=======
++ import React, { useState } from 'react';
+++>>>>>>> 24d7cdb (temporarysave)
+  import { 
+    BarChart2, Info, Code, Terminal, 
+    Layers, Layout, Eye, Hash,
+@@@ -566,8 -566,4 +570,12 @@@ plt.title("Normal Distribution Histogra
+           </p>
+        </footer>
+  
+ -export default MplHistograms;
+++<<<<<<< HEAD
+ +    </div>
+ +  );
+ +};
+ +
+ +export default MplHistograms;
+++=======
+++export default MplHistograms;
+++>>>>>>> 24d7cdb (temporarysave)

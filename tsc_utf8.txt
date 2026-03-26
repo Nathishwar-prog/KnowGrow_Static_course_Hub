@@ -1,0 +1,26 @@
+﻿data/js/JsArraySearch.tsx(243,56): error TS1127: Invalid character.
+data/js/JsArraySearch.tsx(243,59): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+data/js/JsArraySearch.tsx(243,63): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+data/matplotlib/MplBox.tsx(2,1): error TS1185: Merge conflict marker encountered.
+data/matplotlib/MplBox.tsx(608,85): error TS1005: '}' expected.
+data/matplotlib/MplBox.tsx(608,129): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+data/matplotlib/MplBox.tsx(608,133): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+data/matplotlib/MplBox.tsx(609,3): error TS1109: Expression expected.
+data/matplotlib/MplBox.tsx(610,26): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+data/matplotlib/MplBox.tsx(614,7): error TS1005: '}' expected.
+data/matplotlib/MplBox.tsx(615,3): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+data/matplotlib/MplBox.tsx(636,1): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+data/matplotlib/MplBox.tsx(636,2): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+data/matplotlib/MplBox.tsx(636,3): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+data/matplotlib/MplBox.tsx(636,4): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+data/matplotlib/MplBox.tsx(636,5): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+data/matplotlib/MplBox.tsx(636,6): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+data/matplotlib/MplBox.tsx(636,7): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+data/matplotlib/MplBox.tsx(637,11): error TS1005: '</' expected.
+data/matplotlib/MplBox.tsx(639,1): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+data/matplotlib/MplBox.tsx(641,1): error TS1185: Merge conflict marker encountered.
+data/matplotlib/MplBox.tsx(643,1): error TS1185: Merge conflict marker encountered.
+data/matplotlib/MplBox.tsx(1020,1): error TS1185: Merge conflict marker encountered.
+data/matplotlib/MplBox.tsx(1021,1): error TS1005: '}' expected.
+data/matplotlib/MplHistograms.tsx(83,6): error TS17008: JSX element 'div' has no corresponding closing tag.
+data/matplotlib/MplHistograms.tsx(569,30): error TS1005: '</' expected.
