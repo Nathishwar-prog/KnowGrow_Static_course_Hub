@@ -14,6 +14,7 @@ import ExercisesModal from './components/ExercisesModal';
 import IntroAnimation from './components/IntroAnimation';
 import BottomNav from './components/BottomNav';
 import ReviewSession from './components/srs/ReviewSession';
+import AITutor from './components/AITutor';
 import { ALL_COURSES } from './data/tutorialData';
 import { ALL_REFERENCES } from './data/references/referenceData';
 import { ALL_EXERCISES } from './data/exercises/exerciseData';
@@ -23,38 +24,11 @@ import { AnimationProvider } from './context/AnimationContext';
 import type { AnimationOptions } from './context/AnimationContext';
 import { ANIMATION_STYLES } from './data/html/animations/animationStyles';
 
-// Make Fuse available globally for TypeScript
-declare var Fuse: any;
+import { useGlobalSearch } from './hooks/useGlobalSearch';
+import { useModals } from './hooks/useModals';
+import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 
 export type Course = keyof typeof ALL_COURSES;
-
-export interface RankedSearchResult {
-  topic: TutorialTopic;
-  score: number;
-  snippet?: string;
-}
-
-const extractTextFromReactNode = (node: React.ReactNode): string => {
-  if (node === null || typeof node === 'boolean' || typeof node === 'undefined') {
-    return '';
-  }
-  if (typeof node === 'string' || typeof node === 'number') {
-    return String(node);
-  }
-  if (Array.isArray(node)) {
-    return node.map(extractTextFromReactNode).join(' ');
-  }
-  if (React.isValidElement(node)) {
-    if (typeof node.type === 'function' && ((node.type as any).name === 'CodeBlock' || (node.type as any).displayName === 'CodeBlock')) {
-      return '';
-    }
-    const props = node.props as { children?: React.ReactNode };
-    if (props.children) {
-      return extractTextFromReactNode(props.children);
-    }
-  }
-  return '';
-};
 
 const AppContent: React.FC = () => {
   const { view, courseId, topicId } = useParams<{ view?: string, courseId?: string, topicId?: string }>();
@@ -74,22 +48,26 @@ const AppContent: React.FC = () => {
   const activeExerciseCourse = activeView === 'exercise' ? activeCourse : null;
 
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [isDesktopSidebarOpen, setIsDesktopSidebarOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [animationModalConfig, setAnimationModalConfig] = useState<{
-    isOpen: boolean;
-    content: React.ReactNode | null;
-    title: string;
-  }>({ isOpen: false, content: null, title: '' });
 
-  const [isTutorialsModalOpen, setIsTutorialsModalOpen] = useState(false);
-  const [isReferencesModalOpen, setIsReferencesModalOpen] = useState(false);
-  const [isExercisesModalOpen, setIsExercisesModalOpen] = useState(false);
+  const {
+    animationModalConfig,
+    setAnimationModalConfig,
+    isTutorialsModalOpen,
+    openTutorialsModal,
+    closeTutorialsModal,
+    isReferencesModalOpen,
+    openReferencesModal,
+    closeReferencesModal,
+    isExercisesModalOpen,
+    openExercisesModal,
+    closeExercisesModal,
+    closeAnimationModal
+  } = useModals();
 
   const loadingTimeoutRef = useRef<number | null>(null);
 
-
-  // Redirect if URL is incomplete or invalid
   useEffect(() => {
     if (isDashboard || isReview) return;
 
@@ -105,76 +83,18 @@ const AppContent: React.FC = () => {
   const TUTORIAL_DATA = useMemo(() => ALL_COURSES[activeCourse].data, [activeCourse]);
   const allTopics: TutorialTopic[] = useMemo(() => TUTORIAL_DATA.flatMap(section => section.topics), [TUTORIAL_DATA]);
 
-
   const activeTopic = useMemo(() => {
     if (activeView !== 'tutorial') return undefined;
     return allTopics.find(topic => topic.id === activeTopicId) || allTopics[0];
   }, [activeTopicId, allTopics, activeView]);
 
-
-  const filteredSections = useMemo(() => {
-    if (!searchQuery.trim()) {
-      return TUTORIAL_DATA;
-    }
-    const lowerCaseQuery = searchQuery.trim().toLowerCase();
-    return TUTORIAL_DATA
-      .map(section => ({
-        ...section,
-        topics: section.topics.filter(topic =>
-          topic.title.toLowerCase().includes(lowerCaseQuery)
-        ),
-      }))
-      .filter(section => section.topics.length > 0);
-  }, [searchQuery, TUTORIAL_DATA]);
-
-  const fuse = useMemo(() => {
-    const searchableTopics = allTopics.map(topic => ({
-      ...topic,
-      textContent: extractTextFromReactNode(topic.content)
-    }));
-
-
-    const options = {
-      keys: [
-        { name: 'title', weight: 0.7 },
-        { name: 'textContent', weight: 0.3 }
-      ],
-      includeMatches: true,
-      threshold: 0.4,
-      minMatchCharLength: 2,
-    };
-    return new Fuse(searchableTopics, options);
-  }, [allTopics]);
-
-  const rankedSearchResults = useMemo<RankedSearchResult[]>(() => {
-    if (!searchQuery.trim()) {
-      return [];
-    }
-    const results = fuse.search(searchQuery);
-
-    return results.slice(0, 7).map((result: any) => {
-      const { item: topic, score, matches } = result;
-      let snippet: string | undefined = undefined;
-
-      const contentMatch = matches?.find((m: any) => m.key === 'textContent');
-      if (contentMatch && contentMatch.indices.length > 0) {
-        const [start, end] = contentMatch.indices[0];
-        const snippetStart = Math.max(0, start - 30);
-        const snippetEnd = Math.min(topic.textContent.length, end + 70);
-        const rawSnippet = topic.textContent.substring(snippetStart, snippetEnd);
-        snippet = `${snippetStart > 0 ? '...' : ''}${rawSnippet}${snippetEnd < topic.textContent.length ? '...' : ''}`;
-      }
-
-      return {
-        topic: { id: topic.id, title: topic.title, content: topic.content },
-        score: 1 - score,
-        snippet: snippet,
-      };
-    });
-  }, [searchQuery, fuse]);
-
-
-  const hasSearchResults = filteredSections.length > 0;
+  const {
+    searchQuery,
+    setSearchQuery,
+    filteredSections,
+    rankedSearchResults,
+    hasSearchResults
+  } = useGlobalSearch(allTopics, TUTORIAL_DATA);
 
   useEffect(() => {
     const isOverlayOpen = isMobileNavOpen || animationModalConfig.isOpen || isTutorialsModalOpen || isReferencesModalOpen || isExercisesModalOpen;
@@ -183,7 +103,6 @@ const AppContent: React.FC = () => {
     } else {
       document.body.style.overflow = 'auto';
     }
-
     return () => {
       document.body.style.overflow = 'auto';
     };
@@ -203,9 +122,6 @@ const AppContent: React.FC = () => {
     };
   }, []);
 
-
-
-
   const handleCourseSelect = (course: Course) => {
     if (course !== activeCourse || activeView !== 'tutorial') {
       setIsLoading(true);
@@ -224,11 +140,9 @@ const AppContent: React.FC = () => {
       return;
     }
 
-
     if (loadingTimeoutRef.current) {
       clearTimeout(loadingTimeoutRef.current);
     }
-
 
     setIsLoading(true);
     setIsMobileNavOpen(false);
@@ -240,42 +154,17 @@ const AppContent: React.FC = () => {
     }, 500);
   };
 
-
-  const handleSearchChange = (query: string) => {
-    setSearchQuery(query);
-  };
-
   const getTopicIndex = (id: string): number => allTopics.findIndex(topic => topic.id === id);
-
   const currentIndex = getTopicIndex(activeTopicId);
   const prevTopic = currentIndex > 0 ? allTopics[currentIndex - 1] : null;
   const nextTopic = currentIndex < allTopics.length - 1 ? allTopics[currentIndex + 1] : null;
 
-  // Keyboard Shortcuts
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Ignore if user is typing in an input/textarea
-      if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName)) {
-        if (e.key === 'Escape') {
-          (e.target as HTMLElement).blur();
-        }
-        return;
-      }
-
-      if (e.key === 'ArrowLeft' && prevTopic && activeView === 'tutorial') {
-        handleTopicSelect(prevTopic.id);
-      } else if (e.key === 'ArrowRight' && nextTopic && activeView === 'tutorial') {
-        handleTopicSelect(nextTopic.id);
-      } else if (e.key === '/') {
-        e.preventDefault();
-        const searchInput = document.querySelector('input[type="search"]') as HTMLInputElement;
-        searchInput?.focus();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [prevTopic, nextTopic, activeView]);
+  useKeyboardShortcuts({
+    prevTopic,
+    nextTopic,
+    activeView,
+    handleTopicSelect
+  });
 
   const openAnimationPage = (options: AnimationOptions) => {
     const { animationId, title, props = {} } = options;
@@ -296,25 +185,10 @@ const AppContent: React.FC = () => {
     });
   };
 
-  const closeAnimationModal = () => {
-    setAnimationModalConfig({ isOpen: false, content: null, title: '' });
-  };
-
-
-  const openTutorialsModal = () => setIsTutorialsModalOpen(true);
-  const closeTutorialsModal = () => setIsTutorialsModalOpen(false);
-
-  const openReferencesModal = () => setIsReferencesModalOpen(true);
-  const closeReferencesModal = () => setIsReferencesModalOpen(false);
-
-  const openExercisesModal = () => setIsExercisesModalOpen(true);
-  const closeExercisesModal = () => setIsExercisesModalOpen(false);
-
   const handleModalCourseSelect = (course: Course) => {
     handleCourseSelect(course);
     closeTutorialsModal();
   }
-
 
   const handleModalTopicSelect = (course: Course, topicId: string) => {
     if (course !== activeCourse) {
@@ -357,7 +231,7 @@ const AppContent: React.FC = () => {
           onReferencesClick={openReferencesModal}
           onExercisesClick={openExercisesModal}
           searchQuery={searchQuery}
-          onSearchChange={handleSearchChange}
+          onSearchChange={setSearchQuery}
           rankedSearchResults={rankedSearchResults}
           onTopicSelect={handleTopicSelect}
         />
@@ -378,7 +252,7 @@ const AppContent: React.FC = () => {
                 activeCourse={activeCourse}
                 onCourseSelect={handleCourseSelect}
                 searchQuery={searchQuery}
-                onSearchChange={handleSearchChange}
+                onSearchChange={setSearchQuery}
                 rankedSearchResults={rankedSearchResults}
               />
             )}
@@ -388,6 +262,8 @@ const AppContent: React.FC = () => {
                 activeTopicId={activeTopicId}
                 onTopicSelect={handleTopicSelect}
                 searchQuery={searchQuery}
+                isOpen={isDesktopSidebarOpen}
+                setIsOpen={setIsDesktopSidebarOpen}
               />
               <MainContent
                 activeView={activeView as any}
@@ -429,6 +305,7 @@ const AppContent: React.FC = () => {
           onClose={closeExercisesModal}
           onExerciseSelect={handleModalExerciseSelect}
         />
+        <AITutor courseId={activeCourse} topicId={activeTopicId} />
         <BottomNav />
       </div>
     </AnimationProvider>

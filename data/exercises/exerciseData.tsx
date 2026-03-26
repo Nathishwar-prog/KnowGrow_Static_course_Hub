@@ -12,6 +12,8 @@ import { useAllProgress } from '../../context/useAllProgress';
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
+import Editor from '@monaco-editor/react';
+import { useTheme } from '../../context/ThemeContext';
 
 const PandasExercisePage = () => <div className="p-8 text-center text-gray-500">Pandas Exercises Coming Soon</div>;
 const MatplotlibExercisePage = () => <div className="p-8 text-center text-gray-500">Matplotlib Exercises Coming Soon</div>;
@@ -44,6 +46,7 @@ export const Exercise: React.FC<ExerciseProps> = ({ id, title, instruction, init
 
     const { markTopicAsCompleted } = useAllProgress();
     const { courseId = 'python' } = useParams<{ courseId: string }>();
+    const { theme } = useTheme();
 
     const iframeSrcDoc = `
         <!DOCTYPE html>
@@ -110,13 +113,25 @@ export const Exercise: React.FC<ExerciseProps> = ({ id, title, instruction, init
             </div>
             <div className="p-4">
                 <div className="prose dark:prose-invert max-w-none prose-indigo mb-4">{instruction}</div>
-                <textarea
-                    value={code}
-                    onChange={(e) => setCode(e.target.value)}
-                    className="w-full h-32 p-2 font-mono text-sm bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-indigo-500"
-                    aria-label="Code editor for exercise"
-                    spellCheck="false"
-                />
+                <div className="h-64 border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden shadow-inner">
+                    <Editor
+                        height="100%"
+                        language={language === 'javascript' ? 'javascript' : (language === 'python' ? 'python' : 'html')}
+                        theme={theme === 'dark' ? 'vs-dark' : 'light'}
+                        value={code}
+                        onChange={(value) => setCode(value || '')}
+                        options={{
+                            minimap: { enabled: false },
+                            fontSize: 14,
+                            fontWeight: '500',
+                            fontFamily: 'JetBrains Mono, Menlo, Monaco, Courier New, monospace',
+                            padding: { top: 16, bottom: 16 },
+                            scrollBeyondLastLine: false,
+                            smoothScrolling: true,
+                            cursorBlinking: 'smooth',
+                        }}
+                    />
+                </div>
                 <div className="mt-4 flex flex-col space-y-2">
                     {language === 'python' && (
                         <PythonRunner 
