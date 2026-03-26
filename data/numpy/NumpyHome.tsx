@@ -1,6 +1,25 @@
 import React from 'react';
 
 function NumpyHome() {
+  const filterFunctions = () => {
+    const input = document.getElementById("searchInput") as HTMLInputElement;
+    const filter = input.value.toUpperCase();
+    const table = document.getElementById("functionsTable") as HTMLTableElement;
+    const tr = table.getElementsByTagName("tr");
+
+    for (let i = 0; i < tr.length; i++) {
+      const td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        const txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  };
+
   return (
     <div>
       <>
@@ -45,7 +64,7 @@ function NumpyHome() {
     <div className="mt-10 max-w-5xl mx-auto flex flex-wrap justify-center items-center gap-3 px-4">
       {/* Master Reference Button */}
       <button
-        onclick="document.getElementById('master-reference').scrollIntoView({ behavior: 'smooth' });"
+        onClick={() => document.getElementById('master-reference')?.scrollIntoView({ behavior: 'smooth' })}
         className="flex items-center gap-2 bg-sky-600 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-sky-500 transform hover:-translate-y-1 transition-all duration-300"
       >
         <svg
@@ -65,7 +84,7 @@ function NumpyHome() {
       </button>
       {/* Learning Path Button */}
       <button
-        onclick="document.getElementById('learning-path').scrollIntoView({ behavior: 'smooth' });"
+        onClick={() => document.getElementById('learning-path')?.scrollIntoView({ behavior: 'smooth' })}
         className="flex items-center gap-2 bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-indigo-500 transform hover:-translate-y-1 transition-all duration-300"
       >
         <svg
@@ -85,7 +104,7 @@ function NumpyHome() {
       </button>
       {/* Search Function Button */}
       <button
-        onclick="document.getElementById('quick-reference').scrollIntoView({ behavior: 'smooth' });"
+        onClick={() => document.getElementById('quick-reference')?.scrollIntoView({ behavior: 'smooth' })}
         className="flex items-center gap-2 bg-slate-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-slate-600 transform hover:-translate-y-1 transition-all duration-300"
       >
         <svg
@@ -106,44 +125,44 @@ function NumpyHome() {
       </button>
       {/* Grouped Function Buttons */}
       <button
-        onclick="document.getElementById('critical-functions').scrollIntoView({ behavior: 'smooth' });"
+        onClick={() => document.getElementById('critical-functions')?.scrollIntoView({ behavior: 'smooth' })}
         className="flex items-center gap-2 bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg hover:bg-slate-700 hover:text-white transition-colors duration-200"
       >
         Critical
       </button>
       <button
-        onclick="document.getElementById('important-functions').scrollIntoView({ behavior: 'smooth' });"
+        onClick={() => document.getElementById('important-functions')?.scrollIntoView({ behavior: 'smooth' })}
         className="flex items-center gap-2 bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg hover:bg-slate-700 hover:text-white transition-colors duration-200"
       >
         Important
       </button>
       <button
-        onclick="document.getElementById('utility-functions').scrollIntoView({ behavior: 'smooth' });"
+        onClick={() => document.getElementById('utility-functions')?.scrollIntoView({ behavior: 'smooth' })}
         className="flex items-center gap-2 bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg hover:bg-slate-700 hover:text-white transition-colors duration-200"
       >
         Utility
       </button>
       {/* Grouped Concept Buttons */}
       <button
-        onclick="document.getElementById('array-creation').scrollIntoView({ behavior: 'smooth' });"
+        onClick={() => document.getElementById('array-creation')?.scrollIntoView({ behavior: 'smooth' })}
         className="flex items-center gap-2 bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg hover:bg-slate-700 hover:text-white transition-colors duration-200"
       >
         Creation
       </button>
       <button
-        onclick="document.getElementById('indexing-concepts').scrollIntoView({ behavior: 'smooth' });"
+        onClick={() => document.getElementById('indexing-concepts')?.scrollIntoView({ behavior: 'smooth' })}
         className="flex items-center gap-2 bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg hover:bg-slate-700 hover:text-white transition-colors duration-200"
       >
         Indexing
       </button>
       <button
-        onclick="document.getElementById('slicing-concepts').scrollIntoView({ behavior: 'smooth' });"
+        onClick={() => document.getElementById('slicing-concepts')?.scrollIntoView({ behavior: 'smooth' })}
         className="flex items-center gap-2 bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg hover:bg-slate-700 hover:text-white transition-colors duration-200"
       >
         Slicing
       </button>
       <button
-        onclick="document.getElementById('mathematical-operations').scrollIntoView({ behavior: 'smooth' });"
+        onClick={() => document.getElementById('mathematical-operations')?.scrollIntoView({ behavior: 'smooth' })}
         className="flex items-center gap-2 bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg hover:bg-slate-700 hover:text-white transition-colors duration-200"
       >
         Math Ops
@@ -182,7 +201,7 @@ function NumpyHome() {
   {/* Back to Top Button */}
   <button
     id="back-to-top"
-    onclick="document.getElementById('home').scrollIntoView({ behavior: 'smooth' });"
+    onClick={() => document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })}
     title="Go to top"
     className="fixed bottom-8 right-8 z-50 p-3 bg-sky-600 text-white rounded-full shadow-lg hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-sky-500 hide-btn"
   >
@@ -1216,7 +1235,7 @@ function NumpyHome() {
         <input
           type="text"
           id="searchInput"
-          onkeyup="filterFunctions()"
+          onKeyUp={filterFunctions}
           placeholder="Search for a function..."
           className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500"
         />
