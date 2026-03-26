@@ -48,12 +48,22 @@ const CodeBlock = ({ code, title, language = "javascript" }: { code: string; tit
 };
 
 const DomNavigation: React.FC = () => {
-  const [activeNode, setActiveNode] = useState<'container' | 'h1' | 'p1' | 'p2' | null>(null);
+  type NodeType = 'container' | 'h1' | 'p1' | 'p2';
+  
+  interface DomNode {
+    name: string;
+    type: string;
+    children?: string[];
+    parent?: string;
+    siblings?: string[];
+  }
+
+  const [activeNode, setActiveNode] = useState<NodeType | null>(null);
   const [navMode, setNavMode] = useState<'elements' | 'nodes'>('elements');
   const [siblingFocus, setSiblingFocus] = useState<number>(1);
 
   // Relationship Data
-  const nodes = {
+  const nodes: Record<NodeType, DomNode> = {
     container: { name: "div#container", type: "Parent", children: ["h1", "p1", "p2"] },
     h1: { name: "h1", type: "Child", parent: "container", siblings: ["p1", "p2"] },
     p1: { name: "p#first", type: "Child", parent: "container", siblings: ["h1", "p2"] },
@@ -108,23 +118,23 @@ const DomNavigation: React.FC = () => {
           <div className="bg-slate-900 rounded-[3rem] p-10 border border-slate-800 shadow-2xl relative overflow-hidden group">
              <div className="absolute top-0 left-0 w-full h-full bg-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
              <div className="relative z-10 space-y-8">
-                <div className={`p-6 border-2 rounded-[2rem] transition-all cursor-pointer ${activeNode === 'container' ? 'border-amber-500 bg-amber-500/10 shadow-[0_0_30px_rgba(245,158,11,0.2)]' : 'border-white/10'}`} onClick={() => setActiveNode('container')}>
+                <div id="container" className={`p-6 border-2 rounded-[2rem] transition-all cursor-pointer ${activeNode === 'container' ? 'border-amber-500 bg-amber-500/10 shadow-[0_0_30px_rgba(245,158,11,0.2)]' : 'border-white/10'}`} onClick={() => setActiveNode('container')}>
                    <div className="flex justify-between items-center mb-4 text-[10px] font-black uppercase tracking-widest text-slate-500">
                       <span>#container</span>
                       <span className="text-amber-500">Parent</span>
                    </div>
                    
                    <div className="grid grid-cols-1 gap-4">
-                      <div className={`p-4 border-2 rounded-xl transition-all ${activeNode === 'h1' ? 'border-orange-500 bg-orange-500/10' : 'border-white/10'}`} onClick={(e) => { e.stopPropagation(); setActiveNode('h1'); }}>
+                      <div id="main-title" className={`p-4 border-2 rounded-xl transition-all ${activeNode === 'h1' ? 'border-orange-500 bg-orange-500/10' : 'border-white/10'}`} onClick={(e) => { e.stopPropagation(); setActiveNode('h1'); }}>
                          <span className="text-[9px] font-black uppercase text-slate-500">h1</span>
                          <p className="text-white text-xs font-bold mt-1">Main Title</p>
                       </div>
                       <div className="grid grid-cols-2 gap-4">
-                         <div className={`p-4 border-2 rounded-xl transition-all ${activeNode === 'p1' ? 'border-yellow-500 bg-yellow-500/10' : 'border-white/10'}`} onClick={(e) => { e.stopPropagation(); setActiveNode('p1'); }}>
+                         <div id="first" className={`p-4 border-2 rounded-xl transition-all ${activeNode === 'p1' ? 'border-yellow-500 bg-yellow-500/10' : 'border-white/10'}`} onClick={(e) => { e.stopPropagation(); setActiveNode('p1'); }}>
                             <span className="text-[9px] font-black uppercase text-slate-500">p#first</span>
                             <p className="text-white text-[10px] font-medium mt-1">First paragraph</p>
                          </div>
-                         <div className={`p-4 border-2 rounded-xl transition-all ${activeNode === 'p2' ? 'border-yellow-500 bg-yellow-500/10' : 'border-white/10'}`} onClick={(e) => { e.stopPropagation(); setActiveNode('p2'); }}>
+                         <div id="second" className={`p-4 border-2 rounded-xl transition-all ${activeNode === 'p2' ? 'border-yellow-500 bg-yellow-500/10' : 'border-white/10'}`} onClick={(e) => { e.stopPropagation(); setActiveNode('p2'); }}>
                             <span className="text-[9px] font-black uppercase text-slate-500">p#second</span>
                             <p className="text-white text-[10px] font-medium mt-1">Second paragraph</p>
                          </div>
@@ -140,7 +150,7 @@ const DomNavigation: React.FC = () => {
                            <p className="text-white text-xs font-bold uppercase tracking-widest">{nodes[activeNode].name}</p>
                            <p className="text-slate-500 text-[10px] italic">
                               {nodes[activeNode].type} {nodes[activeNode].parent && `of ${nodes[activeNode].parent}`}
-                              {nodes[activeNode].children && ` containing ${nodes[activeNode].children.join(', ')}`}
+                              {nodes[activeNode].children && ` containing ${nodes[activeNode].children?.join(', ')}`}
                            </p>
                         </div>
                      </div>
@@ -166,7 +176,7 @@ const DomNavigation: React.FC = () => {
                   </p>
                   <CodeBlock 
                     title="Ascending the Tree"
-                    code={`let el = document.getElementById("text");\nconsole.log(el.parentNode);\n// Output: <div id="box">...</div>`} 
+                    code={`let el = document.getElementById("first");\nconsole.log(el.parentNode);\n// Output: <div id="container">...</div>`} 
                   />
                </div>
                
@@ -370,7 +380,7 @@ const DomNavigation: React.FC = () => {
             <div className="mt-16 w-full max-w-2xl">
                <CodeBlock 
                  title="The Script Behind the Curtain"
-                 code={`let curr = document.getElementById("active");\ncurr.nextElementSibling.style.color = "red";`} 
+                 code={`let curr = document.getElementById("first");\ncurr.nextElementSibling.style.color = "red";`} 
                />
             </div>
          </div>

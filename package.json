@@ -24,6 +24,7 @@
     "drizzle-orm": "^0.45.1",
     "framer-motion": "^12.23.26",
     "lucide-react": "^0.545.0",
+    "monaco-editor": "^0.55.1",
     "postgres": "^3.4.8",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
