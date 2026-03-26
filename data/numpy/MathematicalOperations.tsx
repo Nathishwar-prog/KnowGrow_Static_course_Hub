@@ -5,7 +5,7 @@ import { Play } from 'lucide-react';
 // It includes a mock 'np' object that mimics many core NumPy functionalities.
 const NumpySandbox = {
   // Helper to format JS arrays to look like NumPy output (e.g., "[1 2 3]")
-  _format: (val) => {
+  _format: (val: any[]) => {
     if (typeof val === 'boolean') return val ? 'True' : 'False';
     if (typeof val !== 'object' || val === null) return String(val);
 
@@ -21,39 +21,43 @@ const NumpySandbox = {
 
   // The core numpy-like library
   np: {
-    array: (data) => data,
-    add: (a, b) => a.map((val, i) => val + (Array.isArray(b) ? b[i] : b)),
-    subtract: (a, b) => a.map((val, i) => val - (Array.isArray(b) ? b[i] : b)),
-    multiply: (a, b) => a.map((val, i) => val * (Array.isArray(b) ? b[i] : b)),
-    divide: (a, b) => a.map((val, i) => val / (Array.isArray(b) ? b[i] : b)),
-    power: (a, b) => a.map((val, i) => val ** (Array.isArray(b) ? b[i] : b)),
-    remainder: (a, b) => a.map((val, i) => val % (Array.isArray(b) ? b[i] : b)),
-    sum: (arr, axis = null) => {
+    array: (data: any) => data,
+    add: (a: any[], b: { [x: string]: any; }) => a.map((val: any, i: string | number) => val + (Array.isArray(b) ? b[i] : b)),
+    subtract: (a: any[], b: { [x: string]: any; }) => a.map((val: number, i: string | number) => val - (Array.isArray(b) ? b[i] : b)),
+    multiply: (a: any[], b: { [x: string]: any; }) => a.map((val: number, i: string | number) => val * (Array.isArray(b) ? b[i] : b)),
+    divide: (a: any[], b: { [x: string]: any; }) => a.map((val: number, i: string | number) => val / (Array.isArray(b) ? b[i] : b)),
+    power: (a: any[], b: { [x: string]: any; }) => a.map((val: number, i: string | number) => val ** (Array.isArray(b) ? b[i] : b)),
+    remainder: (a: any[], b: { [x: string]: any; }) => a.map((val: number, i: string | number) => val % (Array.isArray(b) ? b[i] : b)),
+    sum: (arr: any[], axis = null) => {
       if (axis === 0 && Array.isArray(arr[0])) {
-        return arr[0].map((_, col) => arr.reduce((s, row) => s + row[col], 0));
+        return arr[0].map((_, col) => arr.reduce((s: any, row: any[]) => s + row[col], 0));
       }
-      return arr.flat().reduce((s, v) => s + v, 0);
+      return arr.flat().reduce((s: any, v: any) => s + v, 0);
     },
-    prod: (arr) => arr.flat().reduce((p, v) => p * v, 1),
-    mean: (arr) => arr.flat().reduce((s, v) => s + v, 0) / arr.flat().length,
-    median: (arr) => {
+    prod: (arr: any[]) => arr.flat().reduce((p: number, v: number) => p * v, 1),
+    mean: (arr: { flat: () => { (): any; new(): any; reduce: { (arg0: (s: any, v: any) => any, arg1: number): number; new(): any; }; length: number; }; }) => arr.flat().reduce((s: any, v: any) => s + v, 0) / arr.flat().length,
+    median: (arr: any[]) => {
       const sorted = [...arr.flat()].sort((a, b) => a - b);
       const mid = Math.floor(sorted.length / 2);
       return sorted.length % 2 !== 0 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
     },
-    std: (arr, ddof = 0) => {
+    std: (arr: any[], ddof = 0) => {
         const flatArr = arr.flat();
-        const mean = NumpySandbox.np.mean(flatArr);
-        const variance = flatArr.reduce((s, v) => s + (v - mean) ** 2, 0) / (flatArr.length - ddof);
+        const mean = newFunction();
+        const variance = flatArr.reduce((s: number, v: number) => s + (v - mean) ** 2, 0) / (flatArr.length - ddof);
         return Math.sqrt(variance);
+
+      function newFunction() {
+        return NumpySandbox.np.mean(flatArr);
+      }
     },
-    min: (arr) => Math.min(...arr.flat()),
-    max: (arr) => Math.max(...arr.flat()),
-    argmin: (arr) => arr.flat().indexOf(Math.min(...arr.flat())),
-    argmax: (arr) => arr.flat().indexOf(Math.max(...arr.flat())),
-    clip: (arr, min, max) => arr.map(v => Math.max(min, Math.min(max, v))),
-    dot: (a, b) => a.reduce((s, v, i) => s + v * b[i], 0),
-    matmul: (A, B) => {
+    min: (arr: any[]) => Math.min(...arr.flat()),
+    max: (arr: any[]) => Math.max(...arr.flat()),
+    argmin: (arr: { flat: () => number[]; }) => arr.flat().indexOf(Math.min(...arr.flat())),
+    argmax: (arr: { flat: () => number[]; }) => arr.flat().indexOf(Math.max(...arr.flat())),
+    clip: (arr: any[], min: number, max: number) => arr.map((v: number) => Math.max(min, Math.min(max, v))),
+    dot: (a: any[], b: { [x: string]: number; }) => a.reduce((s: number, v: number, i: string | number) => s + v * b[i], 0),
+    matmul: (A: string | any[], B: number[][]) => {
       const C = Array(A.length).fill(0).map(() => Array(B[0].length).fill(0));
       for (let i = 0; i < A.length; i++) {
         for (let j = 0; j < B[0].length; j++) {
@@ -64,9 +68,9 @@ const NumpySandbox = {
       }
       return C;
     },
-    eye: (n) => Array(n).fill(0).map((_, i) => Array(n).fill(0).map((__, j) => i === j ? 1 : 0)),
-    arange: (start, stop) => Array.from({ length: stop - start }, (_, i) => start + i),
-    percentile: (arr, q) => {
+    eye: (n: any) => Array(n).fill(0).map((_, i) => Array(n).fill(0).map((__, j) => i === j ? 1 : 0)),
+    arange: (start: number, stop: number) => Array.from({ length: stop - start }, (_, i) => start + i),
+    percentile: (arr: any[], q: number) => {
         const sorted = [...arr.flat()].sort((a,b) => a - b);
         const pos = (sorted.length - 1) * (q / 100);
         const base = Math.floor(pos);
@@ -77,11 +81,11 @@ const NumpySandbox = {
             return sorted[base];
         }
     },
-    average: (arr, { weights }) => NumpySandbox.np.sum(NumpySandbox.np.multiply(arr, weights)) / NumpySandbox.np.sum(weights),
-    allclose: (a, b) => JSON.stringify(a.map(v=>v.toFixed(5))) === JSON.stringify(b.map(v=>v.toFixed(5))),
+    average: (arr: any, { weights }: any) => NumpySandbox.np.sum(NumpySandbox.np.multiply(arr, weights)) / NumpySandbox.np.sum(weights),
+    allclose: (a: any[], b: any[]) => JSON.stringify(a.map((v: number)=>v.toFixed(5))) === JSON.stringify(b.map((v: number)=>v.toFixed(5))),
     linalg: {
-      det: (A) => A[0][0] * A[1][1] - A[0][1] * A[1][0],
-      inv: (A) => {
+      det: (A: number[][]) => A[0][0] * A[1][1] - A[0][1] * A[1][0],
+      inv: (A: number[][]) => {
         const det = NumpySandbox.np.linalg.det(A);
         if (det === 0) throw new Error("Matrix is singular and cannot be inverted.");
         return [
@@ -89,12 +93,12 @@ const NumpySandbox = {
           [-A[1][0] / det, A[0][0] / det],
         ];
       },
-      solve: (A, b) => {
+      solve: (A: any, b: number[]) => {
         const A_inv = NumpySandbox.np.linalg.inv(A);
         // This only works for b as a vector
         return [ A_inv[0][0]*b[0] + A_inv[0][1]*b[1], A_inv[1][0]*b[0] + A_inv[1][1]*b[1] ];
       },
-       eig: (A) => {
+       eig: (A: number[][]) => {
          // Specific solution for the example [[4, 1], [1, 3]]
          if (A[0][0] === 4 && A[0][1] === 1 && A[1][0] === 1 && A[1][1] === 3) {
             const eigenvalues = [4.61803399, 2.38196601];
@@ -103,19 +107,19 @@ const NumpySandbox = {
          }
          throw new Error("Eigenvalue calculation is only implemented for the specific example in this sandbox.");
        },
-      matrix_rank: (A) => (NumpySandbox.np.linalg.det(A) !== 0 ? 2 : 1),
-      norm: (arr, { ord } = {}) => {
-          if(!ord || ord === 2) return Math.sqrt(arr.flat().reduce((s, v) => s + v * v, 0));
-          if(ord === 1) return arr.flat().reduce((s, v) => s + Math.abs(v), 0);
-          return Math.sqrt(arr.flat().reduce((s, v) => s + v * v, 0));
+      matrix_rank: (A: any) => (NumpySandbox.np.linalg.det(A) !== 0 ? 2 : 1),
+      norm: (arr: any[], { ord } = {}) => {
+          if(!ord || ord === 2) return Math.sqrt(arr.flat().reduce((s: number, v: number) => s + v * v, 0));
+          if(ord === 1) return arr.flat().reduce((s: number, v: number) => s + Math.abs(v), 0);
+          return Math.sqrt(arr.flat().reduce((s: number, v: number) => s + v * v, 0));
       }
     },
   },
 
   // Main execution function
-  execute: async (code) => {
+  execute: async (code: string) => {
     let outputBuffer = [];
-    const customPrint = (...args) => {
+    const customPrint = (...args: any[]) => {
       const formattedArgs = args.map((arg) => {
         if (typeof arg === 'string' && arg.includes('\n')) {
           const [label, matrix] = arg.split('\n');
@@ -129,7 +133,7 @@ const NumpySandbox = {
     // Sanitize the Python code to remove incompatible lines for the JS sandbox
     const sanitizedCode = code
       .replace(/import numpy as np\s*/g, '') // Remove numpy import
-      .replace(/f"(.+?)"/g, (match, p1) => '`' + p1.replace(/\{(.+?)\}/g, '${$1}') + '`') // Convert f-strings to template literals
+      .replace(/f"(.+?)"/g, (match: any, p1: string) => '`' + p1.replace(/\{(.+?)\}/g, '${$1}') + '`') // Convert f-strings to template literals
       .replace(/dtype=float/g, ''); // Remove dtype argument
 
 
@@ -222,7 +226,7 @@ export default function NumpyMathOperations() {
               <div className="bg-slate-950 border border-slate-700 rounded-lg p-4">
                 <pre className="font-mono text-xs overflow-x-auto">
                   <code>
-                    {example.split('\n').map((line, i) => (
+                    {example.split('\n').map((line: any, i: number) => (
                       <div key={i} className="text-gray-200">
                         <span className="text-slate-600">{String(i + 1).padStart(2, '0')} </span>
                         {line}
@@ -251,7 +255,7 @@ export default function NumpyMathOperations() {
               </div>
               <textarea
                 value={code}
-                onChange={(e) => setCode(e.target.value)}
+                onChange={(e: { target: { value: any; }; }) => setCode(e.target.value)}
                 className="w-full h-64 bg-slate-950 text-green-400 font-mono text-sm p-4 focus:outline-none focus:ring-2 focus:ring-green-500/50 resize-none"
                 style={{
                   backgroundColor: '#0f172a',
@@ -290,7 +294,7 @@ export default function NumpyMathOperations() {
       <div className="flex items-center gap-2 flex-wrap justify-center">
         {items[0] && items[0].length > 0 && (
           <div className="flex gap-1 bg-slate-800 p-2 rounded border border-slate-600">
-            {items[0].map((item, idx) => (
+            {items[0].map((item: any, idx: any) => (
               <div key={idx} className="bg-gradient-to-br from-slate-700 to-slate-800 px-3 py-2 rounded font-mono text-sm font-bold text-cyan-300 border border-slate-600">
                 {item}
               </div>
@@ -300,7 +304,7 @@ export default function NumpyMathOperations() {
         <span className="text-white font-bold text-lg">{operator}</span>
         {items[1] && items[1].length > 0 && (
           <div className="flex gap-1 bg-slate-800 p-2 rounded border border-slate-600">
-            {items[1].map((item, idx) => (
+            {items[1].map((item: any, idx: any) => (
               <div key={idx} className="bg-gradient-to-br from-slate-700 to-slate-800 px-3 py-2 rounded font-mono text-sm font-bold text-cyan-300 border border-slate-600">
                 {item}
               </div>
@@ -309,7 +313,7 @@ export default function NumpyMathOperations() {
         )}
         <span className="text-gray-400">→</span>
         <div className="flex gap-1 bg-gradient-to-br from-green-900/30 to-green-800/30 p-2 rounded border border-green-500/50">
-          {result.map((item, idx) => (
+          {result.map((item: any, idx: any) => (
             <div key={idx} className="bg-gradient-to-br from-green-600 to-green-700 px-3 py-2 rounded font-mono text-sm font-bold text-white border border-green-500">
               {item}
             </div>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {
-  Wifi, Copy, Check, Zap, Globe, RefreshCw, ArrowDown,
+  Wifi, Copy, Check, Zap, Globe, RefreshCw, ArrowRight,
   Search, MessageSquare, ScrollText, Save, Users,
-  CheckCircle, Terminal, Layers, Server, Code2, Activity
+  CircleCheck, Terminal, Layers, Server, CodeXml, Activity
 } from 'lucide-react';
 
 // ─── Code Block with Copy ────────────────────────────────────────────────────
@@ -40,14 +40,14 @@ const CodeBlock = ({ code, title, language = 'js' }: { code: string; title?: str
 
 // ─── Flow Step ───────────────────────────────────────────────────────────────
 const FlowStep = ({ step, label, color }: { step: number; label: string; color: string }) => (
-  <div className="flex flex-col items-center">
+  <div className="flex flex-col items-center relative w-full">
     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-black text-white text-sm shadow-lg ${color}`}>
       {step}
     </div>
     <div className="mt-2 text-xs font-bold text-center text-gray-700 dark:text-gray-300 max-w-[90px]">{label}</div>
     {step < 5 && (
-      <div className="mt-2">
-        <ArrowDown className="w-4 h-4 text-gray-400" />
+      <div className="hidden lg:flex absolute top-5 -right-6 transform -translate-y-1/2">
+        <ArrowRight className="w-5 h-5 text-gray-400 opacity-50" />
       </div>
     )}
   </div>
@@ -112,7 +112,7 @@ const AjaxApplications: React.FC = () => {
             </p>
           </div>
           <div className="flex items-start gap-3 p-4 bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-900/30 rounded-xl">
-            <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
+            <CircleCheck className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
             <p className="text-sm text-emerald-800 dark:text-emerald-300 font-medium">
               <strong>Real Life Example:</strong> When you type in Google Search, the suggestions appear instantly without refreshing the page — this is done using AJAX.
             </p>
@@ -299,7 +299,7 @@ const AjaxApplications: React.FC = () => {
       <section className="max-w-6xl mx-auto mb-16">
         <div className="bg-gradient-to-br from-violet-900 to-slate-900 text-white p-8 lg:p-12 rounded-3xl shadow-xl border border-violet-800/40 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-8 opacity-5">
-            <Code2 className="w-72 h-72" />
+            <CodeXml className="w-72 h-72" />
           </div>
           <h2 className="text-3xl font-black text-white mb-2 flex items-center relative z-10">
             <RefreshCw className="w-8 h-8 mr-3 text-violet-400" /> Modern AJAX — Fetch API
@@ -360,7 +360,7 @@ const AjaxApplications: React.FC = () => {
                   <p className="text-sm text-gray-400">More users loaded dynamically</p>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-violet-300 font-medium">
-                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  <CircleCheck className="w-4 h-4 text-emerald-400" />
                   Data appears dynamically without page reload.
                 </div>
               </div>
@@ -402,7 +402,7 @@ const AjaxApplications: React.FC = () => {
 
           {/* 2. Form Submission */}
           <AppCard
-            icon={CheckCircle}
+            icon={CircleCheck}
             title="2. Form Submission Without Reload"
             color="text-emerald-600"
             bgColor="bg-emerald-100 dark:bg-emerald-900/30"
@@ -412,7 +412,7 @@ const AjaxApplications: React.FC = () => {
                 <p className="text-gray-400 mb-2">Example: Contact forms.</p>
                 <p className="text-gray-500 text-xs mb-3">Instead of refreshing after submitting, AJAX shows:</p>
                 <div className="flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-lg px-3 py-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-500" />
+                  <CircleCheck className="w-4 h-4 text-emerald-500" />
                   <span className="text-emerald-700 dark:text-emerald-300 text-sm font-semibold">Your message has been sent successfully!</span>
                 </div>
               </div>
@@ -482,7 +482,7 @@ const AjaxApplications: React.FC = () => {
                     Saving...
                   </div>
                   <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
-                    <CheckCircle className="w-3 h-3" />
+                    <CircleCheck className="w-3 h-3" />
                     Saved
                   </div>
                 </div>
@@ -532,7 +532,7 @@ const AjaxApplications: React.FC = () => {
               { title: 'Used everywhere', body: 'Live search, chat apps, auto-save, infinite scroll, and form submission all use AJAX.', color: 'text-emerald-400' },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-4 p-5 rounded-xl bg-gray-800/50 border border-gray-700/50">
-                <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${item.color}`} />
+                <CircleCheck className={`w-5 h-5 mt-0.5 flex-shrink-0 ${item.color}`} />
                 <div>
                   <h4 className="font-bold text-gray-100 text-base mb-1">{item.title}</h4>
                   <p className="text-gray-400 font-medium text-sm">{item.body}</p>
