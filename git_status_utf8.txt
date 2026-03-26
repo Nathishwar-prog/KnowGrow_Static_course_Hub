@@ -1,0 +1,38 @@
+﻿interactive rebase in progress; onto 270ab18
+Last command done (1 command done):
+   pick 24d7cdb # temporarysave
+Next command to do (1 remaining command):
+   pick 4938f2c # feat: Add newly created JS course components
+  (use "git rebase --edit-todo" to view and edit)
+You are currently rebasing branch 'main' on '270ab18'.
+  (all conflicts fixed: run "git rebase --continue")
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   data/js/AjaxApplications.tsx
+	modified:   data/js/JqueryCss.tsx
+	modified:   data/js/JqueryDom.tsx
+	modified:   data/js/JqueryHtml.tsx
+	modified:   data/js/JquerySelectors.tsx
+	modified:   data/js/JsArrayConst.tsx
+	modified:   data/js/JsAsynchronous.tsx
+	new file:   tsc_async_output.txt
+	new file:   tsc_async_utf8.txt
+	new file:   tsc_final_output.txt
+	new file:   tsc_final_utf8.txt
+	modified:   tsc_output.txt
+	new file:   tsc_sort_output.txt
+	new file:   tsc_sort_utf8.txt
+	new file:   tsc_utf8.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   status.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	diff_utf8.txt
+	git_status.txt
+	git_status_utf8.txt
+

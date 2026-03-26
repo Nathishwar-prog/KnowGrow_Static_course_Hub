@@ -39,8 +39,13 @@ const CodeBlock = ({ code, title, language = 'js' }: { code: string; title?: str
 };
 
 // ─── Flow Step ───────────────────────────────────────────────────────────────
+<<<<<<< HEAD
 const FlowStep = ({ step, label, color }: { step: number; label: string; color: string }) => (
   <div className="flex flex-col items-center relative w-full">
+=======
+const FlowStep: React.FC<{ step: number; label: string; color: string }> = ({ step, label, color }) => (
+  <div className="flex flex-col items-center">
+>>>>>>> 8b9c195c511ebe8b36b1580f4c6e13381064afe4
     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-black text-white text-sm shadow-lg ${color}`}>
       {step}
     </div>
@@ -54,10 +59,10 @@ const FlowStep = ({ step, label, color }: { step: number; label: string; color: 
 );
 
 // ─── Real World App Card ─────────────────────────────────────────────────────
-const AppCard = ({
-  icon: Icon, title, color, bgColor, borderColor, preview
-}: {
+const AppCard: React.FC<{
   icon: React.ElementType; title: string; color: string; bgColor: string; borderColor: string; preview: React.ReactNode;
+}> = ({
+  icon: Icon, title, color, bgColor, borderColor, preview
 }) => (
   <div className={`bg-white dark:bg-gray-800 rounded-2xl p-6 border-2 ${borderColor} shadow-sm hover:shadow-md transition-all`}>
     <div className="flex items-center mb-4">
