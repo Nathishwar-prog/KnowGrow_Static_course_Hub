@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {
-  Code2, Layout, FileCode, CheckCircle, Search, Target,
-  AlertTriangle, Lightbulb, Check, Copy, Link, Activity,
-  Crosshair, Filter, ShieldAlert, ArrowRight, Zap, List
+  Code2, Search, Target,
+  Lightbulb, Check, Copy, Link, Activity,
+  Crosshair, Filter, ShieldAlert, ArrowRight, List, Layers
 } from 'lucide-react';
 
 // ─── Code Block Component ─────────────────────────────────────────────────────
@@ -45,7 +45,7 @@ const CodeBlock = ({ code, title, language = 'javascript' }: { code: string; tit
 const JquerySelectors: React.FC = () => {
   // Demo State for Section 8
   const [itemColor, setItemColor] = useState('black');
-  const [specialWeight, setSpecialWeight] = useState('normal');
+  const [specialWeight, setSpecialWeight] = useState<React.CSSProperties['fontWeight']>('normal');
   const [firstBg, setFirstBg] = useState('transparent');
 
   const handleDemoClick = () => {
@@ -68,7 +68,7 @@ const JquerySelectors: React.FC = () => {
         <div className="absolute top-0 left-1/4 w-32 h-32 bg-purple-400/20 rounded-full blur-3xl -z-10"></div>
         <div className="absolute top-0 right-1/4 w-32 h-32 bg-fuchsia-400/20 rounded-full blur-3xl -z-10"></div>
         <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-purple-600 to-fuchsia-600 rounded-2xl mb-6 shadow-xl transform hover:rotate-3 transition-transform cursor-pointer">
-          <Crosshair className="w-8 h-8 text-white fill-current/20" />
+          <Crosshair className="w-8 h-8 text-white" />
         </div>
         <h1 className="text-5xl sm:text-6xl font-black text-gray-900 dark:text-white mb-6 tracking-tight">
           jQuery Selectors
@@ -294,7 +294,7 @@ const JquerySelectors: React.FC = () => {
 
                      {/* #special */}
                      <p 
-                       style={{ fontWeight: specialWeight as any }} 
+                       style={{ fontWeight: specialWeight }} 
                        className="p-3 border border-purple-200 bg-purple-50 rounded-lg transition-all duration-500 flex justify-between items-center"
                      >
                        <span>Special Item</span>
@@ -350,9 +350,9 @@ const JquerySelectors: React.FC = () => {
              <div className="bg-gray-900 p-6 rounded-2xl shadow-xl border border-gray-700">
                <pre className="font-mono text-sm text-fuchsia-300 leading-relaxed overflow-x-auto">
                  <code>
-                   $(<span className="text-pink-300">"p"</span>)<br/>
+                   $("<span className="text-pink-300">p</span>")<br/>
                    &nbsp;&nbsp;.first()<br/>
-                   &nbsp;&nbsp;.css(<span className="text-purple-300">"color"</span>, <span className="text-purple-300">"red"</span>)<br/>
+                   &nbsp;&nbsp;.css("<span className="text-purple-300">color</span>", "<span className="text-purple-300">red</span>")<br/>
                    &nbsp;&nbsp;.hide();
                  </code>
                </pre>
@@ -429,7 +429,7 @@ const JquerySelectors: React.FC = () => {
       {/* Footer Branding */}
       <footer className="max-w-6xl mx-auto text-center py-12 opacity-50 border-t border-gray-100 dark:border-gray-800 uppercase tracking-widest text-xs font-black text-gray-400">
         <div className="flex items-center justify-center gap-2 mb-2 italic">
-          <Crosshair className="w-5 h-5 fill-current" /> KNOWGROW HUB
+          <Crosshair className="w-5 h-5" /> KNOWGROW HUB
         </div>
         <p>JavaScript Course Components • jQuery Selectors Module</p>
       </footer>
