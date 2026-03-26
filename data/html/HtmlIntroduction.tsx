@@ -1,6 +1,7 @@
 import React from 'react';
 import { CodeBlock, SimpleTable, InfoBox, BrowserMockup } from '../components';
 import { useAnimation } from '../../context/AnimationContext';
+import QuizBlock from '../../components/QuizBlock';
 
 const HtmlIntroduction: React.FC = () => {
     const { openAnimationPage } = useAnimation();
@@ -126,6 +127,20 @@ const HtmlIntroduction: React.FC = () => {
                     ['2016', 'W3C Recommendation: HTML 5.1'],
                     ['2017', 'W3C Recommendation: HTML 5.2'],
                 ]}
+            />
+
+            <hr className="my-10 border-gray-200 dark:border-gray-600 border-2 border-dashed" />
+            
+            <QuizBlock 
+                question="What is the primary purpose of HTML in web development?"
+                options={[
+                    "To style the visual appearance of a webpage (colors, fonts).",
+                    "To provide the fundamental structure and semantic meaning of content.",
+                    "To perform complex calculations and logic on the server.",
+                    "To store user data persistently across sessions."
+                ]}
+                correctAnswerIndex={1}
+                explanation="Correct! HTML (HyperText Markup Language) provides the raw structure and semantic meaning to a webpage. Styling is handled by CSS, and logic is handled by JavaScript."
             />
         </>
     );

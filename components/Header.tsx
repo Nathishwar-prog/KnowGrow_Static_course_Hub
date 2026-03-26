@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import SearchResultsDropdown from './SearchResultsDropdown';
-import type { RankedSearchResult } from '../App';
+import type { RankedSearchResult } from '../hooks/useGlobalSearch';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import AuthModal from './AuthModal';

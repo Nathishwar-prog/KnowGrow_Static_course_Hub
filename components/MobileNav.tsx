@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { SidebarSection } from '../types';
-import type { Course, RankedSearchResult } from '../App';
+import type { Course } from '../App';
+import type { RankedSearchResult } from '../hooks/useGlobalSearch';
 import Highlighter from './Highlighter';
 import { useParams } from 'react-router-dom';
 import { useProgress } from '../context/useProgress';

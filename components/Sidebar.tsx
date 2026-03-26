@@ -9,9 +9,11 @@ interface SidebarProps {
   activeTopicId: string;
   onTopicSelect: (id: string) => void;
   searchQuery: string;
+  isOpen?: boolean;
+  setIsOpen?: (val: boolean) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelect, searchQuery }) => {
+const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelect, searchQuery, isOpen = true, setIsOpen }) => {
   const { courseId = 'html' } = useParams<{ courseId: string }>();
   const { completedTopics } = useProgress(courseId);
 
@@ -28,8 +30,9 @@ const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelec
   }, [sections, completedTopics]);
 
   return (
-    <aside role="navigation" aria-label="Tutorial topics" className="bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm w-64 h-screen-minus-nav sticky top-[60px] overflow-y-auto hidden md:block border-r border-gray-200 dark:border-gray-800 hide-scrollbar transition-colors duration-300">
-      <div className="p-4 pb-20">
+    <>
+    <aside role="navigation" aria-label="Tutorial topics" className={`bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm h-screen-minus-nav sticky top-[60px] overflow-y-auto hidden md:block border-r border-gray-200 dark:border-gray-800 hide-scrollbar transition-all duration-300 relative ${isOpen ? 'w-64' : 'w-0 border-r-0'}`}>
+      <div className={`p-4 pb-20 w-64 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         {/* Course Progress Mini-Bar */}
         {!searchQuery && stats.total > 0 && (
           <div className="mb-8 px-3">
@@ -87,6 +90,16 @@ const Sidebar: React.FC<SidebarProps> = ({ sections, activeTopicId, onTopicSelec
         )}
       </div>
     </aside>
+    {setIsOpen && (
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className={`hidden md:flex items-center justify-center fixed top-[100px] z-30 w-6 h-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-r-md shadow-sm text-gray-500 hover:text-brand-600 transition-all duration-300 ${isOpen ? 'left-64' : 'left-0'}`}
+        aria-label="Toggle Sidebar"
+      >
+        <i className={`fa-solid ${isOpen ? 'fa-chevron-left' : 'fa-chevron-right'} text-xs`}></i>
+      </button>
+    )}
+    </>
   );
 };
 
