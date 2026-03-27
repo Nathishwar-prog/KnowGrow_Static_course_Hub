@@ -1,16 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://courses.knowgrow.tech/</loc>
-  <lastmod>2026-03-26T23:49:44+00:00</lastmod>
-</url>
-
-
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://courses.knowgrow.tech/sitemap-main.xml</loc>
+    <lastmod>2026-03-27</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://courses.knowgrow.tech/sitemap-html.xml</loc>
+    <lastmod>2026-03-26</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://courses.knowgrow.tech/sitemap-css.xml</loc>
+    <lastmod>2026-03-26</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://courses.knowgrow.tech/sitemap-js.xml</loc>
+    <lastmod>2026-03-26</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://courses.knowgrow.tech/sitemap-sql.xml</loc>
+    <lastmod>2026-03-26</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://courses.knowgrow.tech/sitemap-python.xml</loc>
+    <lastmod>2026-03-26</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://courses.knowgrow.tech/sitemap-numpy.xml</loc>
+    <lastmod>2026-03-26</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://courses.knowgrow.tech/sitemap-pandas.xml</loc>
+    <lastmod>2026-03-26</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://courses.knowgrow.tech/sitemap-matplotlib.xml</loc>
+    <lastmod>2026-03-26</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://courses.knowgrow.tech/sitemap-seaborn.xml</loc>
+    <lastmod>2026-03-26</lastmod>
+  </sitemap>
+</sitemapindex>
