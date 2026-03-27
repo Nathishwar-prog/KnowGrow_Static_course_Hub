@@ -30,8 +30,13 @@ const SearchResultsDropdown: React.FC<SearchResultsDropdownProps> = ({ results, 
               >
                 <button
                   onClick={() => onSelect(topic.id)}
-                  className="w-full text-left px-4 py-3 rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-900/30 group transition-all duration-200 border border-transparent hover:border-indigo-100 dark:hover:border-indigo-800/50 flex flex-col items-start gap-1"
+                  className="w-full text-left px-4 py-3 rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-900/30 group transition-all duration-200 border border-transparent hover:border-indigo-100 dark:hover:border-indigo-800/50 flex flex-col items-start gap-0.5"
                 >
+                  {(topic as any).sectionTitle && (
+                    <span className="text-[10px] font-bold text-indigo-500/70 dark:text-indigo-400/70 uppercase tracking-widest mb-0.5">
+                      {(topic as any).sectionTitle}
+                    </span>
+                  )}
                   <div className="flex items-center space-x-2 text-indigo-600 dark:text-indigo-400 group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition-colors">
                     <i className="fa-solid fa-book-open text-xs opacity-70"></i>
                     <span className="font-bold text-gray-900 dark:text-gray-100 block truncate group-hover:text-indigo-700 dark:group-hover:text-indigo-300">

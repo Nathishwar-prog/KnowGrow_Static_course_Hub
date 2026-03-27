@@ -24,20 +24,20 @@ const TechLink: React.FC<TechLinkProps> = ({
   <a
     href="#"
     onClick={(e) => { e.preventDefault(); onClick?.(); }}
-    className={`flex items-center py-2 px-4 text-sm font-medium rounded-full transition-all duration-200 ${active
-        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md transform scale-105'
-        : 'text-gray-300 hover:bg-gray-700/50 hover:text-white hover:scale-105'
+    className={`flex items-center py-2 px-5 text-sm font-bold rounded-full transition-all duration-300 ${active
+        ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-lg shadow-slate-900/10 dark:shadow-white/5 scale-105'
+        : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
       }`}
   >
     {children}
     {isNew && (
-      <span className="ml-2 bg-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-pulse shadow-sm">
+      <span className="ml-2 bg-emerald-500 text-white text-[9px] font-black px-2 py-0.5 rounded-full shadow-sm">
         NEW
       </span>
     )}
     {isSoon && (
-      <span className="ml-2 bg-yellow-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-pulse shadow-sm">
-        Coming Soon
+      <span className="ml-2 bg-amber-400 text-amber-900 text-[9px] font-black px-2 py-0.5 rounded-full shadow-sm">
+        SOON
       </span>
     )}
   </a>
@@ -47,9 +47,9 @@ const SecondaryNav: React.FC<SecondaryNavProps> = ({ activeCourse, onCourseSelec
   return (
     <nav
       aria-label="Secondary navigation"
-      className="bg-gray-900/95 backdrop-blur-md text-white hidden md:flex items-center overflow-x-auto whitespace-nowrap p-2 space-x-2 shadow-lg sticky top-[60px] z-30 border-b border-gray-800 hide-scrollbar"
+      className="bg-white/70 dark:bg-[#0d1117]/80 backdrop-blur-xl hidden md:flex items-center overflow-x-auto whitespace-nowrap p-2 space-x-1 shadow-sm sticky top-[72px] z-30 border-b border-slate-200/50 dark:border-slate-800/30 hide-scrollbar"
     >
-      <div className="flex items-center space-x-2 mx-auto max-w-7xl w-full px-4">
+      <div className="flex items-center space-x-1 mx-auto max-w-7xl w-full px-4">
         <TechLink active={activeCourse === 'html'} onClick={() => onCourseSelect('html')}>HTML</TechLink>
         <TechLink active={activeCourse === 'css'} onClick={() => onCourseSelect('css')}>CSS</TechLink>
         <TechLink active={activeCourse === 'js'} onClick={() => onCourseSelect('js')}>JS</TechLink>
