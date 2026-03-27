@@ -7,6 +7,7 @@ export interface RankedSearchResult {
   topic: TutorialTopic;
   score: number;
   snippet?: string;
+  sectionTitle?: string;
 }
 
 export const useGlobalSearch = (allTopics: TutorialTopic[], tutorialData: any[]) => {
@@ -22,7 +23,7 @@ export const useGlobalSearch = (allTopics: TutorialTopic[], tutorialData: any[])
         ...section,
         topics: section.topics.filter((topic: TutorialTopic) =>
           topic.title.toLowerCase().includes(lowerCaseQuery)
-        ),
+        ).map((topic: TutorialTopic) => ({ ...topic, sectionTitle: section.title })),
       }))
       .filter(section => section.topics.length > 0);
   }, [searchQuery, tutorialData]);
@@ -32,7 +33,7 @@ export const useGlobalSearch = (allTopics: TutorialTopic[], tutorialData: any[])
       ...topic,
       // Provide a fast text content using only the title and description/id, 
       // avoiding deep React DOM tree traversal which crashes or lags on lazy nodes.
-      textContent: topic.title + " " + topic.id
+      textContent: topic.title + " " + topic.id + " " + (topic as any).sectionTitle
     }));
 
     const options = {
@@ -70,6 +71,7 @@ export const useGlobalSearch = (allTopics: TutorialTopic[], tutorialData: any[])
         topic: { id: topic.id, title: topic.title, content: topic.content },
         score: 1 - score,
         snippet: snippet,
+        sectionTitle: (topic as any).sectionTitle
       };
     });
   }, [searchQuery, fuse]);

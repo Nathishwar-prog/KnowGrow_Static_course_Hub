@@ -1,20 +1,22 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useMemo, useEffect, useRef, lazy, Suspense } from 'react';
 import { Routes, Route, Navigate, useParams, useNavigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import SecondaryNav from './components/SecondaryNav';
 import Sidebar from './components/Sidebar';
-import MainContent from './components/MainContent';
-import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 import MobileNav from './components/MobileNav';
-import AnimationModal from './components/AnimationModal';
-import TutorialsModal from './components/TutorialsModal';
-import ReferencesModal from './components/ReferencesModal';
-import ExercisesModal from './components/ExercisesModal';
-import IntroAnimation from './components/IntroAnimation';
 import BottomNav from './components/BottomNav';
-import ReviewSession from './components/srs/ReviewSession';
-import AITutor from './components/AITutor';
+
+// Lazy loaded components for better performance
+const MainContent = lazy(() => import('./components/MainContent'));
+const Dashboard = lazy(() => import('./components/Dashboard'));
+const AnimationModal = lazy(() => import('./components/AnimationModal'));
+const TutorialsModal = lazy(() => import('./components/TutorialsModal'));
+const ReferencesModal = lazy(() => import('./components/ReferencesModal'));
+const ExercisesModal = lazy(() => import('./components/ExercisesModal'));
+const IntroAnimation = lazy(() => import('./components/IntroAnimation'));
+const ReviewSession = lazy(() => import('./components/srs/ReviewSession'));
+const AITutor = lazy(() => import('./components/AITutor'));
 import { ALL_COURSES } from './data/tutorialData';
 import { ALL_REFERENCES } from './data/references/referenceData';
 import { ALL_EXERCISES } from './data/exercises/exerciseData';
@@ -27,6 +29,8 @@ import { ANIMATION_STYLES } from './data/html/animations/animationStyles';
 import { useGlobalSearch } from './hooks/useGlobalSearch';
 import { useModals } from './hooks/useModals';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
+import SEO from './components/SEO';
+import { generateSEOData, getDefaultSEO } from './utils/seoUtils';
 
 export type Course = keyof typeof ALL_COURSES;
 
@@ -95,6 +99,28 @@ const AppContent: React.FC = () => {
     rankedSearchResults,
     hasSearchResults
   } = useGlobalSearch(allTopics, TUTORIAL_DATA);
+
+  const seoData = useMemo(() => {
+    if (activeView === 'tutorial' && activeTopic) {
+      const section = TUTORIAL_DATA.find(s => s.topics.some(t => t.id === activeTopic.id));
+      return generateSEOData(activeTopic.title, activeCourse, section?.title);
+    }
+    if (activeView === 'dashboard') {
+      return {
+        title: 'My Learning Dashboard | KnowGrow',
+        description: 'Track your progress, review your flashcards, and continue your programming journey on KnowGrow.',
+        keywords: 'learning dashboard, coding progress, srs flashcards, knowgrow'
+      };
+    }
+    if (activeView === 'review') {
+      return {
+        title: 'Review Session | KnowGrow',
+        description: 'Practice and master your programming concepts with our spaced repetition system.',
+        keywords: 'srs review, active recall, programming flashcards, learn coding'
+      };
+    }
+    return getDefaultSEO();
+  }, [activeView, activeTopic, activeCourse, TUTORIAL_DATA]);
 
   useEffect(() => {
     const isOverlayOpen = isMobileNavOpen || animationModalConfig.isOpen || isTutorialsModalOpen || isReferencesModalOpen || isExercisesModalOpen;
@@ -225,6 +251,7 @@ const AppContent: React.FC = () => {
   return (
     <AnimationProvider value={{ openAnimationPage }}>
       <div className="min-h-screen flex flex-col font-sans bg-gray-50 dark:bg-gray-900">
+        <SEO {...seoData} />
         <Header
           onMenuClick={() => setIsMobileNavOpen(true)}
           onTutorialsClick={openTutorialsModal}
@@ -236,7 +263,11 @@ const AppContent: React.FC = () => {
           onTopicSelect={handleTopicSelect}
         />
         {isDashboard ? (
-          <Dashboard />
+          <Suspense fallback={<div className="flex-1 flex items-center justify-center min-h-[400px]">
+            <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          </div>}>
+            <Dashboard />
+          </Suspense>
         ) : (
           <>
             <SecondaryNav
@@ -265,47 +296,53 @@ const AppContent: React.FC = () => {
                 isOpen={isDesktopSidebarOpen}
                 setIsOpen={setIsDesktopSidebarOpen}
               />
-              <MainContent
-                activeView={activeView as any}
-                topic={activeTopic}
-                referenceContent={ReferenceComponent ? <ReferenceComponent onSwitchToTutorial={handleCourseSelect} /> : null}
-                exerciseContent={ExerciseComponent ? <ExerciseComponent /> : null}
-                reviewContent={<ReviewSession />}
-                isLoading={isLoading}
-                onNavigate={(id) => handleTopicSelect(id)}
-                prevTopic={prevTopic}
-                nextTopic={nextTopic}
-                searchQuery={searchQuery}
-                hasSearchResults={hasSearchResults}
-              />
+              <Suspense fallback={<div className="flex-1 flex items-center justify-center min-h-[400px]">
+                <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+              </div>}>
+                <MainContent
+                  activeView={activeView as any}
+                  topic={activeTopic}
+                  referenceContent={ReferenceComponent ? <ReferenceComponent onSwitchToTutorial={handleCourseSelect} /> : null}
+                  exerciseContent={ExerciseComponent ? <ExerciseComponent /> : null}
+                  reviewContent={<ReviewSession />}
+                  isLoading={isLoading}
+                  onNavigate={(id) => handleTopicSelect(id)}
+                  prevTopic={prevTopic}
+                  nextTopic={nextTopic}
+                  searchQuery={searchQuery}
+                  hasSearchResults={hasSearchResults}
+                />
+              </Suspense>
             </div>
           </>
         )}
         <Footer />
-        <AnimationModal
-          isOpen={animationModalConfig.isOpen}
-          onClose={closeAnimationModal}
-          title={animationModalConfig.title}
-        >
-          {animationModalConfig.content}
-        </AnimationModal>
-        <TutorialsModal
-          isOpen={isTutorialsModalOpen}
-          onClose={closeTutorialsModal}
-          onCourseSelect={handleModalCourseSelect}
-          onTopicSelect={handleModalTopicSelect}
-        />
-        <ReferencesModal
-          isOpen={isReferencesModalOpen}
-          onClose={closeReferencesModal}
-          onReferenceSelect={handleModalReferenceSelect}
-        />
-        <ExercisesModal
-          isOpen={isExercisesModalOpen}
-          onClose={closeExercisesModal}
-          onExerciseSelect={handleModalExerciseSelect}
-        />
-        <AITutor courseId={activeCourse} topicId={activeTopicId} />
+        <Suspense fallback={null}>
+          <AnimationModal
+            isOpen={animationModalConfig.isOpen}
+            onClose={closeAnimationModal}
+            title={animationModalConfig.title}
+          >
+            {animationModalConfig.content}
+          </AnimationModal>
+          <TutorialsModal
+            isOpen={isTutorialsModalOpen}
+            onClose={closeTutorialsModal}
+            onCourseSelect={handleModalCourseSelect}
+            onTopicSelect={handleModalTopicSelect}
+          />
+          <ReferencesModal
+            isOpen={isReferencesModalOpen}
+            onClose={closeReferencesModal}
+            onReferenceSelect={handleModalReferenceSelect}
+          />
+          <ExercisesModal
+            isOpen={isExercisesModalOpen}
+            onClose={closeExercisesModal}
+            onExerciseSelect={handleModalExerciseSelect}
+          />
+          <AITutor courseId={activeCourse} topicId={activeTopicId} />
+        </Suspense>
         <BottomNav />
       </div>
     </AnimationProvider>
@@ -316,7 +353,13 @@ const App: React.FC = () => {
   const [isIntroAnimationComplete, setIsIntroAnimationComplete] = useState(false);
 
   if (!isIntroAnimationComplete) {
-    return <IntroAnimation onAnimationComplete={() => setIsIntroAnimationComplete(true)} />;
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="w-16 h-16 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>}>
+        <IntroAnimation onAnimationComplete={() => setIsIntroAnimationComplete(true)} />
+      </Suspense>
+    );
   }
 
   return (

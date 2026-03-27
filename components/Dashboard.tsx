@@ -10,9 +10,9 @@ import { isCardDue } from '../utils/srsUtils';
 import { Brain, Sparkles, ArrowRight } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
-    const { user } = useAuth();
+    const { user, isLoading: isAuthLoading } = useAuth();
     const navigate = useNavigate();
-    const { allCompletedTopics, quizScores, totalXp, streak, srsData, isLoading } = useAllProgress();
+    const { allCompletedTopics, quizScores, totalXp, streak, srsData, isLoading: isProgressLoading } = useAllProgress();
 
     const dueCardsCount = ALL_FLASHCARDS.filter(card => {
         const stats = srsData[card.id];
@@ -29,6 +29,14 @@ const Dashboard: React.FC = () => {
     };
 
     const rank = getRank(totalXp);
+
+    if (isAuthLoading) {
+        return (
+            <div className="flex items-center justify-center flex-1 py-32">
+                <LoadingSpinner />
+            </div>
+        );
+    }
 
     if (!user) {
         return (
@@ -52,7 +60,7 @@ const Dashboard: React.FC = () => {
         );
     }
 
-    if (isLoading) {
+    if (isProgressLoading) {
         return (
             <div className="flex items-center justify-center flex-1 py-32">
                 <LoadingSpinner />

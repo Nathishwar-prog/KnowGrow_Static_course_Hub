@@ -28,12 +28,22 @@ export const CodeBlock: React.FC<{ children: React.ReactNode; language: string; 
   const [codeString, setCodeString] = useState(() => React.Children.toArray(children).join('').trimEnd());
   const [output, setOutput] = useState('');
   const [showOutput, setShowOutput] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const { openAnimationPage } = useAnimation();
 
   // Keep state synced if children change
   useEffect(() => {
     setCodeString(React.Children.toArray(children).join('').trimEnd());
   }, [children]);
+
+  // Handle ESC key to exit fullscreen
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isFullscreen) setIsFullscreen(false);
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [isFullscreen]);
 
   const getLanguageExtension = (lang: string) => {
     switch (lang) {
@@ -69,7 +79,7 @@ export const CodeBlock: React.FC<{ children: React.ReactNode; language: string; 
         <!DOCTYPE html>
         <html>
           <head>
-            <style>body { font-family: sans-serif; }</style>
+            <style>body { font-family: sans-serif; padding: 20px; }</style>
           </head>
           <body>${codeString}</body>
         </html>
@@ -95,7 +105,11 @@ export const CodeBlock: React.FC<{ children: React.ReactNode; language: string; 
   };
 
   return (
-    <div className="rounded-xl my-6 overflow-hidden shadow-lg bg-white dark:bg-gray-800/50 ring-1 ring-black/5 dark:ring-white/10">
+    <div className={`rounded-xl my-6 overflow-hidden shadow-lg transition-all duration-300 ${
+      isFullscreen 
+        ? 'fixed inset-0 z-[60] rounded-none m-0 flex flex-col bg-white dark:bg-gray-900' 
+        : 'bg-white dark:bg-gray-800/50 ring-1 ring-black/5 dark:ring-white/10'
+    }`}>
       <div className="p-3 bg-gray-50 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
         <div className="flex items-center space-x-3">
           <h3 className="font-mono text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Interactive Example</h3>
@@ -103,23 +117,32 @@ export const CodeBlock: React.FC<{ children: React.ReactNode; language: string; 
             {language}
           </span>
         </div>
-        <button
-          onClick={handleCopy}
-          className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 text-xs font-bold py-1 px-3 rounded-md transition-colors duration-200 flex items-center"
-          aria-label="Copy code to clipboard"
-        >
-          {isCopied ? (
-            <><i className="fa-solid fa-check mr-2 text-green-500"></i> Copied!</>
-          ) : (
-            <><i className="fa-regular fa-copy mr-2"></i> Copy</>
-          )}
-        </button>
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={() => setIsFullscreen(!isFullscreen)}
+            className="p-1.5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+            title={isFullscreen ? "Exit Fullscreen" : "Fullscreen Mode"}
+          >
+            {isFullscreen ? <i className="fa-solid fa-compress"></i> : <i className="fa-solid fa-expand"></i>}
+          </button>
+          <button
+            onClick={handleCopy}
+            className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 text-xs font-bold py-1 px-3 rounded-md transition-colors duration-200 flex items-center"
+            aria-label="Copy code to clipboard"
+          >
+            {isCopied ? (
+              <><i className="fa-solid fa-check mr-2 text-green-500"></i> Copied!</>
+            ) : (
+              <><i className="fa-regular fa-copy mr-2"></i> Copy</>
+            )}
+          </button>
+        </div>
       </div>
 
-      <div className="text-[14px] w-full">
+      <div className={`text-[14px] w-full ${isFullscreen ? 'flex-1 overflow-auto dark:bg-slate-900' : ''}`}>
         <CodeMirror
           value={codeString}
-          height="auto"
+          height={isFullscreen ? "100%" : "auto"}
           theme={vscodeDark}
           extensions={getLanguageExtension(language)}
           onChange={(val) => setCodeString(val)}
@@ -128,7 +151,7 @@ export const CodeBlock: React.FC<{ children: React.ReactNode; language: string; 
             foldGutter: true,
             tabSize: 2,
           }}
-          className="border-b border-gray-200 dark:border-gray-700"
+          className={`${isFullscreen ? 'h-full' : ''} border-b border-gray-200 dark:border-gray-700`}
         />
       </div>
 
@@ -150,20 +173,20 @@ export const CodeBlock: React.FC<{ children: React.ReactNode; language: string; 
       </div>
 
       {showOutput && (
-        <div className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <div className={`border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 ${isFullscreen ? 'h-[300px]' : ''}`}>
           <div className="p-2 bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
             <span className="text-xs font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Output</span>
             <button onClick={() => setShowOutput(false)} className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
               <i className="fa-solid fa-times"></i>
             </button>
           </div>
-          <div className="p-4 overflow-auto max-h-[400px]">
+          <div className={`p-4 overflow-auto ${isFullscreen ? 'h-[calc(100%-36px)]' : 'max-h-[400px]'}`}>
             {language === 'html' ? (
               <iframe
                 title="code-output"
                 srcDoc={output}
                 sandbox="allow-scripts"
-                className="w-full min-h-[200px] border border-gray-200 dark:border-gray-700 bg-white rounded"
+                className="w-full h-full min-h-[200px] border border-gray-200 dark:border-gray-700 bg-white rounded"
               />
             ) : (
               <pre className="font-mono text-sm text-gray-800 dark:text-gray-200 whitespace-pre-wrap">

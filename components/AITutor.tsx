@@ -146,7 +146,7 @@ Be highly educational, encouraging, and format your responses clearly using Mark
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-gradient-to-br from-brand-500 via-indigo-500 to-purple-600 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.5)] flex items-center justify-center text-white transition-all overflow-hidden group"
+            className="fixed bottom-20 right-6 md:bottom-6 z-50 w-16 h-16 bg-gradient-to-br from-brand-500 via-indigo-500 to-purple-600 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.5)] flex items-center justify-center text-white transition-all overflow-hidden group"
             aria-label="Open AI Tutor"
           >
             <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -169,7 +169,7 @@ Be highly educational, encouraging, and format your responses clearly using Mark
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed bottom-6 right-6 z-50 w-[95vw] md:w-[420px] h-[600px] max-h-[85vh] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-[2rem] shadow-2xl border border-white/20 dark:border-slate-700/50 flex flex-col overflow-hidden"
+            className="fixed bottom-20 right-6 md:bottom-6 z-50 w-[95vw] md:w-[420px] h-[600px] max-h-[85vh] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-[2rem] shadow-2xl border border-white/20 dark:border-slate-700/50 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="relative bg-gradient-to-r from-brand-600 via-indigo-600 to-purple-600 p-5 text-white shadow-lg z-20 shrink-0">
