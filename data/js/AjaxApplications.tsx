@@ -39,13 +39,8 @@ const CodeBlock = ({ code, title, language = 'js' }: { code: string; title?: str
 };
 
 // ─── Flow Step ───────────────────────────────────────────────────────────────
-<<<<<<< HEAD
 const FlowStep = ({ step, label, color }: { step: number; label: string; color: string }) => (
   <div className="flex flex-col items-center relative w-full">
-=======
-const FlowStep: React.FC<{ step: number; label: string; color: string }> = ({ step, label, color }) => (
-  <div className="flex flex-col items-center">
->>>>>>> 8b9c195c511ebe8b36b1580f4c6e13381064afe4
     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-black text-white text-sm shadow-lg ${color}`}>
       {step}
     </div>
