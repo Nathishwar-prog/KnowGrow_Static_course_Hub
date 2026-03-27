@@ -1,0 +1,178 @@
+﻿components/SEO.tsx(2,24): error TS2307: Cannot find module 'react-helmet-async' or its corresponding type declarations.
+components/visualizers/MergeSimulator.tsx(79,19): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
+data/Comming.tsx(277,14): error TS2322: Type '{ children: string; jsx: true; }' is not assignable to type 'DetailedHTMLProps<StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>'.
+  Property 'jsx' does not exist on type 'DetailedHTMLProps<StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>'.
+data/css/CssAccessibility.tsx(285,14): error TS2741: Property 'exampleClass' is missing in type '{ title: string; icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>; color: string; description: string; codeSnippet: string; key: string; }' but required in type '{ title: any; description: any; icon: any; color: any; codeSnippet: any; exampleClass: any; }'.
+data/css/CssAdvancedColors.tsx(320,50): error TS2345: Argument of type 'string' is not assignable to parameter of type 'SetStateAction<number>'.
+data/css/CssAlign.tsx(200,142): error TS2322: Type '{ textAlign: string; position?: undefined; height?: undefined; display?: undefined; justifyContent?: undefined; alignItems?: undefined; placeItems?: undefined; } | { position: string; height: string; ... 4 more ...; placeItems?: undefined; } | { ...; } | { ...; } | { ...; }' is not assignable to type 'CSSProperties'.
+  Type '{ textAlign: string; position?: undefined; height?: undefined; display?: undefined; justifyContent?: undefined; alignItems?: undefined; placeItems?: undefined; }' is not assignable to type 'Properties<string | number, string & {}>'.
+    Types of property 'textAlign' are incompatible.
+      Type 'string' is not assignable to type 'TextAlign'.
+data/css/CssAlign.tsx(201,26): error TS2322: Type '{ width: string; margin: string; display?: undefined; position?: undefined; top?: undefined; left?: undefined; transform?: undefined; } | { display: string; width?: undefined; margin?: undefined; position?: undefined; top?: undefined; left?: undefined; transform?: undefined; } | { ...; } | { ...; }' is not assignable to type 'CSSProperties'.
+  Type '{ position: string; top: string; left: string; transform: string; width?: undefined; margin?: undefined; display?: undefined; }' is not assignable to type 'Properties<string | number, string & {}>'.
+    Types of property 'position' are incompatible.
+      Type 'string' is not assignable to type 'Position'.
+data/css/CssBackgrounds.tsx(175,16): error TS2739: Type '{ key: number; title: string; icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>; color: string; description: string; syntaxCode: string; keyBenefit: string; }' is missing the following properties from type '{ title: any; icon: any; color: any; description: any; syntaxCode: any; keyBenefit: any; tabs: any; codeForTab: any; }': tabs, codeForTab
+data/css/CssBoxSizing.tsx(174,19): error TS2322: Type 'string' is not assignable to type 'BoxSizing'.
+data/css/CssButtons.tsx(265,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssButtons.tsx(297,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssCombinators.tsx(194,22): error TS2739: Type '{ id: string; tag: string; }' is missing the following properties from type '{ id: any; tag: any; children: any; className: any; }': children, className
+data/css/CssCombinators.tsx(196,26): error TS2739: Type '{ id: string; tag: string; }' is missing the following properties from type '{ id: any; tag: any; children: any; className: any; }': children, className
+data/css/CssCombinators.tsx(198,30): error TS2739: Type '{ id: string; tag: string; }' is missing the following properties from type '{ id: any; tag: any; children: any; className: any; }': children, className
+data/css/CssCombinators.tsx(200,26): error TS2739: Type '{ id: string; tag: string; }' is missing the following properties from type '{ id: any; tag: any; children: any; className: any; }': children, className
+data/css/CssCombinators.tsx(202,22): error TS2739: Type '{ id: string; tag: string; }' is missing the following properties from type '{ id: any; tag: any; children: any; className: any; }': children, className
+data/css/CssCombinators.tsx(203,22): error TS2739: Type '{ id: string; tag: string; }' is missing the following properties from type '{ id: any; tag: any; children: any; className: any; }': children, className
+data/css/CssComments.tsx(78,19): error TS2741: Property 'title' is missing in type '{ code: any; language: string; }' but required in type '{ code: any; language?: string; title: any; style?: {}; }'.
+data/css/CssFlexboxIntro.tsx(157,19): error TS2322: Type 'string' is not assignable to type 'FlexDirection'.
+data/css/CssFlexboxIntro.tsx(160,19): error TS2322: Type 'string' is not assignable to type 'FlexWrap'.
+data/css/CssFlexboxIntro.tsx(266,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssFlexContainer.tsx(186,19): error TS2322: Type 'string' is not assignable to type 'FlexDirection'.
+data/css/CssFlexContainer.tsx(189,19): error TS2322: Type 'string' is not assignable to type 'FlexWrap'.
+data/css/CssFlexContainer.tsx(263,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssFlexItems.tsx(189,64): error TS2367: This comparison appears to be unintentional because the types 'string' and 'number' have no overlap.
+data/css/CssFloat.tsx(204,33): error TS2353: Object literal may only specify known properties, and ''--clearfix-display'' does not exist in type 'Properties<string | number, string & {}>'.
+data/css/CssFloat.tsx(211,36): error TS2322: Type 'string' is not assignable to type 'Float'.
+data/css/CssForms.tsx(160,55): error TS2322: Type 'string' is not assignable to type 'number'.
+data/css/CssGridColumnsRows.tsx(233,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssGridColumnsRows.tsx(252,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssGridContainer.tsx(242,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssGridIntro.tsx(221,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssGridIntro.tsx(243,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssGridItem.tsx(289,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssGridItem.tsx(310,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssHowTo.tsx(78,19): error TS2741: Property 'title' is missing in type '{ code: any; language: string; }' but required in type '{ code: any; language?: string; title: any; style?: {}; }'.
+data/css/CssImageCentering.tsx(168,16): error TS2741: Property 'code' is missing in type '{ key: string; title: string; description: string; icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>; active: boolean; onClick: () => void; }' but required in type '{ title: any; description: any; icon: any; code: any; active: any; onClick: any; }'.
+data/css/CssImageCentering.tsx(237,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssImageCentering.tsx(256,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssImageCentering.tsx(275,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssImageCentering.tsx(296,14): error TS2741: Property 'title' is missing in type '{ language: string; codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssImageShapes.tsx(237,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssImageShapes.tsx(264,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssImageStyling.tsx(224,23): error TS2322: Type 'string' is not assignable to type 'ObjectFit'.
+data/css/CssMasking.tsx(236,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssMasking.tsx(259,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssMediaQueries.tsx(275,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssMediaQueries.tsx(300,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssMultipleColumns.tsx(178,28): error TS2322: Type 'string' is not assignable to type 'ColumnSpan'.
+data/css/CssMultipleColumns.tsx(241,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssMultipleColumns.tsx(262,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssObjectFit.tsx(183,23): error TS2322: Type 'string' is not assignable to type 'ObjectFit'.
+data/css/CssObjectFit.tsx(250,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssObjectFit.tsx(273,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssObjectPosition.tsx(247,26): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssObjectPosition.tsx(265,26): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssPadding.tsx(270,29): error TS2322: Type 'string' is not assignable to type 'BoxSizing'.
+data/css/CssPagination.tsx(300,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssPagination.tsx(323,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssPosition.tsx(264,21): error TS2322: Type '{ position: string; top: string; left: string; zIndex: string | number; transition: string; }' is not assignable to type 'CSSProperties'.
+  Types of property 'position' are incompatible.
+    Type 'string' is not assignable to type 'Position'.
+data/css/CssProperty.tsx(260,14): error TS2741: Property 'title' is missing in type '{ codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssRwdGridView.tsx(306,14): error TS2741: Property 'title' is missing in type '{ language: string; codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssRwdGridView.tsx(323,14): error TS2741: Property 'title' is missing in type '{ language: string; codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssRwdGridView.tsx(340,14): error TS2741: Property 'title' is missing in type '{ language: string; codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssRwdImages.tsx(250,61): error TS2322: Type 'string' is not assignable to type 'ObjectFit'.
+data/css/CssRwdIntro.tsx(291,14): error TS2741: Property 'title' is missing in type '{ language: string; codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssRwdIntro.tsx(308,14): error TS2741: Property 'title' is missing in type '{ language: string; codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssRwdIntro.tsx(325,14): error TS2741: Property 'title' is missing in type '{ language: string; codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssRwdVideos.tsx(257,32): error TS2322: Type 'string' is not assignable to type 'ObjectFit'.
+data/css/CssRwdVideos.tsx(301,14): error TS2741: Property 'title' is missing in type '{ language: string; codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssRwdVideos.tsx(323,14): error TS2741: Property 'title' is missing in type '{ language: string; codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssSassTutorial.tsx(258,14): error TS2741: Property 'title' is missing in type '{ language: string; codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssSassTutorial.tsx(282,14): error TS2741: Property 'title' is missing in type '{ language: string; codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssSelectors.tsx(75,19): error TS2741: Property 'title' is missing in type '{ code: any; }' but required in type '{ code: any; language?: string; title: any; style?: {}; }'.
+data/css/CssSelectors.tsx(222,14): error TS2741: Property 'badge' is missing in type '{ title: string; icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>; color: string; description: string; code: string; }' but required in type '{ title: any; icon: any; color: any; description: any; code: any; badge: any; }'.
+data/css/CssSelectors.tsx(300,18): error TS2741: Property 'badge' is missing in type '{ title: string; icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>; ... 4 more ...; key: number; }' but required in type '{ title: any; icon: any; color: any; description: any; code: any; badge: any; }'.
+data/css/CssSelectors.tsx(327,22): error TS2741: Property 'title' is missing in type '{ code: string; }' but required in type '{ code: any; language?: string; title: any; style?: {}; }'.
+data/css/CssSpecificity.tsx(177,14): error TS2741: Property 'score' is missing in type '{ children: Element; title: string; icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>; color: string; description: string; }' but required in type '{ title: any; icon: any; color: any; description: any; score: any; children: any; }'.
+data/css/CssSpecificity.tsx(189,14): error TS2741: Property 'score' is missing in type '{ children: Element; title: string; icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>; color: string; description: string; }' but required in type '{ title: any; icon: any; color: any; description: any; score: any; children: any; }'.
+data/css/CssSupports.tsx(222,14): error TS2741: Property 'title' is missing in type '{ language: string; codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssSupports.tsx(241,14): error TS2741: Property 'title' is missing in type '{ language: string; codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssSupports.tsx(258,14): error TS2741: Property 'title' is missing in type '{ language: string; codeSnippet: string; }' but required in type '{ codeSnippet: any; language?: string; title: any; }'.
+data/css/CssSyntax.tsx(115,19): error TS2741: Property 'title' is missing in type '{ code: any; }' but required in type '{ code: any; language?: string; title: any; }'.
+data/css/CssSyntax.tsx(265,14): error TS2741: Property 'badge' is missing in type '{ title: string; icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>; color: string; description: string; code: string; }' but required in type '{ title: any; icon: any; color: any; description: any; code: any; badge: any; }'.
+data/css/CssSyntax.tsx(280,14): error TS2741: Property 'badge' is missing in type '{ title: string; icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>; color: string; description: string; code: string; }' but required in type '{ title: any; icon: any; color: any; description: any; code: any; badge: any; }'.
+data/css/CssTables.tsx(256,28): error TS2322: Type '{ borderCollapse: string; borderSpacing: string; width: string; tableLayout: string; border: string; }' is not assignable to type 'CSSProperties'.
+  Types of property 'borderCollapse' are incompatible.
+    Type 'string' is not assignable to type 'BorderCollapse'.
+data/css/CssTables.tsx(259,37): error TS2322: Type '{ backgroundColor: "#c7d2fe"; color: "#1e40af"; padding: string; border: string; textAlign: string; }' is not assignable to type 'CSSProperties'.
+  Types of property 'textAlign' are incompatible.
+    Type 'string' is not assignable to type 'TextAlign'.
+data/css/CssTables.tsx(260,37): error TS2322: Type '{ backgroundColor: "#c7d2fe"; color: "#1e40af"; padding: string; border: string; textAlign: string; }' is not assignable to type 'CSSProperties'.
+  Types of property 'textAlign' are incompatible.
+    Type 'string' is not assignable to type 'TextAlign'.
+data/css/CssTables.tsx(261,37): error TS2322: Type '{ backgroundColor: "#c7d2fe"; color: "#1e40af"; padding: string; border: string; textAlign: string; }' is not assignable to type 'CSSProperties'.
+  Types of property 'textAlign' are incompatible.
+    Type 'string' is not assignable to type 'TextAlign'.
+data/css/CssTables.tsx(266,37): error TS2322: Type '{ padding: string; border: string; textAlign: string; }' is not assignable to type 'CSSProperties'.
+  Types of property 'textAlign' are incompatible.
+    Type 'string' is not assignable to type 'TextAlign'.
+data/css/CssTables.tsx(267,37): error TS2322: Type '{ padding: string; border: string; textAlign: string; }' is not assignable to type 'CSSProperties'.
+  Types of property 'textAlign' are incompatible.
+    Type 'string' is not assignable to type 'TextAlign'.
+data/css/CssTables.tsx(268,37): error TS2322: Type '{ padding: string; border: string; textAlign: string; }' is not assignable to type 'CSSProperties'.
+  Types of property 'textAlign' are incompatible.
+    Type 'string' is not assignable to type 'TextAlign'.
+data/css/CssTables.tsx(271,37): error TS2322: Type '{ padding: string; border: string; textAlign: string; }' is not assignable to type 'CSSProperties'.
+  Types of property 'textAlign' are incompatible.
+    Type 'string' is not assignable to type 'TextAlign'.
+data/css/CssTables.tsx(272,37): error TS2322: Type '{ padding: string; border: string; textAlign: string; }' is not assignable to type 'CSSProperties'.
+  Types of property 'textAlign' are incompatible.
+    Type 'string' is not assignable to type 'TextAlign'.
+data/css/CssTables.tsx(273,37): error TS2322: Type '{ padding: string; border: string; textAlign: string; }' is not assignable to type 'CSSProperties'.
+  Types of property 'textAlign' are incompatible.
+    Type 'string' is not assignable to type 'TextAlign'.
+data/css/CssText.tsx(280,29): error TS2322: Type 'string' is not assignable to type 'TextAlign'.
+data/css/CssUserInterface.tsx(155,50): error TS2322: Type 'string' is not assignable to type 'Resize'.
+data/css/CssVariables.tsx(149,142): error TS2559: Type '{ '--primary-color': string; '--secondary-color': string; }' has no properties in common with type 'Properties<string | number, string & {}>'.
+data/js/JsComparisons.tsx(147,50): error TS2345: Argument of type 'string | number | boolean' is not assignable to parameter of type 'SetStateAction<string | number>'.
+  Type 'boolean' is not assignable to type 'SetStateAction<string | number>'.
+data/js/JsComparisons.tsx(186,50): error TS2345: Argument of type 'string | number | boolean' is not assignable to parameter of type 'SetStateAction<string | number>'.
+  Type 'boolean' is not assignable to type 'SetStateAction<string | number>'.
+data/js/JsDates.tsx(170,28): error TS2554: Expected 2 arguments, but got 1.
+data/js/JsDates.tsx(196,44): error TS2554: Expected 2 arguments, but got 1.
+data/js/JsDates.tsx(197,44): error TS2554: Expected 2 arguments, but got 1.
+data/js/JsDates.tsx(198,44): error TS2554: Expected 2 arguments, but got 1.
+data/js/JsDates.tsx(199,44): error TS2554: Expected 2 arguments, but got 1.
+data/js/JsDates.tsx(200,44): error TS2554: Expected 2 arguments, but got 1.
+data/js/JsDates.tsx(224,44): error TS2554: Expected 2 arguments, but got 1.
+data/js/JsDates.tsx(225,44): error TS2554: Expected 2 arguments, but got 1.
+data/js/JsDates.tsx(226,44): error TS2554: Expected 2 arguments, but got 1.
+data/js/JsDates.tsx(227,44): error TS2554: Expected 2 arguments, but got 1.
+data/js/JsObjects.tsx(80,19): error TS2345: Argument of type '{ name: string; age: number; }' is not assignable to parameter of type 'SetStateAction<{ name: string; age: number; city: string; }>'.
+  Property 'city' is missing in type '{ name: string; age: number; }' but required in type '{ name: string; age: number; city: string; }'.
+data/python/PythonUserInput.tsx(463,67): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type 'ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<...>'.
+data/sql/SqlBootcamp.tsx(162,78): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Object literal may only specify known properties, and 'className' does not exist in type 'Partial<unknown> & Attributes'.
+data/sql/SqlNullValues.tsx(396,193): error TS2322: Type '{ className: string; title: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'title' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+data/sql/SqlNullValues.tsx(397,199): error TS2322: Type '{ className: string; title: string; }' is not assignable to type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+  Property 'title' does not exist on type 'IntrinsicAttributes & Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>'.
+data/sql/SqlServerFunctions.tsx(109,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(110,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(111,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(112,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(113,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(131,26): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(132,26): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(133,26): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(134,26): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(135,26): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(190,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(191,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(192,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(193,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(194,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(221,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(222,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(223,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(224,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(247,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(248,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(249,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(250,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(276,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(277,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+data/sql/SqlServerFunctions.tsx(278,22): error TS2322: Type 'Element' is not assignable to type 'string | number'.
+index.tsx(9,32): error TS2307: Cannot find module 'react-helmet-async' or its corresponding type declarations.
